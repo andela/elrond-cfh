@@ -10,4 +10,4 @@ services:
 cache: 
   - npm install
 notifications:
-  webhooks: https://coveralls.io/webhook?repo_token=AlQ0K4WyO8yno9TSEP9t3SoyrkmoYgI8I
+  webhooks: $COVERALLS_URL
