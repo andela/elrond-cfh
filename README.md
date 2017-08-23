@@ -1,14 +1,14 @@
-Cards for Humanity - [http://cfh.io](http://cfh.io)
+Cards for Humanity - [https://cfh.io](https://cfh.io)
 ===========
 Cards for Humanity is a fast-paced online version of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
 
 Our Team
 --------
-Cards for Humanity was created at [Hack Reactor](http://www.hackreactor.com) by:
-* [Matt Silverstein](http://www.mattsilverstein.com/)
+Cards for Humanity was created at [Hack Reactor](https://www.hackreactor.com) by:
+* [Matt Silverstein](https://www.mattsilverstein.com/)
 * [Will Ngo](https://mrngoitall.net)
-* [Tyler McGinnis](http://www.tylermcginnis.com)
-* [David Gonzalez](http://www.truthyfalsy.com)
+* [Tyler McGinnis](https://www.tylermcginnis.com)
+* [David Gonzalez](https://www.truthyfalsy.com)
 
 About the Game
 -------------
@@ -20,7 +20,7 @@ The app is completely functional across all devices - from iPhone to full-sized 
 
 ![alt-text](https://dl.dropboxusercontent.com/u/7390609/CFHforGit.png "Cards for Humanity views")
 
-![alt-text](http://www.tylermcginnis.com/images/cfh3.png "Desktop with Cards")
+![alt-text](https://www.tylermcginnis.com/images/cfh3.png "Desktop with Cards")
 
 Our Tech Stack
 --------------
