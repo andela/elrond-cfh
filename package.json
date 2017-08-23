@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "node node_modules/grunt-cli/bin/grunt",
-    "test": "node node_modules/grunt-cli/bin/grunt test",
+    "test": "./node_modules/karma/bin/karma start karma.conf.js",
+    "test-dev": "node node_modules/grunt-cli/bin/grunt test",
     "postinstall": "node node_modules/grunt-cli/bin/grunt install"
   },
   "dependencies": {
@@ -25,6 +26,10 @@
     "connect-mongo": "~0.3.3",
     "console-stamp": "~0.1.1",
     "dotenv": "^4.0.0",
+<<<<<<< HEAD
+=======
+    "eslint": "^4.5.0",
+>>>>>>> 0a1b10e3c3c94354493076dcba2b079d23db3d67
     "express": "~3.4.0",
     "forever": "latest",
     "grunt": "~0.4.1",
@@ -63,6 +68,15 @@
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
     "karma": "^1.7.0",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-safari-launcher": "^1.0.0",
     "should": "~1.3.0",
     "supertest": "~0.8.0"
   }
