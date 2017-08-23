@@ -1,11 +1,7 @@
 /**
  * Module dependencies.
  */
-<<<<<<< HEAD
-require('dotenv').config()
-=======
  require('dotenv').config();
->>>>>>> 0a1b10e3c3c94354493076dcba2b079d23db3d67
 var express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
