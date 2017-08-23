@@ -23,30 +23,19 @@
     "bcryptjs": "~1.0.4",
     "bower": "~1.3.8",
     "connect-flash": "~0.1.1",
-<<<<<<< HEAD
     "connect-mongo": "^1.3.2",
-=======
-    "connect-mongo": "~0.3.3",
->>>>>>> 0a1b10e3c3c94354493076dcba2b079d23db3d67
     "console-stamp": "~0.1.1",
     "dotenv": "^4.0.0",
     "eslint": "^4.5.0",
     "express": "~3.4.0",
-<<<<<<< HEAD
     "express-session": "^1.15.5",
-=======
->>>>>>> 0a1b10e3c3c94354493076dcba2b079d23db3d67
     "forever": "latest",
     "grunt": "~0.4.1",
     "grunt-bower-task": "~0.4.0",
     "grunt-cli": "~0.1.9",
     "jade": "~0.35.0",
     "mean-logger": "~0.0.1",
-<<<<<<< HEAD
     "mongoose": "^4.8.2",
-=======
-    "mongoose": "~3.6.20",
->>>>>>> 0a1b10e3c3c94354493076dcba2b079d23db3d67
     "passport": "~0.1.17",
     "passport-facebook": "~2.0.0",
     "passport-github": "~0.1.5",
