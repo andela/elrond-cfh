@@ -5,26 +5,26 @@ const cache = require('gulp-cache');
 const bower = require('gulp-bower');
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync').create();
-var Server = require('karma').Server;
+const Server = require('karma').Server;
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
   return gulp.src(['public/js/**/*.js', 'test/**/*.js', 'app/**/*.js'] )
     .pipe(jshint())
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
   gulp.src('public/scss/**/*.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('./public/css'));
 });
 
-gulp.task('bower', function() {
+gulp.task('bower', () => {
   return bower()
     .pipe(gulp.dest('public/lib'))
 });
 
-gulp.task('start', function () {
+gulp.task('start',  () => {
   return nodemon({
     script: 'server.js',
      ext: 'js html',
@@ -33,7 +33,7 @@ gulp.task('start', function () {
 })
 
 // Run test once and exit
-gulp.task('test', function (done) {
+gulp.task('test', (done) => {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
@@ -43,7 +43,7 @@ gulp.task('test', function (done) {
 // gulp.task('default', [ 'html', 'css' ]);
 
 // Watch for changes in files
-gulp.task('watch', function() {
+gulp.task('watch', () => {
 
   // Watch .scss files
  gulp.watch('public/scss/*.scss', ['sass', browserSync.reload]);
