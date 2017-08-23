@@ -9,6 +9,7 @@ install:
     - npm install
 script:
     - npm test
+    - npm --version
 services:
   - mongodb
 cache: 
