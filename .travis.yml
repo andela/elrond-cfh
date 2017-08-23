@@ -9,9 +9,5 @@ install:
     - npm install
 script:
     - karma start
-services:
-  - mongodb
-cache: 
-  - npm install
 notifications:
   webhooks: $COVERALLS_URL
