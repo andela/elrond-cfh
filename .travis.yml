@@ -8,10 +8,6 @@ branches:
 install:
     - npm install
 script:
-    - npm test
-services:
-  - mongodb
-cache: 
-  - npm install
+    - karma start
 notifications:
   webhooks: $COVERALLS_URL
