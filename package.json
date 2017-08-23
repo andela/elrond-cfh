@@ -25,6 +25,7 @@
     "connect-mongo": "^1.3.2",
     "console-stamp": "~0.1.1",
     "dotenv": "^4.0.0",
+    "eslint": "^4.5.0",
     "express": "~3.4.0",
     "express-session": "^1.15.5",
     "forever": "latest",
