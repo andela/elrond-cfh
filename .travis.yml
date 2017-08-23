@@ -8,7 +8,7 @@ branches:
 install:
     - npm install
 script:
-    - npm test
+    - karma start
 services:
   - mongodb
 cache: 
