@@ -60,4 +60,3 @@ gulp.task('browser-sync', ['sass', 'start', 'watch'], function() {
       open: false
   });
 });
-

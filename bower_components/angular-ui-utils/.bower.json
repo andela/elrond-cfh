@@ -3,7 +3,7 @@
   "name": "angular-ui-utils",
   "description": "AngularUI Utilities - Companion Suite for AngularJS",
   "version": "0.0.4",
-  "homepage": "http://angular-ui.github.com",
+  "homepage": "https://angular-ui.github.com",
   "main": "./modules/utils.js",
   "dependencies": {
     "angular": ">= 1.0.2"
@@ -19,6 +19,6 @@
     "tag": "v0.0.4",
     "commit": "fa7e14e6cb254b3166ff36060f30ed69b54e7152"
   },
-  "_source": "http://github.com/angular-ui/ui-utils.git",
+  "_source": "https://github.com/angular-ui/ui-utils.git",
   "_target": "0.0.4"
 }

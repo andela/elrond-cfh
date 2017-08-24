@@ -76,7 +76,7 @@ module.exports = function( grunt ) {
 			},
 			tests: {
 				// TODO: Once .jshintignore is supported, use that instead.
-				// issue located here: http://github.com/gruntjs/grunt-contrib-jshint/issues/1
+				// issue located here: https://github.com/gruntjs/grunt-contrib-jshint/issues/1
 				src: [ "test/data/{test,testinit,testrunner}.js", "test/unit/**/*.js" ],
 				options: {
 					jshintrc: "test/.jshintrc"
@@ -124,10 +124,10 @@ module.exports = function( grunt ) {
 			tests = grunt.config([ this.name, "tests" ]);
 
 		if ( pull ) {
-			jobName = "jQuery pull <a href='http://github.com/jquery/jquery/pull/" +
+			jobName = "jQuery pull <a href='https://github.com/jquery/jquery/pull/" +
 				pull[ 1 ] + "'>#" + pull[ 1 ] + "</a>";
 		} else {
-			jobName = "jQuery commit #<a href='http://github.com/jquery/jquery/commit/" +
+			jobName = "jQuery commit #<a href='https://github.com/jquery/jquery/commit/" +
 				commit + "'>" + commit.substr( 0, 10 ) + "</a>";
 		}
 
@@ -443,7 +443,7 @@ module.exports = function( grunt ) {
 			}
 
 			// Modify map/min so that it points to files in the same folder;
-			// see http://github.com/mishoo/UglifyJS2/issues/47
+			// see https://github.com/mishoo/UglifyJS2/issues/47
 			if ( /\.map$/.test( filename ) ) {
 				text = text.replace( /"dist\//g, "\"" );
 				fs.writeFileSync( filename, text, "utf-8" );

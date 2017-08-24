@@ -1,6 +1,6 @@
   jQuery.benchmarker.tests = [
     // Selectors from:
-    // http://ejohn.org/blog/selectors-that-people-actually-use/
+    // https://ejohn.org/blog/selectors-that-people-actually-use/
     /*
     // For Amazon.com
       "#navAmazonLogo", "#navSwmSkedPop",

@@ -1,4 +1,4 @@
-[jQuery](http://jquery.com/) - New Wave JavaScript
+[jQuery](https://jquery.com/) - New Wave JavaScript
 ==================================================
 
 Contribution Guides
@@ -6,9 +6,9 @@ Contribution Guides
 
 In the spirit of open source software development, jQuery always encourages community code contribution. To help you get started and before you jump into writing code, be sure to read these important contribution guidelines thoroughly:
 
-1. [Getting Involved](http://docs.jquery.com/Getting_Involved)
-2. [Core Style Guide](http://docs.jquery.com/JQuery_Core_Style_Guidelines)
-3. [Tips For Bug Patching](http://docs.jquery.com/Tips_for_jQuery_Bug_Patching)
+1. [Getting Involved](https://docs.jquery.com/Getting_Involved)
+2. [Core Style Guide](https://docs.jquery.com/JQuery_Core_Style_Guidelines)
+3. [Tips For Bug Patching](https://docs.jquery.com/Tips_for_jQuery_Bug_Patching)
 
 
 What you need to build your own jQuery
@@ -19,15 +19,15 @@ In order to build jQuery, you need to have Node.js/npm latest and git 1.7 or lat
 
 Windows users have two options:
 
-1. Install [msysgit](http://code.google.com/p/msysgit/) (Full installer for official Git) and a
-   [binary version of Node.js](http://nodejs.org). Make sure all two packages are installed to the same
+1. Install [msysgit](https://code.google.com/p/msysgit/) (Full installer for official Git) and a
+   [binary version of Node.js](https://nodejs.org). Make sure all two packages are installed to the same
    location (by default, this is C:\Program Files\Git).
-2. Install [Cygwin](http://cygwin.com/) (make sure you install the git and which packages), and
-   a [binary version of Node.js](http://nodejs.org/).
+2. Install [Cygwin](https://cygwin.com/) (make sure you install the git and which packages), and
+   a [binary version of Node.js](https://nodejs.org/).
 
 Mac OS users should install Xcode (comes on your Mac OS install DVD, or downloadable from
-[Apple's Xcode site](http://developer.apple.com/technologies/xcode.html)) and
-[Homebrew](http://mxcl.github.com/homebrew/). Once Homebrew is installed, run `brew install git` to install git,
+[Apple's Xcode site](https://developer.apple.com/technologies/xcode.html)) and
+[Homebrew](https://mxcl.github.com/homebrew/). Once Homebrew is installed, run `brew install git` to install git,
 and `brew install node` to install Node.js.
 
 Linux/BSD users should use their appropriate package managers to install git and Node.js, or build from source
@@ -152,10 +152,10 @@ cd jquery && grunt watch
 
 Run the unit tests with a local server that supports PHP. No database is required. Pre-configured php local servers are available for Windows and Mac. Here are some options:
 
-- Windows: [WAMP download](http://www.wampserver.com/en/)
-- Mac: [MAMP download](http://www.mamp.info/en/index.html)
-- Linux: [Setting up LAMP](http://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
-- [Mongoose (most platforms)](http://code.google.com/p/mongoose/)
+- Windows: [WAMP download](https://www.wampserver.com/en/)
+- Mac: [MAMP download](https://www.mamp.info/en/index.html)
+- Linux: [Setting up LAMP](https://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
+- [Mongoose (most platforms)](https://code.google.com/p/mongoose/)
 
 
 
@@ -215,7 +215,7 @@ be able to work with them manually.
 Following are the steps to manually get the submodules:
 
 ```bash
-git clone http://github.com/jquery/jquery.git
+git clone https://github.com/jquery/jquery.git
 cd jquery
 git submodule init
 git submodule update
@@ -224,7 +224,7 @@ git submodule update
 Or:
 
 ```bash
-git clone http://github.com/jquery/jquery.git
+git clone https://github.com/jquery/jquery.git
 cd jquery
 git submodule update --init
 ```
@@ -232,7 +232,7 @@ git submodule update --init
 Or:
 
 ```bash
-git clone --recursive http://github.com/jquery/jquery.git
+git clone --recursive https://github.com/jquery/jquery.git
 cd jquery
 ```
 
@@ -289,7 +289,7 @@ Following are some commands that can be used there:
 * `Ctrl + S` - save
 * `Ctrl + Q` - quit
 
-[QUnit](http://docs.jquery.com/QUnit) Reference
+[QUnit](https://docs.jquery.com/QUnit) Reference
 -----------------
 
 ### Test methods ###
@@ -318,7 +318,7 @@ raises( block, [expected], [message] );
 ```
 
 
-Test Suite Convenience Methods Reference (See [test/data/testinit.js](http://github.com/jquery/jquery/blob/master/test/data/testinit.js))
+Test Suite Convenience Methods Reference (See [test/data/testinit.js](https://github.com/jquery/jquery/blob/master/test/data/testinit.js))
 ------------------------------
 
 ### Returns an array of elements with the given IDs ###
@@ -412,4 +412,4 @@ Questions?
 ----------
 
 If you have any questions, please feel free to ask on the
-[Developing jQuery Core forum](http://forum.jquery.com/developing-jquery-core) or in #jquery on irc.freenode.net.
+[Developing jQuery Core forum](https://forum.jquery.com/developing-jquery-core) or in #jquery on irc.freenode.net.

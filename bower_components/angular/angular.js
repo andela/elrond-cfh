@@ -1,6 +1,6 @@
 /**
  * @license AngularJS v1.6.6
- * (c) 2010-2017 Google, Inc. http://angularjs.org
+ * (c) 2010-2017 Google, Inc. https://angularjs.org
  * License: MIT
  */
 (function(window) {'use strict';
@@ -256,7 +256,7 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
  * @deprecated
  * sinceVersion="1.5.0"
  * removeVersion="1.7.0"
- * Use [String.prototype.toLowerCase](http://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) instead.
+ * Use [String.prototype.toLowerCase](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) instead.
  *
  * @description Converts the specified string to lowercase.
  * @param {string} string String to be converted to lowercase.
@@ -273,7 +273,7 @@ var lowercase = function(string) {return isString(string) ? string.toLowerCase()
  * @deprecated
  * sinceVersion="1.5.0"
  * removeVersion="1.7.0"
- * Use [String.prototype.toUpperCase](http://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) instead.
+ * Use [String.prototype.toUpperCase](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) instead.
  *
  * @description Converts the specified string to uppercase.
  * @param {string} string String to be converted to uppercase.
@@ -300,7 +300,7 @@ var manualUppercase = function(s) {
 
 // String#toLowerCase and String#toUpperCase don't produce correct results in browsers with Turkish
 // locale, for this reason we need to detect this case and redefine lowercase/uppercase methods
-// with correct but slower alternatives. See http://github.com/angular/angular.js/issues/11387
+// with correct but slower alternatives. See https://github.com/angular/angular.js/issues/11387
 if ('i' !== 'I'.toLowerCase()) {
   lowercase = manualLowercase;
   uppercase = manualUppercase;
@@ -326,7 +326,7 @@ var
 // Support: IE 9-11 only
 /**
  * documentMode is an IE-only property
- * http://msdn.microsoft.com/en-us/library/ie/cc196988(v=vs.85).aspx
+ * https://msdn.microsoft.com/en-us/library/ie/cc196988(v=vs.85).aspx
  */
 msie = window.document.documentMode;
 
@@ -375,7 +375,7 @@ function isArrayLike(obj) {
  * using the `hasOwnProperty` method.
  *
  * Unlike ES262's
- * [Array.prototype.forEach](http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),
+ * [Array.prototype.forEach](https://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),
  * providing 'undefined' or 'null' values for `obj` will not throw a TypeError, but rather just
  * return the value provided.
  *
@@ -559,13 +559,13 @@ function extend(dst) {
 * This function is deprecated, but will not be removed in the 1.x lifecycle.
 * There are edge cases (see {@link angular.merge#known-issues known issues}) that are not
 * supported by this function. We suggest
-* using [lodash's merge()](http://lodash.com/docs/4.17.4#merge) instead.
+* using [lodash's merge()](https://lodash.com/docs/4.17.4#merge) instead.
 *
 * @knownIssue
 * This is a list of (known) object types that are not handled correctly by this function:
-* - [`Blob`](http://developer.mozilla.org/docs/Web/API/Blob)
-* - [`MediaStream`](http://developer.mozilla.org/docs/Web/API/MediaStream)
-* - [`CanvasGradient`](http://developer.mozilla.org/docs/Web/API/CanvasGradient)
+* - [`Blob`](https://developer.mozilla.org/docs/Web/API/Blob)
+* - [`MediaStream`](https://developer.mozilla.org/docs/Web/API/MediaStream)
+* - [`CanvasGradient`](https://developer.mozilla.org/docs/Web/API/CanvasGradient)
 * - AngularJS {@link $rootScope.Scope scopes};
 *
 * @param {Object} dst Destination object.
@@ -695,7 +695,7 @@ function isDefined(value) {return typeof value !== 'undefined';}
  * @returns {boolean} True if `value` is an `Object` but not `null`.
  */
 function isObject(value) {
-  // http://jsperf.com/isobject4
+  // https://jsperf.com/isobject4
   return value !== null && typeof value === 'object';
 }
 
@@ -737,7 +737,7 @@ function isString(value) {return typeof value === 'string';}
  * This includes the "special" numbers `NaN`, `+Infinity` and `-Infinity`.
  *
  * If you wish to exclude these then you can use the native
- * [`isFinite'](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite)
+ * [`isFinite'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite)
  * method.
  *
  * @param {*} value Reference to check.
@@ -780,7 +780,7 @@ var isArray = Array.isArray;
 /**
  * @description
  * Determines if a reference is an `Error`.
- * Loosely based on http://www.npmjs.com/package/iserror
+ * Loosely based on https://www.npmjs.com/package/iserror
  *
  * @param {*} value Reference to check.
  * @returns {boolean} True if `value` is an `Error`.
@@ -879,7 +879,7 @@ var trim = function(value) {
 };
 
 // Copied from:
-// http://docs.closure-library.googlecode.com/git/local_closure_goog_string_string.js.source.html#line1021
+// https://docs.closure-library.googlecode.com/git/local_closure_goog_string_string.js.source.html#line1021
 // Prereq: s is a string.
 var escapeForRegexp = function(s) {
   return s
@@ -1363,8 +1363,8 @@ function sliceArgs(args, startIndex) {
  * @description
  * Returns a function which calls function `fn` bound to `self` (`self` becomes the `this` for
  * `fn`). You can supply optional `args` that are prebound to the function. This feature is also
- * known as [partial application](http://en.wikipedia.org/wiki/Partial_application), as
- * distinguished from [function currying](http://en.wikipedia.org/wiki/Currying#Contrast_with_partial_function_application).
+ * known as [partial application](https://en.wikipedia.org/wiki/Partial_application), as
+ * distinguished from [function currying](https://en.wikipedia.org/wiki/Currying#Contrast_with_partial_function_application).
  *
  * @param {Object} self Context which `fn` should be evaluated in.
  * @param {function()} fn Function to be bound.
@@ -1443,7 +1443,7 @@ function toJsonReplacer(key, value) {
  * };
  * ```
  *
- * See http://github.com/angular/angular.js/pull/14221 for more information.
+ * See https://github.com/angular/angular.js/pull/14221 for more information.
  */
 function toJson(obj, pretty) {
   if (isUndefined(obj)) return undefined;
@@ -1585,7 +1585,7 @@ function toKeyValue(obj) {
 
 /**
  * We need our custom method because encodeURIComponent is too aggressive and doesn't follow
- * http://www.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
+ * https://www.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
  * segments:
  *    segment       = *pchar
  *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
@@ -1605,7 +1605,7 @@ function encodeUriSegment(val) {
 /**
  * This method is intended for encoding *key* or *value* parts of query component. We need a custom
  * method because encodeURIComponent is too aggressive and encodes stuff that doesn't have to be
- * encoded per http://tools.ietf.org/html/rfc3986:
+ * encoded per https://tools.ietf.org/html/rfc3986:
  *    query         = *( pchar / "/" / "?" )
  *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
  *    unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
@@ -2162,9 +2162,9 @@ function getBlockNodes(nodes) {
  * guard against prototypically inherited properties via hasOwnProperty.
  *
  * Related micro-benchmarks:
- * - http://jsperf.com/object-create2
- * - http://jsperf.com/proto-map-lookup/2
- * - http://jsperf.com/for-in-vs-object-keys2
+ * - https://jsperf.com/object-create2
+ * - https://jsperf.com/proto-map-lookup/2
+ * - https://jsperf.com/for-in-vs-object-keys2
  *
  * @returns {Object}
  */
@@ -2965,10 +2965,10 @@ function publishExternalAPI(angular) {
  * @kind function
  *
  * @description
- * Wraps a raw DOM element or HTML string as a [jQuery](http://jquery.com) element.
+ * Wraps a raw DOM element or HTML string as a [jQuery](https://jquery.com) element.
  *
  * If jQuery is available, `angular.element` is an alias for the
- * [jQuery](http://api.jquery.com/jQuery/) function. If jQuery is not available, `angular.element`
+ * [jQuery](https://api.jquery.com/jQuery/) function. If jQuery is not available, `angular.element`
  * delegates to Angular's built-in subset of jQuery, called "jQuery lite" or **jqLite**.
  *
  * jqLite is a tiny, API-compatible subset of jQuery that allows
@@ -2989,42 +2989,42 @@ function publishExternalAPI(angular) {
  * ## Angular's jqLite
  * jqLite provides only the following jQuery methods:
  *
- * - [`addClass()`](http://api.jquery.com/addClass/) - Does not support a function as first argument
- * - [`after()`](http://api.jquery.com/after/)
- * - [`append()`](http://api.jquery.com/append/)
- * - [`attr()`](http://api.jquery.com/attr/) - Does not support functions as parameters
- * - [`bind()`](http://api.jquery.com/bind/) (_deprecated_, use [`on()`](http://api.jquery.com/on/)) - Does not support namespaces, selectors or eventData
- * - [`children()`](http://api.jquery.com/children/) - Does not support selectors
- * - [`clone()`](http://api.jquery.com/clone/)
- * - [`contents()`](http://api.jquery.com/contents/)
- * - [`css()`](http://api.jquery.com/css/) - Only retrieves inline-styles, does not call `getComputedStyle()`.
+ * - [`addClass()`](https://api.jquery.com/addClass/) - Does not support a function as first argument
+ * - [`after()`](https://api.jquery.com/after/)
+ * - [`append()`](https://api.jquery.com/append/)
+ * - [`attr()`](https://api.jquery.com/attr/) - Does not support functions as parameters
+ * - [`bind()`](https://api.jquery.com/bind/) (_deprecated_, use [`on()`](https://api.jquery.com/on/)) - Does not support namespaces, selectors or eventData
+ * - [`children()`](https://api.jquery.com/children/) - Does not support selectors
+ * - [`clone()`](https://api.jquery.com/clone/)
+ * - [`contents()`](https://api.jquery.com/contents/)
+ * - [`css()`](https://api.jquery.com/css/) - Only retrieves inline-styles, does not call `getComputedStyle()`.
  *   As a setter, does not convert numbers to strings or append 'px', and also does not have automatic property prefixing.
- * - [`data()`](http://api.jquery.com/data/)
- * - [`detach()`](http://api.jquery.com/detach/)
- * - [`empty()`](http://api.jquery.com/empty/)
- * - [`eq()`](http://api.jquery.com/eq/)
- * - [`find()`](http://api.jquery.com/find/) - Limited to lookups by tag name
- * - [`hasClass()`](http://api.jquery.com/hasClass/)
- * - [`html()`](http://api.jquery.com/html/)
- * - [`next()`](http://api.jquery.com/next/) - Does not support selectors
- * - [`on()`](http://api.jquery.com/on/) - Does not support namespaces, selectors or eventData
- * - [`off()`](http://api.jquery.com/off/) - Does not support namespaces, selectors or event object as parameter
- * - [`one()`](http://api.jquery.com/one/) - Does not support namespaces or selectors
- * - [`parent()`](http://api.jquery.com/parent/) - Does not support selectors
- * - [`prepend()`](http://api.jquery.com/prepend/)
- * - [`prop()`](http://api.jquery.com/prop/)
- * - [`ready()`](http://api.jquery.com/ready/) (_deprecated_, use `angular.element(callback)` instead of `angular.element(document).ready(callback)`)
- * - [`remove()`](http://api.jquery.com/remove/)
- * - [`removeAttr()`](http://api.jquery.com/removeAttr/) - Does not support multiple attributes
- * - [`removeClass()`](http://api.jquery.com/removeClass/) - Does not support a function as first argument
- * - [`removeData()`](http://api.jquery.com/removeData/)
- * - [`replaceWith()`](http://api.jquery.com/replaceWith/)
- * - [`text()`](http://api.jquery.com/text/)
- * - [`toggleClass()`](http://api.jquery.com/toggleClass/) - Does not support a function as first argument
- * - [`triggerHandler()`](http://api.jquery.com/triggerHandler/) - Passes a dummy event object to handlers
- * - [`unbind()`](http://api.jquery.com/unbind/) (_deprecated_, use [`off()`](http://api.jquery.com/off/)) - Does not support namespaces or event object as parameter
- * - [`val()`](http://api.jquery.com/val/)
- * - [`wrap()`](http://api.jquery.com/wrap/)
+ * - [`data()`](https://api.jquery.com/data/)
+ * - [`detach()`](https://api.jquery.com/detach/)
+ * - [`empty()`](https://api.jquery.com/empty/)
+ * - [`eq()`](https://api.jquery.com/eq/)
+ * - [`find()`](https://api.jquery.com/find/) - Limited to lookups by tag name
+ * - [`hasClass()`](https://api.jquery.com/hasClass/)
+ * - [`html()`](https://api.jquery.com/html/)
+ * - [`next()`](https://api.jquery.com/next/) - Does not support selectors
+ * - [`on()`](https://api.jquery.com/on/) - Does not support namespaces, selectors or eventData
+ * - [`off()`](https://api.jquery.com/off/) - Does not support namespaces, selectors or event object as parameter
+ * - [`one()`](https://api.jquery.com/one/) - Does not support namespaces or selectors
+ * - [`parent()`](https://api.jquery.com/parent/) - Does not support selectors
+ * - [`prepend()`](https://api.jquery.com/prepend/)
+ * - [`prop()`](https://api.jquery.com/prop/)
+ * - [`ready()`](https://api.jquery.com/ready/) (_deprecated_, use `angular.element(callback)` instead of `angular.element(document).ready(callback)`)
+ * - [`remove()`](https://api.jquery.com/remove/)
+ * - [`removeAttr()`](https://api.jquery.com/removeAttr/) - Does not support multiple attributes
+ * - [`removeClass()`](https://api.jquery.com/removeClass/) - Does not support a function as first argument
+ * - [`removeData()`](https://api.jquery.com/removeData/)
+ * - [`replaceWith()`](https://api.jquery.com/replaceWith/)
+ * - [`text()`](https://api.jquery.com/text/)
+ * - [`toggleClass()`](https://api.jquery.com/toggleClass/) - Does not support a function as first argument
+ * - [`triggerHandler()`](https://api.jquery.com/triggerHandler/) - Passes a dummy event object to handlers
+ * - [`unbind()`](https://api.jquery.com/unbind/) (_deprecated_, use [`off()`](https://api.jquery.com/off/)) - Does not support namespaces or event object as parameter
+ * - [`val()`](https://api.jquery.com/val/)
+ * - [`wrap()`](https://api.jquery.com/wrap/)
  *
  * ## jQuery/jqLite Extras
  * Angular also provides the following additional methods and events to both jQuery and jqLite:
@@ -3051,7 +3051,7 @@ function publishExternalAPI(angular) {
  *   parent element is reached.
  *
  * @knownIssue You cannot spy on `angular.element` if you are using Jasmine version 1.x. See
- * http://github.com/angular/angular.js/issues/14251 for more information.
+ * https://github.com/angular/angular.js/issues/14251 for more information.
  *
  * @param {string|DOMElement} element HTML string or DOMElement to be wrapped into jQuery.
  * @returns {Object} jQuery object.
@@ -3221,7 +3221,7 @@ function JQLite(element) {
   }
   if (!(this instanceof JQLite)) {
     if (argIsString && element.charAt(0) !== '<') {
-      throw jqLiteMinErr('nosel', 'Looking up elements via selectors is not supported by jqLite! See: http://docs.angularjs.org/api/angular.element');
+      throw jqLiteMinErr('nosel', 'Looking up elements via selectors is not supported by jqLite! See: https://docs.angularjs.org/api/angular.element');
     }
     return new JQLite(element);
   }
@@ -3774,7 +3774,7 @@ function defaultHandlerWrapper(element, event, handler) {
 function specialMouseHandlerWrapper(target, event, handler) {
   // Refer to jQuery's implementation of mouseenter & mouseleave
   // Read about mouseenter and mouseleave:
-  // http://www.quirksmode.org/js/events_mouse.html#link8
+  // https://www.quirksmode.org/js/events_mouse.html#link8
   var related = event.relatedTarget;
   // For mousenter/leave call the handler if related is outside the target.
   // NB: No relatedTarget if the mouse left/entered the browser window
@@ -3807,7 +3807,7 @@ forEach({
       handle = expandoStore.handle = createEventHandler(element, events);
     }
 
-    // http://jsperf.com/string-indexof-vs-split
+    // https://jsperf.com/string-indexof-vs-split
     var types = type.indexOf(' ') >= 0 ? type.split(' ') : [type];
     var i = types.length;
 
@@ -4076,7 +4076,7 @@ function hashKey(obj, nextUidFn) {
 // A minimal ES2015 Map implementation.
 // Should be bug/feature equivalent to the native implementations of supported browsers
 // (for the features required in Angular).
-// See http://kangax.github.io/compat-table/es6/#test-Map
+// See https://kangax.github.io/compat-table/es6/#test-Map
 var nanKey = Object.create(null);
 function NgMapShim() {
   this._keys = [];
@@ -5017,7 +5017,7 @@ function createInjector(modulesToLoad, strictDi) {
       var result = func.$$ngIsClass;
       if (!isBoolean(result)) {
         // Support: Edge 12-13 only
-        // See: http://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
+        // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
         result = func.$$ngIsClass = /^(?:class\b|constructor\()/.test(stringifyFn(func));
       }
       return result;
@@ -5035,7 +5035,7 @@ function createInjector(modulesToLoad, strictDi) {
       }
 
       if (!isClass(fn)) {
-        // http://jsperf.com/angularjs-invoke-apply-vs-switch
+        // https://jsperf.com/angularjs-invoke-apply-vs-switch
         // #5388
         return fn.apply(self, args);
       } else {
@@ -5112,7 +5112,7 @@ function $AnchorScrollProvider() {
    * When called, it scrolls to the element related to the specified `hash` or (if omitted) to the
    * current value of {@link ng.$location#hash $location.hash()}, according to the rules specified
    * in the
-   * [HTML5 spec](http://www.w3.org/html/wg/drafts/html/master/browsers.html#an-indicated-part-of-the-document).
+   * [HTML5 spec](https://www.w3.org/html/wg/drafts/html/master/browsers.html#an-indicated-part-of-the-document).
    *
    * It also watches the {@link ng.$location#hash $location.hash()} and automatically scrolls to
    * match any anchor whenever it changes. This can be disabled by calling
@@ -6449,7 +6449,7 @@ function Browser(window, document, $log, $sniffer) {
 
       // Don't change anything if previous and current URLs and states match. This also prevents
       // IE<10 from getting into redirect loop when in LocationHashbangInHtml5Url mode.
-      // See http://github.com/angular/angular.js/commit/ffb2701
+      // See https://github.com/angular/angular.js/commit/ffb2701
       if (lastBrowserUrl === url && (!$sniffer.history || sameState)) {
         return self;
       }
@@ -6486,8 +6486,8 @@ function Browser(window, document, $log, $sniffer) {
     } else {
       // - pendingLocation is needed as browsers don't allow to read out
       //   the new location.href if a reload happened or if there is a bug like in iOS 9 (see
-      //   http://openradar.appspot.com/22186109).
-      // - the replacement is a workaround for http://bugzilla.mozilla.org/show_bug.cgi?id=407172
+      //   https://openradar.appspot.com/22186109).
+      // - the replacement is a workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=407172
       return pendingLocation || location.href.replace(/%27/g,'\'');
     }
   };
@@ -8061,7 +8061,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       ALL_OR_NOTHING_ATTRS = makeMap('ngSrc,ngSrcset,src,srcset'),
       REQUIRE_PREFIX_REGEXP = /^(?:(\^\^?)?(\?)?(\^\^?)?)?/;
 
-  // Ref: http://developers.whatwg.org/webappapis.html#event-handler-idl-attributes
+  // Ref: https://developers.whatwg.org/webappapis.html#event-handler-idl-attributes
   // The assumption is that future DOM event attribute names will begin with
   // 'on' and be composed of only English letters.
   var EVENT_HANDLER_ATTR_REGEXP = /^(on[a-z]+|formaction)$/;
@@ -8899,7 +8899,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     function setSpecialAttr(element, attrName, value) {
       // Attributes names that do not start with letters (such as `(click)`) cannot be set using `setAttribute`
       // so we have to jump through some hoops to get such an attribute
-      // http://github.com/angular/angular.js/pull/13318
+      // https://github.com/angular/angular.js/pull/13318
       specialAttrHolder.innerHTML = '<span ' + attrName + '>';
       var attributes = specialAttrHolder.firstChild.attributes;
       var attribute = attributes[0];
@@ -9572,7 +9572,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             replaceWith(jqCollection, sliceArgs($template), compileNode);
 
             // Support: Chrome < 50
-            // http://github.com/angular/angular.js/issues/14041
+            // https://github.com/angular/angular.js/issues/14041
 
             // In the versions of V8 prior to Chrome 50, the document fragment that is created
             // in the `replaceWith` function is improperly garbage collected despite still
@@ -10064,7 +10064,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     // * if the directive has been pulled into a template because another directive with a higher priority
     // asked for element transclusion
     // * if the directive itself asks for transclusion but it is at the root of a template and the original
-    // element was replaced. See http://github.com/angular/angular.js/issues/12936
+    // element was replaced. See https://github.com/angular/angular.js/issues/12936
     function markDirectiveScope(directives, isolateScope, newScope) {
       for (var j = 0, jj = directives.length; j < jj; j++) {
         directives[j] = inherit(directives[j], {$$isolateScope: isolateScope, $$newScope: newScope});
@@ -10490,7 +10490,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
             // If the replaced element is also the jQuery .context then replace it
             // .context is a deprecated jQuery api, so we should set it only when jQuery set it
-            // http://api.jquery.com/context/
+            // https://api.jquery.com/context/
             if ($rootElement.context === firstElementToRemove) {
               $rootElement.context = newNode;
             }
@@ -10939,7 +10939,7 @@ function $ControllerProvider() {
      * `$controller` service is responsible for instantiating controllers.
      *
      * It's just a simple call to {@link auto.$injector $injector}, but extracted into
-     * a service, so that one can override this service with [BC version](http://gist.github.com/1649788).
+     * a service, so that one can override this service with [BC version](https://gist.github.com/1649788).
      */
     return function $controller(expression, locals, later, ident) {
       // PRIVATE API:
@@ -10987,7 +10987,7 @@ function $ControllerProvider() {
         //
         // This feature is not intended for use by applications, and is thus not documented
         // publicly.
-        // Object creation: http://jsperf.com/create-constructor/2
+        // Object creation: https://jsperf.com/create-constructor/2
         var controllerPrototype = (isArray(expression) ?
           expression[expression.length - 1] : expression).prototype;
         instance = Object.create(controllerPrototype || null);
@@ -11232,7 +11232,7 @@ function $HttpParamSerializerJQLikeProvider() {
    * @description
    *
    * Alternative {@link $http `$http`} params serializer that follows
-   * jQuery's [`param()`](http://api.jquery.com/jquery.param/) method logic.
+   * jQuery's [`param()`](https://api.jquery.com/jquery.param/) method logic.
    * The serializer will also sort the params alphabetically.
    *
    * To use it for serializing `$http` request parameters, set it as the `paramSerializer` property:
@@ -11585,8 +11585,8 @@ function $HttpProvider() {
      *
      * @description
      * The `$http` service is a core Angular service that facilitates communication with the remote
-     * HTTP servers via the browser's [XMLHttpRequest](http://developer.mozilla.org/en/xmlhttprequest)
-     * object or via [JSONP](http://en.wikipedia.org/wiki/JSONP).
+     * HTTP servers via the browser's [XMLHttpRequest](https://developer.mozilla.org/en/xmlhttprequest)
+     * object or via [JSONP](https://en.wikipedia.org/wiki/JSONP).
      *
      * For unit testing applications that use `$http` service, see
      * {@link ngMock.$httpBackend $httpBackend mock}.
@@ -11705,7 +11705,7 @@ function $HttpProvider() {
      * ```js
      * var req = {
      *  method: 'POST',
-     *  url: 'http://example.com',
+     *  url: 'https://example.com',
      *  headers: {
      *    'Content-Type': undefined
      *  },
@@ -11910,8 +11910,8 @@ function $HttpProvider() {
      *
      * When designing web applications, consider security threats from:
      *
-     * - [JSON vulnerability](http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
-     * - [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+     * - [JSON vulnerability](https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
+     * - [XSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
      *
      * Both server and the client must cooperate in order to eliminate these threats. Angular comes
      * pre-configured with strategies that address these issues, but for this to work backend server
@@ -11919,9 +11919,9 @@ function $HttpProvider() {
      *
      * ### JSON Vulnerability Protection
      *
-     * A [JSON vulnerability](http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
+     * A [JSON vulnerability](https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
      * allows third party website to turn your JSON resource URL into
-     * [JSONP](http://en.wikipedia.org/wiki/JSONP) request under some conditions. To
+     * [JSONP](https://en.wikipedia.org/wiki/JSONP) request under some conditions. To
      * counter this your server can prefix all JSON requests with following string `")]}',\n"`.
      * Angular will automatically strip the prefix before processing it as JSON.
      *
@@ -11941,7 +11941,7 @@ function $HttpProvider() {
      *
      * ### Cross Site Request Forgery (XSRF) Protection
      *
-     * [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) is an attack technique by
+     * [XSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) is an attack technique by
      * which the attacker can trick an authenticated user into unknowingly executing actions on your
      * website. Angular provides a mechanism to counter XSRF. When performing XHR requests, the
      * $http service reads a token from a cookie (by default, `XSRF-TOKEN`) and sets it as an HTTP
@@ -11955,7 +11955,7 @@ function $HttpProvider() {
      * that only JavaScript running on your domain could have sent the request. The token must be
      * unique for each user and must be verifiable by the server (to prevent the JavaScript from
      * making up its own tokens). We recommend that the token is a digest of your site's
-     * authentication cookie with a [salt](http://en.wikipedia.org/wiki/Salt_(cryptography&#41;)
+     * authentication cookie with a [salt](https://en.wikipedia.org/wiki/Salt_(cryptography&#41;)
      * for added security.
      *
      * The name of the headers can be specified using the xsrfHeaderName and xsrfCookieName
@@ -12010,10 +12010,10 @@ function $HttpProvider() {
      *    - **timeout** – `{number|Promise}` – timeout in milliseconds, or {@link ng.$q promise}
      *      that should abort the request when resolved.
      *    - **withCredentials** - `{boolean}` - whether to set the `withCredentials` flag on the
-     *      XHR object. See [requests with credentials](http://developer.mozilla.org/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)
+     *      XHR object. See [requests with credentials](https://developer.mozilla.org/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)
      *      for more information.
      *    - **responseType** - `{string}` - see
-     *      [XMLHttpRequest.responseType](http://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#xmlhttprequest-responsetype).
+     *      [XMLHttpRequest.responseType](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#xmlhttprequest-responsetype).
      *
      * @returns {HttpPromise} Returns a {@link ng.$q `Promise}` that will be resolved to a response object
      *                        when the request succeeds or fails.
@@ -12036,11 +12036,11 @@ function $HttpProvider() {
     <button id="samplegetbtn" ng-click="updateModel('GET', 'http-hello.html')">Sample GET</button>
     <button id="samplejsonpbtn"
       ng-click="updateModel('JSONP',
-                    'http://angularjs.org/greet.php?name=Super%20Hero')">
+                    'https://angularjs.org/greet.php?name=Super%20Hero')">
       Sample JSONP
     </button>
     <button id="invalidjsonpbtn"
-      ng-click="updateModel('JSONP', 'http://angularjs.org/doesntexist')">
+      ng-click="updateModel('JSONP', 'https://angularjs.org/doesntexist')">
         Invalid JSONP
       </button>
     <pre>http status code: {{status}}</pre>
@@ -12053,7 +12053,7 @@ function $HttpProvider() {
       // We must whitelist the JSONP endpoint that we are using to show that we trust it
       $sceDelegateProvider.resourceUrlWhitelist([
         'self',
-        'http://angularjs.org/**'
+        'https://angularjs.org/**'
       ]);
     }])
     .controller('FetchController', ['$scope', '$http', '$templateCache',
@@ -12098,7 +12098,7 @@ function $HttpProvider() {
     expect(data.getText()).toMatch(/Hello, \$http!/);
   });
 
-// Commented out due to flakes. See http://github.com/angular/angular.js/issues/9185
+// Commented out due to flakes. See https://github.com/angular/angular.js/issues/9185
 // it('should make a JSONP request to angularjs.org', function() {
 //   var sampleJsonpBtn = element(by.id('samplejsonpbtn'));
 //   sampleJsonpBtn.click();
@@ -12689,7 +12689,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
         // response/responseType properties were introduced in XHR Level2 spec (supported by IE10)
         var response = ('response' in xhr) ? xhr.response : xhr.responseText;
 
-        // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
+        // normalize IE9 bug (https://bugs.jquery.com/ticket/1450)
         var status = xhr.status === 1223 ? 204 : xhr.status;
 
         // fix status code when it is 0 (0 status is undocumented).
@@ -12709,7 +12709,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
 
       var requestError = function() {
         // The response is always empty
-        // See http://xhr.spec.whatwg.org/#request-error-steps and http://fetch.spec.whatwg.org/#concept-network-error
+        // See https://xhr.spec.whatwg.org/#request-error-steps and https://fetch.spec.whatwg.org/#concept-network-error
         completeRequest(callback, -1, null, null, '', 'error');
       };
 
@@ -12719,7 +12719,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
 
       var requestTimeout = function() {
         // The response is always empty
-        // See http://xhr.spec.whatwg.org/#request-error-steps and http://fetch.spec.whatwg.org/#concept-network-error
+        // See https://xhr.spec.whatwg.org/#request-error-steps and https://fetch.spec.whatwg.org/#concept-network-error
         completeRequest(callback, -1, null, null, '', 'timeout');
       };
 
@@ -12744,7 +12744,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
           xhr.responseType = responseType;
         } catch (e) {
           // WebKit added support for the json responseType value on 09/03/2013
-          // http://bugs.webkit.org/show_bug.cgi?id=73648. Versions of Safari prior to 7 are
+          // https://bugs.webkit.org/show_bug.cgi?id=73648. Versions of Safari prior to 7 are
           // known to throw when setting the value "json" as the response type. Other older
           // browsers implementing the responseType
           //
@@ -12829,7 +12829,7 @@ $interpolateMinErr.throwNoconcat = function(text) {
   throw $interpolateMinErr('noconcat',
       'Error while interpolating: {0}\nStrict Contextual Escaping disallows ' +
       'interpolations that concatenate multiple expressions when a trusted value is ' +
-      'required.  See http://docs.angularjs.org/api/ng.$sce', text);
+      'required.  See https://docs.angularjs.org/api/ng.$sce', text);
 };
 
 $interpolateMinErr.interr = function(text, err) {
@@ -13046,7 +13046,7 @@ function $InterpolateProvider() {
      * <div data-context='{"context":{"id":3,"type":"page"} }">
      * ```
      *
-     * See http://github.com/angular/angular.js/pull/14610#issuecomment-219401099 for more information.
+     * See https://github.com/angular/angular.js/pull/14610#issuecomment-219401099 for more information.
      *
      * @param {string} text The text with markup to interpolate.
      * @param {boolean=} mustHaveExpression if set to true then the interpolation string must have
@@ -13873,13 +13873,13 @@ var locationPrototype = {
    * This method is getter only.
    *
    * Return full URL representation with all segments encoded according to rules specified in
-   * [RFC 3986](http://www.ietf.org/rfc/rfc3986.txt).
+   * [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt).
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var absUrl = $location.absUrl();
-   * // => "http://example.com/#/some/path?foo=bar&baz=xoxo"
+   * // => "https://example.com/#/some/path?foo=bar&baz=xoxo"
    * ```
    *
    * @return {string} full URL
@@ -13899,7 +13899,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var url = $location.url();
    * // => "/some/path?foo=bar&baz=xoxo"
    * ```
@@ -13931,7 +13931,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var protocol = $location.protocol();
    * // => "http"
    * ```
@@ -13953,11 +13953,11 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var host = $location.host();
    * // => "example.com"
    *
-   * // given URL http://user:password@example.com:8080/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://user:password@example.com:8080/#/some/path?foo=bar&baz=xoxo
    * host = $location.host();
    * // => "example.com"
    * host = location.host;
@@ -13979,7 +13979,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var port = $location.port();
    * // => 80
    * ```
@@ -14004,7 +14004,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var path = $location.path();
    * // => "/some/path"
    * ```
@@ -14030,7 +14030,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo
    * var searchObject = $location.search();
    * // => {foo: 'bar', baz: 'xoxo'}
    *
@@ -14108,7 +14108,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given URL http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
+   * // given URL https://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
    * var hash = $location.hash();
    * // => "hashValue"
    * ```
@@ -14205,7 +14205,7 @@ function locationGetterSetter(property, preprocess) {
  *
  * @description
  * The $location service parses the URL in the browser address bar (based on the
- * [window.location](http://developer.mozilla.org/en/window.location)) and makes the URL
+ * [window.location](https://developer.mozilla.org/en/window.location)) and makes the URL
  * available to your application. Changes to the URL in the address bar are reflected into
  * $location service and changes to $location are reflected into the browser address bar.
  *
@@ -14408,7 +14408,7 @@ function $LocationProvider() {
 
       var absHref = elm.prop('href');
       // get the actual href attribute - see
-      // http://msdn.microsoft.com/en-us/library/ie/dd347148(v=vs.85).aspx
+      // https://msdn.microsoft.com/en-us/library/ie/dd347148(v=vs.85).aspx
       var relHref = elm.attr('href') || elm.attr('xlink:href');
 
       if (isObject(absHref) && absHref.toString() === '[object SVGAnimatedString]') {
@@ -14547,8 +14547,8 @@ function $LocationProvider() {
  * To reveal the location of the calls to `$log` in the JavaScript console,
  * you can "blackbox" the AngularJS source in your browser:
  *
- * [Mozilla description of blackboxing](http://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Black_box_a_source).
- * [Chrome description of blackboxing](http://developer.chrome.com/devtools/docs/blackboxing).
+ * [Mozilla description of blackboxing](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Black_box_a_source).
+ * [Chrome description of blackboxing](https://developer.chrome.com/devtools/docs/blackboxing).
  *
  * Note: Not all browsers support blackboxing.
  *
@@ -14730,14 +14730,14 @@ var objectValueOf = {}.constructor.prototype.valueOf;
 // It is important to realize that if you create an expression from a string that contains user provided
 // content then it is possible that your application contains a security vulnerability to an XSS style attack.
 //
-// See http://docs.angularjs.org/guide/security
+// See https://docs.angularjs.org/guide/security
 
 
 function getStringValue(name) {
   // Property names must be strings. This means that non-string objects cannot be used
   // as keys in an object. Any non-string object, including a number, is typecasted
   // into a string via the toString method.
-  // -- MDN, http://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Property_accessors#Property_names
+  // -- MDN, https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Property_accessors#Property_names
   //
   // So, to ensure that we are checking the same `name` that JavaScript would use, we cast it
   // to a string. It's not always possible. If `name` is an object and its `toString` method is
@@ -16701,8 +16701,8 @@ function $ParseProvider() {
  * A service that helps you run functions asynchronously, and use their return values (or exceptions)
  * when they are done processing.
  *
- * This is a [Promises/A+](http://promisesaplus.com/)-compliant implementation of promises/deferred
- * objects inspired by [Kris Kowal's Q](http://github.com/kriskowal/q).
+ * This is a [Promises/A+](https://promisesaplus.com/)-compliant implementation of promises/deferred
+ * objects inspired by [Kris Kowal's Q](https://github.com/kriskowal/q).
  *
  * $q can be used in two fashions --- one which is more similar to Kris Kowal's Q or jQuery's Deferred
  * implementations, and the other which resembles ES6 (ES2015) promises to some degree.
@@ -16711,7 +16711,7 @@ function $ParseProvider() {
  *
  * The streamlined ES6 style promise is essentially just using $q as a constructor which takes a `resolver`
  * function as the first argument. This is similar to the native Promise implementation from ES6,
- * see [MDN](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+ * see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
  *
  * While the constructor-style use is supported, not all of the supporting methods from ES6 promises are
  * available yet.
@@ -16749,7 +16749,7 @@ function $ParseProvider() {
  *
  * However, the more traditional CommonJS-style usage is still available, and documented below.
  *
- * [The CommonJS Promise proposal](http://wiki.commonjs.org/wiki/Promises) describes a promise as an
+ * [The CommonJS Promise proposal](https://wiki.commonjs.org/wiki/Promises) describes a promise as an
  * interface for interacting with an object that represents the result of an action that is
  * performed asynchronously, and may or may not be finished at any given point in time.
  *
@@ -16788,11 +16788,11 @@ function $ParseProvider() {
  *
  * At first it might not be obvious why this extra complexity is worth the trouble. The payoff
  * comes in the way of guarantees that promise and deferred APIs make, see
- * http://github.com/kriskowal/uncommonjs/blob/master/promises/specification.md.
+ * https://github.com/kriskowal/uncommonjs/blob/master/promises/specification.md.
  *
  * Additionally the promise api allows for composition that is very hard to do with the
- * traditional callback ([CPS](http://en.wikipedia.org/wiki/Continuation-passing_style)) approach.
- * For more on this please see the [Q documentation](http://github.com/kriskowal/q) especially the
+ * traditional callback ([CPS](https://en.wikipedia.org/wiki/Continuation-passing_style)) approach.
+ * For more on this please see the [Q documentation](https://github.com/kriskowal/q) especially the
  * section on serial or parallel joining of promises.
  *
  * # The Deferred API
@@ -16836,7 +16836,7 @@ function $ParseProvider() {
  *   This method *returns a new promise* which is resolved or rejected via the return value of the
  *   `successCallback`, `errorCallback` (unless that value is a promise, in which case it is resolved
  *   with the value which is resolved in that promise using
- *   [promise chaining](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues)).
+ *   [promise chaining](https://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues)).
  *   It also notifies via the return value of the `notifyCallback` method. The promise cannot be
  *   resolved or rejected from the notifyCallback method. The errorCallback and notifyCallback
  *   arguments are optional.
@@ -16846,7 +16846,7 @@ function $ParseProvider() {
  * - `finally(callback, notifyCallback)` – allows you to observe either the fulfillment or rejection of a promise,
  *   but to do so without modifying the final value. This is useful to release resources or do some
  *   clean-up that needs to be done whether the promise was rejected or resolved. See the [full
- *   specification](http://github.com/kriskowal/q/wiki/API-Reference#promisefinallycallback) for
+ *   specification](https://github.com/kriskowal/q/wiki/API-Reference#promisefinallycallback) for
  *   more information.
  *
  * # Chaining promises
@@ -17516,7 +17516,7 @@ function $RootScopeProvider() {
         // completely when a scope is destroyed. So this code will recurse up through
         // all this scopes children
         //
-        // See issue http://github.com/angular/angular.js/issues/10706
+        // See issue https://github.com/angular/angular.js/issues/10706
         if ($scope.$$childHead) {
           cleanUpScope($scope.$$childHead);
         }
@@ -17528,9 +17528,9 @@ function $RootScopeProvider() {
       // The code below works around IE9 and V8's memory leaks
       //
       // See:
-      // - http://code.google.com/p/v8/issues/detail?id=2073#c26
-      // - http://github.com/angular/angular.js/issues/6794#issuecomment-38648909
-      // - http://github.com/angular/angular.js/issues/1313#issuecomment-10378451
+      // - https://code.google.com/p/v8/issues/detail?id=2073#c26
+      // - https://github.com/angular/angular.js/issues/6794#issuecomment-38648909
+      // - https://github.com/angular/angular.js/issues/1313#issuecomment-10378451
 
       $scope.$parent = $scope.$$nextSibling = $scope.$$prevSibling = $scope.$$childHead =
           $scope.$$childTail = $scope.$root = $scope.$$watchers = null;
@@ -17691,11 +17691,11 @@ function $RootScopeProvider() {
        *   $digest()} and should return the value that will be watched. (`watchExpression` should not change
        *   its value when executed multiple times with the same input because it may be executed multiple
        *   times by {@link ng.$rootScope.Scope#$digest $digest()}. That is, `watchExpression` should be
-       *   [idempotent](http://en.wikipedia.org/wiki/Idempotence).)
+       *   [idempotent](https://en.wikipedia.org/wiki/Idempotence).)
        * - The `listener` is called only when the value from the current `watchExpression` and the
        *   previous call to `watchExpression` are not equal (with the exception of the initial run,
        *   see below). Inequality is determined according to reference inequality,
-       *   [strict comparison](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+       *   [strict comparison](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
        *    via the `!==` Javascript operator, unless `objectEquality == true`
        *   (see next point)
        * - When `objectEquality == true`, inequality of the `watchExpression` is determined
@@ -17703,7 +17703,7 @@ function $RootScopeProvider() {
        *   later comparison, the {@link angular.copy} function is used. This therefore means that
        *   watching complex objects will have adverse memory and performance implications.
        * - This should not be used to watch for changes in objects that are
-       *   or contain [File](http://developer.mozilla.org/docs/Web/API/File) objects due to limitations with {@link angular.copy `angular.copy`}.
+       *   or contain [File](https://developer.mozilla.org/docs/Web/API/File) objects due to limitations with {@link angular.copy `angular.copy`}.
        * - The watch `listener` may change the model, which may trigger other `listener`s to fire.
        *   This is achieved by rerunning the watchers until no changes are detected. The rerun
        *   iteration limit is 10 to prevent an infinite loop deadlock.
@@ -19063,10 +19063,10 @@ function adjustMatchers(matchers) {
  *
  * **Example**:  Consider the following case. <a name="example"></a>
  *
- * - your app is hosted at url `http://myapp.example.com/`
+ * - your app is hosted at url `https://myapp.example.com/`
  * - but some of your templates are hosted on other domains you control such as
- *   `http://srv01.assets.example.com/`, `http://srv02.assets.example.com/`, etc.
- * - and you have an open redirect at `http://myapp.example.com/clickThru?...`.
+ *   `https://srv01.assets.example.com/`, `https://srv02.assets.example.com/`, etc.
+ * - and you have an open redirect at `https://myapp.example.com/clickThru?...`.
  *
  * Here is what a secure configuration for this scenario might look like:
  *
@@ -19076,12 +19076,12 @@ function adjustMatchers(matchers) {
  *      // Allow same origin resource loads.
  *      'self',
  *      // Allow loading from our assets domain.  Notice the difference between * and **.
- *      'http://srv*.assets.example.com/**'
+ *      'https://srv*.assets.example.com/**'
  *    ]);
  *
  *    // The blacklist overrides the whitelist so the open redirect here is blocked.
  *    $sceDelegateProvider.resourceUrlBlacklist([
- *      'http://myapp.example.com/clickThru**'
+ *      'https://myapp.example.com/clickThru**'
  *    ]);
  *  });
  * ```
@@ -19143,7 +19143,7 @@ function $SceDelegateProvider() {
    *     Follow {@link ng.$sce#resourceUrlPatternItem this link} for a description of the items
    *     allowed in this array.</p><p>
    *     The typical usage for the blacklist is to **block
-   *     [open redirects](http://cwe.mitre.org/data/definitions/601.html)** served by your domain as
+   *     [open redirects](https://cwe.mitre.org/data/definitions/601.html)** served by your domain as
    *     these would otherwise be trusted but actually return content from the redirected domain.
    *     </p><p>
    *     Finally, **the blacklist overrides the whitelist** and has the final say.
@@ -19481,8 +19481,8 @@ function $SceDelegateProvider() {
  *
  * *Please note*:
  * The browser's
- * [Same Origin Policy](http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest)
- * and [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/)
+ * [Same Origin Policy](https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest)
+ * and [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/)
  * policy apply in addition to this and may further restrict whether the template is successfully
  * loaded.  This means that without the right CORS policy, loading templates from a different domain
  * won't work on all browsers.  Also, loading templates from `file://` URL does not work on some
@@ -19545,9 +19545,9 @@ function $SceDelegateProvider() {
  *      in a whitelist.
  *    - `**`: matches zero or more occurrences of *any* character.  As such, it's not
  *      appropriate for use in a scheme, domain, etc. as it would match too much.  (e.g.
- *      http://**.example.com/ would match http://evil.com/?ignore=.example.com/ and that might
+ *      http://**.example.com/ would match https://evil.com/?ignore=.example.com/ and that might
  *      not have been the intention.)  Its usage at the very end of the path is ok.  (e.g.
- *      http://foo.example.com/templates/**).
+ *      https://foo.example.com/templates/**).
  *  - **RegExp** (*see caveat below*)
  *    - *Caveat*:  While regular expressions are powerful and offer great flexibility,  their syntax
  *      (and all the inevitable escaping) makes them *harder to maintain*.  It's easy to
@@ -19562,16 +19562,16 @@ function $SceDelegateProvider() {
  *      (even when the RegExp did not have the `^` and `$` codes.)  In addition, any flags
  *      present on the RegExp (such as multiline, global, ignoreCase) are ignored.
  *    - If you are generating your JavaScript from some other templating engine (not
- *      recommended, e.g. in issue [#4006](http://github.com/angular/angular.js/issues/4006)),
+ *      recommended, e.g. in issue [#4006](https://github.com/angular/angular.js/issues/4006)),
  *      remember to escape your regular expression (and be aware that you might need more than
  *      one level of escaping depending on your templating engine and the way you interpolated
  *      the value.)  Do make use of your platform's escaping mechanism as it might be good
  *      enough before coding your own.  E.g. Ruby has
- *      [Regexp.escape(str)](http://www.ruby-doc.org/core-2.0.0/Regexp.html#method-c-escape)
- *      and Python has [re.escape](http://docs.python.org/library/re.html#re.escape).
+ *      [Regexp.escape(str)](https://www.ruby-doc.org/core-2.0.0/Regexp.html#method-c-escape)
+ *      and Python has [re.escape](https://docs.python.org/library/re.html#re.escape).
  *      Javascript lacks a similar built in function for escaping.  Take a look at Google
  *      Closure library's [goog.string.regExpEscape(s)](
- *      http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962).
+ *      https://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962).
  *
  * Refer {@link ng.$sceDelegateProvider $sceDelegateProvider} for an example.
  *
@@ -19737,7 +19737,7 @@ function $SceProvider() {
       throw $sceMinErr('iequirks',
         'Strict Contextual Escaping does not support Internet Explorer version < 11 in quirks ' +
         'mode.  You can fix this by adding the text <!doctype html> to the top of your HTML ' +
-        'document.  See http://docs.angularjs.org/api/ng.$sce for more information.');
+        'document.  See https://docs.angularjs.org/api/ng.$sce for more information.');
     }
 
     var sce = shallowCopy(SCE_CONTEXTS);
@@ -20091,9 +20091,9 @@ function $SnifferProvider() {
     var eventSupport = {},
         // Chrome Packaged Apps are not allowed to access `history.pushState`.
         // If not sandboxed, they can be detected by the presence of `chrome.app.runtime`
-        // (see http://developer.chrome.com/apps/api_index). If sandboxed, they can be detected by
+        // (see https://developer.chrome.com/apps/api_index). If sandboxed, they can be detected by
         // the presence of an extension runtime ID and the absence of other Chrome runtime APIs
-        // (see http://developer.chrome.com/apps/manifest/sandbox).
+        // (see https://developer.chrome.com/apps/manifest/sandbox).
         // (NW.js apps have access to Chrome APIs, but do support `history`.)
         isNw = $window.nw && $window.nw.process,
         isChromePackagedApp =
@@ -20121,8 +20121,8 @@ function $SnifferProvider() {
     return {
       // Android has history.pushState, but it does not update location correctly
       // so let's not use the history API at all.
-      // http://code.google.com/p/android/issues/detail?id=17471
-      // http://github.com/angular/angular.js/issues/904
+      // https://code.google.com/p/android/issues/detail?id=17471
+      // https://github.com/angular/angular.js/issues/904
 
       // older webkit browser (533.9) on Boxee box has exactly the same problem as Android has
       // so let's not use the history API also
@@ -20503,7 +20503,7 @@ var originUrl = urlResolve(window.location.href);
  * Parsing means that the anchor node's host, hostname, protocol, port, pathname and related
  * properties are all populated to reflect the normalized URL.  This approach has wide
  * compatibility - Safari 1+, Mozilla 1+ etc.  See
- * http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
+ * https://www.aptana.com/reference/html/api/HTMLAnchorElement.html
  *
  * Implementation Notes for IE
  * ---------------------------
@@ -20515,11 +20515,11 @@ var originUrl = urlResolve(window.location.href);
  * properties such as protocol, hostname, port, etc.
  *
  * References:
- *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
- *   http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
- *   http://url.spec.whatwg.org/#urlutils
- *   http://github.com/angular/angular.js/pull/2902
- *   http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
+ *   https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
+ *   https://www.aptana.com/reference/html/api/HTMLAnchorElement.html
+ *   https://url.spec.whatwg.org/#urlutils
+ *   https://github.com/angular/angular.js/pull/2902
+ *   https://james.padolsey.com/javascript/parsing-urls-with-the-dom/
  *
  * @kind function
  * @param {string} url The URL to be parsed.
@@ -20551,7 +20551,7 @@ function urlResolve(url) {
 
   urlParsingNode.setAttribute('href', href);
 
-  // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+  // urlParsingNode provides the UrlUtils interface - https://url.spec.whatwg.org/#urlutils
   return {
     href: urlParsingNode.href,
     protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
@@ -21090,7 +21090,7 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
       if (matchAgainstAnyProp) {
         for (key in actual) {
           // Under certain, rare, circumstances, key may not be a string and `charAt` will be undefined
-          // See: http://github.com/angular/angular.js/issues/15644
+          // See: https://github.com/angular/angular.js/issues/15644
           if (key.charAt && (key.charAt(0) !== '$') &&
               deepCompare(actual[key], expected, comparator, anyPropertyKey, true)) {
             return true;
@@ -21170,7 +21170,7 @@ var ZERO_CHAR = '0';
        it('should update', function() {
          if (browser.params.browser === 'safari') {
            // Safari does not understand the minus key. See
-           // http://github.com/angular/protractor/issues/481
+           // https://github.com/angular/protractor/issues/481
            return;
          }
          element(by.model('amount')).clear();
@@ -21273,7 +21273,7 @@ function numberFilter($locale) {
  * Parse a number (as a string) into three components that can be used
  * for formatting the number.
  *
- * (Significant bits of this parse algorithm came from http://github.com/MikeMcl/big.js/)
+ * (Significant bits of this parse algorithm came from https://github.com/MikeMcl/big.js/)
  *
  * @param  {string} numStr The number to parse
  * @return {object} An object describing this number, containing the following keys:
@@ -22564,7 +22564,7 @@ function orderByFilter($parse) {
 
     // The next three lines are a version of a Swartzian Transform idiom from Perl
     // (sometimes called the Decorate-Sort-Undecorate idiom)
-    // See http://en.wikipedia.org/wiki/Schwartzian_transform
+    // See https://en.wikipedia.org/wiki/Schwartzian_transform
     var compareValues = Array.prototype.map.call(array, getComparisonObject);
     compareValues.sort(doComparison);
     array = compareValues.map(function(item) { return item.value; });
@@ -22746,12 +22746,12 @@ var htmlAnchorDirective = valueFn({
  *
  * The wrong way to write it:
  * ```html
- * <a href="http://www.gravatar.com/avatar/{{hash}}">link1</a>
+ * <a href="https://www.gravatar.com/avatar/{{hash}}">link1</a>
  * ```
  *
  * The correct way to write it:
  * ```html
- * <a ng-href="http://www.gravatar.com/avatar/{{hash}}">link1</a>
+ * <a ng-href="https://www.gravatar.com/avatar/{{hash}}">link1</a>
  * ```
  *
  * @element A
@@ -22843,12 +22843,12 @@ var htmlAnchorDirective = valueFn({
  *
  * The buggy way to write it:
  * ```html
- * <img src="http://www.gravatar.com/avatar/{{hash}}" alt="Description"/>
+ * <img src="https://www.gravatar.com/avatar/{{hash}}" alt="Description"/>
  * ```
  *
  * The correct way to write it:
  * ```html
- * <img ng-src="http://www.gravatar.com/avatar/{{hash}}" alt="Description" />
+ * <img ng-src="https://www.gravatar.com/avatar/{{hash}}" alt="Description" />
  * ```
  *
  * @element IMG
@@ -22869,12 +22869,12 @@ var htmlAnchorDirective = valueFn({
  *
  * The buggy way to write it:
  * ```html
- * <img srcset="http://www.gravatar.com/avatar/{{hash}} 2x" alt="Description"/>
+ * <img srcset="https://www.gravatar.com/avatar/{{hash}} 2x" alt="Description"/>
  * ```
  *
  * The correct way to write it:
  * ```html
- * <img ng-srcset="http://www.gravatar.com/avatar/{{hash}} 2x" alt="Description" />
+ * <img ng-srcset="https://www.gravatar.com/avatar/{{hash}} 2x" alt="Description" />
  * ```
  *
  * @element IMG
@@ -22963,7 +22963,7 @@ var htmlAnchorDirective = valueFn({
  *
  * Sets the `readonly` attribute on the element, if the expression inside `ngReadonly` is truthy.
  * Note that `readonly` applies only to `input` elements with specific types. [See the input docs on
- * MDN](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly) for more information.
+ * MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly) for more information.
  *
  * A special directive is necessary because we cannot use interpolation inside the `readonly`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
@@ -23865,9 +23865,9 @@ function isObjectEmpty(obj) {
   ngModelMinErr: false
 */
 
-// Regex code was initially obtained from SO prior to modification: http://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
+// Regex code was initially obtained from SO prior to modification: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
 var ISO_DATE_REGEXP = /^\d{4,}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-][0-2]\d:[0-5]\d|Z)$/;
-// See valid URLs in RFC3987 (http://tools.ietf.org/html/rfc3987)
+// See valid URLs in RFC3987 (https://tools.ietf.org/html/rfc3987)
 // Note: We are being more lenient, because browsers are too.
 //   1. Scheme
 //   2. Slashes
@@ -24065,7 +24065,7 @@ var inputType = {
 
         // currently protractor/webdriver does not support
         // sending keys to all known HTML5 input controls
-        // for various browsers (see http://github.com/angular/protractor/issues/562).
+        // for various browsers (see https://github.com/angular/protractor/issues/562).
         function setInput(val) {
           // set the value of the element and force validation.
           var scr = "var ipt = document.getElementById('exampleInput'); " +
@@ -24167,7 +24167,7 @@ var inputType = {
 
       // currently protractor/webdriver does not support
       // sending keys to all known HTML5 input controls
-      // for various browsers (http://github.com/angular/protractor/issues/562).
+      // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
         var scr = "var ipt = document.getElementById('exampleInput'); " +
@@ -24270,7 +24270,7 @@ var inputType = {
 
       // currently protractor/webdriver does not support
       // sending keys to all known HTML5 input controls
-      // for various browsers (http://github.com/angular/protractor/issues/562).
+      // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
         var scr = "var ipt = document.getElementById('exampleInput'); " +
@@ -24374,7 +24374,7 @@ var inputType = {
 
       // currently protractor/webdriver does not support
       // sending keys to all known HTML5 input controls
-      // for various browsers (http://github.com/angular/protractor/issues/562).
+      // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
         var scr = "var ipt = document.getElementById('exampleInput'); " +
@@ -24477,7 +24477,7 @@ var inputType = {
 
       // currently protractor/webdriver does not support
       // sending keys to all known HTML5 input controls
-      // for various browsers (http://github.com/angular/protractor/issues/562).
+      // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
         var scr = "var ipt = document.getElementById('exampleInput'); " +
@@ -24526,7 +24526,7 @@ var inputType = {
    * ## Issues with HTML5 constraint validation
    *
    * In browsers that follow the
-   * [HTML5 specification](http://html.spec.whatwg.org/multipage/forms.html#number-state-%28type=number%29),
+   * [HTML5 specification](https://html.spec.whatwg.org/multipage/forms.html#number-state-%28type=number%29),
    * `input[number]` does not work as expected with {@link ngModelOptions `ngModelOptions.allowInvalid`}.
    * If a non-number is entered in the input, the browser will report the value as an empty string,
    * which means the view / model values in `ngModel` and subsequently the scope value
@@ -24676,7 +24676,7 @@ var inputType = {
            angular.module('urlExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
                $scope.url = {
-                 text: 'http://google.com'
+                 text: 'https://google.com'
                };
              }]);
          </script>
@@ -24704,7 +24704,7 @@ var inputType = {
           var input = element(by.model('url.text'));
 
           it('should initialize to model', function() {
-            expect(text.getText()).toContain('http://google.com');
+            expect(text.getText()).toContain('https://google.com');
             expect(valid.getText()).toContain('true');
           });
 
@@ -24915,7 +24915,7 @@ var inputType = {
    * - additionally, the current `step` is respected, so the nearest value that satisfies a step
    * is used.
    *
-   * See the [HTML Spec on input[type=range]](http://www.w3.org/TR/html5/forms.html#range-state-(type=range))
+   * See the [HTML Spec on input[type=range]](https://www.w3.org/TR/html5/forms.html#range-state-(type=range))
    * for more info.
    *
    * This has the following consequences for Angular:
@@ -25093,7 +25093,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
   // In composition mode, users are still inputting intermediate text buffer,
   // hold the listener until composition is done.
-  // More about composition events: http://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
+  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
   if (!$sniffer.android) {
     var composing = false;
 
@@ -25390,7 +25390,7 @@ function parseNumberAttrVal(val) {
 }
 
 function isNumberInteger(num) {
-  // See http://stackoverflow.com/questions/14636536/how-to-check-if-a-variable-is-an-integer-in-javascript#14794066
+  // See https://stackoverflow.com/questions/14636536/how-to-check-if-a-variable-is-an-integer-in-javascript#14794066
   // (minus the assumption that `num` is a number)
 
   // eslint-disable-next-line no-bitwise
@@ -27078,7 +27078,7 @@ var ngControllerDirective = [function() {
  * @description
  *
  * Angular has some features that can conflict with certain restrictions that are applied when using
- * [CSP (Content Security Policy)](http://developer.mozilla.org/en/Security/CSP) rules.
+ * [CSP (Content Security Policy)](https://developer.mozilla.org/en/Security/CSP) rules.
  *
  * If you intend to implement CSP with these rules then you must tell Angular not to use these
  * features.
@@ -27681,7 +27681,7 @@ forEach(
  * @description
  * Specify custom behavior on blur event.
  *
- * A [blur event](http://developer.mozilla.org/en-US/docs/Web/Events/blur) fires when
+ * A [blur event](https://developer.mozilla.org/en-US/docs/Web/Events/blur) fires when
  * an element has lost focus.
  *
  * Note: As the `blur` event is executed synchronously also during DOM manipulations
@@ -27781,7 +27781,7 @@ forEach(
  * Note that when an element is removed using `ngIf` its scope is destroyed and a new scope
  * is created when the element is restored.  The scope created within `ngIf` inherits from
  * its parent scope using
- * [prototypal inheritance](http://github.com/angular/angular.js/wiki/Understanding-Scopes#javascript-prototypal-inheritance).
+ * [prototypal inheritance](https://github.com/angular/angular.js/wiki/Understanding-Scopes#javascript-prototypal-inheritance).
  * An important implication of this is if `ngModel` is used within `ngIf` to bind to
  * a javascript primitive defined in the parent scope. In this case any modifications made to the
  * variable within the child scope will override (hide) the value in the parent scope.
@@ -27903,8 +27903,8 @@ var ngIfDirective = ['$animate', '$compile', function($animate, $compile) {
  * ng.$sce Strict Contextual Escaping}.
  *
  * In addition, the browser's
- * [Same Origin Policy](http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest)
- * and [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/)
+ * [Same Origin Policy](https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest)
+ * and [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/)
  * policy may further restrict whether the template is successfully loaded.
  * For example, `ngInclude` won't work for cross-domain requests on all browsers and for `file://`
  * access on some browsers.
@@ -28016,7 +28016,7 @@ var ngIfDirective = ['$animate', '$compile', function($animate, $compile) {
       it('should load template2.html', function() {
         if (browser.params.browser === 'firefox') {
           // Firefox can't handle using selects
-          // See http://github.com/angular/protractor/issues/480
+          // See https://github.com/angular/protractor/issues/480
           return;
         }
         templateSelect.click();
@@ -28176,7 +28176,7 @@ var ngIncludeFillContentDirective = ['$compile',
       require: 'ngInclude',
       link: function(scope, $element, $attr, ctrl) {
         if (toString.call($element[0]).match(/SVG/)) {
-          // WebKit: http://bugs.webkit.org/show_bug.cgi?id=135698 --- SVG elements do not
+          // WebKit: https://bugs.webkit.org/show_bug.cgi?id=135698 --- SVG elements do not
           // support innerHTML, so detect this here and try to generate the contents
           // specially.
           $element.empty();
@@ -28669,7 +28669,7 @@ function NgModelController($scope, $exceptionHandler, $attr, $element, $parse, $
 
   this.$$currentValidationRunId = 0;
 
-  // http://github.com/angular/angular.js/issues/15833
+  // https://github.com/angular/angular.js/issues/15833
   // Prevent `$$scope` from being iterated over by `copy` when NgModelController is deep watched
   Object.defineProperty(this, '$$scope', {value: $scope});
   this.$$attr = $attr;
@@ -29375,7 +29375,7 @@ addSetValidityMethod({
  *
  * For best practices on using `ngModel`, see:
  *
- *  - [Understanding Scopes](http://github.com/angular/angular.js/wiki/Understanding-Scopes)
+ *  - [Understanding Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
  *
  * For basic examples, how to use `ngModel`, see:
  *
@@ -30618,7 +30618,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
         // NOTE: The label must be set before the value, otherwise IE 11 & Edge create unresponsive
         // selects in certain circumstances when multiple selects are next to each other and display
         // the option list in listbox style, i.e. the select is [multiple], or specifies a [size].
-        // See http://github.com/angular/angular.js/issues/11314 for more info.
+        // See https://github.com/angular/angular.js/issues/11314 for more info.
         // This is unfortunately untestable with unit / e2e tests
         if (option.label !== element.label) {
           element.label = option.label;
@@ -30724,12 +30724,12 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
  * These rules are bundled with angular.js, but can be overridden
  * (see {@link guide/i18n Angular i18n} dev guide). You configure ngPluralize directive
  * by specifying the mappings between
- * [plural categories](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
+ * [plural categories](https://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
  * and the strings to be displayed.
  *
  * # Plural categories and explicit number rules
  * There are two
- * [plural categories](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
+ * [plural categories](https://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
  * in Angular's default en-US locale: "one" and "other".
  *
  * While a plural category may match many numbers (for example, in en-US locale, "other" can match
@@ -30999,7 +30999,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *   when running `for key in myObj`. Browsers generally follow the strategy of providing
  *   keys in the order in which they were defined, although there are exceptions when keys are deleted
  *   and reinstated. See the
- *   [MDN page on `delete` for more info](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_notes).
+ *   [MDN page on `delete` for more info](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_notes).
  *
  * - `ngRepeat` will silently *ignore* object keys starting with `$`, because
  *   it's a prefix used by Angular for public (`$`) and private (`$$`) properties.
@@ -31009,7 +31009,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *
  * If you are hitting any of these limitations, the recommended workaround is to convert your object into an array
  * that is sorted into the order that you prefer before providing it to `ngRepeat`. You could
- * do this with a filter such as [toArrayFilter](http://ngmodules.org/modules/angular-toArrayFilter)
+ * do this with a filter such as [toArrayFilter](https://ngmodules.org/modules/angular-toArrayFilter)
  * or implement a `$watch` on the object yourself.
  *
  *
@@ -31498,7 +31498,7 @@ var ngRepeatDirective = ['$parse', '$animate', '$compile', function($parse, $ani
               // new item which we don't know about
               $transclude(function ngRepeatTransclude(clone, scope) {
                 block.scope = scope;
-                // http://jsperf.com/clone-vs-createcomment
+                // https://jsperf.com/clone-vs-createcomment
                 var endNode = ngRepeatEndComment.cloneNode(false);
                 clone[clone.length++] = endNode;
 
@@ -31714,7 +31714,7 @@ var ngShowDirective = ['$animate', function($animate) {
         // we're adding a temporary, animation-specific class for ng-hide since this way
         // we can control when the element is actually displayed on screen without having
         // to have a global/greedy CSS selector that breaks when other animations are run.
-        // Read: http://github.com/angular/angular.js/issues/9103#issuecomment-58335845
+        // Read: https://github.com/angular/angular.js/issues/9103#issuecomment-58335845
         $animate[value ? 'removeClass' : 'addClass'](element, NG_HIDE_CLASS, {
           tempClasses: NG_HIDE_IN_PROGRESS_CLASS
         });
@@ -32347,7 +32347,7 @@ var ngSwitchDefaultDirective = ngDirective({
  *    })
  *    .controller('ExampleController', ['$scope', function($scope) {
  *      $scope.title = 'Lorem Ipsum';
- *      $scope.link = 'http://google.com';
+ *      $scope.link = 'https://google.com';
  *      $scope.text = 'Neque porro quisquam est qui dolorem ipsum quia dolor...';
  *    }]);
  *   </file>
@@ -32491,7 +32491,7 @@ function setOptionSelectedStatus(optionEl, value) {
   /**
    * When unselecting an option, setting the property to null / false should be enough
    * However, screenreaders might react to the selected attribute instead, see
-   * http://github.com/angular/angular.js/issues/14419
+   * https://github.com/angular/angular.js/issues/14419
    * Note: "selected" is a boolean attr and will be removed when the "value" arg in attr() is false
    * or null
    */
@@ -33029,9 +33029,9 @@ var SelectController =
  * outside the select.
  *
  * This is due to an ambiguity in the select element specification. See the
- * [issue on the Firefox bug tracker](http://bugzilla.mozilla.org/show_bug.cgi?id=126379)
+ * [issue on the Firefox bug tracker](https://bugzilla.mozilla.org/show_bug.cgi?id=126379)
  * for more information, and this
- * [Github comment for a workaround](http://github.com/angular/angular.js/issues/9134#issuecomment-130800488)
+ * [Github comment for a workaround](https://github.com/angular/angular.js/issues/9134#issuecomment-130800488)
  *
  * @example
  * ### Simple `select` elements with static options

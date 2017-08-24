@@ -1,7 +1,7 @@
 {
   "name"          : "underscore",
   "description"   : "JavaScript's functional programming helper library.",
-  "homepage"      : "http://underscorejs.org",
+  "homepage"      : "https://underscorejs.org",
   "keywords"      : ["util", "functional", "server", "client", "browser"],
   "author"        : "Jeremy Ashkenas <jeremy@documentcloud.org>",
   "repository"    : {"type": "git", "url": "git://github.com/jashkenas/underscore.git"},
@@ -16,7 +16,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://raw.github.com/jashkenas/underscore/master/LICENSE"
+      "url": "https://raw.github.com/jashkenas/underscore/master/LICENSE"
     }
   ],
   "files"         : ["underscore.js", "underscore-min.js", "LICENSE"]

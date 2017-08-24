@@ -55,8 +55,8 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/google', passport.authenticate('google', {
         failureRedirect: '/signin',
         scope: [
-            'http://www.googleapis.com/auth/userinfo.profile',
-            'http://www.googleapis.com/auth/userinfo.email'
+            'https://www.googleapis.com/auth/userinfo.profile',
+            'https://www.googleapis.com/auth/userinfo.email'
         ]
     }), users.signin);
 
