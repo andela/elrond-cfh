@@ -6,7 +6,7 @@
     "author": "cardsforhumanity",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cardsforhumanity/cardsforhumanity.git"
+        "url": "http://github.com/cardsforhumanity/cardsforhumanity.git"
     },
     "engines": {
         "node": "6.11.2",

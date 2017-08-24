@@ -1,5 +1,5 @@
-# [Bootstrap](http://getbootstrap.com) [![Build Status](https://secure.travis-ci.org/twbs/bootstrap.png)](http://travis-ci.org/twbs/bootstrap) [![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.png)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
+# [Bootstrap](http://getbootstrap.com) [![Build Status](http://secure.travis-ci.org/twbs/bootstrap.png)](http://travis-ci.org/twbs/bootstrap) [![devDependency Status](http://david-dm.org/twbs/bootstrap/dev-status.png)](http://david-dm.org/twbs/bootstrap#info=devDependencies)
+[![Selenium Test Status](http://saucelabs.com/browser-matrix/bootstrap.svg)](http://saucelabs.com/u/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
@@ -11,8 +11,8 @@ To get started, check out <http://getbootstrap.com>!
 
 Three quick start options are available:
 
-* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.0.3.zip).
-* Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
+* [Download the latest release](http://github.com/twbs/bootstrap/archive/v3.0.3.zip).
+* Clone the repo: `git clone http://github.com/twbs/bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install bootstrap`.
 
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -44,7 +44,7 @@ We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
+Have a bug or a feature request? [Please open a new issue](http://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](http://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](http://github.com/necolas/).
 
 You may use [this JS Bin](http://jsbin.com/aKiCIDO/1/edit) as a template for your bug reports.
 
@@ -67,7 +67,7 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 
 Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
 
-[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
+[Previous releases](http://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
 
 
@@ -108,13 +108,13 @@ Should you encounter problems with installing dependencies or running Grunt comm
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](http://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
 More over, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
 
 Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
-With v3.1, we're moving from the Apache 2 to the MIT license for the Bootstrap code (not the docs). Please see the [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) for more information.
+With v3.1, we're moving from the Apache 2 to the MIT license for the Bootstrap code (not the docs). Please see the [contributing guidelines](http://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) for more information.
 
 
 ## Community

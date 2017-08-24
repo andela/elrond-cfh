@@ -19,7 +19,7 @@ In order to build jQuery, you need to have Node.js/npm latest and git 1.7 or lat
 
 Windows users have two options:
 
-1. Install [msysgit](https://code.google.com/p/msysgit/) (Full installer for official Git) and a
+1. Install [msysgit](http://code.google.com/p/msysgit/) (Full installer for official Git) and a
    [binary version of Node.js](http://nodejs.org). Make sure all two packages are installed to the same
    location (by default, this is C:\Program Files\Git).
 2. Install [Cygwin](http://cygwin.com/) (make sure you install the git and which packages), and
@@ -154,7 +154,7 @@ Run the unit tests with a local server that supports PHP. No database is require
 
 - Windows: [WAMP download](http://www.wampserver.com/en/)
 - Mac: [MAMP download](http://www.mamp.info/en/index.html)
-- Linux: [Setting up LAMP](https://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
+- Linux: [Setting up LAMP](http://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
 - [Mongoose (most platforms)](http://code.google.com/p/mongoose/)
 
 
@@ -215,7 +215,7 @@ be able to work with them manually.
 Following are the steps to manually get the submodules:
 
 ```bash
-git clone https://github.com/jquery/jquery.git
+git clone http://github.com/jquery/jquery.git
 cd jquery
 git submodule init
 git submodule update
@@ -224,7 +224,7 @@ git submodule update
 Or:
 
 ```bash
-git clone https://github.com/jquery/jquery.git
+git clone http://github.com/jquery/jquery.git
 cd jquery
 git submodule update --init
 ```
@@ -232,7 +232,7 @@ git submodule update --init
 Or:
 
 ```bash
-git clone --recursive https://github.com/jquery/jquery.git
+git clone --recursive http://github.com/jquery/jquery.git
 cd jquery
 ```
 
@@ -318,7 +318,7 @@ raises( block, [expected], [message] );
 ```
 
 
-Test Suite Convenience Methods Reference (See [test/data/testinit.js](https://github.com/jquery/jquery/blob/master/test/data/testinit.js))
+Test Suite Convenience Methods Reference (See [test/data/testinit.js](http://github.com/jquery/jquery/blob/master/test/data/testinit.js))
 ------------------------------
 
 ### Returns an array of elements with the given IDs ###

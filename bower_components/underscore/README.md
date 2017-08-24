@@ -16,7 +16,7 @@ For Docs, License, Tests, and pre-packed downloads, see:
 http://underscorejs.org
 
 Underscore is an open-sourced component of DocumentCloud:
-https://github.com/documentcloud
+http://github.com/documentcloud
 
 Many thanks to our contributors:
-https://github.com/jashkenas/underscore/contributors
+http://github.com/jashkenas/underscore/contributors

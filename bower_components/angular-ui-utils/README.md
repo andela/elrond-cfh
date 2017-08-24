@@ -2,7 +2,7 @@
 
 ***
 
-[![Build Status](https://travis-ci.org/angular-ui/ui-utils.png?branch=master)](https://travis-ci.org/angular-ui/ui-utils)
+[![Build Status](http://travis-ci.org/angular-ui/ui-utils.png?branch=master)](http://travis-ci.org/angular-ui/ui-utils)
 
 ## Usage
 

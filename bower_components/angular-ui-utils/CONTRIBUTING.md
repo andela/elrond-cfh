@@ -1,7 +1,7 @@
 CONTRIBUTING
 ============
 
-* Open a [Pull Request (PR)](https://github.com/angular-ui/ui-utils/pull/new/master)
+* Open a [Pull Request (PR)](http://github.com/angular-ui/ui-utils/pull/new/master)
 * Make sure your PR is on a **new branch** you created off of the latest version of master
 * Do **not** open a PR from your master branch
 * Open a PR to start a discussion even if the code isn't finished (easier to collect feedback this way)
