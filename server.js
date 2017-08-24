@@ -3,10 +3,21 @@
  */
 require('dotenv').config();
 const express = require('express'),
-  fs = require('fs'),
-  passport = require('passport'),
-  logger = require('mean-logger'),
-  io = require('socket.io');
+    cookieParser = require('cookie-parser'),
+    expressSession = require('express-session'),
+    MongoStore = require('connect-mongo')(expressSession),
+    app = express(),
+    fs = require('fs'),
+    passport = require('passport'),
+    logger = require('mean-logger'),
+    io = require('socket.io');
+
+//  var express = require('express'),
+//     cookieParser = require('cookie-parser'),
+//     expressSession = require('express-session'),
+//     MongoStore = require('connect-mongo')(expressSession),
+//     app = express();
+
 
 /**
  * Main application entry file.
@@ -16,40 +27,52 @@ const express = require('express'),
 //Load configurations
 //if test env, load example file
 const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
-  config = require('./config/config'),
-  auth = require('./config/middlewares/authorization'),
-  mongoose = require('mongoose');
+    config = require('./config/config'),
+    auth = require('./config/middlewares/authorization'),
+    mongoose = require('mongoose');
 
 //Bootstrap db connection
 const db = mongoose.connect(config.db, (err) => {
-  if (err)
-    throw err
+    if (err)
+        throw err
 });
 
 //Bootstrap models
 const models_path = __dirname + '/app/models';
-const walk = function (path) {
-  fs.readdirSync(path).forEach(function (file) {
-    const newPath = path + '/' + file;
-    const stat = fs.statSync(newPath);
-    if (stat.isFile()) {
-      if (/(.*)\.(js|coffee)/.test(file)) {
-        require(newPath);
-      }
-    } else if (stat.isDirectory()) {
-      walk(newPath);
-    }
-  });
+const walk = function(path) {
+    fs.readdirSync(path).forEach(function(file) {
+        const newPath = path + '/' + file;
+        const stat = fs.statSync(newPath);
+        if (stat.isFile()) {
+            if (/(.*)\.(js|coffee)/.test(file)) {
+                require(newPath);
+            }
+        } else if (stat.isDirectory()) {
+            walk(newPath);
+        }
+    });
 };
 walk(models_path);
 
 //bootstrap passport config
 require('./config/passport')(passport);
 
-const app = express();
+// store: new MongoStore({
+//     mongooseConnection: mongoose.connection
+// });
+// const app = express();
+app.use(cookieParser());
+app.use(expressSession({
+    secret: 'secret',
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    }),
+    resave: false,
+    saveUninitialized: true
+}));
 
-app.use(function (req, res, next) {
-  next();
+app.use(function(req, res, next) {
+    next();
 });
 
 //express settings
