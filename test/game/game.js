@@ -63,7 +63,9 @@ describe("Game Server",function(){
   });
 
   it('Should start game when startGame event is sent with 3 players', function(done){
-    const client1, client2, client3;
+    const client1;
+    const client2;
+    const client3;
     client1 = io.connect(socketURL, options);
     const disconnect = function() {
       client1.disconnect();

@@ -2,11 +2,15 @@
  * Module dependencies.
  */
 require('dotenv').config();
-let express = require('express'),
-  fs = require('fs'),
-  passport = require('passport'),
-  logger = require('mean-logger'),
-  io = require('socket.io');
+const express = require('express');
+
+const fs = require('fs');
+
+const passport = require('passport');
+
+const logger = require('mean-logger');
+
+const io = require('socket.io');
 
 /**
  * Main application entry file.
@@ -15,30 +19,33 @@ let express = require('express'),
 
 //Load configurations
 //if test env, load example file
-let env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
-    config = require('./config/config'),
-    auth = require('./config/middlewares/authorization'),
-    mongoose = require('mongoose');
+const env = process.env.NODE_ENV || 'development';
+
+const config = require('./config/config');
+
+const auth = require('./config/middlewares/authorization');
+
+const mongoose = require('mongoose');
 
 //Bootstrap db connection
-let db = mongoose.connect(config.db);
+const db = mongoose.connect(config.db);
 
 //Bootstrap models
-let models_path = __dirname + '/app/models';
-let walk = function(path) {
+const modelPath = __dirname + '/app/models';
+const walk = function(path) {
     fs.readdirSync(path).forEach(function(file) {
-        let newPath = path + '/' + file;
-        let stat = fs.statSync(newPath);
-        if (stat.isFile()) {
-            if (/(.*)\.(js|coffee)/.test(file)) {
-                require(newPath);
-            }
-        } else if (stat.isDirectory()) {
-            walk(newPath);
+      const newPath = path + '/' + file;
+      let stat = fs.statSync(newPath);
+      if (stat.isFile()) {
+        if (/(.*)\.(js|coffee)/.test(file)) {
+          require(newPath);
         }
+      } else if (stat.isDirectory()) {
+        walk(newPath);
+      }
     });
 };
-walk(models_path);
+walk(modelPath);
 
 //bootstrap passport config
 require('./config/passport')(passport);
@@ -56,9 +63,9 @@ require('./config/express')(app, passport, mongoose);
 require('./config/routes')(app, passport, auth);
 
 //Start the app by listening on <port>
-let port = config.port;
-let server = app.listen(port);
-let ioObj = io.listen(server, { log: false });
+const port = config.port;
+const server = app.listen(port);
+const ioObj = io.listen(server, { log: false });
 //game logic handled here
 require('./config/socket/socket')(ioObj);
 console.log('Express app started on port ' + port);
