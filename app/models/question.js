@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
     config = require('../../config/config'),
     Schema = mongoose.Schema;
 
@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Question Schema
  */
-var QuestionSchema = new Schema({
+let QuestionSchema = new Schema({
     id: {
         type: Number
     },

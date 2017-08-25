@@ -1,10 +1,10 @@
 angular.module('mean.system')
 .factory('socket', ['$rootScope', function($rootScope){
-  var socket = io.connect();
+  let socket = io.connect();
   return {
     on: function(eventName, callback){
       socket.on(eventName, function(){
-        var args = arguments;
+        let args = arguments;
         $rootScope.safeApply(function(){
           callback.apply(socket, args);
         });
@@ -12,7 +12,7 @@ angular.module('mean.system')
     },
     emit: function(eventName, data, callback){
       socket.emit(eventName, data, function(){
-        var args = arguments;
+        let args = arguments;
       });
       $rootScope.safeApply(function(){
         if(callback){
@@ -22,7 +22,7 @@ angular.module('mean.system')
     },
     removeAllListeners: function(eventName, callback){
       socket.removeAllListeners(eventName, function () {
-        var args = arguments;
+        let args = arguments;
         $rootScope.safeApply(function() {
           if(callback) {
             callback.apply(socket, args);

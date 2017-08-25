@@ -1,14 +1,14 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
     config = require('../../config/config'),
     Schema = mongoose.Schema;
 
 /**
  * Answer Schema
  */
-var AnswerSchema = new Schema({
+let AnswerSchema = new Schema({
     id: {
         type: Number
     },

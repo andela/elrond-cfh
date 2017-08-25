@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
+let express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),

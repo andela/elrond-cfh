@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
     async = require('async'),
     Answer = mongoose.model('Answer'),
     _ = require('underscore');

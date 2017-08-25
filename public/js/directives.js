@@ -15,13 +15,13 @@ angular.module('mean.directives', [])
 
         scope.$watch('game.state', function() {
           if (scope.game.state === 'winner has been chosen') {
-            var curQ = scope.game.curQuestion;
-            var curQuestionArr = curQ.text.split('_');
-            var startStyle = "<span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>";
-            var endStyle = "</span>";
-            var shouldRemoveQuestionPunctuation = false;
-            var removePunctuation = function(cardIndex) {
-              var cardText = scope.game.table[scope.game.winningCard].card[cardIndex].text;
+            let curQ = scope.game.curQuestion;
+            let curQuestionArr = curQ.text.split('_');
+            let startStyle = "<span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>";
+            let endStyle = "</span>";
+            let shouldRemoveQuestionPunctuation = false;
+            let removePunctuation = function(cardIndex) {
+              let cardText = scope.game.table[scope.game.winningCard].card[cardIndex].text;
               if (cardText.indexOf('.',cardText.length-2) === cardText.length-1) {
                 cardText = cardText.slice(0,cardText.length-1);
               } else if ((cardText.indexOf('!',cardText.length-2) === cardText.length-1 ||
@@ -32,7 +32,7 @@ angular.module('mean.directives', [])
               return cardText;
             };
             if (curQuestionArr.length > 1) {
-              var cardText = removePunctuation(0);
+              let cardText = removePunctuation(0);
               curQuestionArr.splice(1,0,startStyle+cardText+endStyle);
               if (curQ.numAnswers === 2) {
                 cardText = removePunctuation(1);
