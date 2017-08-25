@@ -6,7 +6,7 @@ angular.module('mean.system')
     $scope.modalShown = false;
     $scope.game = game;
     $scope.pickedCards = [];
-    var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+    let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
 
     $scope.pickCard = function(card) {
@@ -161,8 +161,8 @@ angular.module('mean.system')
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){
-              var link = document.URL;
-              var txt = 'Give the following link to your friends so they can join your game: ';
+              let link = document.URL;
+              let txt = 'Give the following link to your friends so they can join your game: ';
               $('#lobby-how-to-play').text(txt);
               $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
             }, 200);

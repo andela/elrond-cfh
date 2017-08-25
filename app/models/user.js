@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     _ = require('underscore'),
@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 /**
  * User Schema
  */
-var UserSchema = new Schema({
+let UserSchema = new Schema({
     name: String,
     email: String,
     username: String,
@@ -39,7 +39,7 @@ UserSchema.virtual('password').set(function(password) {
 /**
  * Validations
  */
-var validatePresenceOf = function(value) {
+let validatePresenceOf = function(value) {
     return value && value.length;
 };
 

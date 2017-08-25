@@ -1,9 +1,9 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
   User = mongoose.model('User');
-var avatars = require('./avatars').all();
+let avatars = require('./avatars').all();
 
 /**
  * Auth callback
@@ -82,7 +82,7 @@ exports.create = function(req, res) {
       email: req.body.email
     }).exec(function(err,existingUser) {
       if (!existingUser) {
-        var user = new User(req.body);
+        let user = new User(req.body);
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
@@ -134,8 +134,8 @@ exports.addDonation = function(req, res) {
       })
       .exec(function(err, user) {
         // Confirm that this object hasn't already been entered
-        var duplicate = false;
-        for (var i = 0; i < user.donations.length; i++ ) {
+        let duplicate = false;
+        for (let i = 0; i < user.donations.length; i++ ) {
           if (user.donations[i].crowdrise_donation_id === req.body.crowdrise_donation_id) {
             duplicate = true;
           }
@@ -156,7 +156,7 @@ exports.addDonation = function(req, res) {
  *  Show profile
  */
 exports.show = function(req, res) {
-  var user = req.profile;
+  let user = req.profile;
 
   res.render('users/show', {
     title: user.name,
