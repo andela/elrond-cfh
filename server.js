@@ -2,15 +2,15 @@
  * Module dependencies.
  */
 require('dotenv').config();
-const express = require('express'),
-    cookieParser = require('cookie-parser'),
-    expressSession = require('express-session'),
-    MongoStore = require('connect-mongo')(expressSession),
-    app = express(),
-    fs = require('fs'),
-    passport = require('passport'),
-    logger = require('mean-logger'),
-    io = require('socket.io');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const MongoStore = require('connect-mongo')(expressSession);
+const app = express();
+const fs = require('fs');
+const passport = require('passport');
+const logger = require('mean-logger');
+const io = require('socket.io');
 
 //  var express = require('express'),
 //     cookieParser = require('cookie-parser'),
