@@ -3,6 +3,7 @@
  */
 require('dotenv').config();
 const mongoose = require('mongoose');
+
 const User = mongoose.model('User');
 // mongoose.Promise = global.Promise;
 const Validator = require('validatorjs');
@@ -40,10 +41,7 @@ exports.signinJWT = (req, res) => {
     return res.status(400).json({validatorError: validator.errors.all()});
   }
   User.findOne({email: req.body.email.toLowerCase()})
-    .exec((err, foundUser) => {
-      if (err) {
-        return res.status(400).json(err);
-      }
+    .then((foundUser) => {
       if (!foundUser) {
         return res.status(404).json('User not found');
       }
@@ -60,6 +58,7 @@ exports.signinJWT = (req, res) => {
       const token = jwt.sign(data, process.env.JWT_SECRET);
       return res.status(200).json(token);
     })
+    .catch(err=>res.status(400).json(err))
 };
 /**
  * Show sign up form
