@@ -1,0 +1,137 @@
+.header {
+  background-image: url('../img/header-img.jpg');
+  min-height: 500px;
+  padding: 10px;
+}
+
+.heading {
+    font-size: 25px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.header-links {
+    float: right;
+    padding: 10px;
+}
+
+.header-links a {
+    color: #fff;
+    font-weight: bold;
+    margin: 10px;
+}
+
+a.secondary-link {
+    color: #FD9800;
+}
+
+.header-top {
+    width: 100%;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.3); */
+    z-index: 2;
+}
+
+.header-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 500px;
+    opacity: .4;
+    z-index: 1;
+    background-color: #101010;
+}
+
+.header-body {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #FD9800;
+    border-color: #FD9800;
+}
+
+.btn-primary:hover {
+    background-color: #ea8f06;
+    border-color: #FD9800;
+}
+
+.btn {
+    cursor: pointer;
+    min-width: 100px;
+    font-size: 20px;
+}
+
+.btn-secondary {
+    background-color: rgba(0, 0, 0, 0.48);
+    border-color: #FD9800;
+    color: #FD9800;
+}
+
+.btn-secondary:hover {
+    color: #fd9800;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-color: #000;
+}
+
+.section-heading {
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+.how-to-play > .card {
+    height: 250px;
+    display: inline-block;
+    /* margin: 20px 7px; */
+    box-shadow: 1px 2px 14px 0px #a7a7a7;
+}
+
+.how-to-play {
+    text-align: center;
+}
+
+.how-to-play > .section-heading {
+    text-align: center;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.charity {
+    background-color: #130A33;
+    color: #fff;
+    min-height: 500px;
+    padding-top: 40px;
+}
+
+.sub-text-bolder {
+    text-align: center;
+    font-size: 25px;
+}
+
+.charity-card {
+    background-color: #fff;
+    border-radius: 3px;
+    /* margin: 20px; */
+    text-align: center;
+    padding: 10px;
+    color: #000;
+}
+
+.charity-card > div {
+    font-size: 30px;
+}
+
+.charity-card .btn {
+    min-width: 75%;
+}
+
+.charity-card-container {
+    padding: 30px;
+}
