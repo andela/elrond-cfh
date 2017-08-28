@@ -3,22 +3,22 @@
 	"title": "jQuery",
 	"description": "JavaScript library for DOM operations",
 	"version": "1.9.1",
-	"homepage": "https://jquery.com",
+	"homepage": "http://jquery.com",
 	"author": {
 		"name": "jQuery Foundation and other contributors",
-		"url": "https://github.com/jquery/jquery/blob/master/AUTHORS.txt"
+		"url": "http://github.com/jquery/jquery/blob/master/AUTHORS.txt"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jquery/jquery.git"
+		"url": "http://github.com/jquery/jquery.git"
 	},
 	"bugs": {
-		"url": "https://bugs.jquery.com"
+		"url": "http://bugs.jquery.com"
 	},
 	"licenses": [
 		{
 			"type": "MIT",
-			"url": "https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt"
+			"url": "http://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt"
 		}
 	],
 	"scripts": {

@@ -44,11 +44,11 @@ myApp.directive('uiJq', function uiJqInjectingFunction(){
 You can _only_ access data in `$scope` inside the **LinkingFunction**. Since the template logic may remove or duplicate elements, you can _only_ rely on the final DOM configuration in the **LinkingFunction**. You still _cannot_ rely upon **children** or **following-siblings** since they have not been linked yet.
 
 ## Deferred Execution
-Even though you can evaluate variables and expressions by the time we hit our `LinkingFunction`, children DOM elements haven't been rendered yet. Sometimes jQuery plugins need to know the number and size of the DOM element's children (such as slideshows or layout managers like Isotope). To add support for these plugins, we decided to delay the plugin's execution using [$timeout](https://docs.angularjs.org/api/ng.$timeout) so that AngularJS can finish rendering the rest of the page.
+Even though you can evaluate variables and expressions by the time we hit our `LinkingFunction`, children DOM elements haven't been rendered yet. Sometimes jQuery plugins need to know the number and size of the DOM element's children (such as slideshows or layout managers like Isotope). To add support for these plugins, we decided to delay the plugin's execution using [$timeout](http://docs.angularjs.org/api/ng.$timeout) so that AngularJS can finish rendering the rest of the page.
 
 **This does _NOT_ accomodate for async changes such as loading `$scope` data via AJAX**
 
-If you need to wait till your `$scope` data finishes loading before calling **uiJq** try using [ui-if](https://angular-ui.github.com/#directives-if).
+If you need to wait till your `$scope` data finishes loading before calling **uiJq** try using [ui-if](http://angular-ui.github.com/#directives-if).
 
 ## $element === angular.element() === jQuery()
 
@@ -107,4 +107,4 @@ To make this easy, we added a `ui-refresh` property. This is the equivalent to a
 
 ## Footnotes
 
-1. A [transcluding function](https://docs.angularjs.org/guide/directive) is actually a 4th layer, but this is not used by uiJq
+1. A [transcluding function](http://docs.angularjs.org/guide/directive) is actually a 4th layer, but this is not used by uiJq

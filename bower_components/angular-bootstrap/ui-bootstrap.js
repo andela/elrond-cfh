@@ -584,13 +584,13 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
   <file name="index.html">
     <carousel>
       <slide>
-        <img src="https://placekitten.com/150/150" style="margin:auto;">
+        <img src="http://placekitten.com/150/150" style="margin:auto;">
         <div class="carousel-caption">
           <p>Beautiful!</p>
         </div>
       </slide>
       <slide>
-        <img src="https://placekitten.com/100/150" style="margin:auto;">
+        <img src="http://placekitten.com/100/150" style="margin:auto;">
         <div class="carousel-caption">
           <p>D'aww!</p>
         </div>
@@ -668,7 +668,7 @@ function CarouselDemoCtrl($scope) {
   $scope.addSlide = function() {
     var newWidth = 200 + ((slides.length + (25 * slides.length)) % 150);
     slides.push({
-      image: 'https://placekitten.com/' + newWidth + '/200',
+      image: 'http://placekitten.com/' + newWidth + '/200',
       text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' '
         ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
     });
@@ -1573,7 +1573,7 @@ angular.module('ui.bootstrap.position', [])
     return {
       /**
        * Provides read-only equivalent of jQuery's position function:
-       * https://api.jquery.com/position/
+       * http://api.jquery.com/position/
        */
       position: function (element) {
         var elBCR = this.offset(element);
@@ -1595,7 +1595,7 @@ angular.module('ui.bootstrap.position', [])
 
       /**
        * Provides read-only equivalent of jQuery's offset function:
-       * https://api.jquery.com/offset/
+       * http://api.jquery.com/offset/
        */
       offset: function (element) {
         var boundingClientRect = element[0].getBoundingClientRect();
@@ -2153,7 +2153,7 @@ angular.module('ui.bootstrap.tabs', [])
 
 .directive('tabs', function() {
   return function() {
-    throw new Error("The `tabs` directive is deprecated, please migrate to `tabset`. Instructions can be found at https://github.com/angular-ui/bootstrap/tree/master/CHANGELOG.md");
+    throw new Error("The `tabs` directive is deprecated, please migrate to `tabset`. Instructions can be found at http://github.com/angular-ui/bootstrap/tree/master/CHANGELOG.md");
   };
 })
 
@@ -2375,7 +2375,7 @@ function($parse, $http, $templateCache, $compile) {
 
         //Transclude the collection of sibling elements. Use forEach to find
         //the heading if it exists. We don't use a directive for tab-heading
-        //because it is problematic. Discussion @ https://git.io/MSNPwQ
+        //because it is problematic. Discussion @ http://git.io/MSNPwQ
         transclude(scope.$parent, function(clone) {
           //Look at every element in the clone collection. If it's tab-heading,
           //mark it as that.  If it's not tab-heading, mark it as tab contents

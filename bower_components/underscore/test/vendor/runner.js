@@ -1,14 +1,14 @@
 /*
  * QtWebKit-powered headless test runner using PhantomJS
  *
- * PhantomJS binaries: https://phantomjs.org/download.html
+ * PhantomJS binaries: http://phantomjs.org/download.html
  * Requires PhantomJS 1.6+ (1.7+ recommended)
  *
  * Run with:
  *   phantomjs runner.js [url-of-your-qunit-testsuite]
  *
  * e.g.
- *   phantomjs runner.js https://localhost/qunit/test/index.html
+ *   phantomjs runner.js http://localhost/qunit/test/index.html
  */
 
 /*jshint latedef:false */

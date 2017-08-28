@@ -1,11 +1,11 @@
 /**
  * QUnit v1.12.0 - A JavaScript Unit Testing Framework
  *
- * https://qunitjs.com
+ * http://qunitjs.com
  *
  * Copyright 2013 jQuery Foundation and other contributors
  * Released under the MIT license.
- * https://jquery.org/license/
+ * http://jquery.org/license/
  */
 
 (function( window ) {
@@ -39,7 +39,7 @@ var QUnit,
 	 * with IE 7 (and prior) where Error.prototype.toString is
 	 * not properly implemented
 	 *
-	 * Based on https://es5.github.com/#x15.11.4.4
+	 * Based on http://es5.github.com/#x15.11.4.4
 	 *
 	 * @param {String|Error} error
 	 * @return {String} error message
@@ -1361,7 +1361,7 @@ function validTest( test ) {
 
 // so far supports only Firefox, Chrome and Opera (buggy), Safari (for real exceptions)
 // Later Safari and IE10 are supposed to support error.stack as well
-// See also https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error/Stack
+// See also http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error/Stack
 function extractStacktrace( e, offset ) {
 	offset = offset === undefined ? 3 : offset;
 
@@ -1811,13 +1811,13 @@ QUnit.equiv = (function() {
 
 /**
  * jsDump Copyright (c) 2008 Ariel Flesler - aflesler(at)gmail(dot)com |
- * https://flesler.blogspot.com Licensed under BSD
- * (https://www.opensource.org/licenses/bsd-license.php) Date: 5/15/2008
+ * http://flesler.blogspot.com Licensed under BSD
+ * (http://www.opensource.org/licenses/bsd-license.php) Date: 5/15/2008
  *
  * @projectDescription Advanced and extensible data dumping for Javascript.
  * @version 1.0.0
  * @author Ariel Flesler
- * @link {https://flesler.blogspot.com/2008/05/jsdump-pretty-dump-of-any-javascript.html}
+ * @link {http://flesler.blogspot.com/2008/05/jsdump-pretty-dump-of-any-javascript.html}
  */
 QUnit.jsDump = (function() {
 	function quote( str ) {
@@ -2057,13 +2057,13 @@ function inArray( elem, array ) {
 
 /*
  * Javascript Diff Algorithm
- *  By John Resig (https://ejohn.org/)
+ *  By John Resig (http://ejohn.org/)
  *  Modified by Chu Alan "sprite"
  *
  * Released under the MIT license.
  *
  * More Info:
- *  https://ejohn.org/projects/javascript-diff-algorithm/
+ *  http://ejohn.org/projects/javascript-diff-algorithm/
  *
  * Usage: QUnit.diff(expected, actual)
  *

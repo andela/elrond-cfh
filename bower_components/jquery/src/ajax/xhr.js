@@ -105,7 +105,7 @@ if ( xhrSupported ) {
 
 						// Firefox throws exceptions when accessing properties
 						// of an xhr when a network error occurred
-						// https://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
+						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
 						try {
 
 							// Was never called and is aborted or complete

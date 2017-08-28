@@ -45,7 +45,7 @@ http.request({
 				}
 
 				console.log(
-					"  <li><a href=\"https://bugs.jquery.com/ticket/" + match[1] + "\">#" +
+					"  <li><a href=\"http://bugs.jquery.com/ticket/" + match[1] + "\">#" +
 					match[1] + ": " + match[2] + "</a></li>"
 				);
 			}

@@ -2,7 +2,7 @@
 
 ***
 
-[![Build Status](https://travis-ci.org/angular-ui/ui-utils.png?branch=master)](https://travis-ci.org/angular-ui/ui-utils)
+[![Build Status](http://travis-ci.org/angular-ui/ui-utils.png?branch=master)](http://travis-ci.org/angular-ui/ui-utils)
 
 ## Usage
 
@@ -30,7 +30,7 @@ We will likely be adding a `Gruntfile.js` in the near future for this
 
 ### Requirements
 
-0. Install [Node.js](https://nodejs.org/) and NPM (should come with)
+0. Install [Node.js](http://nodejs.org/) and NPM (should come with)
 
 1. Install global dependencies `grunt-cli`, `bower`, and `karma`:
 

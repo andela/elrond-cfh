@@ -1,4 +1,4 @@
-// READ: https://docs-next.angularjs.org/guide/ie
+// READ: http://docs-next.angularjs.org/guide/ie
 // element tags are statically defined in order to accommodate lazy-loading whereby directives are also unknown
 
 // The ieshiv takes care of our ui.directives and AngularJS's ng-view, ng-include, ng-pluralize, ng-switch.

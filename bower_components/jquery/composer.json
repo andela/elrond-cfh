@@ -2,14 +2,14 @@
     "name": "components/jquery",
     "description": "jQuery JavaScript Library",
     "type": "component",
-    "homepage": "https://jquery.com",
+    "homepage": "http://jquery.com",
     "license": "MIT",
     "support": {
         "irc": "irc://irc.freenode.org/jquery",
-        "issues": "https://bugs.jquery.com",
-        "forum": "https://forum.jquery.com",
-        "wiki": "https://docs.jquery.com/",
-        "source": "https://github.com/jquery/jquery"
+        "issues": "http://bugs.jquery.com",
+        "forum": "http://forum.jquery.com",
+        "wiki": "http://docs.jquery.com/",
+        "source": "http://github.com/jquery/jquery"
     },
     "authors": [
         {
