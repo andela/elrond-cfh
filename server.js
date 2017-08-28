@@ -1,12 +1,23 @@
 /**
  * Module dependencies.
  */
- require('dotenv').config();
-var express = require('express'),
-    fs = require('fs'),
-    passport = require('passport'),
-    logger = require('mean-logger'),
-    io = require('socket.io');
+require('dotenv').config();
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const MongoStore = require('connect-mongo')(expressSession);
+const app = express();
+const fs = require('fs');
+const passport = require('passport');
+const logger = require('mean-logger');
+const io = require('socket.io');
+
+//  var express = require('express'),
+//     cookieParser = require('cookie-parser'),
+//     expressSession = require('express-session'),
+//     MongoStore = require('connect-mongo')(expressSession),
+//     app = express();
+
 
 /**
  * Main application entry file.
@@ -15,20 +26,23 @@ var express = require('express'),
 
 //Load configurations
 //if test env, load example file
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
+const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
 
 //Bootstrap db connection
-var db = mongoose.connect(config.db);
+const db = mongoose.connect(config.db, (err) => {
+    if (err)
+        throw err
+});
 
 //Bootstrap models
-var models_path = __dirname + '/app/models';
-var walk = function(path) {
+const models_path = __dirname + '/app/models';
+const walk = function(path) {
     fs.readdirSync(path).forEach(function(file) {
-        var newPath = path + '/' + file;
-        var stat = fs.statSync(newPath);
+        const newPath = path + '/' + file;
+        const stat = fs.statSync(newPath);
         if (stat.isFile()) {
             if (/(.*)\.(js|coffee)/.test(file)) {
                 require(newPath);
@@ -43,9 +57,21 @@ walk(models_path);
 //bootstrap passport config
 require('./config/passport')(passport);
 
-var app = express();
+// store: new MongoStore({
+//     mongooseConnection: mongoose.connection
+// });
+// const app = express();
+app.use(cookieParser());
+app.use(expressSession({
+    secret: 'secret',
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    }),
+    resave: false,
+    saveUninitialized: true
+}));
 
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
     next();
 });
 
@@ -56,9 +82,9 @@ require('./config/express')(app, passport, mongoose);
 require('./config/routes')(app, passport, auth);
 
 //Start the app by listening on <port>
-var port = config.port;
-var server = app.listen(port);
-var ioObj = io.listen(server, { log: false });
+const port = config.port;
+const server = app.listen(port);
+const ioObj = io.listen(server, { log: false });
 //game logic handled here
 require('./config/socket/socket')(ioObj);
 console.log('Express app started on port ' + port);
