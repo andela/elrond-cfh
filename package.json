@@ -14,7 +14,8 @@
     },
     "scripts": {
         "start:dev": "gulp browser-sync",
-        "start": "gulp start",
+        "start:dev": "gulp start",
+        "start": "node server.js",
         "test": "./node_modules/karma/bin/karma start karma.conf.js"
     },
     "dependencies": {
