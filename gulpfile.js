@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const jshint = require('gulp-jshint');
 const cache = require('gulp-cache');
-// const bower = require('gulp-bower');
+const bower = require('gulp-bower');
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync').create();
 const Server = require('karma').Server;
@@ -19,10 +19,10 @@ gulp.task('sass', () => {
       .pipe(gulp.dest('./public/css'));
 });
 
-// gulp.task('bower', () => {
-//   return bower()
-//     .pipe(gulp.dest('public/lib'))
-// });
+gulp.task('bower', () => {
+  return bower()
+    .pipe(gulp.dest('public/lib'))
+});
 
 gulp.task('start',  () => {
   return nodemon({
