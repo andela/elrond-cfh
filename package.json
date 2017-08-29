@@ -14,7 +14,7 @@
     },
     "scripts": {
         "start:dev": "gulp browser-sync",
-        "start":"node server.js",
+        "start": "node server.js",
         "test": "./node_modules/karma/bin/karma start karma.conf.js",
         "test-dev": "node node_modules/grunt-cli/bin/grunt test",
         "postinstall": "node node_modules/grunt-cli/bin/grunt install"
