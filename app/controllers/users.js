@@ -50,7 +50,7 @@ exports.signinJWT = (req, res) => {
       }
       // If all is well
       const data = {
-        id: foundUser._id,
+        _id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       }
@@ -104,7 +104,7 @@ exports.signupJWT = (req, res) => {
         if(err) return res.status(400).json('Error occurred...try again');
         // If all is well
         const data = {
-          id: user._id,
+          _id: user._id,
           email: user.email,
           name: user.name
         }

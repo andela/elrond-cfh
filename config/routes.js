@@ -1,5 +1,5 @@
 var async = require('async');
-
+var authentication = require('./middlewares/authentication');
 module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
@@ -91,5 +91,9 @@ module.exports = function(app, passport, auth) {
     var index = require('../app/controllers/index');
     app.get('/play', index.play);
     app.get('/', index.render);
+
+    app.get('/lord',authentication,  function(req,res){
+        return res.json(req.user);
+    })
 
 };
