@@ -12,13 +12,6 @@ const passport = require('passport');
 const logger = require('mean-logger');
 const io = require('socket.io');
 
-//  var express = require('express'),
-//     cookieParser = require('cookie-parser'),
-//     expressSession = require('express-session'),
-//     MongoStore = require('connect-mongo')(expressSession),
-//     app = express();
-
-
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
