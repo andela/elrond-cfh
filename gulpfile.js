@@ -24,7 +24,7 @@ gulp.task('bower', () => {
     .pipe(gulp.dest('public/lib'))
 });
 
-gulp.task('start',  () => {
+gulp.task('start', ['bower'], () => {
   return nodemon({
     script: 'server.js',
      ext: 'js html',
@@ -40,7 +40,7 @@ gulp.task('test', (done) => {
   }, done).start();
 });
 
-// gulp.task('default', [ 'html', 'css' ]);
+gulp.task('default', [ 'bower', 'lint', 'test', 'browser-sync']);
 
 // Watch for changes in files
 gulp.task('watch', () => {
