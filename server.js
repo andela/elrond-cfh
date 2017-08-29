@@ -26,6 +26,7 @@ const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
 
 //Bootstrap db connection
 const db = mongoose.connect(config.db, (err) => {
+  useMongoClient: true;
     if (err)
         throw err
 });
