@@ -14,10 +14,16 @@
     },
     "scripts": {
         "start:dev": "gulp browser-sync",
-        "start":"node server.js",
+        "start": "node server.js",
         "test": "./node_modules/karma/bin/karma start karma.conf.js",
         "test-dev": "node node_modules/grunt-cli/bin/grunt test",
         "postinstall": "node node_modules/grunt-cli/bin/grunt install"
+    },
+    "nyc": {
+        "extension": [
+            ".jsx",
+            ".es6"
+        ]
     },
     "dependencies": {
         "async": "~2.5.0",
@@ -77,6 +83,7 @@
         "karma-opera-launcher": "^1.0.0",
         "karma-phantomjs-launcher": "^1.0.4",
         "karma-safari-launcher": "^1.0.0",
+        "nyc": "^11.1.0",
         "should": "~11.2.1",
         "supertest": "~3.0.0"
     }
