@@ -22,6 +22,7 @@
 .header-links {
     float: right;
     padding: 10px;
+    z-index: 3;
 }
 
 .header-links a {
