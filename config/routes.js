@@ -1,5 +1,6 @@
 var async = require('async');
 var authentication = require('./middlewares/authentication');
+
 module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
@@ -14,6 +15,7 @@ module.exports = function(app, passport, auth) {
     // ****************** JWT Signup *****************
     app.post('/api/users/signin', users.signinJWT);
     app.post('/api/users/signup', users.signupJWT);
+
     // Donation Routes
     app.post('/donations', users.addDonation);
 
