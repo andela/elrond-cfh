@@ -92,8 +92,7 @@ module.exports = function(app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
-    app.get('/lord',authentication,  function(req,res){
-        return res.json(req.user);
-    })
-
+    // Game routes
+  var games = require('../app/controllers/games');
+  app.get('/api/games/:id/start', games.saveGameLogs);
 };
