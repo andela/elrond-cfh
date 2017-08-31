@@ -49,9 +49,6 @@ app.use(function(req, res, next){
     next();
 });
 
-//express settings
-require('./config/express')(app, passport, mongoose);
-
 //Bootstrap routes
 require('./config/routes')(app, passport, auth);
 
@@ -59,6 +56,8 @@ require('./config/routes')(app, passport, auth);
 var port = config.port;
 var server = app.listen(port);
 var ioObj = io.listen(server, { log: false });
+//express settings
+require('./config/express')(app, passport, mongoose);
 //game logic handled here
 require('./config/socket/socket')(ioObj);
 console.log('Express app started on port ' + port);
