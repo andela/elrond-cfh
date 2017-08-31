@@ -7,3 +7,4 @@ c4h_keys.txt
 .idea
 *.xml
 .env
+public/css/common.css.map
