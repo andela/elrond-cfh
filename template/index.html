@@ -1,14 +1,33 @@
 <script type="text/javascript">
-$(document).ready(function() {
-
-  //Twitter buttons
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
+  $(document).ready(function() {
+  
+    var ChroMo = '(Chrome)/(\d+)\.(\d+)\.(\d+)\.(\d+) Mobile';
+  
+    if (/Android|webOS|CriOs|ChroMo|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false && location.href !== "https://localhost:3000/#!/app") {
+      $('body').append('<a href="https://hackreactor.com"><img style="z-index: 10000; position: absolute; top: 0; right: 0; width: 125px; height: 125px; border: 0;" src="https://i.imgur.com/x86kKmF.png" alt="Built at Hack Reactor"></a>');
+    }
+  
+    //Twitter buttons
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  
   });
 </script>
-
-<script></script>
-<div landing id="main-bod">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Patrick+Hand" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Elrond CFH</title>
+</head>
+<body>
+  <div landing id="main-bod">
     <section class="header">
       <img src="img/header-img.jpg"/>
       <div class="overlay"></div>
@@ -18,8 +37,8 @@ $(document).ready(function() {
           <a href="">Home</a>
           <a href="how-to-play">How to play</a>
           <a href="team">Team</a>
+          <a href="signin">Signin</a>
           <a href="charity">Charity</a>
-          <a href="signin">Sign In</a>
           <a href="signup" class="secondary-link">Sign Up</a>
         </span>
       </div>
@@ -32,7 +51,7 @@ $(document).ready(function() {
         </div>
         <div class="header-action-btn-container">
           <span class="header-btn-container">
-            <a class="btn btn-secondary" href="signup">Sign up</a>
+            <a class="btn btn-secondary" href="signup">Signup</a>
           </span>
           <span class="header-btn-container">
               <a class="btn btn-primary" href="signin">Join Game</a>
@@ -52,7 +71,7 @@ $(document).ready(function() {
                 <img src="img/header-img.jpg"/>
                 <div class="overlay"></div>
                 <div class="how-to-play-number">1</div>
-                <p>Each player begins with, and will always have, 10 white answer cards.</p>
+                <p>How to play the game stuff if you are not in a hurry to die of nothing.</p>
               </div>
             </div>
             <div class="col s12 m6 l3">
@@ -60,7 +79,7 @@ $(document).ready(function() {
                 <img src="img/header-img.jpg"/>
                 <div class="overlay"></div>
                 <div class="how-to-play-number">2</div>
-                <p>For each round, one player is randomly chosen as the Card Czar.</p>
+                <p>How to play the game stuff if you are not in a hurry to die of nothing.</p>
               </div>
             </div>
             <div class="col s12 m6 l3">
@@ -68,7 +87,7 @@ $(document).ready(function() {
                 <img src="img/header-img.jpg"/>
                 <div class="overlay"></div>
                 <div class="how-to-play-number">3</div>
-                <p>Everyone else answers the black question card by clicking on the answer card they want to use.</p>
+                <p>How to play the game stuff if you are not in a hurry to die of nothing.</p>
               </div>
             </div>
             <div class="col s12 m6 l3">
@@ -76,7 +95,7 @@ $(document).ready(function() {
                 <img src="img/header-img.jpg"/>
                 <div class="overlay"></div>
                 <div class="how-to-play-number">4</div>
-                <p>The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</p>
+                <p>How to play the game stuff if you are not in a hurry to die of nothing.</p>
               </div>
             </div>
           </div>
@@ -91,19 +110,17 @@ $(document).ready(function() {
         "If you don't give back, no one will like you" - crowdrise.com
       </div>
       <div class="section">
-        <div class="row" style="padding: 3%">
-          <span class="charity-card col l5 s12 m7">
+        <div class="row">
+          <span class="charity-card col l4 s12 m6">
             <div class="card">
               <div class="section">
-                <div class="section">
-                  <div>MAKE AN IMPACT</div>
-                  <div>$701 Amount Raise</div>
-                </div>
+                <div>MAKE AN IMPACT</div>
+                <div>$701 Amount Raise</div>
                 <div><a target="_blank" href="https://www.crowdrise.com/donate/project/cfhio/cards4humanity/?widget=true" class="btn btn-primary btn-large">DONATE NOW</a></div>
               </div>
             </div>
           </span>
-          <span class="make-a-wish col l7 s12 m5">
+          <span class="make-a-wish col l8 s12 m6">
             <div class="text">All Donations go to Make-A-wish Foundation and benefit children in need.</div>
             <div class="logo">
             </div><img src="img/make-a-wish-logo-white-large.png" alt="Make-A-Wish Foundation Logo">
@@ -119,33 +136,27 @@ $(document).ready(function() {
       <div class="the-team-thumbs">
         <div class="team-member-container">
           <img src="img/E01.png" alt="Team Mate Name">
-          <div class="team-mate-name">Chukwuebuka (Louis) Nwamadi</div>
         </div>
         <div class="team-member-container">
-          <img src="img/E02.png" alt="Team Mate Name">
-          <div class="team-mate-name">Hadi Jimoh</div>
+          <img src="img/E01.png" alt="Team Mate Name">
         </div>
         <div class="team-member-container">
-          <img src="img/E03.png" alt="Team Mate Name">
-          <div class="team-mate-name">Michael Ozoemena</div>
+          <img src="img/E01.png" alt="Team Mate Name">
         </div>
         <div class="team-member-container">
-          <img src="img/E04.png" alt="Team Mate Name">
-          <div class="team-mate-name">Qudus YEKEEN</div>
+          <img src="img/E01.png" alt="Team Mate Name">
         </div>
         <div class="team-member-container">
-          <img src="img/E05.png" alt="Team Mate Name">
-          <div class="team-mate-name">Ayeni Blessing</div>
+          <img src="img/E01.png" alt="Team Mate Name">
         </div>
         <div class="team-member-container">
-          <img src="img/E06.png" alt="Team Mate Name">
-          <div class="team-mate-name">Daniel Atebije</div>
+          <img src="img/E01.png" alt="Team Mate Name">
         </div>
       </div>
     </section>
     <section class="footer">
       <div class="section">
-        <div class="row" style="padding: 3%">
+        <div class="row">
           <div class="col l12">
             This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
           </div>
@@ -158,3 +169,6 @@ $(document).ready(function() {
       </div>
     </section>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</body>
+</html>

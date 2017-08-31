@@ -1,4 +1,5 @@
 var async = require('async');
+var authentication = require('./middlewares/authentication');
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -11,6 +12,9 @@ module.exports = function(app, passport, auth) {
     //Setting up the users api
     app.post('/users', users.create);
     app.post('/users/avatars', users.avatars);
+    // ****************** JWT Signup *****************
+    app.post('/api/users/signin', users.signinJWT);
+    app.post('/api/users/signup', users.signupJWT);
 
     // Donation Routes
     app.post('/donations', users.addDonation);
@@ -90,4 +94,7 @@ module.exports = function(app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
+    // Game routes
+  var games = require('../app/controllers/games');
+  app.get('/api/games/:id/start', games.saveGameLogs);
 };
