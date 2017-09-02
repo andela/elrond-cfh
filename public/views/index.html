@@ -30,13 +30,14 @@ $(document).ready(function() {
             <div class="col-md-9 wpb-menu-container">
               <ul class="wpb-main-menu">
                 <li><a onClick="scroll(0,0)">Home</a></li>
+                <span ng-show="showOptions">
+                    <li><a href="#!/signup">Sign Up</a></li>
+                    <li><a href="#!/signin">Sign In</a></li>
+                  </span>
                 <li><a onClick="scroll(0,742);">How to Play</a></li>
                 <li><a onClick="scroll(0,1411);">Charity</a></li>
                 <li><a onClick="scroll(0,2021);">About Us</a></li>
-                <span ng-show="showOptions">
-                  <li><a href="#!/signup">Sign Up</a></li>
-                  <li><a href="#!/signin">Sign In</a></li>
-                </span>
+                
                 <span ng-hide="showOptions">
                   <li><a href="/signout">Sign Out</a></li>
                 </span>
