@@ -1,29 +1,19 @@
-<script type="text/javascript">
-$(document).ready(function() {
-
-  //Twitter buttons
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-  });
-</script>
-
-<script></script>
-<div landing id="main-bod">
-    <section class="header">
-      <img src="img/header-img.jpg"/>
-      <div class="overlay"></div>
-      <div class="header-top">
+<div landing id="main-bod" ng-controller="IndexController">
+    <section ng-show="showOptions" class="header">
+        <img src="img/header-img.jpg"/>
+        <div class="overlay"></div>
+        <div class="header-top">
         <span class="heading">Cards for Humanity</span>
         <span class="header-links">
           <a href="">Home</a>
           <a href="how-to-play">How to play</a>
           <a href="team">Team</a>
           <a href="charity">Charity</a>
-          <a href="signin">Sign In</a>
-          <a href="signup" class="secondary-link">Sign Up</a>
+          <a href="#!/signin">Sign In</a>
+          <a href="#!/signup" class="secondary-link">Sign Up</a>
         </span>
-      </div>
-      <div class="header-body">
+        </div>
+        <div class="header-body">
         <div class="section-heading">
           Cards For Humanity
         </div>
@@ -32,13 +22,43 @@ $(document).ready(function() {
         </div>
         <div class="header-action-btn-container">
           <span class="header-btn-container">
-            <a class="btn btn-secondary" href="signup">Sign up</a>
+            <a class="btn btn-secondary" href="#!/signup">Sign up</a>
           </span>
           <span class="header-btn-container">
-              <a class="btn btn-primary" href="signin">Play as Guest</a>
+              <a class="btn btn-primary" href="/play">Play as Guest</a>
             </span>
         </div>
-      </div>
+        </div>
+    </section>
+    <section ng-hide="showOptions" class="header">
+        <img src="img/header-img.jpg"/>
+        <div class="overlay"></div>
+        <div class="header-top">
+          <span class="heading">Cards for Humanity</span>
+          <span class="header-links">
+              <a href="">Home</a>
+              <a href="how-to-play">How to play</a>
+              <a href="team">Team</a>
+              <a href="charity">Charity</a>
+              <a ng-click="logout()" class="secondary-link">Logout</a>
+            </span>
+        </div>
+        <div class="header-body">
+          <div class="section-heading">
+            Cards For Humanity
+          </div>
+          <div class="sub-text-default">
+            A Game For Horrible People Desperately trying to be Good
+          </div>
+          <div class="header-action-btn-container">
+              <span class="header-btn-container">
+                <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
+              </span>
+            <span class="header-btn-container">
+                  <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
+                </span>
+          </div>
+        </div>
     </section>
     <section class="how-to-play">
       <div class="section-heading">How to Play</div>

@@ -75,7 +75,11 @@
       width: 150px;
       font-size: 15px;
   }
-  
+.btn-in {
+    cursor: pointer;
+    width: inherit;
+    font-size: 15px;
+}
   .btn-secondary {
       background-color: rgba(0, 0, 0, 0.48);
       border-color: #FD9800;

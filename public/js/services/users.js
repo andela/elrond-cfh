@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .factory('Users', ['$http', '$window', 'socekt', ($http, $window, socket) => {
+  .factory('Users', ['$http', '$window', 'socket', ($http, $window, socket) => {
     const signup = (name, email, password) => new Promise((resolve, reject) => {
       const newuser = {
         name,
@@ -7,10 +7,10 @@ angular.module('mean.system')
         password
       };
       $http.post('/api/user/signup', newuser)
-        .then((response) => {
+        .success((response) => {
           resolve(response);
         })
-        .catch((error) => {
+        .error((error) => {
           reject(error);
         });
     });
@@ -21,10 +21,10 @@ angular.module('mean.system')
         password
       };
       $http.post('/api/user/signin', user)
-        .then((response) => {
+        .success((response) => {
           resolve(response);
         })
-        .catch((error) => {
+        .error((error) => {
           reject(error);
         });
     });

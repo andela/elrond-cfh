@@ -38,15 +38,15 @@ exports.signinJWT = (req, res) => {
   }
   const validator = new Validator(req.body, signinRules);
   if (validator.fails()) {
-    return res.status(400).json({validatorError: validator.errors.all()});
+    return res.status(400).json({ message: 'Please check your inputs and try again' });
   }
-  User.findOne({email: req.body.email.toLowerCase()})
+  User.findOne({ email: req.body.email.toLowerCase() })
     .then((foundUser) => {
       if (!foundUser) {
-        return res.status(404).json('User not found');
+        return res.status(404).json({ message: 'User not found' });
       }
       if (!foundUser.authenticate(req.body.password)) {
-        return res.status(400).json('Incorrect password');
+        return res.status(400).json({ message: 'Incorrect password' });
       }
       // If all is well
       const encodedData = {
@@ -88,17 +88,17 @@ exports.signupJWT = (req, res) => {
   }
   const validator = new Validator(req.body, signupRules);
   if (validator.fails()) {
-    return res.status(400).json({ validatorError: validator.errors.all() });
+    return res.status(400).json({ message: 'Please check your inputs and try again' });
   }
   User.findOne({
     email: req.body.email.toLowerCase()
   })
     .exec((err, existingUser) => {
-      if(err) {
-        return res.status(400).json('Error occurred! please try again');
+      if (err) {
+        return res.status(400).json({ message: 'Error occurred! please try again' });
       }
       if (existingUser) {
-        return res.status(400).json('A user with this email already exists');
+        return res.status(400).json({ message: 'A user with this email already exists' });
       }
       // If all is well
       req.body.name = req.body.name.toLowerCase();
@@ -107,7 +107,7 @@ exports.signupJWT = (req, res) => {
       user.avatar = avatars[user.avatar];
       user.provider = 'local';
       user.save((err) => {
-        if(err) return res.status(400).json('Error occurred...try again');
+        if(err) return res.status(400).json({ message: 'Error occurred...try again' });
         // If all is well
         const encodedData = {
           _id: user._id,
@@ -124,9 +124,8 @@ exports.signupJWT = (req, res) => {
           name: user.name
         }
         return res.status(200).json(sendData);
-      })
-
-    })
+      });
+    });
 }
 /**
  * Logout
