@@ -49,14 +49,21 @@ exports.signinJWT = (req, res) => {
         return res.status(400).json('Incorrect password');
       }
       // If all is well
-      const data = {
+      const encodedData = {
         _id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       }
       // Give the user token
-      const token = jwt.sign(data, process.env.JWT_SECRET);
-      return res.status(200).json(token);
+      const token = jwt.sign(encodedData, process.env.JWT_SECRET);
+      const sendData = {
+        token,
+        message: 'success',
+        _id: foundUser._id,
+        email: foundUser.email,
+        name: foundUser.name
+      }
+      return res.status(200).json(sendData);
     })
     .catch(err=>res.status(400).json(err))
 };
@@ -74,18 +81,17 @@ exports.signupJWT = (req, res) => {
   if (req.user) {
     return res.redirect('/#!/app');
   }
-  const obj = _.pick(req.body,['email', 'name', 'password']);
-  signupRules = {
+  const signupRules = {
     name: 'required',
     email: 'required|email',
     password: 'required|min:6'
   }
-  const validator = new Validator(obj, signupRules);
-  if(validator.fails()){
-    return res.status(400).json({validatorError: validator.errors.all()});
+  const validator = new Validator(req.body, signupRules);
+  if (validator.fails()) {
+    return res.status(400).json({ validatorError: validator.errors.all() });
   }
   User.findOne({
-    email: obj.email.toLowerCase()
+    email: req.body.email.toLowerCase()
   })
     .exec((err, existingUser) => {
       if(err) {
@@ -95,22 +101,29 @@ exports.signupJWT = (req, res) => {
         return res.status(400).json('A user with this email already exists');
       }
       // If all is well
-      obj.name = obj.name.toLowerCase();
-      obj.email = obj.email.toLowerCase();
-      const user = new User(obj);
+      req.body.name = req.body.name.toLowerCase();
+      req.body.email = req.body.email.toLowerCase();
+      const user = new User(req.body);
       user.avatar = avatars[user.avatar];
       user.provider = 'local';
       user.save((err) => {
         if(err) return res.status(400).json('Error occurred...try again');
         // If all is well
-        const data = {
+        const encodedData = {
           _id: user._id,
           email: user.email,
           name: user.name
         }
         // Give the user token
-        const token = jwt.sign(data, process.env.JWT_SECRET);
-        return res.status(200).json(token);
+        const token = jwt.sign(encodedData, process.env.JWT_SECRET);
+        const sendData = {
+          token,
+          message: 'success',
+          _id: user._id,
+          email: user.email,
+          name: user.name
+        }
+        return res.status(200).json(sendData);
       })
 
     })
