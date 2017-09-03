@@ -1,4 +1,7 @@
 var async = require('async');
+var mongoose = require('mongoose');
+var Answer = mongoose.model('Answer');
+var Question = mongoose.model('Question');
 var authentication = require('./middlewares/authentication');
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -95,4 +98,35 @@ module.exports = function(app, passport, auth) {
     // Game routes
   var games = require('../app/controllers/games');
   app.get('/api/games/:id/start', games.saveGameLogs);
+   // save questions routes
+  app.post('/api/question', (req, res) => {
+    if (req.body.id && req.body.text && req.body.numAnswers && req.body.official) {
+      const question = new Question();
+      question.id = req.body.id;
+      question.text = req.body.text;
+      question.numAnswers = req.body.numAnswers;
+      question.official = req.body.official;
+      question.save((err) => {
+        if (err) return res.status(400).json(err);
+        return res.status(201).json(question);
+      });
+    } else {
+      return res.status(400).json('All fields are required');
+    }
+  })
+  // save answers routes
+  app.post('/api/answer', (req, res) => {
+    if (req.body.id && req.body.text && req.body.official) {
+      const answer = new Answer();
+      answer.id = req.body.id;
+      answer.text = req.body.text;
+      answer.official = req.body.official;
+      answer.save((err) => {
+        if (err) return res.status(400).json(err);
+        return res.status(201).json(answer);
+      });
+    } else {
+      return res.status(400).json('All fields are required');
+    }
+  });
 };

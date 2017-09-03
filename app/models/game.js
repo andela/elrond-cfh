@@ -9,8 +9,8 @@ var mongoose = require('mongoose'),
  * Answer Schema
  */
 var GameSchema = new Schema({
-  gameId: String,
-  gameOwnerId: String,
+  userID: String,
+  gameID: String,
   gamePlayers: [],
   gameWinner: { type: String, default: '' }
 });

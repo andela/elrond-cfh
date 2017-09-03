@@ -81,17 +81,17 @@ html, body, .main-container, .cont, #first-section, #inner-container {
 
 html {
   /* IE10 Consumer Preview */
-  background-image: -ms-linear-gradient(top left, #0b394e 0%, #abce8d 100%);
+  background-image: -ms-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
   /* Mozilla Firefox */
-  background-image: -moz-linear-gradient(top left, #0b394e 0%, #abce8d 100%);
+  background-image: -moz-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
   /* Opera */
-  background-image: -o-linear-gradient(top left, #0b394e 0%, #abce8d 100%);
+  background-image: -o-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
   /* Webkit (Safari/Chrome 10) */
-  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #0b394e), color-stop(1, #abce8d));
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #0B394E), color-stop(1, #ABCE8D));
   /* Webkit (Chrome 11+) */
-  background-image: -webkit-linear-gradient(top left, #0b394e 0%, #abce8d 100%);
+  background-image: -webkit-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
   /* W3C Markup, IE10 Release Preview */
-  background-image: linear-gradient(to bottom right, #0b394e 0%, #abce8d 100%);
+  background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   position: relative;
@@ -1101,3 +1101,5 @@ body {
 .gradientButton .donateNow {
   border-top: 0px solid black !important;
 }
+
+/*# sourceMappingURL=common.css.map */
