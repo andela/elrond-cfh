@@ -18,7 +18,7 @@ angular.module('mean.system')
             $scope.hasPickedCards = true;
           } else if (game.curQuestion.numAnswers === 2 &&
             $scope.pickedCards.length === 2) {
-            //delay and send
+            // delay and send
             $scope.hasPickedCards = true;
             $timeout($scope.sendPickedCards, 300);
           }
@@ -121,7 +121,18 @@ angular.module('mean.system')
     };
 
     $scope.startGame = function() {
-      game.startGame();
+      // when user tries to start game without meeting minimum requirement
+      if (game.players.length < game.playerMinLimit) {
+        // const myModal = $('#playerRequirement');
+        // myModal.find('.modal-title')
+        //   .text('Player requirement');
+        // myModal.find('.modal-body')
+        //   .text('Sorry! You require a minimum of three(3) players to play this game');
+        // myModal.modal('show');
+        alert('Sorry! You require a minimum of three(3) players to play this game');
+      } else {
+        game.startGame();
+      }
     };
 
     $scope.abandonGame = function() {
