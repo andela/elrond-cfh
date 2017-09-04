@@ -307,3 +307,7 @@
     margin-top: 4px;
     width: 230px;
 }
+
+.modal-content {
+    color: #000;
+}
