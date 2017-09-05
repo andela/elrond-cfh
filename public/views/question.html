@@ -22,7 +22,8 @@
       </div>
       <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
+          We have </br>{{game.players.length}} player</br>
+          we need {{game.playerMinLimit - game.players.length}} to start
         </div>
       </div>
     </div>
