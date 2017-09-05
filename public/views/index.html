@@ -1,139 +1,91 @@
-<!--<<<<<<< HEAD-->
-<div landing id="main-bod" ng-controller="IndexController">
-    <section ng-show="showOptions" class="header">
-        <img src="img/header-img.jpg"/>
-        <div class="overlay"></div>
-        <div class="header-top">
-        <span class="heading">Cards for Humanity</span>
-        <span class="header-links">
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    //Twitter buttons
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+  });
+</script>
+
+<script></script>
+
+<div landing ng-controller="IndexController">
+  <section ng-show="showOptions" class="header">
+    <img src="img/header-img.jpg"/>
+    <div class="overlay"></div>
+    <div class="header-top">
+      <span class="heading">Cards for Humanity</span>
+      <span class="header-links">
+        <a href="">Home</a>
+        <a href="how-to-play">How to play</a>
+        <a href="team">Team</a>
+        <a href="charity">Charity</a>
+        <span>
+          <a href="#!/signin">Sign In</a>
+          <a href="#!/signup" class="secondary-link">Sign Up</a>
+        </span>
+      </span>
+    </div>
+    <div class="header-body">
+      <div class="section-heading">
+        Cards For Humanity
+      </div>
+      <div class="sub-text-default">
+        A Game For Horrible People Desperately trying to be Good
+      </div>
+      <div class="header-action-btn-container">
+        <span class="header-btn-container">
+          <a class="btn btn-secondary" href="#!/signup">Sign up</a>
+        </span>
+        <span class="header-btn-container">
+          <button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <p>Select your region</p>
+              <select>
+                <option>Africa</option>
+                <option>Europe</option>
+              </select>
+            </div>
+            <div class="modal-footer" style="padding:0px 20px">
+              <a href= "/#!/app" class="btn btn-primary modal-action modal-close">Continue</a>
+              <button class="btn btn-danger left modal-action modal-close">Cancel</button>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section ng-hide="showOptions" class="header">
+    <img src="img/header-img.jpg"/>
+    <div class="overlay"></div>
+    <div class="header-top">
+      <span class="heading">Cards for Humanity</span>
+      <span class="header-links">
           <a href="">Home</a>
           <a href="how-to-play">How to play</a>
           <a href="team">Team</a>
           <a href="charity">Charity</a>
-          <a href="#!/signin">Sign In</a>
-          <a href="#!/signup" class="secondary-link">Sign Up</a>
+          <a ng-click="logout()" class="secondary-link">Logout</a>
         </span>
-        </div>
-        <div class="header-body">
-        <div class="section-heading">
-          Cards For Humanity
-        </div>
-        <div class="sub-text-default">
-          A Game For Horrible People Desperately trying to be Good
-        </div>
-        <div class="header-action-btn-container">
+    </div>
+    <div class="header-body">
+      <div class="section-heading">
+        Cards For Humanity
+      </div>
+      <div class="sub-text-default">
+        A Game For Horrible People Desperately trying to be Good
+      </div>
+      <div class="header-action-btn-container">
           <span class="header-btn-container">
-            <a class="btn btn-secondary" href="#!/signup">Sign up</a>
+            <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
           </span>
-          <span class="header-btn-container">
-              <a class="btn btn-primary" href="/play">Play as Guest</a>
+        <span class="header-btn-container">
+              <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
             </span>
-        </div>
-        </div>
-    </section>
-    <section ng-hide="showOptions" class="header">
-        <img src="img/header-img.jpg"/>
-        <div class="overlay"></div>
-        <div class="header-top">
-          <span class="heading">Cards for Humanity</span>
-          <span class="header-links">
-              <a href="">Home</a>
-              <a href="how-to-play">How to play</a>
-              <a href="team">Team</a>
-              <a href="charity">Charity</a>
-              <a ng-click="logout()" class="secondary-link">Logout</a>
-            </span>
-        </div>
-        <div class="header-body">
-          <div class="section-heading">
-            Cards For Humanity
-          </div>
-          <div class="sub-text-default">
-            A Game For Horrible People Desperately trying to be Good
-          </div>
-          <div class="header-action-btn-container">
-              <span class="header-btn-container">
-                <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
-              </span>
-            <span class="header-btn-container">
-                  <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
-                </span>
-          </div>
-        </div>
-    </section>
-    <!--<section class="how-to-play">-->
-      <!--<div class="section-heading">How to Play</div>-->
-      <!--<div class="container">-->
-        <!--<div class="section">-->
-          <!--<div class="row">-->
-            <!--<div class="col s12">-->
-            <!--</div>-->
-            <!--<div class="col s12 m6 l3">-->
-              <!--<div class="card">-->
-                <!--<img src="img/header-img.jpg"/>-->
-                <!--<div class="overlay"></div>-->
-                <!--<div class="how-to-play-number">1</div>-->
-                <!--<p>Each player begins with, and will always have, 10 white answer cards.</p>-->
-<!--&lt;!&ndash;=======&ndash;&gt;-->
-<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
-<!--&lt;!&ndash;$(document).ready(function() {&ndash;&gt;-->
-
-  <!--&lt;!&ndash;//Twitter buttons&ndash;&gt;-->
-  <!--&lt;!&ndash;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&ndash;&gt;-->
-
-  <!--&lt;!&ndash;});&ndash;&gt;-->
-<!--&lt;!&ndash;</script>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<script></script>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<div landing >&ndash;&gt;-->
-  <!--&lt;!&ndash;<section ng-controller="IndexController" class="header">&ndash;&gt;-->
-    <!--&lt;!&ndash;<img src="img/header-img.jpg"/>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="overlay"></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="header-top">&ndash;&gt;-->
-      <!--&lt;!&ndash;<span class="heading">Cards for Humanity</span>&ndash;&gt;-->
-      <!--&lt;!&ndash;<span class="header-links">&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="">Home</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="how-to-play">How to play</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="team">Team</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="charity">Charity</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<span ng-show="showOptions">&ndash;&gt;-->
-          <!--&lt;!&ndash;<a href="#!/signin">Sign In</a>&ndash;&gt;-->
-          <!--&lt;!&ndash;<a href="#!/signup" class="secondary-link">Sign Up</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--&lt;!&ndash;<span ng-hide="showOptions">&ndash;&gt;-->
-          <!--&lt;!&ndash;<a href="/signout" class="secondary-link">Sign Out</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-      <!--&lt;!&ndash;</span>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="header-body">&ndash;&gt;-->
-      <!--&lt;!&ndash;<div class="section-heading">&ndash;&gt;-->
-        <!--&lt;!&ndash;Cards For Humanity&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--&lt;!&ndash;<div class="sub-text-default">&ndash;&gt;-->
-        <!--&lt;!&ndash;A Game For Horrible People Desperately trying to be Good&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--&lt;!&ndash;<div class="header-action-btn-container">&ndash;&gt;-->
-        <!--&lt;!&ndash;<span class="header-btn-container">&ndash;&gt;-->
-          <!--&lt;!&ndash;<a class="btn btn-secondary" href="#!/signup">Sign up</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--&lt;!&ndash;<span class="header-btn-container">&ndash;&gt;-->
-          <!--&lt;!&ndash;<button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash; Select Region Modal &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<div id="modal1" class="modal modal-fixed-footer">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div class="modal-content">&ndash;&gt;-->
-                <!--&lt;!&ndash;<h4>Modal Header</h4>&ndash;&gt;-->
-                <!--&lt;!&ndash;<p>A bunch of text</p>&ndash;&gt;-->
-<!--&lt;!&ndash;&gt;>>>>>> app-materialize-150681376&ndash;&gt;-->
-              <!--</div>-->
-              <!--<div class="modal-footer">-->
-                <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
-              <!--</div>-->
-            <!--</div>-->
-        <!--</span>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</section>-->
+      </div>
+    </div>
+  </section>
   <section class="how-to-play">
     <div class="section-heading">How to Play</div>
     <div class="container">
@@ -201,60 +153,61 @@
           <div class="text">All Donations go to Make-A-wish Foundation and benefit children in need.</div>
           <div class="logo">
           </div><img src="img/make-a-wish-logo-white-large.png" alt="Make-A-Wish Foundation Logo">
-          </div>
-        </span>
+      </div>
+      </span>
+    </div>
+</div>
+</section>
+<section class="meet-the-team container-fluid">
+  <div class="section-heading">
+    THE TEAM
+  </div>
+  <div class="the-team-thumbs">
+    <div class="team-member-container">
+      <img src="img/E01.png" alt="Team Mate Name">
+      <div class="team-mate-name">Cool Dude</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E03.png" alt="Team Mate Name">
+      <div class="team-mate-name">Great Bro</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E02.png" alt="Team Mate Name">
+      <div class="team-mate-name">Amazing Fellow</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E04.png" alt="Team Mate Name">
+      <div class="team-mate-name">Gentle Man</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E05.png" alt="Team Mate Name">
+      <div class="team-mate-name">Energetic Fellow</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E06.png" alt="Team Mate Name">
+      <div class="team-mate-name">Smart Guy</div>
+    </div>
+  </div>
+</section>
+<section class="footer">
+  <div class="section">
+    <div class="row" style="padding: 3%">
+      <div class="col l12">
+        This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
+      </div>
+      <div class="col l12 footer-links">
+        <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
+        |
+        <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
       </div>
     </div>
-  </section>
-  <section class="meet-the-team container-fluid">
-    <div class="section-heading">
-      THE TEAM
-    </div>
-    <div class="the-team-thumbs">
-      <div class="team-member-container">
-        <img src="img/E01.png" alt="Team Mate Name">
-        <div class="team-mate-name">Cool Dude</div>
-      </div>
-      <div class="team-member-container">
-          <img src="img/E03.png" alt="Team Mate Name">
-          <div class="team-mate-name">Great Bro</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E02.png" alt="Team Mate Name">
-        <div class="team-mate-name">Amazing Fellow</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E04.png" alt="Team Mate Name">
-        <div class="team-mate-name">Gentle Man</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E05.png" alt="Team Mate Name">
-        <div class="team-mate-name">Energetic Fellow</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E06.png" alt="Team Mate Name">
-        <div class="team-mate-name">Smart Guy</div>
-      </div>
-    </div>
-  </section>
-  <section class="footer">
-    <div class="section">
-      <div class="row" style="padding: 3%">
-        <div class="col l12">
-          This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
-        </div>
-        <div class="col l12 footer-links">
-          <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
-          |
-          <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 </div>
 <script>
   $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $('select').material_select();
   });
 </script>
