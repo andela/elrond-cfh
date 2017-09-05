@@ -42,16 +42,19 @@ $(document).ready(function() {
         </span>
         <span class="header-btn-container">
           <button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>
-            <!-- Select Region Modal -->
-            <div id="modal1" class="modal modal-fixed-footer">
-              <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-              </div>
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <p>Select your region</p>
+              <select>
+                <option>Africa</option>
+                <option>Europe</option>
+              </select>
             </div>
+            <div class="modal-footer" style="padding:20px">
+              <button class="btn btn-primary">Continue</button>
+              <button class="btn btn-danger left modal-action modal-close">Cancel</button>
+            </div>
+          </div>
         </span>
       </div>
     </div>
@@ -178,5 +181,6 @@ $(document).ready(function() {
   $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $('select').material_select();
   });
 </script>
