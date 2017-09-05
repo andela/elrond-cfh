@@ -1,61 +1,139 @@
-<script type="text/javascript">
-$(document).ready(function() {
-
-  //Twitter buttons
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-  });
-</script>
-
-<script></script>
-
-<div landing >
-  <section ng-controller="IndexController" class="header">
-    <img src="img/header-img.jpg"/>
-    <div class="overlay"></div>
-    <div class="header-top">
-      <span class="heading">Cards for Humanity</span>
-      <span class="header-links">
-        <a href="">Home</a>
-        <a href="how-to-play">How to play</a>
-        <a href="team">Team</a>
-        <a href="charity">Charity</a>
-        <span ng-show="showOptions">
+<!--<<<<<<< HEAD-->
+<div landing id="main-bod" ng-controller="IndexController">
+    <section ng-show="showOptions" class="header">
+        <img src="img/header-img.jpg"/>
+        <div class="overlay"></div>
+        <div class="header-top">
+        <span class="heading">Cards for Humanity</span>
+        <span class="header-links">
+          <a href="">Home</a>
+          <a href="how-to-play">How to play</a>
+          <a href="team">Team</a>
+          <a href="charity">Charity</a>
           <a href="#!/signin">Sign In</a>
           <a href="#!/signup" class="secondary-link">Sign Up</a>
         </span>
-        <span ng-hide="showOptions">
-          <a href="/signout" class="secondary-link">Sign Out</a>
-        </span>
-      </span>
-    </div>
-    <div class="header-body">
-      <div class="section-heading">
-        Cards For Humanity
-      </div>
-      <div class="sub-text-default">
-        A Game For Horrible People Desperately trying to be Good
-      </div>
-      <div class="header-action-btn-container">
-        <span class="header-btn-container">
-          <a class="btn btn-secondary" href="#!/signup">Sign up</a>
-        </span>
-        <span class="header-btn-container">
-          <button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>
-            <!-- Select Region Modal -->
-            <div id="modal1" class="modal modal-fixed-footer">
-              <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-              </div>
-            </div>
-        </span>
-      </div>
-    </div>
-  </section>
+        </div>
+        <div class="header-body">
+        <div class="section-heading">
+          Cards For Humanity
+        </div>
+        <div class="sub-text-default">
+          A Game For Horrible People Desperately trying to be Good
+        </div>
+        <div class="header-action-btn-container">
+          <span class="header-btn-container">
+            <a class="btn btn-secondary" href="#!/signup">Sign up</a>
+          </span>
+          <span class="header-btn-container">
+              <a class="btn btn-primary" href="/play">Play as Guest</a>
+            </span>
+        </div>
+        </div>
+    </section>
+    <section ng-hide="showOptions" class="header">
+        <img src="img/header-img.jpg"/>
+        <div class="overlay"></div>
+        <div class="header-top">
+          <span class="heading">Cards for Humanity</span>
+          <span class="header-links">
+              <a href="">Home</a>
+              <a href="how-to-play">How to play</a>
+              <a href="team">Team</a>
+              <a href="charity">Charity</a>
+              <a ng-click="logout()" class="secondary-link">Logout</a>
+            </span>
+        </div>
+        <div class="header-body">
+          <div class="section-heading">
+            Cards For Humanity
+          </div>
+          <div class="sub-text-default">
+            A Game For Horrible People Desperately trying to be Good
+          </div>
+          <div class="header-action-btn-container">
+              <span class="header-btn-container">
+                <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
+              </span>
+            <span class="header-btn-container">
+                  <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
+                </span>
+          </div>
+        </div>
+    </section>
+    <!--<section class="how-to-play">-->
+      <!--<div class="section-heading">How to Play</div>-->
+      <!--<div class="container">-->
+        <!--<div class="section">-->
+          <!--<div class="row">-->
+            <!--<div class="col s12">-->
+            <!--</div>-->
+            <!--<div class="col s12 m6 l3">-->
+              <!--<div class="card">-->
+                <!--<img src="img/header-img.jpg"/>-->
+                <!--<div class="overlay"></div>-->
+                <!--<div class="how-to-play-number">1</div>-->
+                <!--<p>Each player begins with, and will always have, 10 white answer cards.</p>-->
+<!--&lt;!&ndash;=======&ndash;&gt;-->
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+<!--&lt;!&ndash;$(document).ready(function() {&ndash;&gt;-->
+
+  <!--&lt;!&ndash;//Twitter buttons&ndash;&gt;-->
+  <!--&lt;!&ndash;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&ndash;&gt;-->
+
+  <!--&lt;!&ndash;});&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script></script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div landing >&ndash;&gt;-->
+  <!--&lt;!&ndash;<section ng-controller="IndexController" class="header">&ndash;&gt;-->
+    <!--&lt;!&ndash;<img src="img/header-img.jpg"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="overlay"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="header-top">&ndash;&gt;-->
+      <!--&lt;!&ndash;<span class="heading">Cards for Humanity</span>&ndash;&gt;-->
+      <!--&lt;!&ndash;<span class="header-links">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="">Home</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="how-to-play">How to play</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="team">Team</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="charity">Charity</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span ng-show="showOptions">&ndash;&gt;-->
+          <!--&lt;!&ndash;<a href="#!/signin">Sign In</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a href="#!/signup" class="secondary-link">Sign Up</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span ng-hide="showOptions">&ndash;&gt;-->
+          <!--&lt;!&ndash;<a href="/signout" class="secondary-link">Sign Out</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="header-body">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="section-heading">&ndash;&gt;-->
+        <!--&lt;!&ndash;Cards For Humanity&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="sub-text-default">&ndash;&gt;-->
+        <!--&lt;!&ndash;A Game For Horrible People Desperately trying to be Good&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="header-action-btn-container">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="header-btn-container">&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="btn btn-secondary" href="#!/signup">Sign up</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="header-btn-container">&ndash;&gt;-->
+          <!--&lt;!&ndash;<button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; Select Region Modal &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<div id="modal1" class="modal modal-fixed-footer">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="modal-content">&ndash;&gt;-->
+                <!--&lt;!&ndash;<h4>Modal Header</h4>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>A bunch of text</p>&ndash;&gt;-->
+<!--&lt;!&ndash;&gt;>>>>>> app-materialize-150681376&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="modal-footer">-->
+                <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
+              <!--</div>-->
+            <!--</div>-->
+        <!--</span>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
   <section class="how-to-play">
     <div class="section-heading">How to Play</div>
     <div class="container">
