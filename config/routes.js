@@ -96,6 +96,9 @@ module.exports = function(app, passport, auth) {
   app.get('/play', index.play);
   app.get('/', index.render);
 
+  // Search Routes
+  app.get('/api/users/search', users.searchedUsers);
+
   // Game routes
   const games = require('../app/controllers/games');
   app.get('/api/games/:id/start', games.saveGameLogs);

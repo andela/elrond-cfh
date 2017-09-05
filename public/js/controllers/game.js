@@ -4,6 +4,8 @@ angular.module('mean.system')
     $scope.winningCardPicked = false;
     $scope.showTable = false;
     $scope.modalShown = false;
+    $scope.searchModal = false;
+    $scope.$ = $;
     $scope.game = game;
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
@@ -118,18 +120,27 @@ angular.module('mean.system')
 
     $scope.winnerPicked = function() {
       return game.winningCard !== -1;
-    };
-
+    }
+    $scope.showModal = function(){
+      // $scope.searchModal = true;
+      // alert('This button is working');
+    }
     $scope.startGame = function() {
       // when user tries to start game without meeting minimum requirement
-      if (game.players.length < game.playerMinLimit) {
+      if (game.players.length < game.playerMinLimit || game.players.length <= game.playerMaxLimit ) {
+        const msgModal = $('#modal1');
+        msgModal.find('.title')
+        .text('Minimum Player Requirement');
+        msgModal.find('.modalMsg')
+        .text('Sorry Mate, A minimum of 3 players is required to play the game!! Invite a friend');
+        msgModal.modal('show');
         // const myModal = $('#playerRequirement');
         // myModal.find('.modal-title')
         //   .text('Player requirement');
         // myModal.find('.modal-body')
         //   .text('Sorry! You require a minimum of three(3) players to play this game');
         // myModal.modal('show');
-        alert('Sorry! You require a minimum of three(3) players to play this game');
+        // alert('Sorry! You require a minimum of three(3) players to play this game');
       } else {
         game.startGame();
       }

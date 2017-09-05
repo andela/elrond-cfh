@@ -59,6 +59,17 @@
       font-size: 30px;
       color: #fff;
   }
+    /*my edits  */
+    .modal{
+        background: transparent;
+    }
+    .modelMsg {
+        color: black;
+        font-size: 10px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: lighter;
+        font-style: italic;
+    }
   
   .btn-primary {
       background-color: #FD9800;
@@ -72,7 +83,7 @@
   
   .btn {
       cursor: pointer;
-      width: 150px;
+      width:40%;
       font-size: 15px;
   }
 .btn-in {

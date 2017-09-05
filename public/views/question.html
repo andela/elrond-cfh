@@ -7,9 +7,16 @@
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
       <div id="player-count-container">
-        <div id="player-count">{{game.players.length}} / 6 </div>
+        <div id="player-count">{{game.players.length}} / 12 </div>
         <div id="the-word-players"> Players </div>
       </div>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Invite a Friend</button>
+
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="$('#myModal').modal('show')" data-target="#exampleModal">
+  Invite a Friend
+  </button> -->
+      <!--Modal trigger  -->
+        <!-- <a class="waves-effect waves-light btn modal-trigger" ng-click="$('#modal1').modal('show')"> Invite Friends </a> -->
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
@@ -19,6 +26,42 @@
         </div>
       </div>
     </div>
+   
+
+    <div  id="modal1" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <h5 class="title modalMsg"></h5>
+          <p class="modalMsg"></p>
+
+        </div>
+      </div>
+    </div>
+    <!--Modal  -->
+     <!-- <div id="modal1" class="modal">
+      <div class="modal-content">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="$('#modal1').modal('hide')">Close</a>
+
+        <h5 class="title modalMsg">Modal Header</h5>
+        <p class="modal-body modalMsg"></p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>  -->
+     
+    
+    <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <input type="text" class="form-control" id="recipient-name">
+          <button class="btn btn-primary">Search Users</button>
+    </div>
+  </div>
+</div>
     <!-- Game Over Stuff -->
     <div id="game-end-info">
       <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">

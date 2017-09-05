@@ -279,3 +279,25 @@ exports.user = function (req, res, next, id) {
       next();
     });
 };
+   /**
+   * Find Users Like Search...
+   */
+  exports.searchedUsers = function(req, res) {
+    // const sendEmail = require('./utils/sendEmail');
+    let usersArray = [];
+    User.find({ name : new RegExp(req.query, 'i')})
+    .exec(function(err, searchName) {
+      if(err) {
+        return res.send('There was an error!');
+      } else {
+          const arrayOfUsers = Object.keys(searchName).map(function(key){
+            return searchName[key]
+          });
+          arrayOfUsers.map(function(userr, index){
+            usersArray.push(userr.email);
+          });
+          res.send(usersArray);
+    }
+  })
+  };
+
