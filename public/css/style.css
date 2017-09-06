@@ -930,12 +930,19 @@ li {
     margin: 30px auto; }
   .row {
     margin: 0 0 0 4px; } }
-
+  
+  .signinForm, .signupForm {
+    background: url(../img/bg2.jpg) no-repeat center center / cover !important;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+  }
+  
   .signinOverall {
-    margin-top: 6%;
+    margin-top: 0;
   }
   .signupOverall {
-    margin-top: 3%;
+    margin-top: 0;
   }
   .signinWrapper, .signupWrapper {
     background-color: #ffffff;
