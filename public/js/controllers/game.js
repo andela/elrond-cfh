@@ -128,7 +128,7 @@ angular.module('mean.system')
         // myModal.find('.modal-body')
         //   .text('Sorry! You require a minimum of three(3) players to play this game');
         // myModal.modal('show');
-        alert('Sorry! You require a minimum of three(3) players to play this game');
+        // alert('Sorry! You require a minimum of three(3) players to play this game');
         // const modal = new Materialize.Modal($('#modal1'));
         // modal.open(); // Open it on some event
         // $( $window.document ).ready(function() {
@@ -137,10 +137,21 @@ angular.module('mean.system')
         //   });
         // });
         // $('#modal1').modal();
+        // $(document).ready(function(){
+        //   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        //
+        // });
+        $('.modal').modal();
+        $('select').material_select();
       } else {
         game.startGame();
       }
     };
+
+  $scope.invitePlayers = function() {
+    $('.modal-invite').modal();
+    $('select').material_select();
+  }
 
     $scope.abandonGame = function() {
       game.leaveGame();

@@ -50,7 +50,7 @@ exports.signinJWT = (req, res) => {
       }
       // If all is well
       const encodedData = {
-        _id: foundUser._id,
+        id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       }
@@ -59,13 +59,13 @@ exports.signinJWT = (req, res) => {
       const sendData = {
         token,
         message: 'success',
-        _id: foundUser._id,
+        id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       }
       return res.status(200).json(sendData);
     })
-    .catch(err=>res.status(400).json(err))
+    .catch(err => res.status(400).json(err));
 };
 /**
  * Show sign up form
@@ -107,10 +107,10 @@ exports.signupJWT = (req, res) => {
       user.avatar = avatars[user.avatar];
       user.provider = 'local';
       user.save((err) => {
-        if(err) return res.status(400).json({ message: 'Error occurred...try again' });
+        if (err) return res.status(400).json({ message: 'Error occurred...try again' });
         // If all is well
         const encodedData = {
-          _id: user._id,
+          id: user._id,
           email: user.email,
           name: user.name
         }
@@ -119,7 +119,7 @@ exports.signupJWT = (req, res) => {
         const sendData = {
           token,
           message: 'success',
-          _id: user._id,
+          id: user._id,
           email: user.email,
           name: user.name
         }
