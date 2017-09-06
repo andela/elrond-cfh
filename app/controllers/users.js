@@ -51,7 +51,7 @@ exports.signinJWT = (req, res) => {
       }
       // If all is well
       const encodedData = {
-        _id: foundUser.id,
+        id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       };
@@ -60,7 +60,7 @@ exports.signinJWT = (req, res) => {
       const sendData = {
         token,
         message: 'success',
-        id: foundUser.id,
+        id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
       };
@@ -111,7 +111,7 @@ exports.signupJWT = (req, res) => {
         if (err) return res.status(400).json({ message: 'Error occurred...try again' });
         // If all is well
         const encodedData = {
-          _id: user.id,
+          id: user._id,
           email: user.email,
           name: user.name
         };
@@ -120,7 +120,7 @@ exports.signupJWT = (req, res) => {
         const sendData = {
           token,
           message: 'success',
-          _id: user.id,
+          id: user._id,
           email: user.email,
           name: user.name
         };

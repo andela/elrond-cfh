@@ -1,10 +1,6 @@
 angular.module('mean.system')
-<<<<<<< HEAD
 .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog','Users', 
 function GameController ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, Users) {
-=======
-.controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog) {
->>>>>>> [feature #150397541] add modal to this feature
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;

@@ -25,7 +25,7 @@ angular.module('mean.system')
       function storeUserAndRedirect(data){
         window.localStorage.setItem('token', data.token);
         window.localStorage.setItem('email', data.email);
-        window.localStorage.setItem('userId', data._id);
+        window.localStorage.setItem('userId', data.id);
         window.localStorage.setItem('name', data.name);
         $location.path('/');
       }

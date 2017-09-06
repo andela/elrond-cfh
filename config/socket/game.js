@@ -228,8 +228,9 @@ Game.prototype.stateEndGame = function (winner) {
   const saveGameData = {
     gamePlayers: this.players,
     gameWinner: this.players[winner].username
-  }
-  this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
+  };
+  console.log(saveGameData);
+  // this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
 };
 
 Game.prototype.stateDissolveGame = function () {

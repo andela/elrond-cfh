@@ -105,12 +105,13 @@ module.exports = function(app, passport, auth) {
   app.get('/api/games/:id/start', games.saveGameLogs);
   // save questions routes
   app.post('/api/question', (req, res) => {
-    if (req.body.id && req.body.text && req.body.numAnswers && req.body.official) {
+    if (req.body.id && req.body.text && req.body.numAnswers) {
       const question = new Question();
       question.id = req.body.id;
       question.text = req.body.text;
       question.numAnswers = req.body.numAnswers;
-      question.official = req.body.official;
+      question.official = 'true';
+      question.expansion = 'Base'
       question.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(question);
@@ -121,11 +122,12 @@ module.exports = function(app, passport, auth) {
   })
   // save answers routes
   app.post('/api/answer', (req, res) => {
-    if (req.body.id && req.body.text && req.body.official) {
+    if (req.body.id && req.body.text) {
       const answer = new Answer();
       answer.id = req.body.id;
       answer.text = req.body.text;
-      answer.official = req.body.official;
+      answer.official = true;
+      answer.expansion = 'Base'
       answer.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(answer);

@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
     if (error) {
       return res.status(400).json('This token is invalid');
     }
-    User.findById(decoded._id)
+    User.findById(decoded.id)
       .then((user) => {
         if (!user) {
           return Promise.reject('User with this token not found');
