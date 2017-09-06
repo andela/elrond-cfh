@@ -3,7 +3,7 @@ var async = require('async');
 var mongoose = require('mongoose');
 var Answer = mongoose.model('Answer');
 var Question = mongoose.model('Question');
-var authentication = require('./middlewares/authentication');
+var authenticate = require('./middlewares/authentication');
 module.exports = function(app, passport, auth) {
   // User Routes
   app.get('/signin', users.signin);
@@ -98,7 +98,7 @@ module.exports = function(app, passport, auth) {
 
   // Game routes
   const games = require('../app/controllers/games');
-  app.get('/api/games/:id/start', games.saveGameLogs);
+  app.post('/api/games/:id/start', authenticate, games.saveGameLogs);
   // save questions routes
   app.post('/api/question', (req, res) => {
     if (req.body.id && req.body.text && req.body.numAnswers) {
