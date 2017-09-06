@@ -10,6 +10,7 @@ const Validator = require('validatorjs');
 const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
+const sendEmail = require('./utils/sendEmail');
 
 /**
  * Auth callback
@@ -299,5 +300,27 @@ exports.user = function (req, res, next, id) {
           res.send(usersArray);
     }
   })
+  };
+
+exports.allUsers = function(req, res) {
+  User.find({}).select('name email').then((allUsers) => {
+    res.status(200)
+      .json(allUsers);
+  });
+}
+
+exports.sendEmailInvite = (req, res) => {
+  // const url = decodeURIComponent(req.body.url);
+  const url = req.body.url
+  const guestUser = req.body.user;
+  if (guestUser){
+   sendEmail(guestUser, url);
+    console.log('Sent message')
+    res.status(200)
+      .json(guestUser);
+  } else{
+    res.status(500)
+      .json(error);
+  }
   };
 

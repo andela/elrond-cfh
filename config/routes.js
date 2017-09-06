@@ -98,7 +98,8 @@ module.exports = function(app, passport, auth) {
 
   // Search Routes
   app.get('/api/users/search', users.searchedUsers);
-
+  app.get('/api/users/allusers', users.allUsers);
+  app.post('/api/users/sendInvites', users.sendEmailInvite);
   // Game routes
   const games = require('../app/controllers/games');
   app.get('/api/games/:id/start', games.saveGameLogs);

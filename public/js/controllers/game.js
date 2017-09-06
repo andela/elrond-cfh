@@ -1,10 +1,9 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog','Users', 
+function GameController ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, Users) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
-    $scope.modalShown = false;
-    $scope.searchModal = false;
     $scope.$ = $;
     $scope.game = game;
     $scope.pickedCards = [];
@@ -121,10 +120,7 @@ angular.module('mean.system')
     $scope.winnerPicked = function() {
       return game.winningCard !== -1;
     }
-    $scope.showModal = function(){
-      // $scope.searchModal = true;
-      // alert('This button is working');
-    }
+
     $scope.startGame = function() {
       // check Player length
       if (game.players.length < game.playerMinLimit || game.players.length > game.playerMaxLimit ) {
@@ -137,6 +133,15 @@ angular.module('mean.system')
       }
     };
 
+    $scope.searchedUsers = function () {
+      const username  = $scope.userName;
+      Users.searchedUsers(username)
+        .then((foundUsers) => {
+          $scope.foundUsers = foundUsers;
+          console.log(foundUsers, "Found Users");
+        })
+    };
+    
     $scope.abandonGame = function() {
       game.leaveGame();
       $location.path('/');

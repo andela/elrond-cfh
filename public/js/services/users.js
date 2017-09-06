@@ -28,8 +28,20 @@ angular.module('mean.system')
           reject(error);
         });
     });
+
+    const searchedUsers = (userName) => new Promise((resolve, reject) => {
+      $http.get(`api/users/search?${userName}`)
+        .then((response) => {
+          const gameUsers = response.data;
+          resolve(gameUsers);
+        }, (error) => {
+          reject(error);
+        });
+    });
+
     return {
       signin,
-      signup
+      signup,
+      searchedUsers
     };
   }]);

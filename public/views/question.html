@@ -58,8 +58,12 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <input type="text" class="form-control" id="recipient-name">
-          <button class="btn btn-primary">Search Users</button>
+        <input type="text" ng-model="userName" ng-keyup="searchedUsers()" class="form-control" id="userName">
+          <div id = "foundUsers">
+            <ul>
+              <li ng-repeat="user in foundUsers">{{user.name}}</li>
+            </ul>
+          </div>
     </div>
   </div>
 </div>
