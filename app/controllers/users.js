@@ -35,30 +35,37 @@ exports.signinJWT = (req, res) => {
   const signinRules = {
     email: 'required|email',
     password: 'required|min:6'
-  }
+  };
   const validator = new Validator(req.body, signinRules);
   if (validator.fails()) {
-    return res.status(400).json({validatorError: validator.errors.all()});
+    return res.status(400).json({ message: 'Please check your inputs and try again' });
   }
-  User.findOne({email: req.body.email.toLowerCase()})
+  User.findOne({ email: req.body.email.toLowerCase() })
     .then((foundUser) => {
       if (!foundUser) {
-        return res.status(404).json('User not found');
+        return res.status(404).json({ message: 'User not found' });
       }
       if (!foundUser.authenticate(req.body.password)) {
-        return res.status(400).json('Incorrect password');
+        return res.status(400).json({ message: 'Incorrect password' });
       }
       // If all is well
-      const data = {
-        _id: foundUser._id,
+      const encodedData = {
+        id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
-      }
+      };
       // Give the user token
-      const token = jwt.sign(data, process.env.JWT_SECRET);
-      return res.status(200).json(token);
+      const token = jwt.sign(encodedData, process.env.JWT_SECRET);
+      const sendData = {
+        token,
+        message: 'success',
+        id: foundUser._id,
+        email: foundUser.email,
+        name: foundUser.name
+      };
+      return res.status(200).json(sendData);
     })
-    .catch(err=>res.status(400).json(err))
+    .catch(err => res.status(400).json(err));
 };
 /**
  * Show sign up form
@@ -74,46 +81,51 @@ exports.signupJWT = (req, res) => {
   if (req.user) {
     return res.redirect('/#!/app');
   }
-  const obj = _.pick(req.body,['email', 'name', 'password']);
-  signupRules = {
+  const signupRules = {
     name: 'required',
     email: 'required|email',
     password: 'required|min:6'
-  }
-  const validator = new Validator(obj, signupRules);
-  if(validator.fails()){
-    return res.status(400).json({validatorError: validator.errors.all()});
+  };
+  const validator = new Validator(req.body, signupRules);
+  if (validator.fails()) {
+    return res.status(400).json({ message: 'Please check your inputs and try again' });
   }
   User.findOne({
-    email: obj.email.toLowerCase()
+    email: req.body.email.toLowerCase()
   })
     .exec((err, existingUser) => {
-      if(err) {
-        return res.status(400).json('Error occurred! please try again');
+      if (err) {
+        return res.status(400).json({ message: 'Error occurred! please try again' });
       }
       if (existingUser) {
-        return res.status(400).json('A user with this email already exists');
+        return res.status(400).json({ message: 'A user with this email already exists' });
       }
       // If all is well
-      obj.name = obj.name.toLowerCase();
-      obj.email = obj.email.toLowerCase();
-      const user = new User(obj);
+      req.body.name = req.body.name.toLowerCase();
+      req.body.email = req.body.email.toLowerCase();
+      const user = new User(req.body);
       user.avatar = avatars[user.avatar];
       user.provider = 'local';
       user.save((err) => {
-        if(err) return res.status(400).json('Error occurred...try again');
+        if (err) return res.status(400).json({ message: 'Error occurred...try again' });
         // If all is well
-        const data = {
-          _id: user._id,
+        const encodedData = {
+          id: user._id,
           email: user.email,
           name: user.name
-        }
+        };
         // Give the user token
-        const token = jwt.sign(data, process.env.JWT_SECRET);
-        return res.status(200).json(token);
-      })
-
-    })
+        const token = jwt.sign(encodedData, process.env.JWT_SECRET);
+        const sendData = {
+          token,
+          message: 'success',
+          id: user._id,
+          email: user.email,
+          name: user.name
+        };
+        return res.status(200).json(sendData);
+      });
+    });
 }
 /**
  * Logout
@@ -136,9 +148,9 @@ exports.session = function (req, res) {
  * to our Choose an Avatar page.
  */
 exports.checkAvatar = function (req, res) {
-  if (req.user && req.user._id) {
+  if (req.user && req.user.id) {
     User.findOne({
-      _id: req.user._id
+      _id: req.user.id
     })
       .exec(function (err, user) {
         if (user.avatar !== undefined) {

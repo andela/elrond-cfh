@@ -1,16 +1,16 @@
 <script type="text/javascript">
-$(document).ready(function() {
+  $(document).ready(function() {
 
-  //Twitter buttons
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    //Twitter buttons
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
   });
 </script>
 
 <script></script>
 
-<div landing >
-  <section ng-controller="IndexController" class="header">
+<div landing ng-controller="IndexController">
+  <section ng-show="showOptions" class="header">
     <img src="img/header-img.jpg"/>
     <div class="overlay"></div>
     <div class="header-top">
@@ -20,12 +20,9 @@ $(document).ready(function() {
         <a href="how-to-play">How to play</a>
         <a href="team">Team</a>
         <a href="charity">Charity</a>
-        <span ng-show="showOptions">
+        <span>
           <a href="#!/signin">Sign In</a>
           <a href="#!/signup" class="secondary-link">Sign Up</a>
-        </span>
-        <span ng-hide="showOptions">
-          <a href="/signout" class="secondary-link">Sign Out</a>
         </span>
       </span>
     </div>
@@ -56,6 +53,36 @@ $(document).ready(function() {
             </div>
           </div>
         </span>
+      </div>
+    </div>
+  </section>
+  <section ng-hide="showOptions" class="header">
+    <img src="img/header-img.jpg"/>
+    <div class="overlay"></div>
+    <div class="header-top">
+      <span class="heading">Cards for Humanity</span>
+      <span class="header-links">
+          <a href="">Home</a>
+          <a href="how-to-play">How to play</a>
+          <a href="team">Team</a>
+          <a href="charity">Charity</a>
+          <a ng-click="logout()" class="secondary-link">Logout</a>
+        </span>
+    </div>
+    <div class="header-body">
+      <div class="section-heading">
+        Cards For Humanity
+      </div>
+      <div class="sub-text-default">
+        A Game For Horrible People Desperately trying to be Good
+      </div>
+      <div class="header-action-btn-container">
+          <span class="header-btn-container">
+            <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
+          </span>
+        <span class="header-btn-container">
+              <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
+            </span>
       </div>
     </div>
   </section>
@@ -126,56 +153,56 @@ $(document).ready(function() {
           <div class="text">All Donations go to Make-A-wish Foundation and benefit children in need.</div>
           <div class="logo">
           </div><img src="img/make-a-wish-logo-white-large.png" alt="Make-A-Wish Foundation Logo">
-          </div>
-        </span>
+      </div>
+      </span>
+    </div>
+</div>
+</section>
+<section class="meet-the-team container-fluid">
+  <div class="section-heading">
+    THE TEAM
+  </div>
+  <div class="the-team-thumbs">
+    <div class="team-member-container">
+      <img src="img/E01.png" alt="Team Mate Name">
+      <div class="team-mate-name">Cool Dude</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E03.png" alt="Team Mate Name">
+      <div class="team-mate-name">Great Bro</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E02.png" alt="Team Mate Name">
+      <div class="team-mate-name">Amazing Fellow</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E04.png" alt="Team Mate Name">
+      <div class="team-mate-name">Gentle Man</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E05.png" alt="Team Mate Name">
+      <div class="team-mate-name">Energetic Fellow</div>
+    </div>
+    <div class="team-member-container">
+      <img src="img/E06.png" alt="Team Mate Name">
+      <div class="team-mate-name">Smart Guy</div>
+    </div>
+  </div>
+</section>
+<section class="footer">
+  <div class="section">
+    <div class="row" style="padding: 3%">
+      <div class="col l12">
+        This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
+      </div>
+      <div class="col l12 footer-links">
+        <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
+        |
+        <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
       </div>
     </div>
-  </section>
-  <section class="meet-the-team container-fluid">
-    <div class="section-heading">
-      THE TEAM
-    </div>
-    <div class="the-team-thumbs">
-      <div class="team-member-container">
-        <img src="img/E01.png" alt="Team Mate Name">
-        <div class="team-mate-name">Cool Dude</div>
-      </div>
-      <div class="team-member-container">
-          <img src="img/E03.png" alt="Team Mate Name">
-          <div class="team-mate-name">Great Bro</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E02.png" alt="Team Mate Name">
-        <div class="team-mate-name">Amazing Fellow</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E04.png" alt="Team Mate Name">
-        <div class="team-mate-name">Gentle Man</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E05.png" alt="Team Mate Name">
-        <div class="team-mate-name">Energetic Fellow</div>
-      </div>
-      <div class="team-member-container">
-        <img src="img/E06.png" alt="Team Mate Name">
-        <div class="team-mate-name">Smart Guy</div>
-      </div>
-    </div>
-  </section>
-  <section class="footer">
-    <div class="section">
-      <div class="row" style="padding: 3%">
-        <div class="col l12">
-          This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
-        </div>
-        <div class="col l12 footer-links">
-          <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
-          |
-          <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 </div>
 <script>
   $(document).ready(function(){
