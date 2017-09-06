@@ -66,7 +66,7 @@ exports.signinJWT = (req, res) => {
       };
       return res.status(200).json(sendData);
     })
-    .catch(err=>res.status(400).json(err));
+    .catch(err => res.status(400).json(err));
 };
 /**
  * Show sign up form
