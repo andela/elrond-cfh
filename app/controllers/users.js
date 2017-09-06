@@ -35,7 +35,7 @@ exports.signinJWT = (req, res) => {
   const signinRules = {
     email: 'required|email',
     password: 'required|min:6'
-  }
+  };
   const validator = new Validator(req.body, signinRules);
   if (validator.fails()) {
     return res.status(400).json({ message: 'Please check your inputs and try again' });
@@ -53,7 +53,7 @@ exports.signinJWT = (req, res) => {
         id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
-      }
+      };
       // Give the user token
       const token = jwt.sign(encodedData, process.env.JWT_SECRET);
       const sendData = {
@@ -62,7 +62,7 @@ exports.signinJWT = (req, res) => {
         id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name
-      }
+      };
       return res.status(200).json(sendData);
     })
     .catch(err => res.status(400).json(err));
@@ -85,7 +85,7 @@ exports.signupJWT = (req, res) => {
     name: 'required',
     email: 'required|email',
     password: 'required|min:6'
-  }
+  };
   const validator = new Validator(req.body, signupRules);
   if (validator.fails()) {
     return res.status(400).json({ message: 'Please check your inputs and try again' });
@@ -113,7 +113,7 @@ exports.signupJWT = (req, res) => {
           id: user._id,
           email: user.email,
           name: user.name
-        }
+        };
         // Give the user token
         const token = jwt.sign(encodedData, process.env.JWT_SECRET);
         const sendData = {
@@ -122,7 +122,7 @@ exports.signupJWT = (req, res) => {
           id: user._id,
           email: user.email,
           name: user.name
-        }
+        };
         return res.status(200).json(sendData);
       });
     });
@@ -148,9 +148,9 @@ exports.session = function (req, res) {
  * to our Choose an Avatar page.
  */
 exports.checkAvatar = function (req, res) {
-  if (req.user && req.user._id) {
+  if (req.user && req.user.id) {
     User.findOne({
-      _id: req.user._id
+      _id: req.user.id
     })
       .exec(function (err, user) {
         if (user.avatar !== undefined) {
