@@ -12,7 +12,7 @@ exports.saveGameLogs = (req, res) => {
   // save game if is an authenticated user else do nothing
   if (req.user && req.params.id) {
     const game = new Game(req.body);
-    game.userID = req.user._id;
+    game.userID = req.user.id;
     game.gameID = req.params.id;
     game.save((err) => {
       if (err) return res.status(400).json('Error...game logs not saved');
