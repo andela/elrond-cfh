@@ -11,22 +11,26 @@
         <div class="sign-error" ng-show="showError() === 'invalid'">
           Please check your username/password and try again.
         </div>
+        <div class="sign-error" ng-show="errStatus">
+          {{signinErrorMsg}}
+        </div>
         <form class="col s12" action="/users/session" method="post">
           <div class="row signupIn">
             <div class="input-field col s12">
-              <input id="name" type="text" class="validate">
+              <input id="name" ng-model="email" type="text" class="validate">
               <label for="name">Name</label>
             </div>
           </div>
           <div class="row signupIn">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
+              <input id="password" ng-model="password" type="password" class="validate">
               <label for="password">Password</label>
+
             </div>
           </div>
           <br>
           <div class="row">
-            <button id="sign-up-btn-other" type='submit' class="col s12 signinBtn waves-effect waves-light btn">SIGN IN</button>
+            <button id="sign-up-btn-other" ng-click="signin()" type='submit' class="col s12 signinBtn waves-effect waves-light btn">SIGN IN</button>
           </div>
         </form>
       </div>

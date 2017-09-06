@@ -1,0 +1,9 @@
+.header {
+  background-image: url('../img/header-img.jpg');
+}
+
+.heading {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #fff;
+}

@@ -1,4 +1,4 @@
-<div id="main-bod">
+<div id="main-bod" ng-controller="IndexController">
   <div class="row myLogo">
     <nav class="nav-extended">
       <div class="nav-wrapper">
@@ -10,10 +10,9 @@
         <ul class="side-nav" id="mobile-demo">
           <li><a href="/">Home</a></li>
         </ul>
-      </div>
+
     </nav>
   </div>
-
   <div class="row signupOverall" id="homer">
     <div class="col s12 m4 l4"><p></p></div>
     <div class="col s12 m4 l5 signupWrapper">
@@ -23,22 +22,26 @@
       <br>
       <h4>create a username/password and select an avatar</h4>
       <div class="row">
-        <form class="col s12" action="/users" method="post">
+          <div class="sign-error" ng-show="signupErrStatus">
+              {{signupErrMsg}}
+          </div>
+        <form class="col s12">
           <div class="row signUp">
             <div class="input-field col s12">
-              <input id="name" name="name" type="text" class="validate" required>
+              <input id="name" name="name" ng-model="name" type="text" class="validate" required>
               <label for="name">Full Name</label>
             </div>
           </div>
           <div class="row signUp">
             <div class="input-field col s12">
-              <input id="email" type="email" name="email" class="validate" required>
+              <input id="email" ng-model="email" type="email" name="email" class="validate" required>
               <label for="Email">Email</label>
+
             </div>
           </div>
           <div class="row signUp">
             <div class="input-field col s12">
-              <input id="password" type="password" name="password" class="validate" required>
+              <input id="password" ng-model="password" type="password" name="password" class="validate" required>
               <label for="password">Password</label>
             </div>
           </div>
@@ -52,7 +55,7 @@
             </ul>
           </div>  
           <div class="row">
-            <button id="sign-up-btn-other" type='submit' class="col s12 signinBtn waves-effect waves-light btn">SIGN UP</button>
+            <button id="sign-up-btn-other" ng-click="signup()" type='submit' class="col s12 signinBtn waves-effect waves-light btn">SIGN UP</button>
           </div>
         </form>
       </div>

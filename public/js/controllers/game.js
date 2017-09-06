@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -18,7 +18,7 @@ angular.module('mean.system')
             $scope.hasPickedCards = true;
           } else if (game.curQuestion.numAnswers === 2 &&
             $scope.pickedCards.length === 2) {
-            //delay and send
+            // delay and send
             $scope.hasPickedCards = true;
             $timeout($scope.sendPickedCards, 300);
           }
@@ -119,9 +119,27 @@ angular.module('mean.system')
     $scope.winnerPicked = function() {
       return game.winningCard !== -1;
     };
-
     $scope.startGame = function() {
-      game.startGame();
+      // when user tries to start game without meeting minimum requirement
+      if (game.players.length < game.playerMinLimit) {
+        // const myModal = $('#playerRequirement');
+        // myModal.find('.modal-title')
+        //   .text('Player requirement');
+        // myModal.find('.modal-body')
+        //   .text('Sorry! You require a minimum of three(3) players to play this game');
+        // myModal.modal('show');
+        alert('Sorry! You require a minimum of three(3) players to play this game');
+        // const modal = new Materialize.Modal($('#modal1'));
+        // modal.open(); // Open it on some event
+        // $( $window.document ).ready(function() {
+        //   $('.modal').modal();
+        //   $('#modal1').on('click', function() {
+        //   });
+        // });
+        // $('#modal1').modal();
+      } else {
+        game.startGame();
+      }
     };
 
     $scope.abandonGame = function() {

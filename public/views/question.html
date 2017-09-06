@@ -13,7 +13,7 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
           Start Game</br>with {{game.players.length}} players
         </div>
@@ -33,6 +33,17 @@
         That makes you a loser, unfortunately.
       </div>
     </div>
+  </div>
+</div>
+<a class="waves-effect waves-light btn view" data-target="modal">View Scores</a>
+<!-- Modal Structure -->
+<div id="modal1" class="modaly">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>
 

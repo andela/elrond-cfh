@@ -69,10 +69,10 @@ module.exports = function(io) {
       exitGame(socket);
     });
 
-    // socket.on('disconnect', function(){
-    //   // console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
-    //   exitGame(socket);
-    // });
+    socket.on('disconnect', function(){
+      console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
+      exitGame(socket);
+    });
   });
 
   var joinGame = function(socket,data) {
