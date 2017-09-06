@@ -13,9 +13,15 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+      <!--<button data-target="modal1" ng-click="startGame()" class="btn btn-primary modal-trigger">Play as Guest</button>-->
+      <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
+          Start Game
+        </div>
+      </div>
+      <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+        <div id='start-game-button'>
+          Invite Players
         </div>
       </div>
     </div>
@@ -36,3 +42,26 @@
   </div>
 </div>
 
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <p>Sorry! You require a minimum of three(3) players to play this game</p>
+  </div>
+  <div class="modal-footer" style="padding:0px 20px">
+    <button class="btn btn-danger right modal-action modal-close">Cancel</button>
+  </div>
+</div>
+<div id="modal-invite" class="modal modal-invite">
+  <div class="modal-content">
+    <p>Invite Players</p>
+    <select>
+      <option>Jimoh Hadi</option>
+      <option>Olisah John</option>
+      <option>Monalisa Mark</option>
+      <option>Yakin Mukin</option>
+    </select>
+  </div>
+  <div class="modal-footer" style="padding:0px 20px">
+    <a href= "/#!/app" class="btn btn-primary modal-action modal-close">Invite Selected Players</a>
+    <button class="btn btn-danger left modal-action modal-close">Cancel</button>
+  </div>
+</div>
