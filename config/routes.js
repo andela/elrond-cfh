@@ -1,9 +1,10 @@
 const users = require('../app/controllers/users');
+const authenticate = require('./middlewares/authentication');
 var async = require('async');
 var mongoose = require('mongoose');
 var Answer = mongoose.model('Answer');
 var Question = mongoose.model('Question');
-var authenticate = require('./middlewares/authentication');
+
 module.exports = function(app, passport, auth) {
   // User Routes
   app.get('/signin', users.signin);
