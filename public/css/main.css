@@ -72,7 +72,6 @@
   
   .btn {
       cursor: pointer;
-      width: 150px;
       font-size: 15px;
   }
   
@@ -291,4 +290,8 @@
     color: #fff;
     margin-top: 4px;
     width: 230px;
+}
+
+.modal-content {
+    color: #000;
 }
