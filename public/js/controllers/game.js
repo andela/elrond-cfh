@@ -158,6 +158,11 @@ function GameController ($scope, game, $timeout, $location, MakeAWishFactsServic
       }
     };
     
+  $scope.invitePlayers = function() {
+    $('.modal-invite').modal();
+    $('select').material_select();
+  }
+
     $scope.abandonGame = function() {
       game.leaveGame();
       $location.path('/');
