@@ -1,5 +1,6 @@
 angular.module('mean.system')
   .factory('Users', ['$http', '$window', 'socket', ($http, $window, socket) => {
+    const invitesSent = [];
     const signup = (name, email, password) => new Promise((resolve, reject) => {
       const newuser = {
         name,
@@ -38,10 +39,33 @@ angular.module('mean.system')
           reject(error);
         });
     });
+    const sendInvites = (email) => new Promise((resolve, reject) => {
+      const userEmail = email;
+      const gameUrl = encodeURIComponent(window.location.href)
+      const postData = {
+        userEmail,
+        gameUrl
+      }
+      $http.post('/api/users/sendInvites', postData)
+      .then((response) => {
+        if(invitesSent.indexOf(response.data) <= -1){
+          invitesSent.push(response.data);
+        }
+        resolve({ 
+          message:'Invite has been sent',
+          invitesSent });
+
+      })
+      .catch((error) => {
+        reject({ message:'Oops, Could not send Invite', error});
+      });
+    });
 
     return {
       signin,
       signup,
-      searchedUsers
+      searchedUsers,
+      sendInvites,
+      invitesSent
     };
   }]);

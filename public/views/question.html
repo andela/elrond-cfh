@@ -10,7 +10,7 @@
         <div id="player-count">{{game.players.length}} / 12 </div>
         <div id="the-word-players"> Players </div>
       </div>
-      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Invite a Friend</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Invite a Player</button>
 
   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="$('#myModal').modal('show')" data-target="#exampleModal">
   Invite a Friend
@@ -58,14 +58,32 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <input type="text" ng-model="userName" ng-keyup="searchedUsers()" class="form-control" id="userName">
-          <div id = "foundUsers">
-            <ul>
-              <li ng-repeat="user in foundUsers">{{user.name}}</li>
-            </ul>
-          </div>
-    </div>
-  </div>
+        <p id ="message">{{ messages }}</p>
+        <input type="text" ng-model="userName"  placeholder="Search for a user" class="form-control" id="userName">
+              <button class="btn btn-primary" ng-click="searchedUsers()" >Search</button>
+<div id="foundUsers">
+
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>#</th>
+        <th>Name:</th>
+        <th>Add to Friends</th>
+        <th>Send Invite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in foundUsers">
+        <th>{{$index + 1 }}</th>
+        <td >{{user.name}}</td>
+        <td><button class="btn btn-primary">Add</button></td>
+        <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
 </div>
     <!-- Game Over Stuff -->
     <div id="game-end-info">

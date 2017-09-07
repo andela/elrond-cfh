@@ -132,14 +132,30 @@ function GameController ($scope, game, $timeout, $location, MakeAWishFactsServic
         game.startGame();
       }
     };
+    $scope.sendInvite = (email) => {
+      Users.sendInvites(email)
+        .then((response) => {
+          console.log(response);
+          $scope.messages = response.message;
+          if($scope.invitesSent.length >= 11) {
+            $scope.messages = 'Heyya! Maximum number of players invited';
+          }
+        })
+        .catch((error) => {
+          $scope.messages = error;
+        });
+    };
 
-    $scope.searchedUsers = function () {
+    $scope.searchedUsers = () => {
       const username  = $scope.userName;
+      if($scope.userName === ''){
+        $scope.message = 'Please enter a name'
+      } else{
       Users.searchedUsers(username)
         .then((foundUsers) => {
           $scope.foundUsers = foundUsers;
-          console.log(foundUsers, "Found Users");
         })
+      }
     };
     
     $scope.abandonGame = function() {

@@ -283,24 +283,17 @@ exports.user = function (req, res, next, id) {
    /**
    * Find Users Like Search...
    */
-  exports.searchedUsers = function(req, res) {
-    // const sendEmail = require('./utils/sendEmail');
-    let usersArray = [];
-    User.find({ name : new RegExp(req.query, 'i')})
-    .exec(function(err, searchName) {
-      if(err) {
-        return res.send('There was an error!');
-      } else {
-          const arrayOfUsers = Object.keys(searchName).map(function(key){
-            return searchName[key]
-          });
-          arrayOfUsers.map(function(userr, index){
-            usersArray.push(userr.email);
-          });
-          res.send(usersArray);
-    }
-  })
-  };
+exports.searchedUsers = function (req, res) {
+  User.find({ name: new RegExp(req.query, 'i') })
+    .select('name email')
+    .then((allUsers) => {
+      res.status(200)
+        .json(allUsers);
+    }).catch((error) => {
+      res.status(500)
+      .send('An error Occured')
+    })
+};
 
 exports.allUsers = function(req, res) {
   User.find({}).select('name email').then((allUsers) => {
@@ -310,10 +303,10 @@ exports.allUsers = function(req, res) {
 }
 
 exports.sendEmailInvite = (req, res) => {
-  // const url = decodeURIComponent(req.body.url);
-  const url = req.body.url
-  const guestUser = req.body.user;
-  if (guestUser){
+  const url = decodeURIComponent(req.body.gameUrl);
+  const guestUser = req.body.userEmail;
+
+  if (guestUser !== null && url !== null){
    sendEmail(guestUser, url);
     console.log('Sent message')
     res.status(200)
