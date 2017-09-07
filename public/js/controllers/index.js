@@ -6,25 +6,6 @@ angular.module('mean.system')
       $scope.gameType = 'guest';
 
       $scope.regions = ['Africa', 'Europe'];
-      $scope.playAsGuest = function () {
-        game.joinGame();
-        console.log('run');
-        
-        if ($scope.gameType === 'guest') {
-          console.log('guest run');
-          $location.path('/app');
-        }
-
-        if ($scope.gameType === 'strangers') {
-          console.log('strangers run');
-          location.href = '/play';
-        }
-
-        if ($scope.gameType === 'friends') {
-          console.log('friends run');
-          location.href = '/play?custom';
-        }
-      };
 
       $scope.setGameType = function (gameType) {
         $scope.gameType = gameType;
