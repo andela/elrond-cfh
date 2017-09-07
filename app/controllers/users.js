@@ -325,10 +325,10 @@ exports.allUsers = function(req, res) {
 }
 
 exports.sendEmailInvite = (req, res) => {
-  // const url = decodeURIComponent(req.body.url);
-  const url = req.body.url
-  const guestUser = req.body.user;
-  if (guestUser){
+  const url = decodeURIComponent(req.body.gameUrl);
+  const guestUser = req.body.userEmail;
+
+  if (guestUser !== null && url !== null){
    sendEmail(guestUser, url);
     console.log('Sent message')
     res.status(200)
