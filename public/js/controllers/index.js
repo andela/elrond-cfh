@@ -5,8 +5,6 @@ angular.module('mean.system')
       $scope.playerRegion = 'Africa';
       $scope.gameType = 'guest';
 
-      $scope.regions = ['Africa', 'Europe'];
-
       $scope.setGameType = function (gameType) {
         $scope.gameType = gameType;
         console.log('Scope Type: ', $scope.gameType);
