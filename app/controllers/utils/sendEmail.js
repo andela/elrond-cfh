@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 /**
  * This Module uses nodemailer transporter to send 
- * emails to users based on proirity
+ * emails to users.
  */
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -29,21 +29,3 @@ const sendEmailInvite = function ( useremail, url ) {
 };
 module.exports = sendEmailInvite;
 
-// const emailOptions = {
-//   subject: 'Hey Friend',
-//   text: '',
-//   from: 'postitbydanny@gmail.com'
-// };
-// module.exports = (emails, priority) => {
-//   if (priority === 'Urgent' || priority === 'Critical') {
-//     emails.forEach((email) => {
-//       emailOptions.to = email;
-//       transporter.sendMail(emailOptions, (error, info) => {
-//         if (error) {
-//           return console.log(error);
-//         }
-//         console.log(info.response);
-//       });
-//     });
-//   }
-// };
