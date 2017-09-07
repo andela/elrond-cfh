@@ -6,10 +6,13 @@ function GameController ($scope, game, $timeout, $location, MakeAWishFactsServic
     $scope.showTable = false;
     $scope.$ = $;
     $scope.game = game;
+    $scope.invitesSent = Users.invitesSent || [];
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
-
+  if (window.localStorage.email !== undefined) {
+      $scope.currentUserEmail = window.localStorage.email;
+    }
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
         if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -121,13 +124,10 @@ function GameController ($scope, game, $timeout, $location, MakeAWishFactsServic
       return game.winningCard !== -1;
     }
 
-    $scope.startGame = function() {
+    $scope.startGame = function () {
       // check Player length
-      if (game.players.length < game.playerMinLimit || game.players.length > game.playerMaxLimit ) {
-        const msgModal = $('#modal1');
-        msgModal.find('.modalMsg')
-        .text('Sorry Mate, A minimum of 3 players is required to play the game!! Invite a friend');
-        msgModal.modal('show');
+      if (game.players.length < game.playerMinLimit || game.players.length > game.playerMaxLimit) {
+        $('.modal').modal();
       } else {
         game.startGame();
       }
@@ -160,7 +160,6 @@ function GameController ($scope, game, $timeout, $location, MakeAWishFactsServic
     
   $scope.invitePlayers = function() {
     $('.modal-invite').modal();
-    $('select').material_select();
   }
 
     $scope.abandonGame = function() {
