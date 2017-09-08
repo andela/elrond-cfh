@@ -46,17 +46,19 @@
     <p>Sorry! You require a minimum of three(3) players to play this game</p>
   </div>
   <div class="modal-footer" style="padding:0px 20px">
-    <button class="btn btn-danger right modal-action modal-close">Cancel</button>
+    <button data-target="modal-invite" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()">Invite a Player</button>&nbsp
+    <button class="btn btn-danger left modal-action modal-close">Cancel</button>
   </div>
 </div>
 <div id="modal-invite" class="modal modal-invite">
   <div class="modal-content">
+    <p>{{message}}</p>
     <p>Invite Players</p>
-    <input type="text" ng-model="userName"  placeholder="Search for a user" class="form-control" id="userName">
-        <button class="btn btn-primary" ng-click="searchedUsers()" >Search</button>
+    <input type="text" ng-minlength="0" ng-model="userName"  placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
+          <button class="btn btn-primary" ng-click="searchedUsers()" >Search</button>  
 
   <div id="foundUsers">
-  <table class="table">
+  <table class="highlight">
     <thead class="thead-default">
       <tr>
         <th>#</th>

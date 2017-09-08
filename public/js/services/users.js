@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .factory('Users', ['$http', '$window', 'socket', ($http, $window, socket) => {
+  .factory('Users', ['$http', '$window', ($http) => {
     const invitesSent = [];
     const signup = (name, email, password) => new Promise((resolve, reject) => {
       const newuser = {
@@ -30,8 +30,9 @@ angular.module('mean.system')
         });
     });
 
-    const searchedUsers = (userName) => new Promise((resolve, reject) => {
-      $http.get(`api/users/search?${userName}`)
+    const searchedUsers = userName => new Promise((resolve, reject) => {
+      $http.get(`api/users/search?name=${userName}`,
+        { headers: { authorization: window.localStorage.token } })
         .then((response) => {
           const gameUsers = response.data;
           resolve(gameUsers);
@@ -39,26 +40,26 @@ angular.module('mean.system')
           reject(error);
         });
     });
-    const sendInvites = (email) => new Promise((resolve, reject) => {
+    const sendInvites = email => new Promise((resolve, reject) => {
       const userEmail = email;
-      const gameUrl = encodeURIComponent(window.location.href)
+      const gameUrl = encodeURIComponent(window.location.href);
       const postData = {
         userEmail,
         gameUrl
-      }
-      $http.post('/api/users/sendInvites', postData)
-      .then((response) => {
-        if(invitesSent.indexOf(response.data) <= -1){
-          invitesSent.push(response.data);
-        }
-        resolve({ 
-          message:'Invite has been sent',
-          invitesSent });
-
-      })
-      .catch((error) => {
-        reject({ message:'Oops, Could not send Invite', error});
-      });
+      };
+      $http.post('/api/users/sendInvites', postData,
+        { headers: { authorization: window.localStorage.token } })
+        .then((response) => {
+          if (invitesSent.indexOf(response.data) <= -1) {
+            invitesSent.push(response.data);
+          }
+          resolve({
+            message: 'Invite has been sent',
+            invitesSent });
+        })
+        .catch((error) => {
+          reject({ message: 'Oops, Could not send Invite', error });
+        });
     });
 
     return {
