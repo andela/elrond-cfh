@@ -59,6 +59,13 @@
       font-size: 30px;
       color: #fff;
   }
+    .modelMsg {
+        color: black;
+        font-size: 10px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: lighter;
+        font-style: italic;
+    }
   
   .btn-primary {
       background-color: #FD9800;
