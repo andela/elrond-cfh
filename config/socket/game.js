@@ -27,13 +27,14 @@ function Game(gameID, io) {
   this.winnerAutopicked = false;
   this.czar = -1; // Index in this.players
   this.playerMinLimit = 3;
-  this.playerMaxLimit = 6;
+  this.playerMaxLimit = 12;
   this.pointLimit = 5;
   this.state = "awaiting players";
   this.round = 0;
   this.questions = null;
   this.answers = null;
   this.curQuestion = null;
+  this.region = "";
   this.timeLimits = {
     stateChoosing: 21,
     stateJudging: 16,
@@ -49,6 +50,11 @@ function Game(gameID, io) {
   this.judgingTimeout = 0;
   this.resultsTimeout = 0;
   this.guestNames = guestNames.slice();
+}
+
+Game.prototype.setRegion = function (region) {
+  this.region = region;
+  console.log('game region set to ', this.region);
 }
 
 Game.prototype.payload = function () {
@@ -76,7 +82,8 @@ Game.prototype.payload = function () {
     winnerAutopicked: this.winnerAutopicked,
     table: this.table,
     pointLimit: this.pointLimit,
-    curQuestion: this.curQuestion
+    curQuestion: this.curQuestion,
+    region: this.region
   };
 };
 
@@ -241,7 +248,7 @@ Game.prototype.stateDissolveGame = function () {
 };
 
 Game.prototype.getQuestions = function (cb) {
-  questions.allQuestionsForGame(function (data) {
+  questions.allQuestionsForGame(this.region, function (data) {
     cb(null, data);
   });
 };

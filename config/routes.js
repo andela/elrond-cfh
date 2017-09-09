@@ -99,6 +99,10 @@ module.exports = (app, passport) => {
   app.get('/play', index.play);
   app.get('/', index.render);
 
+  // Search Routes
+  app.get('/api/users/search', authenticate, users.searchedUsers);
+  app.post('/api/users/sendInvites', authenticate, users.sendEmailInvite);
+
   // Game routes
   app.post('/api/games/:id/start', authenticate, games.saveGameLog);
   app.get('/api/games/history', authenticate, games.getUserGameLog);
@@ -112,6 +116,7 @@ module.exports = (app, passport) => {
       question.numAnswers = req.body.numAnswers;
       question.official = 'true';
       question.expansion = 'Base';
+      question.region = req.body.region;
       question.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(question);
