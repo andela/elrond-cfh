@@ -185,12 +185,13 @@ angular.module('mean.system')
           });
       }
     });
-    game.joinGame = function (mode, room, createPrivate) {
+    game.joinGame = function (mode, room, createPrivate, region) {
       mode = mode || 'joinGame';
       room = room || '';
       createPrivate = createPrivate || false;
-      var userID = !!window.user ? user._id : 'unauthenticated';
-      socket.emit(mode, {userID: userID, room: room, createPrivate: createPrivate});
+      var userID = localStorage.getItem('userId') || 'unauthenticated';
+      console.log('userID', userID);
+      socket.emit(mode, {userID: userID, region, room: room, createPrivate: createPrivate});
     };
 
     game.startGame = function () {

@@ -111,7 +111,8 @@ module.exports = function(app, passport, auth) {
       question.text = req.body.text;
       question.numAnswers = req.body.numAnswers;
       question.official = 'true';
-      question.expansion = 'Base'
+      question.expansion = 'Base';
+      question.region = req.body.region;
       question.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(question);

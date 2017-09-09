@@ -278,6 +278,7 @@
   
   a:hover {
       text-decoration: underline;
+      color: #fff;
   }
   
   .btn:hover {
@@ -305,4 +306,19 @@
 
 .modal-content {
     color: #000;
+    text-align: left;
+    font-size: 20px;
+}
+
+.btn-danger {
+    background-color: #F44336;
+}
+
+.btn-danger:hover {
+    background-color: rgba(244, 67, 54, 0.86);
+}
+
+.btn-danger:focus {
+    color: #fff;
+    background-color: rgba(244, 67, 54, 0.83);
 }
