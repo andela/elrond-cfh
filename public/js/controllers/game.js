@@ -1,27 +1,22 @@
 angular.module('mean.system')
-  .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users',
-    function GameController($scope, game, $timeout,
-      $location, MakeAWishFactsService, $dialog, Users) {
-      $scope.hasPickedCards = false;
-      $scope.winningCardPicked = false;
-      $scope.showTable = false;
-      $scope.$ = $;
-      $scope.game = game;
-      $scope.invitesSent = Users.invitesSent || [];
-      $scope.pickedCards = [];
-      var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
-      $scope.makeAWishFact = makeAWishFacts.pop();
-      if (window.localStorage.email !== undefined) {
-        $scope.currentUserEmail = window.localStorage.email;
-      }
-      $scope.pickCard = function(card) {
-        if (!$scope.hasPickedCards) {
-          if ($scope.pickedCards.indexOf(card.id) < 0) {
-            $scope.pickedCards.push(card.id);
-            if (game.curQuestion.numAnswers === 1) {
-              $scope.sendPickedCards();
-              $scope.hasPickedCards = true;
-            } else if (game.curQuestion.numAnswers === 2 &&
+.controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'dashboard', function ($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog, dashboard) {
+    $scope.hasPickedCards = false;
+    $scope.winningCardPicked = false;
+    $scope.showTable = false;
+    $scope.modalShown = false;
+    $scope.game = game;
+    $scope.pickedCards = [];
+    var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+    $scope.makeAWishFact = makeAWishFacts.pop();
+
+    $scope.pickCard = function(card) {
+      if (!$scope.hasPickedCards) {
+        if ($scope.pickedCards.indexOf(card.id) < 0) {
+          $scope.pickedCards.push(card.id);
+          if (game.curQuestion.numAnswers === 1) {
+            $scope.sendPickedCards();
+            $scope.hasPickedCards = true;
+          } else if (game.curQuestion.numAnswers === 2 &&
             $scope.pickedCards.length === 2) {
             // delay and send
               $scope.hasPickedCards = true;
@@ -124,6 +119,30 @@ angular.module('mean.system')
       $scope.winnerPicked = function() {
         return game.winningCard !== -1;
       }
+    };
+
+    $scope.winnerPicked = function() {
+      return game.winningCard !== -1;
+    };
+    $scope.startGame = function() {
+      // when user tries to start game without meeting minimum requirement
+      if (game.players.length < game.playerMinLimit) {
+        $('.modal').modal();
+        $('select').material_select();
+      } else {
+        game.startGame();
+      }
+    };
+
+  $scope.invitePlayers = function() {
+    $('.modal-invite').modal();
+    $('select').material_select();
+  }
+
+    $scope.abandonGame = function() {
+      game.leaveGame();
+      $location.path('/');
+    };
 
       $scope.startGame = () => {
       // check Player length
@@ -230,5 +249,51 @@ angular.module('mean.system')
       console.log('joining game like that');
       game.joinGame(null, null, null, localStorage.getItem('region'));
     }
-
+    // player game-log logic
+    $scope.showOptions = !!window.localStorage.token;
+    dashboard.getGameLog()
+      .then((response) => {
+        const dateOptions = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        };
+        $scope.gameHistories = response.map((res) => {
+          const date = new Date(res.createdAt).toLocaleString('en-us', dateOptions);
+          res.createdAt = date;
+          return res;
+        });
+      });
+    // application leaderboard logic
+    dashboard.leaderGameLog()
+      .then((gameLogs) => {
+        const leaderboard = [];
+        const players = {};
+        gameLogs.forEach((gameLog) => {
+          const numOfWins = players[gameLog.gameWinner];
+          if (numOfWins) {
+            players[gameLog.gameWinner] += 1;
+          } else {
+            players[gameLog.gameWinner] = 1;
+          }
+        });
+        Object.keys(players).forEach((key) => {
+          leaderboard.push({ username: key, numberOfWins: players[key] });
+        });
+        $scope.leaderboard = leaderboard;
+      });
+    // user donations
+    dashboard.userDonations()
+      .then((userDonations) => {
+        $scope.userDonations = userDonations.donations;
+      })
+    // logout to be used by the player dashboard if logged in
+    $scope.logout = () => {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('email');
+      window.localStorage.removeItem('userId');
+      window.localStorage.removeItem('name');
+      $scope.showOptions = true;
+      $location.path('/');
+    };
 }]);

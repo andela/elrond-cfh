@@ -219,11 +219,11 @@ exports.avatars = function (req, res) {
 };
 
 exports.addDonation = function (req, res) {
-  if (req.body && req.user && req.user._id) {
+  if (req.body && req.user && req.user.id) {
     // Verify that the object contains crowdrise data
     if (req.body.amount && req.body.crowdrise_donation_id && req.body.donor_name) {
       User.findOne({
-        _id: req.user._id
+        _id: req.user.id
       })
         .exec((err, user) => {
           // Confirm that this object hasn't already been entered
@@ -244,7 +244,18 @@ exports.addDonation = function (req, res) {
   }
   res.send();
 };
-
+exports.getDonations = (req, res) => {
+  if (req.user) {
+    User.findById(req.user.id)
+      .select('donations')
+      .exec((error, allDonations) => {
+        if (error) {
+          return res.status(500).send({ error });
+        }
+        return res.status(200).json(allDonations);
+      });
+  }
+};
 /**
  *  Show profile
  */
