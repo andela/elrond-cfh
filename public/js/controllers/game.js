@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'dashboard', function ($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog, dashboard) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -122,25 +122,6 @@ angular.module('mean.system')
     $scope.startGame = function() {
       // when user tries to start game without meeting minimum requirement
       if (game.players.length < game.playerMinLimit) {
-        // const myModal = $('#playerRequirement');
-        // myModal.find('.modal-title')
-        //   .text('Player requirement');
-        // myModal.find('.modal-body')
-        //   .text('Sorry! You require a minimum of three(3) players to play this game');
-        // myModal.modal('show');
-        // alert('Sorry! You require a minimum of three(3) players to play this game');
-        // const modal = new Materialize.Modal($('#modal1'));
-        // modal.open(); // Open it on some event
-        // $( $window.document ).ready(function() {
-        //   $('.modal').modal();
-        //   $('#modal1').on('click', function() {
-        //   });
-        // });
-        // $('#modal1').modal();
-        // $(document).ready(function(){
-        //   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-        //
-        // });
         $('.modal').modal();
         $('select').material_select();
       } else {
@@ -209,5 +190,51 @@ angular.module('mean.system')
     } else {
       game.joinGame();
     }
-
+    // player game-log logic
+    $scope.showOptions = !!window.localStorage.token;
+    dashboard.getGameLog()
+      .then((response) => {
+        const dateOptions = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        };
+        $scope.gameHistories = response.map((res) => {
+          const date = new Date(res.createdAt).toLocaleString('en-us', dateOptions);
+          res.createdAt = date;
+          return res;
+        });
+      });
+    // application leaderboard logic
+    dashboard.leaderGameLog()
+      .then((gameLogs) => {
+        const leaderboard = [];
+        const players = {};
+        gameLogs.forEach((gameLog) => {
+          const numOfWins = players[gameLog.gameWinner];
+          if (numOfWins) {
+            players[gameLog.gameWinner] += 1;
+          } else {
+            players[gameLog.gameWinner] = 1;
+          }
+        });
+        Object.keys(players).forEach((key) => {
+          leaderboard.push({ username: key, numberOfWins: players[key] });
+        });
+        $scope.leaderboard = leaderboard;
+      });
+    // user donations
+    dashboard.userDonations()
+      .then((userDonations) => {
+        $scope.userDonations = userDonations.donations;
+      })
+    // logout to be used by the player dashboard if logged in
+    $scope.logout = () => {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('email');
+      window.localStorage.removeItem('userId');
+      window.localStorage.removeItem('name');
+      $scope.showOptions = true;
+      $location.path('/');
+    };
 }]);
