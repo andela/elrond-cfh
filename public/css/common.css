@@ -1,80 +1,79 @@
-
-/*.card {*/
-  /*position: relative;*/
-  /*display: inline-block;*/
-  /*box-sizing: border-box;*/
-  /*width: 17.5%;*/
-  /*height: 215px;*/
-  /*padding: 1%;*/
-  /*margin: 1%;*/
-  /*background-color: #fff;*/
-  /*border-radius: 8px;*/
-  /*color: #252525;*/
-  /*font-family: Arial;*/
-  /*font-size: 20px;*/
-  /*font-weight: bold;*/
-  /*vertical-align: top;*/
-/*}*/
-/*@media (max-width: 520px) {*/
-  /*.card {*/
-    /*font-size: 14px;*/
-    /*height: 115px;*/
-    /*word-wrap: break-word;*/
-  /*}*/
-/*}*/
-/*.card.how-to {*/
-  /*font-size: 1.4rem;*/
-/*}*/
-/*.card #selection-number {*/
-  /*position: absolute;*/
-  /*bottom: 1px;*/
-  /*left: 7px;*/
-  /*font-size: 18px;*/
-/*}*/
-/*.card.black {*/
-  /*background: #252525;*/
-  /*border-color: white;*/
-  /*color: white;*/
-/*}*/
-/*.card.longBlack {*/
-  /*background: #252525;*/
-  /*border-color: white;*/
-  /*color: white;*/
-  /*height: 100%;*/
-  /*width: 35.5em;*/
-  /*padding-left: 2%;*/
-  /*padding-right: 2%;*/
-/*}*/
-/*.card.smallest {*/
-  /*font-size: 0.750em;*/
-/*}*/
-/*@media (max-width: 520px) {*/
-  /*.card.smallest {*/
-    /*font-size: 10px;*/
-  /*}*/
-/*}*/
-/*.card u {*/
-  /*position: relative;*/
-  /*content: '';*/
-  /*display: inline-block;*/
-  /*width: 25%;*/
-  /*text-decoration: none;*/
-  /*height: 1em;*/
-  /*border-bottom: 0.125em solid white;*/
-  /*margin-bottom: -0.125em;*/
-/*}*/
-/*.card u .small {*/
-  /*width: 25%;*/
-/*}*/
-/*.card u .big {*/
-  /*width: 75%;*/
-/*}*/
-/*.card u .end:after {*/
-  /*position: absolute;*/
-  /*right: -0.357em;*/
-  /*display: inline-block;*/
-  /*content: '.';*/
-/*}*/
+.card {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 17.5%;
+  height: 215px;
+  padding: 1%;
+  margin: 1%;
+  background-color: #fff;
+  border-radius: 8px;
+  color: #252525;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: top;
+}
+@media (max-width: 520px) {
+  .card {
+    font-size: 14px;
+    height: 115px;
+    word-wrap: break-word;
+  }
+}
+.card.how-to {
+  font-size: 1.4rem;
+}
+.card #selection-number {
+  position: absolute;
+  bottom: 1px;
+  left: 7px;
+  font-size: 18px;
+}
+.card.black {
+  background: #252525;
+  border-color: white;
+  color: white;
+}
+.card.longBlack {
+  background: #252525;
+  border-color: white;
+  color:black;
+  height: 100%;
+  width: 35.5em;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.card.smallest {
+  font-size: 0.750em;
+}
+@media (max-width: 520px) {
+  .card.smallest {
+    font-size: 10px;
+  }
+}
+.card u {
+  position: relative;
+  content: '';
+  display: inline-block;
+  width: 25%;
+  text-decoration: none;
+  height: 1em;
+  border-bottom: 0.125em solid white;
+  margin-bottom: -0.125em;
+}
+.card u .small {
+  width: 25%;
+}
+.card u .big {
+  width: 75%;
+}
+.card u .end:after {
+  position: absolute;
+  right: -0.357em;
+  display: inline-block;
+  content: '.';
+}
 
 /*html, body, .main-container, .cont, #first-section, #inner-container {*/
   /*height: 100%;*/
