@@ -12,7 +12,8 @@ var GameSchema = new Schema({
   userID: String,
   gameID: String,
   gamePlayers: [],
+  gameRound: Number,
   gameWinner: { type: String, default: '' }
-});
+}, { timestamps: true });
 
 mongoose.model('Game', GameSchema);

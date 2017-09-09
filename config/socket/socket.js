@@ -95,10 +95,12 @@ module.exports = function(io) {
           // If the user's ID isn't found (rare)
           player.username = 'Guest';
           player.avatar = avatars[Math.floor(Math.random()*4)+12];
+          player.region = data.region;
         } else {
           player.username = user.name;
           player.premium = user.premium || 0;
           player.avatar = user.avatar || avatars[Math.floor(Math.random()*4)+12];
+          player.region = data.region;
         }
         getGame(player,socket,data.room,data.createPrivate);
       });
@@ -106,6 +108,7 @@ module.exports = function(io) {
       // If the user isn't authenticated (guest)
       player.username = 'Guest';
       player.avatar = avatars[Math.floor(Math.random()*4)+12];
+      player.region = data.region;      
       getGame(player,socket,data.room,data.createPrivate);
     }
   };
@@ -116,7 +119,9 @@ module.exports = function(io) {
     console.log(socket.id,'is requesting room',requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
+      
       var game = allGames[requestedGameId];
+      
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
@@ -153,9 +158,9 @@ module.exports = function(io) {
 
   };
 
-  var fireGame = function(player,socket) {
+  var fireGame = function(player,socket, createNew = false) {
     var game;
-    if (gamesNeedingPlayers.length <= 0) {
+    if (gamesNeedingPlayers.length <= 0 || createNew) {
       gameID += 1;
       var gameIDStr = gameID.toString();
       game = new Game(gameIDStr, io);
@@ -163,6 +168,7 @@ module.exports = function(io) {
       game.players.push(player);
       allGames[gameID] = game;
       gamesNeedingPlayers.push(game);
+      game.setRegion(player.region);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       console.log(socket.id,'has joined newly created game',game.gameID);
@@ -171,6 +177,14 @@ module.exports = function(io) {
       game.sendUpdate();
     } else {
       game = gamesNeedingPlayers[0];
+      if (game.region !== player.region) {
+        if (gamesNeedingPlayers.length > 1) {
+          game = gamesNeedingPlayers[1];
+        } else {
+          fireGame(player, socket, true);
+          return;
+        }
+      }
       allPlayers[socket.id] = true;
       game.players.push(player);
       console.log(socket.id,'has joined game',game.gameID);

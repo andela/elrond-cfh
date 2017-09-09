@@ -59,7 +59,14 @@
       font-size: 30px;
       color: #fff;
   }
-
+  .modelMsg {
+      color: black;
+      font-size: 10px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-weight: lighter;
+      font-style: italic;
+  }
+  
   .btn-primary {
       background-color: #FD9800;
       border-color: #FD9800;
@@ -271,6 +278,7 @@
 
   a:hover {
       text-decoration: underline;
+      color: #fff;
   }
 
   .btn:hover {
@@ -322,4 +330,20 @@
   right: -0.357em;
   display: inline-block;
   content: '.';
+}
+    text-align: left;
+    font-size: 20px;
+}
+
+.btn-danger {
+    background-color: #F44336;
+}
+
+.btn-danger:hover {
+    background-color: rgba(244, 67, 54, 0.86);
+}
+
+.btn-danger:focus {
+    color: #fff;
+    background-color: rgba(244, 67, 54, 0.83);
 }
