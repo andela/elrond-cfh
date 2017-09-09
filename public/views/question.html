@@ -54,29 +54,30 @@
   <div class="modal-content">
     <p>{{message}}</p>
     <p>Invite Players</p>
-    <input type="text" ng-minlength="0" ng-model="userName"  placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
-          <button class="btn btn-primary" ng-click="searchedUsers()" >Search</button>  
+    <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName"
+      required="" aria-required="true">
+    <button class="btn btn-primary" ng-click="searchedUsers()">Search</button>
 
-  <div id="foundUsers">
-  <table class="highlight">
-    <thead class="thead-default">
-      <tr>
-        <th>#</th>
-        <th>Name:</th>
-        <th>Add to Friends</th>
-        <th>Send Invite</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
-        <th>{{$index + 1 }}</th>
-        <td >{{user.name}}</td>
-        <td><button class="btn btn-primary">Add</button></td>
-        <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div id="foundUsers">
+      <table class="highlight">
+        <thead class="thead-default">
+          <tr>
+            <th>#</th>
+            <th>Name:</th>
+            <th>Add to Friends</th>
+            <th>Send Invite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
+            <th>{{$index + 1 }}</th>
+            <td>{{user.name}}</td>
+            <td><button class="btn btn-primary">Add</button></td>
+            <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
   <div class="modal-footer" style="padding:0px 20px">
