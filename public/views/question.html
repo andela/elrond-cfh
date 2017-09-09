@@ -7,13 +7,12 @@
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
       <div id="player-count-container">
-        <div id="player-count">{{game.players.length}} / 6 </div>
+        <div id="player-count">{{game.players.length}} / 12 </div>
         <div id="the-word-players"> Players </div>
       </div>
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <!--<button data-target="modal1" ng-click="startGame()" class="btn btn-primary modal-trigger">Play as Guest</button>-->
       <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
           Start Game
@@ -47,21 +46,41 @@
     <p>Sorry! You require a minimum of three(3) players to play this game</p>
   </div>
   <div class="modal-footer" style="padding:0px 20px">
-    <button class="btn btn-danger right modal-action modal-close">Cancel</button>
+    <button data-target="modal-invite" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()">Invite a Player</button>&nbsp
+    <button class="btn btn-danger left modal-action modal-close">Cancel</button>
   </div>
 </div>
 <div id="modal-invite" class="modal modal-invite">
   <div class="modal-content">
+    <p>{{message}}</p>
     <p>Invite Players</p>
-    <select>
-      <option>Jimoh Hadi</option>
-      <option>Olisah John</option>
-      <option>Monalisa Mark</option>
-      <option>Yakin Mukin</option>
-    </select>
+    <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName"
+      required="" aria-required="true">
+    <button class="btn btn-primary" ng-click="searchedUsers()">Search</button>
+
+    <div id="foundUsers">
+      <table class="highlight">
+        <thead class="thead-default">
+          <tr>
+            <th>#</th>
+            <th>Name:</th>
+            <th>Add to Friends</th>
+            <th>Send Invite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
+            <th>{{$index + 1 }}</th>
+            <td>{{user.name}}</td>
+            <td><button class="btn btn-primary">Add</button></td>
+            <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
   <div class="modal-footer" style="padding:0px 20px">
-    <a href= "/#!/app" class="btn btn-primary modal-action modal-close">Invite Selected Players</a>
-    <button class="btn btn-danger left modal-action modal-close">Cancel</button>
+    <a class="btn btn-danger left modal-action modal-close">Close</a>
   </div>
 </div>
