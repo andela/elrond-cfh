@@ -18,7 +18,7 @@
                     Start Game
                 </div>
             </div>
-            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">
                 <div id='start-game-button'>
                     Invite Players
                 </div>
@@ -72,7 +72,7 @@
                     <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
                         <th>{{$index + 1 }}</th>
                         <td>{{user.name}}</td>
-                        <td><button class="btn btn-primary">Add</button></td>
+                        <td><button class="btn btn-primary" ng-click="addAsFriends(user.email)">Add</button></td>
                         <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
                     </tr>
                 </tbody>

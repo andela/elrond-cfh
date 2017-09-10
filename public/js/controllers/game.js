@@ -9,10 +9,12 @@ angular.module('mean.system')
             $scope.game = game;
             $scope.invitesSent = Users.invitesSent || [];
             $scope.pickedCards = [];
+            $scope.showInviteButton = false;
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
             if (window.localStorage.email !== undefined) {
                 $scope.currentUserEmail = window.localStorage.email;
+                $scope.showInviteButton = true;
             }
             $scope.pickCard = function(card) {
                 if (!$scope.hasPickedCards) {
