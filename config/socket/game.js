@@ -118,18 +118,18 @@ Game.prototype.prepareGame = function () {
 
   var self = this;
   async.parallel([
-      this.getQuestions,
-      this.getAnswers
-    ],
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      }
-      self.questions = results[0];
-      self.answers = results[1];
+    this.getQuestions,
+    this.getAnswers
+  ],
+  function (err, results) {
+    if (err) {
+      console.log(err);
+    }
+    self.questions = results[0];
+    self.answers = results[1];
 
-      self.startGame();
-    });
+    self.startGame();
+  });
 };
 
 Game.prototype.startGame = function () {
@@ -170,12 +170,6 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.round++;
   self.dealAnswers();
-  // Rotate card czar
-  // if (self.czar >= self.players.length - 1) {
-  //   self.czar = 0;
-  // } else {
-  //   self.czar++;
-  // }
   self.sendUpdate();
 
   self.choosingTimeout = setTimeout(function () {

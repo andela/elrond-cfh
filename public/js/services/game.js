@@ -36,13 +36,6 @@ angular.module('mean.system')
         .text('Sorry! You are late, the room is filled up! \t Only 12 players' +
         ' allowed per room');
       myModal.modal('show');
-      // console.log($location);
-      // $location.$$path = '/';#!/
-      // console.log('my modal', myModal);
-      // console.log('my modal context', myModal.context);
-      // if (!myModal.hasClass('in')) {
-      // window.location.hash = '#!';
-      // }
     });
 
     var addToNotificationQueue = function (msg) {
@@ -84,7 +77,6 @@ angular.module('mean.system')
     });
 
     socket.on('gameUpdate', function (data) {
-
       // Update gameID field only if it changed.
       // That way, we don't trigger the $scope.$watch too often
       if (game.gameID !== data.gameID) {
@@ -156,7 +148,7 @@ angular.module('mean.system')
       }
 
       if (data.state === 'czar pick card') {
-        game.czar = data.czar
+        game.czar = data.czar;
         if (game.czar === game.playerIndex) {
           addToNotificationQueue(
             `You are now a Czar,
