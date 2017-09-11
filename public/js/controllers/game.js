@@ -6,6 +6,7 @@ angular.module('mean.system')
       $scope.winningCardPicked = false;
       $scope.showTable = false;
       $scope.$ = $;
+      $scope.showInviteButton = false;
       $scope.game = game;
       $scope.invitesSent = Users.invitesSent || [];
       $scope.pickedCards = [];
@@ -13,6 +14,7 @@ angular.module('mean.system')
       $scope.makeAWishFact = makeAWishFacts.pop();
       if (window.localStorage.email !== undefined) {
         $scope.currentUserEmail = window.localStorage.email;
+        $scope.showInviteButton = true;
       }
       $scope.pickCard = function(card) {
         if (!$scope.hasPickedCards) {
