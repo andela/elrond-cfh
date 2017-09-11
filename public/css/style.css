@@ -929,8 +929,7 @@ li {
     width: 100%;
     margin: 30px auto; }
   .row {
-    margin: 0 0 0 4px; } }
-  
+    margin: 0 0 0 4px; } }  
   .signinForm, .signupForm {
     background: url(../img/bg2.jpg) no-repeat center center / cover !important;
     height: 100%;
@@ -1006,3 +1005,20 @@ li {
     opacity: 1 !important;
     pointer-events: auto;
   }
+  .tabs-body {
+    opacity: 0.8;
+    font-size: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial,
+    'Helvetica Neue', Helvetica, sans-serif
+  }
+  .tab-header-text {
+    color: darkorange !important;
+    font-weight: bold;
+  }
+@media (min-width: 450px) {
+  .table-div {
+    height: 500px;
+  }
+}

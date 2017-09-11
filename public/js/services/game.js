@@ -1,5 +1,6 @@
 angular.module('mean.system')
   .factory('game', ['socket', '$timeout', '$http', function (socket, $timeout, $http) {
+
     var game = {
       id: null, // This player's socket ID, so we know who this player is
       gameID: null,
@@ -11,7 +12,7 @@ angular.module('mean.system')
       table: [],
       czar: null,
       playerMinLimit: 3,
-      playerMaxLimit: 6,
+      playerMaxLimit: 12,
       pointLimit: null,
       state: null,
       round: 0,
@@ -26,6 +27,23 @@ angular.module('mean.system')
     var timeout = false;
     var self = this;
     var joinOverrideTimeout = 0;
+
+    socket.on('player_limit_exceeded', function (data) {
+     const myModal = $('#playerRequirement');
+      myModal.find('.modal-title')
+        .text('Player requirement');
+      myModal.find('.modal-body')
+        .text('Sorry! You are late, the room is filled up! \t Only 12 players' +
+        ' allowed per room');
+      myModal.modal('show');
+      // console.log($location);
+      // $location.$$path = '/';#!/
+      // console.log('my modal', myModal);
+      // console.log('my modal context', myModal.context);
+      // if (!myModal.hasClass('in')) {
+      // window.location.hash = '#!';
+      // }
+    });
 
     var addToNotificationQueue = function (msg) {
       notificationQueue.push(msg);
@@ -137,7 +155,17 @@ angular.module('mean.system')
         game.state = data.state;
       }
 
-      if (data.state === 'waiting for players to pick') {
+      if (data.state === 'czar pick card') {
+        game.czar = data.czar
+        if (game.czar === game.playerIndex) {
+          addToNotificationQueue(
+            `You are now a Czar,
+            click black card to pop a new Question`
+          );
+        } else {
+          addToNotificationQueue('Waiting dor Czar to pick card');
+        }
+      } else if (data.state === 'waiting for players to pick') {
         game.czar = data.czar;
         game.curQuestion = data.curQuestion;
         // Extending the underscore within the question
@@ -178,19 +206,20 @@ angular.module('mean.system')
 
     // Notify backend to save game logs When the game ended
     socket.on('saveGame', (data) => {
-      if (game.state === 'game ended') {
-        $http.post(`/api/games/${game.gameID}/start`, data)
+      if (game.state === 'game ended' && window.localStorage.token) {
+        $http.post(`/api/games/${game.gameID}/start`, data, { headers: { authorization: window.localStorage.token } })
           .success((response) => {
             console.log(response);
           });
       }
     });
-    game.joinGame = function (mode, room, createPrivate) {
+    game.joinGame = function (mode, room, createPrivate, region) {
       mode = mode || 'joinGame';
       room = room || '';
       createPrivate = createPrivate || false;
-      var userID = !!window.user ? user._id : 'unauthenticated';
-      socket.emit(mode, {userID: userID, room: room, createPrivate: createPrivate});
+      var userID = localStorage.getItem('userId') || 'unauthenticated';
+      console.log('userID', userID);
+      socket.emit(mode, {userID: userID, region, room: room, createPrivate: createPrivate});
     };
 
     game.startGame = function () {
@@ -209,6 +238,10 @@ angular.module('mean.system')
 
     game.pickWinning = function (card) {
       socket.emit('pickWinning', {card: card.id});
+    };
+
+    game.startNext = () => {
+      socket.emit('czarCardSelected');
     };
 
     decrementTime();
