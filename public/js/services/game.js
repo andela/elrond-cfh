@@ -27,6 +27,16 @@ angular.module('mean.system')
     var self = this;
     var joinOverrideTimeout = 0;
 
+    socket.on('player_limit_exceeded', function () {
+      const myModal = $('#playerRequirement');
+      myModal.find('.modal-title')
+        .text('Player requirement');
+      myModal.find('.modal-body')
+        .text('Sorry! You are late, the room is filled up! \t Only 12 players' +
+        ' allowed per room');
+      myModal.modal('show');
+    });
+
     var addToNotificationQueue = function (msg) {
       notificationQueue.push(msg);
       if (!timeout) { // Start a cycle if there isn't one
@@ -66,7 +76,6 @@ angular.module('mean.system')
     });
 
     socket.on('gameUpdate', function (data) {
-
       // Update gameID field only if it changed.
       // That way, we don't trigger the $scope.$watch too often
       if (game.gameID !== data.gameID) {
@@ -137,7 +146,17 @@ angular.module('mean.system')
         game.state = data.state;
       }
 
-      if (data.state === 'waiting for players to pick') {
+      if (data.state === 'czar pick card') {
+        game.czar = data.czar;
+        if (game.czar === game.playerIndex) {
+          addToNotificationQueue(
+            `You are now a Czar,
+            click black card to pop a new Question`
+          );
+        } else {
+          addToNotificationQueue('Waiting dor Czar to pick card');
+        }
+      } else if (data.state === 'waiting for players to pick') {
         game.czar = data.czar;
         game.curQuestion = data.curQuestion;
         // Extending the underscore within the question
@@ -190,7 +209,7 @@ angular.module('mean.system')
       room = room || '';
       createPrivate = createPrivate || false;
       var userID = !!window.user ? user._id : 'unauthenticated';
-      socket.emit(mode, {userID: userID, room: room, createPrivate: createPrivate});
+      socket.emit(mode, { userID: userID, room: room, createPrivate: createPrivate });
     };
 
     game.startGame = function () {
@@ -204,11 +223,15 @@ angular.module('mean.system')
     };
 
     game.pickCards = function (cards) {
-      socket.emit('pickCards', {cards: cards});
+      socket.emit('pickCards', { cards: cards });
     };
 
     game.pickWinning = function (card) {
-      socket.emit('pickWinning', {card: card.id});
+      socket.emit('pickWinning', { card: card.id });
+    };
+
+    game.startNext = () => {
+      socket.emit('czarCardSelected');
     };
 
     decrementTime();
