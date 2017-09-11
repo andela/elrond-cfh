@@ -935,7 +935,7 @@ li {
     background: url(../img/bg2.jpg) no-repeat center center / cover !important;
     height: 100%;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
   }
   
   .signinOverall {
@@ -949,7 +949,7 @@ li {
     border-radius: 5px;
     padding: 0!important;
   }
-  .signinHeader, .signupHeader{
+  .signinHeader, .signupHeader {
     background-color: #130A33;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -959,10 +959,8 @@ li {
     text-transform: uppercase;
     font-size: 20px;
   }
-  .signinWrapper form, .signupWrapper form{
   
-  }
-  .btn{
+  .btn-signin{
     background-color: #fd9800!important;
   }
   .signinWrapper h4{
@@ -1002,4 +1000,9 @@ li {
     background-color: transparent!important;
     font-family: 'Oswald', sans-serif;
     font-size: 25px;
+  }
+  [type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative!important;
+    opacity: 1 !important;
+    pointer-events: auto;
   }

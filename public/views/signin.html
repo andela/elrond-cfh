@@ -1,19 +1,10 @@
-<div id="main-bod" ng-controller="IndexController" class="signinForm">]
-   <section ng-show="showOptions" class="header">
-      <div class="header-top">
-        <span class="heading">Cards for Humanity</span>
-        <span class="header-links">
-          <a href="">Home</a>
-          <a href="how-to-play">How to play</a>
-          <a href="team">Team</a>
-          <a href="charity">Charity</a>
-          <span>
-            <a href="#!/signin">Sign In</a>
-            <a href="#!/signup" class="secondary-link">Sign Up</a>
-          </span>
-        </span>
-      </div>
-    </section>
+<div id="main-bod" ng-controller="IndexController" class="signinForm">
+  <div class="header-top">
+    <span class="heading">Cards for Humanity</span>
+    <span class="header-links">
+      <a href="/">Home</a>
+    </span>
+  </div>
   <div class="row signinOverall" id="homer">
     <div class="col s12 m4 l4"><p></p></div>
     <div class="col s12 m4 l5 signinWrapper">
@@ -23,17 +14,15 @@
       <br>
       <h4>Signin to your Account</h4>
       <div class="row">
-        <div class="sign-error" ng-show="showError() === 'invalid'">
-          Please check your username/password and try again.
+
+        <div class="sign-error" style="margin-top: 10px;" ng-show="errStatus">
+          <span style="color: red; font-family:'Delius'">{{signinErrorMsg}}</span>
         </div>
-        <div class="sign-error" ng-show="errStatus">
-          {{signinErrorMsg}}
-        </div>
-        <form class="col s12" action="/users/session" method="post">
+        <form class="col s12">
           <div class="row signupIn">
             <div class="input-field col s12">
-              <input id="name" ng-model="email" type="text" class="validate">
-              <label for="name">Name</label>
+              <input id="name" ng-model="email" type="email" class="validate">
+              <label for="name">Email</label>
             </div>
           </div>
           <div class="row signupIn">
@@ -45,7 +34,8 @@
           </div>
           <br>
           <div class="row">
-            <button id="sign-up-btn-other" ng-click="signin()" type='submit' class="col s12 signinBtn waves-effect waves-light btn">SIGN IN</button>
+            <button id="sign-up-btn-other" ng-click="signin()" type='submit' 
+            class="col s12 signinBtn waves-effect waves-light btn-signin btn">SIGN IN</button>
           </div>
         </form>
       </div>
