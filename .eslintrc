@@ -4,7 +4,12 @@
   "env": {
     "node": true,
     "es6": true,
+    "browser":true,
     "mocha": true
+  },
+  "globals": {
+    "angular": true,
+    "$": true
   },
   "rules": {
     "one-var": 0,
