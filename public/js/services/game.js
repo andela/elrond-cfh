@@ -1,6 +1,5 @@
 angular.module('mean.system')
   .factory('game', ['socket', '$timeout', '$http', function (socket, $timeout, $http) {
-
     var game = {
       id: null, // This player's socket ID, so we know who this player is
       gameID: null,
@@ -28,8 +27,8 @@ angular.module('mean.system')
     var self = this;
     var joinOverrideTimeout = 0;
 
-    socket.on('player_limit_exceeded', function (data) {
-     const myModal = $('#playerRequirement');
+    socket.on('player_limit_exceeded', function () {
+      const myModal = $('#playerRequirement');
       myModal.find('.modal-title')
         .text('Player requirement');
       myModal.find('.modal-body')
@@ -210,7 +209,7 @@ angular.module('mean.system')
       room = room || '';
       createPrivate = createPrivate || false;
       var userID = !!window.user ? user._id : 'unauthenticated';
-      socket.emit(mode, {userID: userID, room: room, createPrivate: createPrivate});
+      socket.emit(mode, { userID: userID, room: room, createPrivate: createPrivate });
     };
 
     game.startGame = function () {
@@ -224,11 +223,11 @@ angular.module('mean.system')
     };
 
     game.pickCards = function (cards) {
-      socket.emit('pickCards', {cards: cards});
+      socket.emit('pickCards', { cards: cards });
     };
 
     game.pickWinning = function (card) {
-      socket.emit('pickWinning', {card: card.id});
+      socket.emit('pickWinning', { card: card.id });
     };
 
     game.startNext = () => {
