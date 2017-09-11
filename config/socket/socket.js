@@ -20,7 +20,7 @@ module.exports = function(io) {
     console.log(socket.id +  ' Connected');
     socket.emit('id', {id: socket.id});
 
-    socket.on('pickCards', function(data) {
+    socket.on('pickCards', function (data) {
       console.log(socket.id,"picked",data);
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards,socket.id);
@@ -29,7 +29,7 @@ module.exports = function(io) {
       }
     });
 
-    socket.on('pickWinning', function(data) {
+    socket.on('pickWinning', function (data) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card,socket.id);
       } else {
@@ -37,18 +37,22 @@ module.exports = function(io) {
       }
     });
 
-    socket.on('joinGame', function(data) {
+    socket.on('joinGame', function (data) {
       if (!allPlayers[socket.id]) {
         joinGame(socket,data);
       }
     });
 
-    socket.on('joinNewGame', function(data) {
+    socket.on('czarCardSelected', () => {
+      allGames[socket.gameID].startNext(allGames[socket.gameID]);
+    });
+
+    socket.on('joinNewGame', function (data) {
       exitGame(socket);
       joinGame(socket,data);
     });
 
-    socket.on('startGame', function() {
+    socket.on('startGame', function () {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];
         console.log('comparing',thisGame.players[0].socket.id,'with',socket.id);
@@ -65,24 +69,24 @@ module.exports = function(io) {
       }
     });
 
-    socket.on('leaveGame', function() {
+    socket.on('leaveGame', function () {
       exitGame(socket);
     });
 
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function (){
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
     });
   });
 
-  var joinGame = function(socket,data) {
+  var joinGame = function (socket,data) {
     var player = new Player(socket);
     data = data || {};
     player.userID = data.userID || 'unauthenticated';
     if (data.userID !== 'unauthenticated') {
       User.findOne({
         _id: data.userID
-      }).exec(function(err, user) {
+      }).exec(function (err, user) {
         if (err) {
           console.log('err',err);
           return err; // Hopefully this never happens.
@@ -106,7 +110,7 @@ module.exports = function(io) {
     }
   };
 
-  var getGame = function(player,socket,requestedGameId,createPrivate) {
+  var getGame = function (player,socket,requestedGameId,createPrivate) {
     requestedGameId = requestedGameId || '';
     createPrivate = createPrivate || false;
     console.log(socket.id,'is requesting room',requestedGameId);
@@ -149,7 +153,7 @@ module.exports = function(io) {
 
   };
 
-  var fireGame = function(player,socket) {
+  var fireGame = function (player,socket) {
     var game;
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
@@ -183,7 +187,7 @@ module.exports = function(io) {
     }
   };
 
-  var createGameWithFriends = function(player,socket) {
+  var createGameWithFriends = function (player,socket) {
     var isUniqueRoom = false;
     var uniqueRoom = '';
     // Generate a random 6-character game ID
@@ -208,7 +212,7 @@ module.exports = function(io) {
     game.sendUpdate();
   };
 
-  var exitGame = function(socket) {
+  var exitGame = function (socket) {
     console.log(socket.id,'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
       var game = allGames[socket.gameID];

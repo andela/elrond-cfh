@@ -52,20 +52,22 @@ angular.module('mean.directives', [])
         });
       }
     };
-  }).directive('question', function() {
+  })
+  .directive('question', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) {}
     };
   })
-  .directive('timer', function(){
-    return{
+  .directive('timer', function () {
+    return {
       restrict: 'EA',
       templateUrl: '/views/timer.html',
-      link: function(scope, elem, attr){}
+      link: function (scope, elem, attr) {}
     };
-  }).directive('landing', function() {
+  })
+  .directive('landing', function() {
     return {
       restrict: 'EA',
       link: function(scope, elem, attr) {
