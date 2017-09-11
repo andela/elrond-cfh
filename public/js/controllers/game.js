@@ -1,46 +1,32 @@
 angular.module('mean.system')
-  .controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog) {
-    $scope.hasPickedCards = false;
-    $scope.winningCardPicked = false;
-      $scope.showTable = false;
-      $scope.modalShown = false;
-      $scope.game = game;
-      $scope.pickedCards = [];
-      let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
-      $scope.makeAWishFact = makeAWishFacts.pop();
+    .controller('GameController', ['$scope', '$window', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function($scope, $window, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+        $scope.hasPickedCards = false;
+        $scope.winningCardPicked = false;
+        $scope.showTable = false;
+        $scope.modalShown = false;
+        $scope.game = game;
+        $scope.pickedCards = [];
+        let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+        $scope.makeAWishFact = makeAWishFacts.pop();
 
-      $scope.pickCard = function(card) {
-          if (!$scope.hasPickedCards) {
-              if ($scope.pickedCards.indexOf(card.id) < 0) {
-                  $scope.pickedCards.push(card.id);
-                  if (game.curQuestion.numAnswers === 1) {
-                      $scope.sendPickedCards();
-                      $scope.hasPickedCards = true;
-                  } else if (game.curQuestion.numAnswers === 2 &&
-                      $scope.pickedCards.length === 2) {
-                      // delay and send
-                      $scope.hasPickedCards = true;
-                      $timeout($scope.sendPickedCards, 300);
-                  }
-              } else {
-                  $scope.pickedCards.pop();
-              }
-          }
-      };
-
-        // $scope.startGame = () => {
-        // // when user tries to start game without meeting minimum requirement
-        //   if (game.players.length < game.playerMinLimit) {
-        //     const myModal = $('#playerRequirement');
-        //     myModal.find('.modal-title')
-        //       .text('Player requirement');
-        //     myModal.find('.modal-body')
-        //       .text('Sorry! You require a minimum of three(3) players to play this game');
-        //     myModal.modal('show');
-        //   } else {
-        //     game.startGame();
-        //   }
-        // };
+        $scope.pickCard = function(card) {
+            if (!$scope.hasPickedCards) {
+                if ($scope.pickedCards.indexOf(card.id) < 0) {
+                    $scope.pickedCards.push(card.id);
+                    if (game.curQuestion.numAnswers === 1) {
+                        $scope.sendPickedCards();
+                        $scope.hasPickedCards = true;
+                    } else if (game.curQuestion.numAnswers === 2 &&
+                        $scope.pickedCards.length === 2) {
+                        // delay and send
+                        $scope.hasPickedCards = true;
+                        $timeout($scope.sendPickedCards, 300);
+                    }
+                } else {
+                    $scope.pickedCards.pop();
+                }
+            }
+        };
 
         $scope.pointerCursorStyle = function() {
             if ($scope.isCzar() && $scope.game.state === 'waiting for czar to decide') {
