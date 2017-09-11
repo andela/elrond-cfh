@@ -118,25 +118,37 @@ Game.prototype.prepareGame = function () {
 
   var self = this;
   async.parallel([
-      this.getQuestions,
-      this.getAnswers
-    ],
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      }
-      self.questions = results[0];
-      self.answers = results[1];
+    this.getQuestions,
+    this.getAnswers
+  ],
+  function (err, results) {
+    if (err) {
+      console.log(err);
+    }
+    self.questions = results[0];
+    self.answers = results[1];
 
-      self.startGame();
-    });
+    self.startGame();
+  });
 };
 
 Game.prototype.startGame = function () {
   console.log(this.gameID, this.state);
   this.shuffleCards(this.questions);
   this.shuffleCards(this.answers);
-  this.stateChoosing(this);
+  this.nextCzar(this);
+  this.sendUpdate();
+};
+
+Game.prototype.nextCzar = (self) => {
+  self.state = 'czar pick card';
+  self.table = [];
+  if (self.czar >= self.players.length - 1) {
+    self.czar = 0;
+  } else {
+    self.czar += 1;
+  }
+  self.sendUpdate();
 };
 
 Game.prototype.sendUpdate = function () {
@@ -158,12 +170,6 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.round++;
   self.dealAnswers();
-  // Rotate card czar
-  if (self.czar >= self.players.length - 1) {
-    self.czar = 0;
-  } else {
-    self.czar++;
-  }
   self.sendUpdate();
 
   self.choosingTimeout = setTimeout(function () {
@@ -216,7 +222,7 @@ Game.prototype.stateResults = function (self) {
     if (winner !== -1) {
       self.stateEndGame(winner);
     } else {
-      self.stateChoosing(self);
+      self.nextCzar(self);
     }
   }, self.timeLimits.stateResults * 1000);
 };
@@ -428,6 +434,14 @@ Game.prototype.killGame = function () {
   clearTimeout(this.resultsTimeout);
   clearTimeout(this.choosingTimeout);
   clearTimeout(this.judgingTimeout);
+};
+
+Game.prototype.startNext = (self) => {
+  if (self.state === 'czar pick card') {
+    self.stateChoosing(self);
+  } else if (self.state === 'czar left game') {
+    self.nextCzar(self);
+  }
 };
 
 module.exports = Game;
