@@ -942,6 +942,18 @@ li {
     color: darkorange !important;
     font-weight: bold;
   }
+.leader-board {
+  margin-top: 10px;
+}
+.leader-board tr td {
+  border-left: solid 2px #e0e0e0;
+  border-right: solid 2px #e0e0e0;
+}
+.leader-board tr th {
+  border-top: solid 2px #e0e0e0;
+  border-left: solid 2px #e0e0e0;
+  border-right: solid 2px #e0e0e0;
+}
 @media (min-width: 450px) {
   .table-div {
     height: 500px;
