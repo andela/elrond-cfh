@@ -10,7 +10,7 @@ var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 
 module.exports = function(io) {
 
-  var game;
+  let game;
   var allGames = {};
   var allPlayers = {};
   var gamesNeedingPlayers = [];
@@ -119,7 +119,7 @@ module.exports = function(io) {
     console.log(socket.id,'is requesting room',requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
-      var game = allGames[requestedGameId];
+      let game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
@@ -213,7 +213,7 @@ module.exports = function(io) {
       }
     }
     console.log(socket.id,'has created unique game',uniqueRoom);
-    var game = new Game(uniqueRoom,io);
+    let game = new Game(uniqueRoom,io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -227,7 +227,7 @@ module.exports = function(io) {
   var exitGame = function(socket) {
     console.log(socket.id,'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
-      var game = allGames[socket.gameID];
+      let game = allGames[socket.gameID];
       console.log(socket.id,'has left game',game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
