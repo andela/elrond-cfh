@@ -42,15 +42,15 @@ Question.find({official:true, numAnswers: {$lt : 3}}).select('-_id').exec(functi
 };
 
 /**
-* List of Questions (for Game class)
-*/
-exports.allQuestionsForGame = function(cb) {
-Question.find({official:true, numAnswers: {$lt : 3}}).select('-_id').exec(function(err, questions) {
+ * List of Questions (for Game class)
+ */
+exports.allQuestionsForGame = (region, cb) => {
+  Question.find({ official: true, numAnswers: { $lt: 3 }, region }).select('-_id').exec((err, questions) => {
     if (err) {
-        console.log(err);
+      console.log(err);
     } else {
-        cb(questions);
+      cb(questions);
     }
-});
+  });
 };
 

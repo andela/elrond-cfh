@@ -11,7 +11,7 @@ var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 
 module.exports = function(io) {
 
-  var game;
+  let game;
   var allGames = {};
   var allPlayers = {};
   var gamesNeedingPlayers = [];
@@ -92,10 +92,12 @@ module.exports = function(io) {
           // If the user's ID isn't found (rare)
           player.username = 'Guest';
           player.avatar = avatars[Math.floor(Math.random()*4)+12];
+          player.region = data.region;
         } else {
           player.username = user.name;
           player.premium = user.premium || 0;
           player.avatar = user.avatar || avatars[Math.floor(Math.random()*4)+12];
+          player.region = data.region;
         }
         getGame(player,socket,data.room,data.createPrivate);
       });
@@ -103,6 +105,7 @@ module.exports = function(io) {
       // If the user isn't authenticated (guest)
       player.username = 'Guest';
       player.avatar = avatars[Math.floor(Math.random()*4)+12];
+      player.region = data.region;
       getGame(player,socket,data.room,data.createPrivate);
     }
   };
@@ -113,7 +116,7 @@ module.exports = function(io) {
     console.log(socket.id,'is requesting room',requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
-      var game = allGames[requestedGameId];
+      let game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
@@ -150,33 +153,42 @@ module.exports = function(io) {
 
   };
 
-  var fireGame = function(player,socket) {
-    var game;
-    if (gamesNeedingPlayers.length <= 0) {
+  const fireGame = (player, socket, createNew = false) => {
+    let game;
+    if (gamesNeedingPlayers.length <= 0 || createNew) {
       gameID += 1;
-      var gameIDStr = gameID.toString();
+      const gameIDStr = gameID.toString();
       game = new Game(gameIDStr, io);
       allPlayers[socket.id] = true;
       game.players.push(player);
       allGames[gameID] = game;
       gamesNeedingPlayers.push(game);
+      game.setRegion(player.region);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
-      console.log(socket.id,'has joined newly created game',game.gameID);
+      console.log(socket.id, 'has joined newly created game', game.gameID);
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
     } else {
       game = gamesNeedingPlayers[0];
+      if (game.region !== player.region) {
+        if (gamesNeedingPlayers.length > 1) {
+          game = gamesNeedingPlayers[1];
+        } else {
+          fireGame(player, socket, true);
+          return;
+        }
+      }
       allPlayers[socket.id] = true;
       game.players.push(player);
-      console.log(socket.id,'has joined game',game.gameID);
+      console.log(socket.id, 'has joined game', game.gameID);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
-      game.sendNotification(player.username+' has joined the game!');
+      game.sendNotification(`${player.username} has joined the game!`);
       if (game.players.length >= game.playerMaxLimit) {
         gamesNeedingPlayers.shift();
         game.prepareGame();
@@ -198,7 +210,7 @@ module.exports = function(io) {
       }
     }
     console.log(socket.id,'has created unique game',uniqueRoom);
-    var game = new Game(uniqueRoom,io);
+    let game = new Game(uniqueRoom,io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -212,7 +224,7 @@ module.exports = function(io) {
   var exitGame = function(socket) {
     console.log(socket.id,'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
-      var game = allGames[socket.gameID];
+      let game = allGames[socket.gameID];
       console.log(socket.id,'has left game',game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
