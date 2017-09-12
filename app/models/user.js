@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     _ = require('underscore'),
@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 /**
  * User Schema
  */
-var UserSchema = new Schema({
+let UserSchema = new Schema({
     name: String,
     email: String,
     username: String,
@@ -39,7 +39,7 @@ UserSchema.virtual('password').set(function(password) {
 /**
  * Validations
  */
-var validatePresenceOf = function(value) {
+let validatePresenceOf = function(value) {
     return value && value.length;
 };
 
@@ -63,22 +63,17 @@ UserSchema.path('username').validate(function(username) {
 }, 'Username cannot be blank');
 
 UserSchema.path('hashed_password').validate(function(hashed_password) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-    if (authTypes.indexOf(this.provider) !== -1) return true;
-    return hashed_password.length;
-}, 'Password cannot be blank');
-
-
-/**
- * Pre-save hook
- */
+        // if you are authenticating by any of the oauth strategies, don't validate
+        if (authTypes.indexOf(this.provider) !== -1) return true;
+        return hashed_password.length;
+    }, 'Password cannot be blank')
+    /**
+     * Pre-save hook
+     */
 UserSchema.pre('save', function(next) {
     if (!this.isNew) return next();
 
-    if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
-        next(new Error('Invalid password'));
-    else
-        next();
+    if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1) { next(new Error('Invalid password')); } else { next(); }
 });
 
 /**
@@ -92,11 +87,11 @@ UserSchema.methods = {
      * @return {Boolean}
      * @api public
      */
-    authenticate: function(plainText) {
+    authenticate(plainText) {
         if (!plainText || !this.hashed_password) {
             return false;
         }
-        return bcrypt.compareSync(plainText,this.hashed_password);
+        return bcrypt.compareSync(plainText, this.hashed_password);
     },
 
     /**
@@ -106,7 +101,7 @@ UserSchema.methods = {
      * @return {String}
      * @api public
      */
-    encryptPassword: function(password) {
+    encryptPassword(password) {
         if (!password) return '';
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     }
