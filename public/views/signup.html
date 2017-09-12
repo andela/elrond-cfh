@@ -54,10 +54,10 @@
           </div>
         </form>
       </div>
-      <div class="signinSocial">
+      <div class="signinSocial" ng-controller="SocialLoginController">
         <hr>
         <p>or sign up with</p>
-        <a href="/auth/facebook">
+        <a ng-click="authenticate('facebook')">
           <img src="/img/icons/facebook.png" width="50px" height="50px" alt="facebook">&nbsp;&nbsp;&nbsp;
         </a>
         <a href="/auth/github">
