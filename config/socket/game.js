@@ -34,7 +34,7 @@ function Game(gameID, io) {
   this.questions = null;
   this.answers = null;
   this.curQuestion = null;
-  this.region = "";
+  this.region = '';
   this.timeLimits = {
     stateChoosing: 21,
     stateJudging: 16,
