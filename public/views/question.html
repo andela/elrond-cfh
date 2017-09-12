@@ -1,105 +1,67 @@
 <div id="question-container-inner">
-    <div class="card longBlack">
-        <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
+  <div class="card longBlack">
+    <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
-        <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
-        <div id="startGame" ng-show="game.state === 'awaiting players'">
-            <div id="finding-players">Finding Players</div>
-            <div id="player-count-container">
-              <div id="player-count">{{game.players.length}} / 12 </div>
-              <div id="the-word-players"> Players </div>
-            </div>
-            <div id="loading-container">
-              <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
-            </div>
-            <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
-              <div id='start-game-button'>
-                Start Game
-                </div>
-            </div>
+    <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
 
-            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
-                <div id='start-game-button'>
-                    Invite Players
-                </div>
-            </div>
+    <div id="startGame" ng-show="game.state === 'awaiting players'">
+      <div id="finding-players">Finding Players</div>
+      <div id="player-count-container">
+        <div id="player-count">{{game.players.length}} / 6 </div>
+        <div id="the-word-players"> Players </div>
+      </div>
+      <div id="loading-container">
+        <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
+      </div>
+      <!--<button data-target="modal1" ng-click="startGame()" class="btn btn-primary modal-trigger">Play as Guest</button>-->
+      <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+        <div id='start-game-button'>
+          Start Game
         </div>
-        <!-- Game Over Stuff -->
-        <div id="game-end-info">
-            <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
-                <div class="game-end-headline">What the!? The game ended because too many people left! </div>
-                Our sincere apologies.
-            </div>
-            <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
-                <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde it
-                all for youself.
-            </div>
-            <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
-                <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
-                That makes you a loser, unfortunately.
-            </div>
+      </div>
+      <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+        <div id='start-game-button'>
+          Invite Players
         </div>
+      </div>
     </div>
+    <!-- Game Over Stuff -->
+    <div id="game-end-info">
+      <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
+        <div class="game-end-headline">What the!? The game ended because too many people left! </div>
+        Our sincere apologies.
+      </div>
+      <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
+        <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde it all for youself.
+      </div>
+      <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
+        <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
+        That makes you a loser, unfortunately.
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="modal1" class="modal">
   <div class="modal-content">
-      <p>Sorry! You require a minimum of three(3) players to play this game</p>
+    <p>Sorry! You require a minimum of three(3) players to play this game</p>
   </div>
   <div class="modal-footer" style="padding:0px 20px">
-      <button class="btn btn-danger right modal-action modal-close">Cancel</button>
+    <button class="btn btn-danger right modal-action modal-close">Cancel</button>
   </div>
 </div>
-
 <div id="modal-invite" class="modal modal-invite">
   <div class="modal-content">
-    <p>{{message}}</p>
     <p>Invite Players</p>
-    <input type="text" ng-minlength="0" ng-model="userName"  placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
-      <button class="btn btn-primary" ng-click="searchedUsers()" >Search</button>  
-    <div id="foundUsers">
-      <table class="highlight">
-        <thead class="thead-default">
-          <tr>
-            <th>#</th>
-            <th>Name:</th>
-            <th>Add to Friends</th>
-            <th>Send Invite</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
-            <th>{{$index + 1 }}</th>
-            <td >{{user.name}}</td>
-            <td><button class="btn btn-primary">Add</button></td>
-            <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <select>
+      <option>Jimoh Hadi</option>
+      <option>Olisah John</option>
+      <option>Monalisa Mark</option>
+      <option>Yakin Mukin</option>
+    </select>
   </div>
   <div class="modal-footer" style="padding:0px 20px">
-    <a class="btn btn-danger left modal-action modal-close">Close</a>
+    <a href= "/#!/app" class="btn btn-primary modal-action modal-close">Invite Selected Players</a>
+    <button class="btn btn-danger left modal-action modal-close">Cancel</button>
   </div>
 </div>
-
-<!--Start Game modal -->
-<div class="modal startModal" id="start-modal">
-    <div class="modal-content">
-      <h4 id="shuffleText">You are the Czar - Click card to pick the next question</h4>
-        <div class="center">
-          <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin: auto;'>
-            <img src='../img/card.png' style='width: 100px;' class='animated flipInX' id='shufflecard1' />
-            <img src='../img/card.png' style='width: 100px;' class='animated flipInX' id='shufflecard2' />
-            <img src='../img/card.png' style='width: 100px;' class='animated flipInX' id='shufflecard3' />
-            <img src='../img/card.png' style='width: 100px;' class='animated flipInX' id='shufflecard4' />
-            <img src='../img/card.png' style='width: 100px;' class='animated flipInX' id='shufflecard5' />
-          </div>
-        </div>
-    </div>
-</div>
-<script>
-    $(document).ready(function() {
-        $('#start-modal').modal();
-    });
-</script>

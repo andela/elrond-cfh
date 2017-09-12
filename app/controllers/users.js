@@ -10,7 +10,6 @@ const Validator = require('validatorjs');
 const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
-const sendEmail = require('./utils/sendEmail');
 
 /**
  * Auth callback
@@ -127,7 +126,7 @@ exports.signupJWT = (req, res) => {
         return res.status(200).json(sendData);
       });
     });
-};
+}
 /**
  * Logout
  */
@@ -153,7 +152,7 @@ exports.checkAvatar = function (req, res) {
     User.findOne({
       _id: req.user.id
     })
-      .exec((err, user) => {
+      .exec(function (err, user) {
         if (user.avatar !== undefined) {
           res.redirect('/#!/');
         } else {
@@ -164,6 +163,7 @@ exports.checkAvatar = function (req, res) {
     // If user doesn't even exist, redirect to /
     res.redirect('/');
   }
+
 };
 
 /**
@@ -173,7 +173,7 @@ exports.create = function (req, res) {
   if (req.body.name && req.body.password && req.body.email) {
     User.findOne({
       email: req.body.email
-    }).exec((err, existingUser) => {
+    }).exec(function (err, existingUser) {
       if (!existingUser) {
         var user = new User(req.body);
         // Switch the user's avatar index to an actual avatar url
@@ -210,7 +210,7 @@ exports.avatars = function (req, res) {
     User.findOne({
       _id: req.user._id
     })
-      .exec((err, user) => {
+      .exec(function (err, user) {
         user.avatar = avatars[req.body.avatar];
         user.save();
       });
@@ -219,13 +219,13 @@ exports.avatars = function (req, res) {
 };
 
 exports.addDonation = function (req, res) {
-  if (req.body && req.user && req.user.id) {
+  if (req.body && req.user && req.user._id) {
     // Verify that the object contains crowdrise data
     if (req.body.amount && req.body.crowdrise_donation_id && req.body.donor_name) {
       User.findOne({
-        _id: req.user.id
+        _id: req.user._id
       })
-        .exec((err, user) => {
+        .exec(function (err, user) {
           // Confirm that this object hasn't already been entered
           var duplicate = false;
           for (var i = 0; i < user.donations.length; i++) {
@@ -244,27 +244,16 @@ exports.addDonation = function (req, res) {
   }
   res.send();
 };
-exports.getDonations = (req, res) => {
-  if (req.user) {
-    User.findById(req.user.id)
-      .select('donations')
-      .exec((error, allDonations) => {
-        if (error) {
-          return res.status(500).send({ error });
-        }
-        return res.status(200).json(allDonations);
-      });
-  }
-};
+
 /**
  *  Show profile
  */
 exports.show = function (req, res) {
-  let user = req.profile;
+  var user = req.profile;
 
   res.render('users/show', {
     title: user.name,
-    user
+    user: user
   });
 };
 
@@ -283,57 +272,10 @@ exports.user = function (req, res, next, id) {
     .findOne({
       _id: id
     })
-    .exec((err, user) => {
+    .exec(function (err, user) {
       if (err) return next(err);
       if (!user) return next(new Error('Failed to load User ' + id));
       req.profile = user;
       next();
     });
 };
-/**
-   * Find Users Like Search...
-   * @param {*} req
-   * @param {*} res
-   * @return {array}  array of Users 
-   */
-exports.searchedUsers = (req, res) => {
-  const searchQuery = req.query.name;
-  User.find({ name: { $regex: `.*${searchQuery}.*` } })
-    .select('name email')
-    .then((allUsers) => {
-      res.status(200)
-        .json(allUsers);
-    }).catch((error) => {
-      res.status(500)
-        .json({ message: 'An error Occured', error });
-    });
-};
-exports.sendEmailInvite = (req, res) => {
-  if (req.user) {
-    const url = decodeURIComponent(req.body.gameUrl);
-    const guestUser = req.body.userEmail;
-
-    if (guestUser !== null && url !== null) {
-      sendEmail(guestUser, url);
-      res.status(200)
-        .json(guestUser);
-    } else {
-      res.status(400)
-        .send('Bad Request !');
-    }
-  } else {
-    res.status(401)
-      .send('Hey Kindly Login first!');
-  }
-};
-
-exports.allUsers = (req, res) => {
-  if (req.user) {
-    User.find({ $ne: { email: req.user.email } })
-      .select('name email').then((allUsers) => {
-        return res.status(200)
-          .json(allUsers);
-      });
-  }
-};
-
