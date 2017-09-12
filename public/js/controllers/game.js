@@ -1,7 +1,7 @@
 angular.module('mean.system')
-    .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users',
+    .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
         function GameController($scope, game, $timeout,
-            $location, MakeAWishFactsService, $dialog, Users) {
+            $location, MakeAWishFactsService, $dialog, Users, dashboard) {
             $scope.hasPickedCards = false;
             $scope.winningCardPicked = false;
             $scope.showTable = false;
@@ -251,5 +251,52 @@ angular.module('mean.system')
             } else {
                 game.joinGame(null, null, null, localStorage.getItem('region'));
             }
+          // player game-log logic
+          $scope.showOptions = !!window.localStorage.token;
+          dashboard.getGameLog()
+            .then((response) => {
+              const dateOptions = {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              };
+              $scope.gameHistories = response.map((res) => {
+                const date = new Date(res.createdAt).toLocaleString('en-us', dateOptions);
+                res.createdAt = date;
+                return res;
+              });
+            });
+          // application leaderboard logic
+          dashboard.leaderGameLog()
+            .then((gameLogs) => {
+              const leaderboard = [];
+              const players = {};
+              gameLogs.forEach((gameLog) => {
+                const numOfWins = players[gameLog.gameWinner];
+                if (numOfWins) {
+                  players[gameLog.gameWinner] += 1;
+                } else {
+                  players[gameLog.gameWinner] = 1;
+                }
+              });
+              Object.keys(players).forEach((key) => {
+                leaderboard.push({ username: key, numberOfWins: players[key] });
+              });
+              $scope.leaderboard = leaderboard;
+            });
+          // user donations
+          dashboard.userDonations()
+            .then((userDonations) => {
+              $scope.userDonations = userDonations.donations;
+            });
+          // logout to be used by the player dashboard if logged in
+          $scope.logout = () => {
+            window.localStorage.removeItem('token');
+            window.localStorage.removeItem('email');
+            window.localStorage.removeItem('userId');
+            window.localStorage.removeItem('name');
+            $scope.showOptions = true;
+            $location.path('/');
+          };
         }
     ]);

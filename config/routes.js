@@ -102,7 +102,10 @@ module.exports = (app, passport) => {
   // Search Routes
   app.get('/api/users/search', authenticate, users.searchedUsers);
   app.post('/api/users/sendInvites', authenticate, users.sendEmailInvite);
-
+  // Game routes
+  app.post('/api/games/:id/start', authenticate, games.saveGameLog);
+  app.get('/api/games/history', authenticate, games.getUserGameLog);
+  app.get('/api/games/leaderboard', authenticate, games.getAllGameLog);
   // save questions routes
   app.post('/api/question', (req, res) => {
     if (req.body.id && req.body.text && req.body.numAnswers) {
