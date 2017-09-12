@@ -1,86 +1,78 @@
-<div id="main-bod" ng-controller="IndexController">
-  <!-- Fixed Logo & Menu Bar Start -->
-  <div id="top-part">
-    <div class="wpb-top-bar">
-      <div class="mod-contain" id="navver">
-        <div class="row">
-          <!-- Logo -->
-          <div class="wpb-logo-container">
-            <div id="landing-logo">
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span>
-              <span id="third-word">Humanity</span>
-            </div>
-            <div class="col-md-9 wpb-menu-container">
-              <ul class="wpb-main-menu">
-                <li><a href="/">Home</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div id="main-bod" ng-controller="IndexController" class="signupForm">
+
+  <div class="header-top">
+    <span class="heading">Cards for Humanity</span>
+    <span class="header-links">
+      <a href="/">Home</a>
+    </span>
   </div>
-<!-- Fixed Logo & Menu Bar End -->
-
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div>
-  <div class="modified-container">
-    <div class="row" id="main-text">
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign Up with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
+  
+  <div class="row signupOverall" id="homer">
+    <div class="col s12 m4 l4"><p></p></div>
+    <div class="col s12 m4 l5 signupWrapper">
+      <div class="signupHeader">
+        Sign up
       </div>
-      <p id="create">Or create a username/password and select an avatar:</p>
-
-      <div class="sign-body">
-        <div class="more-sign">
-          <div class="sign-error" ng-show="signupErrStatus">
-            {{signupErrMsg}}
+      <br>
+      <h4>create a username/password and select an avatar</h4>
+      <div class="row">
+          <div class="sign-error" style="margin-top: 10px;margin-bottom: 5px;" ng-show="signupErrStatus">
+              <span style="color: red; font-family:'Delius'">{{signupErrMsg}}</span>
           </div>
-          <form class="signup form-horizontal">
-            <div class="control-group">
-              <label for="name" class="control-label"></label>
-              <div class="controls">
-                <input ng-model="name" class="input-info" id="name" type="text" name="name" placeholder="Full name" required novalidate />
-              </div>
+        <form class="col s12">
+          <div class="row signUp">
+            <div class="input-field col s12">
+              <input id="name" name="name" ng-model="name" type="text" class="validate" >
+              <label for="name">Full Name</label>
             </div>
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input ng-model="email" class="input-info" id="email" type="email" name="email" placeholder="Email" required novalidate />
-              </div>
+          </div>
+          <div class="row signUp">
+            <div class="input-field col s12">
+              <input id="email" ng-model="email" type="email" name="email" class="validate" >
+              <label for="Email">Email</label>
+
             </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input ng-model="password" class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate />
-              </div>
+          </div>
+          <div class="row signUp">
+            <div class="input-field col s12">
+              <input id="password" ng-model="password" type="password" name="password" class="validate" >
+              <label for="password">Password</label>
             </div>
-            <div id="contain-avatars">
-              <ul ng-controller="IndexController" class="avatar-list">
-                <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
-                    <img ng-src="{{avatar}}">
-                  </input>
-                </li>
-              </ul>
-            </div>
-            <div class="form-actions">
-              <button ng-click="signup()" id="sign-up-btn-other">Sign Up</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div id="contain-avatars" class="row signUp">
+            <ul ng-controller="IndexController" class="input-field avatar-list">
+              <li ng-repeat="avatar in avatars" class="input-field avatars ng-scope">
+                <input name="avatar" class="with-gap" type='radio' value="{{$index}}">
+                  <img ng-src="{{avatar}}" width="50px">
+                </input>
+              </li>
+            </ul>
+          </div>  
+          <div class="row">
+            <button id="sign-up-btn-other" ng-click="signup()" type='submit' 
+            class="col s12 signinBtn waves-effect waves-light btn btn-signin">SIGN UP</button>
+          </div>
+        </form>
+      </div>
+      <div class="signinSocial">
+        <hr>
+        <p>or sign up with</p>
+        <a href="/auth/facebook">
+          <img src="/img/icons/facebook.png" width="50px" height="50px" alt="facebook">&nbsp;&nbsp;&nbsp;
+        </a>
+        <a href="/auth/github">
+          <img src="/img/icons/github.png" width="50px" height="50px" alt="github">&nbsp;&nbsp;&nbsp;
+        </a>
+        <a href="/auth/google">
+          <img src="/img/icons/google-plus.png" width="50px" height="50px" alt="google">&nbsp;&nbsp;&nbsp;
+        </a>
+        <a href="/auth/twitter">
+          <img src="/img/icons/twitter.png" width="50px" height="50px" alt="facebook">
+        </a>
+        <br><br>
       </div>
     </div>
-    </div>
-    </div>
+    <div class="col s12 m4 l3"><p></p></div>
   </div>
 </div>
 

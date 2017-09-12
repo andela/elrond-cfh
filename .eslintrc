@@ -9,6 +9,7 @@
   },
   "globals": {
     "angular": true,
+    "swal": true,
     "$": true
   },
   "rules": {
