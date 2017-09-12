@@ -16,8 +16,15 @@
       "js": "dist/js/*",
       "fonts": "dist/fonts/*"
     },
-    "angular-ui-utils": {
-      "modules": "modules/route/route.js"
+    "exportsOverride": {
+        "bootstrap": {
+            "css": "dist/css/*",
+            "js": "dist/js/*",
+            "fonts": "dist/fonts/*"
+        },
+        "angular-ui-utils": {
+            "modules": "modules/route/route.js"
+        }
     }
   }
 }
