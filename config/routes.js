@@ -1,10 +1,16 @@
+const mongoose = require('mongoose');
 const users = require('../app/controllers/users');
-var async = require('async');
-var mongoose = require('mongoose');
-var Answer = mongoose.model('Answer');
-var Question = mongoose.model('Question');
-var authenticate = require('./middlewares/authentication');
-module.exports = function(app, passport, auth) {
+const authenticate = require('./middlewares/authentication');
+const games = require('../app/controllers/games');
+const answers = require('../app/controllers/answers');
+const questions = require('../app/controllers/questions');
+const index = require('../app/controllers/index');
+const avatars = require('../app/controllers/avatars');
+
+const Answer = mongoose.model('Answer');
+const Question = mongoose.model('Question');
+
+module.exports = (app, passport) => {
   // User Routes
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
@@ -14,12 +20,13 @@ module.exports = function(app, passport, auth) {
   // Setting up the users api
   app.post('/users', users.create);
   app.post('/users/avatars', users.avatars);
-  // ****************** JWT Signup *****************
+  // ****************** JWT authentication *****************
   app.post('/api/user/signin', users.signinJWT);
   app.post('/api/user/signup', users.signupJWT);
 
   // Donation Routes
-  app.post('/donations', users.addDonation);
+  app.post('/donations', authenticate, users.addDonation);
+  app.get('/api/donations', authenticate, users.getDonations);
 
   app.post('/users/session', passport.authenticate('local', {
     failureRedirect: '/signin',
@@ -74,25 +81,21 @@ module.exports = function(app, passport, auth) {
   app.param('userId', users.user);
 
   // Answer Routes
-  const answers = require('../app/controllers/answers');
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
-  const questions = require('../app/controllers/questions');
   app.get('/questions', questions.all);
   app.get('/questions/:questionId', questions.show);
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
 
   // Avatar Routes
-  const avatars = require('../app/controllers/avatars');
   app.get('/avatars', avatars.allJSON);
 
   // Home route
-  const index = require('../app/controllers/index');
   app.get('/play', index.play);
   app.get('/', index.render);
 
@@ -101,8 +104,9 @@ module.exports = function(app, passport, auth) {
   app.post('/api/users/sendInvites', authenticate, users.sendEmailInvite);
 
   // Game routes
-  const games = require('../app/controllers/games');
-  app.get('/api/games/:id/start', games.saveGameLogs);
+  app.post('/api/games/:id/start', authenticate, games.saveGameLog);
+  app.get('/api/games/history', authenticate, games.getUserGameLog);
+  app.get('/api/games/leaderboard', authenticate, games.getAllGameLog);
   // save questions routes
   app.post('/api/question', (req, res) => {
     if (req.body.id && req.body.text && req.body.numAnswers) {
@@ -111,7 +115,7 @@ module.exports = function(app, passport, auth) {
       question.text = req.body.text;
       question.numAnswers = req.body.numAnswers;
       question.official = 'true';
-      question.expansion = 'Base'
+      question.expansion = 'Base';
       question.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(question);
@@ -119,7 +123,7 @@ module.exports = function(app, passport, auth) {
     } else {
       return res.status(400).json('All fields are required');
     }
-  })
+  });
   // save answers routes
   app.post('/api/answer', (req, res) => {
     if (req.body.id && req.body.text) {
@@ -127,7 +131,7 @@ module.exports = function(app, passport, auth) {
       answer.id = req.body.id;
       answer.text = req.body.text;
       answer.official = true;
-      answer.expansion = 'Base'
+      answer.expansion = 'Base';
       answer.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(answer);
