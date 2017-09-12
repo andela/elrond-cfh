@@ -52,9 +52,9 @@ function Game(gameID, io) {
   this.guestNames = guestNames.slice();
 }
 
-Game.prototype.setRegion = function (region) {
+Game.prototype.setRegion = (region) => {
   this.region = region;
-}
+};
 
 Game.prototype.payload = function () {
   var players = [];
