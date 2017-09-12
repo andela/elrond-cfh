@@ -34,6 +34,7 @@ function Game(gameID, io) {
   this.questions = null;
   this.answers = null;
   this.curQuestion = null;
+  this.region = 'Africa';
   this.timeLimits = {
     stateChoosing: 21,
     stateJudging: 16,
@@ -50,6 +51,12 @@ function Game(gameID, io) {
   this.resultsTimeout = 0;
   this.guestNames = guestNames.slice();
 }
+
+Game.prototype.setRegion = (region) => {
+  console.log(region, 'region value');
+  this.region = region;
+  console.log(this.region, 'value value');
+};
 
 Game.prototype.payload = function () {
   var players = [];
@@ -76,7 +83,8 @@ Game.prototype.payload = function () {
     winnerAutopicked: this.winnerAutopicked,
     table: this.table,
     pointLimit: this.pointLimit,
-    curQuestion: this.curQuestion
+    curQuestion: this.curQuestion,
+    region: this.region
   };
 };
 
@@ -133,7 +141,6 @@ Game.prototype.prepareGame = function () {
 };
 
 Game.prototype.startGame = function () {
-  console.log(this.gameID, this.state);
   this.shuffleCards(this.questions);
   this.shuffleCards(this.answers);
   this.stateChoosing(this);
@@ -145,7 +152,6 @@ Game.prototype.sendUpdate = function () {
 
 Game.prototype.stateChoosing = function (self) {
   self.state = "waiting for players to pick";
-  // console.log(self.gameID,self.state);
   self.table = [];
   self.winningCard = -1;
   self.winningCardPlayer = -1;
@@ -180,14 +186,12 @@ Game.prototype.selectFirst = function () {
     this.winnerAutopicked = true;
     this.stateResults(this);
   } else {
-    // console.log(this.gameID,'no cards were picked!');
     this.stateChoosing(this);
   }
 };
 
 Game.prototype.stateJudging = function (self) {
   self.state = "waiting for czar to decide";
-  // console.log(self.gameID,self.state);
 
   if (self.table.length <= 1) {
     // Automatically select a card if only one card was submitted
@@ -203,7 +207,6 @@ Game.prototype.stateJudging = function (self) {
 
 Game.prototype.stateResults = function (self) {
   self.state = "winner has been chosen";
-  console.log(self.state);
   // TODO: do stuff
   var winner = -1;
   for (var i = 0; i < self.players.length; i++) {
@@ -229,7 +232,6 @@ Game.prototype.stateEndGame = function (winner) {
     gamePlayers: this.players,
     gameWinner: this.players[winner].username
   };
-  console.log(saveGameData);
   // this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
 };
 
@@ -239,7 +241,7 @@ Game.prototype.stateDissolveGame = function () {
 };
 
 Game.prototype.getQuestions = function (cb) {
-  questions.allQuestionsForGame(function (data) {
+  questions.allQuestionsForGame(this.region, function (data) {
     cb(null, data);
   });
 };
@@ -295,7 +297,6 @@ Game.prototype.pickCards = function (thisCardArray, thisPlayer) {
   if (this.state === "waiting for players to pick") {
     // Find the player's position in the players array
     var playerIndex = this._findPlayerIndexBySocket(thisPlayer);
-    console.log('player is at index', playerIndex);
     if (playerIndex !== -1) {
       // Verify that the player hasn't previously picked a card
       var previouslySubmitted = false;
