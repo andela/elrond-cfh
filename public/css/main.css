@@ -2,287 +2,297 @@
     display: inline-block;
     width: 100%;
     height: 500px;
-  }
-  
-  .header > img {
+}
+
+.header>img {
     height: 500px;
     width: 100%;
     position: absolute;
     object-fit: cover;
     z-index: -1;
     background-color: #000;
-  }
-  
-  .heading {
-      font-size: 25px;
-      font-weight: 300;
-      color: #fff;
-  }
-  
-  .header-links {
-      float: right;
-      padding: 10px;
-      z-index: 3;
-  }
-  
-  .header-links a {
-      color: #fff;
-      font-weight: bold;
-      margin: 10px;
-      white-space: nowrap;
-  }
-  
-  a.secondary-link {
-      color: #FD9800;
-  }
-  
-  .header-top {
-      width: 100%;
-      padding: 40px;
-  }
-  
-  .header-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 0;
-      width: 100%;
-      height: 500px;
-      opacity: .4;
-      z-index: 1;
-      background-color: #101010;
-  }
-  
-  .header-body {
-      text-align: center;
-      font-size: 30px;
-      color: #fff;
-  }
-  
-  .btn-primary {
-      background-color: #FD9800;
-      border-color: #FD9800;
-  }
-  
-  .btn-primary:hover {
-      background-color: #ea8f06;
-      border-color: #FD9800;
-  }
-  
-  .btn {
-      cursor: pointer;
-      font-size: 15px;
-  }
+}
+
+.heading {
+    font-size: 25px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.header-links {
+    float: right;
+    padding: 10px;
+    z-index: 3;
+}
+
+.header-links a {
+    color: #fff;
+    font-weight: bold;
+    margin: 10px;
+    white-space: nowrap;
+}
+
+a.secondary-link {
+    color: #FD9800;
+}
+
+.header-top {
+    width: 100%;
+    padding: 40px;
+}
+
+.header-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 500px;
+    opacity: .4;
+    z-index: 1;
+    background-color: #101010;
+}
+
+.header-body {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+.modelMsg {
+    color: black;
+    font-size: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.btn-primary {
+    background-color: #FD9800;
+    border-color: #FD9800;
+}
+
+.btn-primary:hover {
+    background-color: #ea8f06;
+    border-color: #FD9800;
+}
+
+.btn {
+    cursor: pointer;
+    font-size: 15px;
+}
+
 .btn-in {
     cursor: pointer;
     width: inherit;
     font-size: 15px;
 }
-  .btn-secondary {
-      background-color: rgba(0, 0, 0, 0.48);
-      border-color: #FD9800;
-      color: #FD9800;
-  }
-  
-  .btn-secondary:hover {
-      color: #fd9800;
-      background-color: rgba(0, 0, 0, 0.45);
-      border-color: #000;
-  }
-  
-  .section-heading {
-      font-weight: bold;
-      font-size: 50px;
-      text-align: center;
-      padding-top: 50px;
-  }
-  
-  
-  .how-to-play > .card {
-      height: 250px;
-      display: inline-block;
-      box-shadow: 1px 2px 14px 0px #a7a7a7;
-      border: 1px solid grey;
-  }
-  
-  .how-to-play {
-      text-align: center;
-  }
-  
-  .how-to-play > .section-heading {
-      text-align: center;
-      display: block;
-  }
-  
-  .charity {
-      background-color: #130A33;
-      color: #fff;
-      min-height: 200px;
-  }
-  
-  .sub-text-bolder {
-      text-align: center;
-      font-size: 25px;
-      margin-bottom: 30px;
-  }
-  
-  .charity-card {
-      text-align: center;
-      color: #000;
-  }
-  
-  .charity-card > div {
-      font-size: 20px;
-      margin: 5px 20px;
-      margin-bottom: 25px;
-  }
-  
-  .charity-card .btn {
-      min-width: 75%;
-  }
-  
-  .charity-card-container {
-      padding: 30px;
-  }
-  
-  
-  .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(19, 10, 51, 0.69);
-      z-index: -1;
-      top: 0px;
-      left: 0px;
-  }
-  
-  body {
-      font-family: 'Delius', cursive;
-  }
-  
-  .how-to-play .card {
-      height: 250px;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.22), 0 2px 10px 0 rgba(0, 0, 0, 0.34);
-      margin-top: 40px;
-  }
-  
-  .how-to-play .card {
-      z-index: 1;
-      text-align: center;
-  }
-  
-  .make-a-wish {
-      font-size: 25px;
-      padding: 20px;
-      margin-left: 60px;
-      display: inline-block;
-      text-align: center;
-      color: #fd9800;
-  }
-  
-  .make-a-wish img {
-      display: inline-block;
-      max-width: 100%;
-  }
-  
-  .make-a-wish .text {
-      font-family: 'Montserrat', sans-serif;
-  }
-  
-  .team-member-container {
-      display: inline-block;
-      margin: 10px;
-  }
-  
-  .the-team-thumbs {
-      text-align: center;
-      margin-bottom: 50px;
-  }
-  
-  .footer {
-      background-color: #130A33;
-      color: #fff;
-      min-height: 100px;
-      font-size: 16px;
-      font-family: 'Montserrat', sans-serif;
-  }
-  
-  .btn:focus {
-      background-color: #342d44;
-      color: #fd9800;
-  }
-  
-  .how-to-play .card > img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 5px;
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      z-index: -1;
-  }
-  
-  .how-to-play .card > .overlay {
-      border-radius: 3px;
-  }
-  
-  .header > .overlay {
-      height: 500px;
-  }
-  
-  .how-to-play > .container {padding: 50px;width: 100%;}
-  
-  .card p {
-      font-size: 20px;
-      padding: 30px;
-      color: #fff;
-      display: inline-block;
-      height: 70%;
-      margin: 0px;
-      position: relative;
-      top: -40px;
-  }
-  
-  .how-to-play-number {
-      height: 25%;
-      position: relative;
-      width: 70px;
-      top: -40px;
-      font-size: 30px;
-      background-color: #fff;
-      border-radius: 50%;
-      margin: 0 auto;
-      text-align: center;
-      border: 2px solid #2b2737;
-      color: #fd9800;
-      padding: 5px;
-  }
-  
-  .footer-links {
-      margin-top: 30px;
-      text-align: center;
-  }
-  
-  .footer-links > a {
-      margin: 10px;
-  }
-  
-  a:hover {
-      text-decoration: underline;
-      color: #fff;
-  }
-  
-  .btn:hover {
-      text-decoration: none;
-  }
+
+.btn-secondary {
+    background-color: rgba(0, 0, 0, 0.48);
+    border-color: #FD9800;
+    color: #FD9800;
+}
+
+.btn-secondary:hover {
+    color: #fd9800;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-color: #000;
+}
+
+.section-heading {
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.how-to-play>.card {
+    height: 250px;
+    display: inline-block;
+    box-shadow: 1px 2px 14px 0px #a7a7a7;
+    border: 1px solid grey;
+}
+
+.how-to-play {
+    text-align: center;
+}
+
+.how-to-play>.section-heading {
+    text-align: center;
+    display: block;
+}
+
+.charity {
+    background-color: #130A33;
+    color: #fff;
+    min-height: 200px;
+}
+
+.sub-text-bolder {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.charity-card {
+    text-align: center;
+    color: #000;
+}
+
+.charity-card>div {
+    font-size: 20px;
+    margin: 5px 20px;
+    margin-bottom: 25px;
+}
+
+.charity-card .btn {
+    min-width: 75%;
+}
+
+.charity-card-container {
+    padding: 30px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(19, 10, 51, 0.69);
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+}
+
+body {
+    font-family: 'Delius', cursive;
+}
+
+.how-to-play .card {
+    height: 250px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.22), 0 2px 10px 0 rgba(0, 0, 0, 0.34);
+    margin-top: 40px;
+}
+
+.how-to-play .card {
+    z-index: 1;
+    text-align: center;
+}
+
+.make-a-wish {
+    font-size: 25px;
+    padding: 20px;
+    margin-left: 60px;
+    display: inline-block;
+    text-align: center;
+    color: #fd9800;
+}
+
+.make-a-wish img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.make-a-wish .text {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.team-member-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.the-team-thumbs {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.footer {
+    background-color: #130A33;
+    color: #fff;
+    min-height: 100px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:focus {
+    background-color: #342d44;
+    color: #fd9800;
+}
+
+.how-to-play .card>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.how-to-play .card>.overlay {
+    border-radius: 3px;
+}
+
+.header>.overlay {
+    height: 500px;
+}
+
+.how-to-play>.container {
+    padding: 50px;
+    width: 100%;
+}
+
+.card p {
+    font-size: 20px;
+    padding: 30px;
+    color: #fff;
+    display: inline-block;
+    height: 70%;
+    margin: 0px;
+    position: relative;
+    top: -40px;
+}
+
+.how-to-play-number {
+    height: 25%;
+    position: relative;
+    width: 70px;
+    top: -40px;
+    font-size: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid #2b2737;
+    color: #fd9800;
+    padding: 5px;
+}
+
+.footer-links {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.footer-links>a {
+    margin: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
 
 .sub-text-default {
     margin-bottom: 20px;
 }
 
-.team-member-container > img {
+.team-member-container>img {
     height: 100px;
     width: 100px;
     object-fit: cover;
@@ -299,6 +309,7 @@
 
 .modal-content {
     color: #000;
+<<<<<<< HEAD
     text-align: left;
     font-size: 20px;
 }
@@ -315,3 +326,32 @@
     color: #fff;
     background-color: rgba(244, 67, 54, 0.83);
 }
+=======
+}
+
+.card u {
+    position: relative;
+    content: '';
+    display: inline-block;
+    width: 25%;
+    text-decoration: none;
+    height: 1em;
+    border-bottom: 0.125em solid black;
+    margin-bottom: -0.125em;
+}
+
+.card u .small {
+    width: 25%;
+}
+
+.card u .big {
+    width: 75%;
+}
+
+.card u .end:after {
+    position: absolute;
+    right: -0.357em;
+    display: inline-block;
+    content: '.';
+}
+>>>>>>> 1db95209c73763d178e2c72b69131b3bd68815c3
