@@ -21,7 +21,7 @@ describe("Game Server",function(){
       done();
     };
     client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false, region: 'Africa'});
+      client1.emit('joinGame', { userID:'unauthenticated', room: '', createPrivate: false, region: 'Africa' });
       setTimeout(disconnect,200);
     });
   });

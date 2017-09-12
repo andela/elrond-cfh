@@ -5,11 +5,11 @@ angular.module('mean.system')
       $scope.playerRegion = 'Africa';
       $scope.gameType = 'guest';
 
-      $scope.setGameType = function (gameType) {
+      $scope.setGameType = (gameType) => {
         $scope.gameType = gameType;
       };
 
-      $scope.setPlayerRegion = function () {
+      $scope.setPlayerRegion = () => {
         const region = $scope.playerRegion;
         localStorage.setItem('region', region);
         if ($scope.gameType === 'guest') {
