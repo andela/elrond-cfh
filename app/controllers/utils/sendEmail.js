@@ -28,4 +28,3 @@ const sendEmailInvite = function ( useremail, url ) {
   });
 };
 module.exports = sendEmailInvite;
-
