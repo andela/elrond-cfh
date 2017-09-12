@@ -309,7 +309,6 @@ a:hover {
 
 .modal-content {
     color: #000;
-<<<<<<< HEAD
     text-align: left;
     font-size: 20px;
 }
@@ -326,7 +325,6 @@ a:hover {
     color: #fff;
     background-color: rgba(244, 67, 54, 0.83);
 }
-=======
 }
 
 .card u {
@@ -354,4 +352,3 @@ a:hover {
     display: inline-block;
     content: '.';
 }
->>>>>>> 1db95209c73763d178e2c72b69131b3bd68815c3

@@ -1,3 +1,4 @@
+
 var Game = require('./game');
 var Player = require('./player');
 require("console-stamp")(console, "m/dd HH:MM:ss");
@@ -41,10 +42,6 @@ module.exports = function(io) {
       if (!allPlayers[socket.id]) {
         joinGame(socket,data);
       }
-    });
-
-    socket.on('czarCardSelected', () => {
-      allGames[socket.gameID].startNext(allGames[socket.gameID]);
     });
 
     socket.on('joinNewGame', function(data) {
@@ -244,5 +241,4 @@ module.exports = function(io) {
     }
     socket.leave(socket.gameID);
   };
-
 };
