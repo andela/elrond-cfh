@@ -130,11 +130,9 @@ angular.module('mean.system')
             $scope.startGame = () => {
                 // check Player length
                 const $ = $scope.$;
-                if (game.players.length < game.playerMinLimit ||
-                    game.players.length > game.playerMaxLimit) {
+                if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
                 } else {
-                    // $('.modal').modal('#modal2');
                     game.startGame();
                 }
             };
