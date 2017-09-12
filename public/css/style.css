@@ -930,11 +930,18 @@ li {
     margin: 30px auto; }
   .row {
     margin: 0 0 0 4px; } }  
-  .signinForm, .signupForm {
+  .signupForm {
     background: url(../img/bg2.jpg) no-repeat center center / cover !important;
     height: 100%;
     width: 100%;
     /* position: fixed; */
+  }
+
+  .signinForm{
+    background: url(../img/bg2.jpg) no-repeat center center / cover !important;
+    height: 100%;
+    width: 100%;
+    position: fixed;
   }
   
   .signinOverall {
