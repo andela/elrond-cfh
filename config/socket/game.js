@@ -34,7 +34,7 @@ function Game(gameID, io) {
   this.questions = null;
   this.answers = null;
   this.curQuestion = null;
-  this.region = '';
+  this.region = 'Africa';
   this.timeLimits = {
     stateChoosing: 21,
     stateJudging: 16,
@@ -53,7 +53,9 @@ function Game(gameID, io) {
 }
 
 Game.prototype.setRegion = (region) => {
+  console.log(region, 'region value');
   this.region = region;
+  console.log(this.region, 'value value');
 };
 
 Game.prototype.payload = function () {

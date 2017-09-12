@@ -77,6 +77,7 @@ module.exports = function(io) {
   });
 
   var joinGame = function(socket,data) {
+    console.log('data region', data.region);
     var player = new Player(socket);
     data = data || {};
     player.userID = data.userID || 'unauthenticated';
@@ -154,7 +155,7 @@ module.exports = function(io) {
   };
 
   const fireGame = (player, socket, createNew = false) => {
-    let game;
+    var game;
     if (gamesNeedingPlayers.length <= 0 || createNew) {
       gameID += 1;
       const gameIDStr = gameID.toString();
@@ -163,7 +164,9 @@ module.exports = function(io) {
       game.players.push(player);
       allGames[gameID] = game;
       gamesNeedingPlayers.push(game);
-      game.setRegion(player.region);
+      // game.setRegion(player.region);
+      game.region = player.region;
+      console.log('game region here', game.region);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       console.log(socket.id, 'has joined newly created game', game.gameID);
@@ -172,6 +175,8 @@ module.exports = function(io) {
       game.sendUpdate();
     } else {
       game = gamesNeedingPlayers[0];
+      console.log('player region', player.region);
+      console.log('game region', game.region);
       if (game.region !== player.region) {
         if (gamesNeedingPlayers.length > 1) {
           game = gamesNeedingPlayers[1];
