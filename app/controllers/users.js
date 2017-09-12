@@ -336,4 +336,3 @@ exports.allUsers = (req, res) => {
       });
   }
 };
-

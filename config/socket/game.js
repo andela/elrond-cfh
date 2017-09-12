@@ -27,7 +27,7 @@ function Game(gameID, io) {
   this.winnerAutopicked = false;
   this.czar = -1; // Index in this.players
   this.playerMinLimit = 3;
-  this.playerMaxLimit = 12;
+  this.playerMaxLimit = 6;
   this.pointLimit = 5;
   this.state = "awaiting players";
   this.round = 0;
@@ -136,19 +136,7 @@ Game.prototype.startGame = function () {
   console.log(this.gameID, this.state);
   this.shuffleCards(this.questions);
   this.shuffleCards(this.answers);
-  this.nextCzar(this);
-  this.sendUpdate();
-};
-
-Game.prototype.nextCzar = (self) => {
-  self.state = 'czar pick card';
-  self.table = [];
-  if (self.czar >= self.players.length - 1) {
-    self.czar = 0;
-  } else {
-    self.czar += 1;
-  }
-  self.sendUpdate();
+  this.stateChoosing(this);
 };
 
 Game.prototype.sendUpdate = function () {
@@ -171,11 +159,11 @@ Game.prototype.stateChoosing = function (self) {
   self.round++;
   self.dealAnswers();
   // Rotate card czar
-  // if (self.czar >= self.players.length - 1) {
-  //   self.czar = 0;
-  // } else {
-  //   self.czar++;
-  // }
+  if (self.czar >= self.players.length - 1) {
+    self.czar = 0;
+  } else {
+    self.czar++;
+  }
   self.sendUpdate();
 
   self.choosingTimeout = setTimeout(function () {
@@ -228,7 +216,7 @@ Game.prototype.stateResults = function (self) {
     if (winner !== -1) {
       self.stateEndGame(winner);
     } else {
-      self.nextCzar(self);
+      self.stateChoosing(self);
     }
   }, self.timeLimits.stateResults * 1000);
 };
@@ -236,15 +224,13 @@ Game.prototype.stateResults = function (self) {
 Game.prototype.stateEndGame = function (winner) {
   this.state = "game ended";
   this.gameWinner = winner;
-  const gamePlayers = this.players.map(player => player.username);
   this.sendUpdate();
   const saveGameData = {
-    gamePlayers,
-    gameRound: this.round,
-    gameID: this.gameID,
+    gamePlayers: this.players,
     gameWinner: this.players[winner].username
   };
-  this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
+  console.log(saveGameData);
+  // this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
 };
 
 Game.prototype.stateDissolveGame = function () {
@@ -442,14 +428,6 @@ Game.prototype.killGame = function () {
   clearTimeout(this.resultsTimeout);
   clearTimeout(this.choosingTimeout);
   clearTimeout(this.judgingTimeout);
-};
-
-Game.prototype.startNext = (self) => {
-  if (self.state === 'czar pick card') {
-    self.stateChoosing(self);
-  } else if (self.state === 'czar left game') {
-    self.nextCzar(self);
-  }
 };
 
 module.exports = Game;

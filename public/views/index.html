@@ -38,20 +38,7 @@
           <a class="btn btn-secondary" href="#!/signup">Sign up</a>
         </span>
         <span class="header-btn-container">
-          <button data-target="modal1" class="btn btn-primary modal-trigger">Play as Guest</button>
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <p>Select your region</p>
-              <select>
-                <option>Africa</option>
-                <option>Europe</option>
-              </select>
-            </div>
-            <div class="modal-footer" style="padding:0px 20px">
-              <a href= "/#!/app" class="btn btn-primary modal-action modal-close">Continue</a>
-              <button class="btn btn-danger left modal-action modal-close">Cancel</button>
-            </div>
-          </div>
+          <button data-target="modal1" ng-click="setGameType('guest')" class="btn btn-primary modal-trigger">Play as Guest</button>
         </span>
       </div>
     </div>
@@ -79,11 +66,12 @@
       </div>
       <div class="header-action-btn-container">
           <span class="header-btn-container">
-            <a class="btn btn-in btn-secondary" href="/play">Play Game with Strangers </a>
+            <button data-target="modal1" ng-click="setGameType('strangers')" class="btn btn-in btn-secondary modal-trigger">Play Game with Strangers </button>
           </span>
-        <span class="header-btn-container">
-              <a class="btn btn-in btn-primary" href="/play?custom">Play Game with Friends</a>
-            </span>
+          <span class="header-btn-container">
+            <button data-target="modal1" ng-click="setGameType('friends')" class="btn btn-in btn-primary modal-trigger">Play Game with Friends</button>
+          </span>
+          
       </div>
     </div>
   </section>

@@ -1,6 +1,6 @@
 angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
   .config(['$routeProvider',
-      function($routeProvider) {
+      function ($routeProvider) {
           $routeProvider
             .when('/', {
             templateUrl: 'views/index.html'
