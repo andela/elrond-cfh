@@ -133,6 +133,7 @@ angular.module('mean.system')
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
                 } else {
+                    // $('.modal').modal('#modal2');
                     game.startGame();
                 }
             };
@@ -251,7 +252,8 @@ angular.module('mean.system')
             } else {
                 game.joinGame(null, null, null, localStorage.getItem('region'));
             }
-          // player game-log logic
+
+            // player game-log logic
           $scope.showOptions = !!window.localStorage.token;
           dashboard.getGameLog()
             .then((response) => {
