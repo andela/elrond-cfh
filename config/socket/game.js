@@ -54,7 +54,6 @@ function Game(gameID, io) {
 
 Game.prototype.setRegion = function (region) {
   this.region = region;
-  console.log('game region set to ', this.region);
 }
 
 Game.prototype.payload = function () {
@@ -140,7 +139,6 @@ Game.prototype.prepareGame = function () {
 };
 
 Game.prototype.startGame = function () {
-  console.log(this.gameID, this.state);
   this.shuffleCards(this.questions);
   this.shuffleCards(this.answers);
   this.stateChoosing(this);
@@ -152,7 +150,6 @@ Game.prototype.sendUpdate = function () {
 
 Game.prototype.stateChoosing = function (self) {
   self.state = "waiting for players to pick";
-  // console.log(self.gameID,self.state);
   self.table = [];
   self.winningCard = -1;
   self.winningCardPlayer = -1;
@@ -187,14 +184,12 @@ Game.prototype.selectFirst = function () {
     this.winnerAutopicked = true;
     this.stateResults(this);
   } else {
-    // console.log(this.gameID,'no cards were picked!');
     this.stateChoosing(this);
   }
 };
 
 Game.prototype.stateJudging = function (self) {
   self.state = "waiting for czar to decide";
-  // console.log(self.gameID,self.state);
 
   if (self.table.length <= 1) {
     // Automatically select a card if only one card was submitted
@@ -210,7 +205,6 @@ Game.prototype.stateJudging = function (self) {
 
 Game.prototype.stateResults = function (self) {
   self.state = "winner has been chosen";
-  console.log(self.state);
   // TODO: do stuff
   var winner = -1;
   for (var i = 0; i < self.players.length; i++) {
@@ -236,7 +230,6 @@ Game.prototype.stateEndGame = function (winner) {
     gamePlayers: this.players,
     gameWinner: this.players[winner].username
   };
-  console.log(saveGameData);
   // this.io.sockets.in(this.gameID).emit('saveGame', saveGameData);
 };
 
@@ -302,7 +295,6 @@ Game.prototype.pickCards = function (thisCardArray, thisPlayer) {
   if (this.state === "waiting for players to pick") {
     // Find the player's position in the players array
     var playerIndex = this._findPlayerIndexBySocket(thisPlayer);
-    console.log('player is at index', playerIndex);
     if (playerIndex !== -1) {
       // Verify that the player hasn't previously picked a card
       var previouslySubmitted = false;

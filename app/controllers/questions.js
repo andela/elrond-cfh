@@ -49,7 +49,6 @@ exports.allQuestionsForGame = (region, cb) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('Questions here: ', questions);
       cb(questions);
     }
   });
