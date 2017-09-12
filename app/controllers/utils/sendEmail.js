@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 /**
- * This Module uses nodemailer transporter to send 
+ * This Module uses nodemailer transporter to send
  * emails to users.
  */
 const transporter = nodemailer.createTransport({
@@ -28,4 +28,3 @@ const sendEmailInvite = function ( useremail, url ) {
   });
 };
 module.exports = sendEmailInvite;
-
