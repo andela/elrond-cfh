@@ -4,6 +4,7 @@
     <span class="heading">Cards for Humanity</span>
     <span class="header-links">
       <a href="/">Home</a>
+      <a href="#!/signin" class="secondary-link">Sign In</a>
     </span>
   </div>
   
@@ -54,19 +55,19 @@
           </div>
         </form>
       </div>
-      <div class="signinSocial" ng-controller="SocialLoginController">
+      <div class="signinSocial">
         <hr>
         <p>or sign up with</p>
-        <a ng-click="authenticate('facebook')">
+        <a href="/auth/facebook" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/facebook.png" width="50px" height="50px" alt="facebook">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/github">
+        <a href="/auth/github" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/github.png" width="50px" height="50px" alt="github">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/google">
+        <a href="/auth/google" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/google-plus.png" width="50px" height="50px" alt="google">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/twitter">
+        <a href="/auth/twitter" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/twitter.png" width="50px" height="50px" alt="facebook">
         </a>
         <br><br>
