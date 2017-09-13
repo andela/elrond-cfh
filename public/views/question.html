@@ -18,7 +18,7 @@
                     Start Game
                 </div>
             </div>
-            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">
                 <div id='start-game-button'>
                     Invite Players
                 </div>
@@ -53,7 +53,7 @@
         <p>Sorry! You require a minimum of three(3) players to play this game</p>
     </div>
     <div class="modal-footer" style="padding:0px 20px">
-        <button data-target="modal-invite" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()">Invite a Player</button>&nbsp
+        <button data-target="modal-invite" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">Invite a Player</button>&nbsp
         <button class="btn btn-danger left modal-action modal-close">Cancel</button>
     </div>
 </div>
