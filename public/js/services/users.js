@@ -1,6 +1,7 @@
 angular.module('mean.system')
   .factory('Users', ['$http', '$window', ($http) => {
-    const invitesSent = [];
+    const invitesSent =[];
+    
     const signup = (name, email, password) => new Promise((resolve, reject) => {
       const newuser = {
         name,
@@ -29,7 +30,6 @@ angular.module('mean.system')
           reject(error);
         });
     });
-
     const searchedUsers = userName => new Promise((resolve, reject) => {
       $http.get(`api/users/search?name=${userName}`,
         { headers: { authorization: window.localStorage.token } })

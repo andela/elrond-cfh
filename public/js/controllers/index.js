@@ -2,10 +2,27 @@ angular.module('mean.system')
   .controller('IndexController', ['$scope', '$window', 'Global', '$location', 'socket', 'game', 'AvatarService', 'Users',
     function ($scope, $window, Global, $location, socket, game, AvatarService, Users) {
       $scope.global = Global;
+      $scope.playerRegion = 'Africa';
+      $scope.gameType = 'guest';
 
-      $scope.playAsGuest = function () {
-        game.joinGame();
-        $location.path('/app');
+      $scope.setGameType = (gameType) => {
+        $scope.gameType = gameType;
+      };
+
+      $scope.setPlayerRegion = () => {
+        const region = $scope.playerRegion;
+        localStorage.setItem('region', region);
+        if ($scope.gameType === 'guest') {
+          $location.path('/app');
+        }
+
+        if ($scope.gameType === 'strangers') {
+          location.href = '/play';
+        }
+
+        if ($scope.gameType === 'friends') {
+          location.href = '/play?custom';
+        }
       };
 
       $scope.showError = function () {

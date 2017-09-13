@@ -5,7 +5,7 @@ script.
       s.parentNode.insertBefore(g,s)}(document,'script'));
 script(type='text/javascript', src='/lib/jquery/jquery.js')
 script(type='text/javascript', src='/lib/underscore/underscore-min.js')
-// Bootstrap
+
 // Materializecss
 script(type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
 
@@ -17,7 +17,6 @@ script(type='text/javascript', src='https://code.angularjs.org/1.1.5/angular-coo
 //Angular UI
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
 script(type='text/javascript', src='/lib/angular-ui-utils/modules/route.js')
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 
 //Application Init
 script(type='text/javascript', src='/js/init.js')
@@ -30,16 +29,18 @@ script(type='text/javascript', src='/js/services/global.js')
 script(type='text/javascript', src='/js/services/socket.js')
 script(type='text/javascript', src='/js/services/game.js')
 script(type='text/javascript', src='/js/services/users.js')
-
+script(type='text/javascript', src='/js/services/dashboard.js')
 
 //Application Controllers
 script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/controllers/game.js')
+script(type='text/javascript', src='/js/controllers/socialLogin.js')
 script(type='text/javascript', src='/js/init.js')
 
 //Socket.io Client Library
 script(type='text/javascript', src='/socket.io/socket.io.js')
 
-//Livereload script rendered
-//script(type='text/javascript', src='http://localhost:35729/livereload.js')
+// Satellizer
+// script(src="satellizer.js")
+script(src="https://cdn.jsdelivr.net/satellizer/0.15.5/satellizer.min.js")

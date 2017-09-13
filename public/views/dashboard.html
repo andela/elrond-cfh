@@ -1,0 +1,133 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    //Twitter buttons
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+  });
+</script>
+
+<script></script>
+
+<div ng-hide="showOptions" landing ng-controller="GameController">
+    <section style="height: 100px;" class="header">
+        <img src="img/header-img.jpg" style="height: 100%"/>
+        <div class="overlay" style="height: 100%"></div>
+        <div class="header-top">
+            <span class="heading">Cards for Humanity</span>
+            <span class="header-links">
+          <a href="/">Home</a>
+          <a href="#!dashboard">Dashboard</a>
+          <a href="how-to-play">How to play</a>
+          <a href="team">Team</a>
+          <a href="charity">Charity</a>
+          <a ng-click="logout()" class="secondary-link">Logout</a>
+        </span>
+        </div>
+    </section>
+    <section>
+        <div class="row header-body">
+            <div class="col s10 offset-s1">
+                <ul id="tabs-swipe-demo" class="tabs white">
+                    <li class="tab col s3"><a class="active tab-header-text" href="#test-swipe-1">Game Log</a></li>
+                    <li class="tab col s3"><a class="tab-header-text" href="#test-swipe-2">Leader Board</a></li>
+                    <li class="tab col s3"><a class="tab-header-text" href="#test-swipe-3">Donations</a></li>
+                </ul>
+                <div id="test-swipe-1" class="tabs-body col s12">
+                    <div class="table-div">
+                        <table class="bordered centered leader-board">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Number of rounds</th>
+                                <th>Players</th>
+                                <th>Winner</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr ng-if="gameHistories.length === 0">
+                                <td colspan="4">You have no saved game yet</td>
+                            </tr>
+                            <tr ng-repeat= "gameHistory in gameHistories">
+                                <td>{{ gameHistory.createdAt }}</td>
+                                <td>{{gameHistory.gameRound}}</td>
+                                <td>{{gameHistory.gamePlayers.join(', ')}}</td>
+                                <td>{{gameHistory.gameWinner}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="test-swipe-2" class="col s12 tabs-body">
+                    <div class="table-div">
+                        <table class="bordered centered leader-board">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>Number of wins</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr ng-if="leaderboard.length === 0">
+                                <td colspan="4">No game leader board yet</td>
+                            </tr>
+                            <tr ng-repeat= "player in leaderboard | orderBy:'-numberOfWins'">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{player.username}}</td>
+                                <td>{{player.numberOfWins}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="test-swipe-3" class="col s12 tabs-body">
+                    <div class="table-div">
+                        <table class="bordered centered leader-board">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Donation Id</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr ng-if="userDonations.length === 0">
+                                <td colspan="4">You haven't made any donation till now</td>
+                            </tr>
+                            <tr ng-repeat= "donation in userDonations">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{donation.crowdrise_donation_id}}</td>
+                                <td>{{donation.amount}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<section class="footer">
+    <div class="section">
+        <div class="row" style="padding: 3%">
+            <div class="col l12">
+                This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
+            </div>
+            <div class="col l12 footer-links">
+                <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
+                |
+                <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<script>
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
