@@ -23,7 +23,8 @@ hashed_password: String,
 facebook: {},
 twitter: {},
 github: {},
-google: {}
+google: {},
+friends:[]
 });
 
 /**

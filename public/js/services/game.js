@@ -242,7 +242,6 @@ angular.module('mean.system')
     game.startNext = () => {
       socket.emit('czarCardSelected');
     };
-
     decrementTime();
 
     return game;

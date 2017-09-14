@@ -102,6 +102,8 @@ module.exports = (app, passport) => {
   // Search Routes
   app.get('/api/users/search', authenticate, users.searchedUsers);
   app.post('/api/users/sendInvites', authenticate, users.sendEmailInvite);
+  app.post('/api/users/addFriend', authenticate, users.addAsFriend);
+  app.post('/api/users/getFriends', authenticate, users.getFriends);
   // Game routes
   app.post('/api/games/:id/start', authenticate, games.saveGameLog);
   app.get('/api/games/history', authenticate, games.getUserGameLog);
