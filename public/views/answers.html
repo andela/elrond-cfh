@@ -2,11 +2,11 @@
   <div id="social-bar-container">
     <player></player>
   </div>
-  <div id="cards" class='hand'>
+  <div id="cards" class='hand card-1'>
 
     <span ng-show="winnerPicked()"></span>
 
-    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()"
+    <div ng-style="{'cursor':'pointer'}" class="card smallest card-1" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()"
     ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
         <span ng-bind-html-unsafe="card.text"></span>
         <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
@@ -14,7 +14,7 @@
     </div>
 
     <span ng-repeat="answer in game.table">
-        <div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
+        <div class="card smallest card-1" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
         ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
             <span ng-bind-html-unsafe="card.text"></span>
             <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<div id="info-container" ng-show="game.state === 'awaiting players'">
+<div id="info-container" class="card-1" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
     <div id="lobby-how-to-play">How To Play</div>
     <ol id="oh-el">
@@ -37,7 +37,7 @@
     </ol>
   </div>
 </div>
-<div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
+<div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'" class="card-1">
   <div id="inner-info-exit">
     <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
       <h2>What would you like to do now?</h2>
@@ -69,7 +69,7 @@
       <!-- <script type="text/javascript" src="https://apisandbox.crowdrise.com/widgets/donate/project/36715/?callback=userDonationCb"></script> -->
   </div>
 </div>
-<div id="czar-blank-container" ng-show="isCzar() && game.table.length===0 && game.state !== 'game dissolved' && game.state !== 'awaiting players'">
+<div id="czar-blank-container" class="card-1" ng-show="isCzar() && game.table.length===0 && game.state !== 'game dissolved' && game.state !== 'awaiting players'">
   <div id="czar-blank-inner">
     You are the Card Czar. <br>
     <span id="smaller-text">Players are choosing their answers. Prepare to select a winner.</span>

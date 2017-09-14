@@ -1,4 +1,4 @@
-<div id="player-container" ng-repeat="player in game.players" style="background-color:{{colors[player.color]}}">
+<div id="player-container" class="card-1" ng-repeat="player in game.players" style="border-right:4px solid {{colors[player.color]}}">
   <div id ="above-czar-container">
     <div id="avatar_">
       <span ng-show="isPremium($index)">
