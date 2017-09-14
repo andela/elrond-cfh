@@ -101,6 +101,10 @@ a.secondary-link {
     border-color: #000;
 }
 
+.btn-secondary-width{
+    width: 172px;
+}
+
 .section-heading {
     font-weight: bold;
     font-size: 50px;
@@ -145,6 +149,7 @@ a.secondary-link {
     font-size: 20px;
     margin: 5px 20px;
     margin-bottom: 25px;
+    width: 100%;
 }
 
 .charity-card .btn {
@@ -171,6 +176,7 @@ body {
 
 .how-to-play .card {
     height: 250px;
+    width: 100%;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.22), 0 2px 10px 0 rgba(0, 0, 0, 0.34);
     margin-top: 40px;
 }
