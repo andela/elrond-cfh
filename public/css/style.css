@@ -949,6 +949,7 @@ li {
   }
   .signupOverall {
     margin-top: 0;
+    margin-bottom: 50px;
   }
   .signinWrapper, .signupWrapper {
     background-color: #ffffff;
@@ -979,7 +980,7 @@ li {
   .signupWrapper h4{
     text-transform: capitalize;
     text-align: center;
-    font-size: 19px;
+    font-size: 15px;
     padding: 0;
     margin: 5px 0 0 0;
   }
@@ -989,7 +990,6 @@ li {
   }
   .signinSocial, .signupSocial {
     padding: 0px 50px;
-
     text-align: center;
   }
   .signinSocial hr{
@@ -1024,6 +1024,18 @@ li {
     color: darkorange !important;
     font-weight: bold;
   }
+.leader-board {
+  margin-top: 10px;
+}
+.leader-board tr td {
+  border-left: solid 2px #e0e0e0;
+  border-right: solid 2px #e0e0e0;
+}
+.leader-board tr th {
+  border-top: solid 2px #e0e0e0;
+  border-left: solid 2px #e0e0e0;
+  border-right: solid 2px #e0e0e0;
+}
 @media (min-width: 450px) {
   .table-div {
     height: 500px;

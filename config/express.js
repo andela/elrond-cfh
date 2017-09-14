@@ -42,17 +42,18 @@ module.exports = function(app, passport, mongoose) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
 
-        //express/mongo session storage
-        // app.use(express.session({
-        //     secret: 'MEAN',
-        //     store: new mongoStore({
-        //         url: config.db,
-        //         collection: 'sessions',
-        //         mongoose_connection: mongoose.connection
-        //     })
-        // }));
+        // express/mongo session storage
+        app.use(express.session({
+            secret: 'MEAN',
+            store: new mongoStore({
+                url: config.db,
+                collection: 'sessions',
+                mongoose_connection: mongoose.connection
+            })
+        }));
+
         //connect flash for flash messages
-        // app.use(flash());
+        app.use(flash());
 
         //dynamic helpers
         app.use(helpers(config.app.name));
