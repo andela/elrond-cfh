@@ -6,8 +6,9 @@ var express = require('express'),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
     config = require('./config');
+var flash = require('connect-flash');
 
-module.exports = function(app, passport, mongoose) {
+  module.exports = function(app, passport, mongoose) {
     app.set('showStackError', true);
 
     //Should be placed before express.static

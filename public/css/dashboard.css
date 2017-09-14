@@ -17,6 +17,17 @@
 .dashboard-overlay {
     height: 800px !important;
 }
+@media (min-width: 1300px) {
+    .dashboard-image {
+        height: 1300px !important;
+    }
+    .dashboard-overlay {
+        height: 1300px !important;
+    }
+    .table-div {
+        height: 850px;
+    }
+}
 @media (max-width: 700px) {
     .dashboard-image {
         height: 1000px !important;
@@ -40,7 +51,8 @@
     }
 }
 .tab-wrapper {
-    margin-top: 15px;
+    margin-top: 0 !important;
+    margin-bottom: 50px;
 }
 .tabs-body {
     opacity: 0.8;
@@ -83,4 +95,7 @@
     text-align: center;
     font-size: 30px;
     color: #fff;
+}
+.dashboard-nav{
+    background-color: unset;
 }
