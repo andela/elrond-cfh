@@ -10,6 +10,19 @@
 <script></script>
 
 <div landing ng-controller="IndexController">
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <p>Select your region</p>
+      <select ng-model="playerRegion" required>
+        <option value="Africa">Africa</option>
+        <option value="Europe">Europe</option>
+      </select>
+    </div>
+    <div class="modal-footer" style="padding:0px 20px">
+      <button class="btn btn-primary modal-action modal-close" ng-click="setPlayerRegion()">Continue</a>
+      <button class="btn btn-danger left modal-action modal-close">Cancel</button>
+    </div>
+  </div>
   <section ng-show="showOptions" class="header">
     <img src="img/header-img.jpg"/>
     <div class="overlay"></div>
