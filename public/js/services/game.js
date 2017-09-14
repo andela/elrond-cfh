@@ -206,8 +206,9 @@ angular.module('mean.system')
 
     // Notify backend to save game logs When the game ended
     socket.on('saveGame', (data) => {
-      if (game.state === 'game ended') {
-        $http.post(`/api/games/${game.gameID}/start`, data)
+      if (game.state === 'game ended' && window.localStorage.token) {
+        $http.post(`/api/games/${game.gameID}/start`, data,
+          { headers: { authorization: window.localStorage.token } })
           .success((response) => {
             console.log(response);
           });

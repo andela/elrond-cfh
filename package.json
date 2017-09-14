@@ -29,6 +29,7 @@
     "dotenv": "^4.0.0",
     "eslint": "^4.5.0",
     "express": "~3.4.0",
+    "express-flash": "0.0.2",
     "express-session": "^1.15.5",
     "forever": "latest",
     "gulp": "^3.9.1",
