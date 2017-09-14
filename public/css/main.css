@@ -1,16 +1,17 @@
 .header {
     display: inline-block;
     width: 100%;
-    height: 500px;
+    height: 100%;
 }
 
 .header>img {
-    height: 500px;
+    height: inherit;
     width: 100%;
     position: absolute;
     object-fit: cover;
     z-index: -1;
     background-color: #000;
+    min-height: 600px;
 }
 
 .heading {
@@ -39,6 +40,8 @@ a.secondary-link {
 .header-top {
     width: 100%;
     padding: 40px;
+    height: 125px;
+    z-index: 999;
 }
 
 .header-overlay {
@@ -58,6 +61,7 @@ a.secondary-link {
     text-align: center;
     font-size: 30px;
     color: #fff;
+    margin-top: 70px;
 }
 
 .modelMsg {
@@ -175,8 +179,8 @@ body {
 }
 
 .how-to-play .card {
-    height: 250px;
     width: 100%;
+    height: 280px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.22), 0 2px 10px 0 rgba(0, 0, 0, 0.34);
     margin-top: 40px;
 }
@@ -243,7 +247,7 @@ body {
 }
 
 .header>.overlay {
-    height: 500px;
+    height: inherit;
 }
 
 .how-to-play>.container {
@@ -274,7 +278,7 @@ body {
     text-align: center;
     border: 2px solid #2b2737;
     color: #fd9800;
-    padding: 5px;
+    padding: 10px;
 }
 
 .footer-links {
@@ -356,4 +360,12 @@ a:hover {
     right: -0.357em;
     display: inline-block;
     content: '.';
+}
+
+.nav-wrapper {
+    padding: 0px 20px;
+}
+
+.landing {
+    height: 100%;
 }
