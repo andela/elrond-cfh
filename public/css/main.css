@@ -41,9 +41,7 @@ a.secondary-link {
     width: 100%;
     padding: 40px;
     height: 125px;
-    position: fixed;
-    background-color: rgba(42, 39, 55, 0.26);
-    z-index: 99999;
+    z-index: 999;
 }
 
 .header-overlay {
