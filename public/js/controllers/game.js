@@ -133,7 +133,6 @@ angular.module('mean.system')
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
                 } else {
-                    // $('.modal').modal('#modal2');
                     game.startGame();
                 }
             };
