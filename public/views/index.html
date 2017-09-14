@@ -7,8 +7,6 @@
   });
 </script>
 
-<script></script>
-
 <div landing ng-controller="IndexController" class="landing">
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -24,14 +22,15 @@
     </div>
   </div>
   <section class="header">
-    <img class="dashboard-image" src="img/header-img.jpg"/>
+    <img src="img/header-img.jpg"/>
     <div class="overlay"></div>
-    <nav class="nav-extended">
+    <nav class="nav-extended default">
       <div class="nav-wrapper">
         <span class="heading">Cards for Humanity</span>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="/#!/">Home</a></li>
+          <li ng-hide="showOptions"><a href="/#!/dashboard">Dashboard</a></li>
           <li><a href="/#!/#how-to-play">How to play</a></li>
           <li><a href="/#!/#charity">Charity</a></li>
           <li><a href="/#!/#team">Team</a></li>
@@ -41,6 +40,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="/#!/">Home</a></li>
+          <li ng-hide="showOptions"><a href="/#!/dashboard">Dashboard</a></li>
           <li><a href="/#!/#how-to-play">How to play</a></li>
           <li><a href="/#!/#charity">Charity</a></li>
           <li><a href="/#!/#team">Team</a></li>
@@ -51,23 +51,23 @@
       </div>
     </nav>
     <div class="header-body">
-        <div class="section-heading">
-          Cards For Humanity
-        </div>
-        <div class="sub-text-default">
-          A Game For Horrible People Desperately trying to be Good
-        </div>
-        <div class="header-action-btn-container">
-            <span class="header-btn-container">
-              <button data-target="modal1" ng-click="setGameType('strangers')" ng-hide="showOptions" class="btn btn-in btn-secondary modal-trigger">Play Game with Strangers </button>
-              <a class="btn btn-secondary" ng-show="showOptions" href="#!/signup">Sign up</a>
-            </span>
-            <span class="header-btn-container">
-              <button data-target="modal1" ng-click="setGameType('friends')" ng-hide="showOptions" class="btn btn-in btn-primary modal-trigger">Play Game with Friends</button>
-              <button data-target="modal1" ng-click="setGameType('guest')" ng-show="showOptions" class="btn btn-primary modal-trigger">Play as Guest</button>
-            </span>
-        </div>
+      <div class="section-heading">
+        Cards For Humanity
       </div>
+      <div class="sub-text-default">
+        A Game For Horrible People Desperately trying to be Good
+      </div>
+      <div class="header-action-btn-container">
+          <span class="header-btn-container">
+            <button data-target="modal1" ng-click="setGameType('strangers')" ng-hide="showOptions" class="btn btn-in btn-secondary modal-trigger">Play Game with Strangers </button>
+            <a class="btn btn-secondary" ng-show="showOptions" href="#!/signup">Sign up</a>
+          </span>
+          <span class="header-btn-container">
+            <button data-target="modal1" ng-click="setGameType('friends')" ng-hide="showOptions" class="btn btn-in btn-primary modal-trigger">Play Game with Friends</button>
+            <button data-target="modal1" ng-click="setGameType('guest')" ng-show="showOptions" class="btn btn-primary modal-trigger">Play as Guest</button>
+          </span>
+      </div>
+    </div>
   </section>
   <section class="how-to-play" id="how-to-play">
     <div class="section-heading">How to Play</div>
