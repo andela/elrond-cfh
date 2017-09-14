@@ -1013,32 +1013,9 @@ li {
     opacity: 1 !important;
     pointer-events: auto;
   }
-  .tabs-body {
-    opacity: 0.8;
-    font-size: 20px;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Arial,
-    'Helvetica Neue', Helvetica, sans-serif
-  }
-  .tab-header-text {
-    color: darkorange !important;
-    font-weight: bold;
-  }
-.leader-board {
-  margin-top: 10px;
-}
-.leader-board tr td {
-  border-left: solid 2px #e0e0e0;
-  border-right: solid 2px #e0e0e0;
-}
-.leader-board tr th {
-  border-top: solid 2px #e0e0e0;
-  border-left: solid 2px #e0e0e0;
-  border-right: solid 2px #e0e0e0;
-}
 @media (min-width: 450px) {
   .table-div {
+    width: 100%;
     height: 500px;
   }
 }
