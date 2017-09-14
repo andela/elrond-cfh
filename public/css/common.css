@@ -134,6 +134,10 @@ body {
   font-size: 60px; 
   font-family: "Open Sans" !important;
 }
+.menu nav ul{
+  margin-right: -20px; 
+  
+}
 #main-container #app-container #menu-container {
   width: 100%;
   -webkit-border-radius: 8px;
@@ -356,8 +360,9 @@ body {
   }
 }
 #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
-  font-family: 'Lobster', cursive;
+  font-family: 'Open Sans', cursive;
   margin-bottom: 0px;
+  font-size: 15px;
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
@@ -376,7 +381,7 @@ body {
   float: left;
 }
 #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-score h2 {
-  font-size: 26px;
+  font-size: 20px;
   margin-top: 0;
   margin-bottom: 0;
 }
