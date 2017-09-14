@@ -1,7 +1,50 @@
+<!-- </script>
+<div id="app-container" ng-controller="GameController">
+  <div id="app">
+  <div class="navbar-fixed">
+      <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="btn red" ng-click="abandonGame()">Abandon Game</a></li>
+                <li><a class="btn light-blue" href="#" href="https://twitter.com/share" class="twitter-share-button" 
+                  data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" 
+                  data-related="CFH_App">Tweet</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a class="btn red" ng-click="abandonGame()">Abandon Game</a></li>
+                <li><a class="btn light-blue" href="#" href="https://twitter.com/share" class="twitter-share-button" 
+                  data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" 
+                  data-related="CFH_App">Tweet</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+      
+    </div>
+  <div id="gameplay-container">
+    <div id="upper-gameplay-container">
+      <div id="menu-timeremaining-container">
+        <div id="menu-container">
+          <span id="menu-button">Menu</span>
+        </div>
+        <div id="timer-container">
+          <timer></timer>
+        </div>
+      </div>
+      <div id="question-container-outer">
+        <question></question>
+      </div>
+    </div>
+    <answers></answers>
+  </div>
+</div>
+</div> -->
 </script>
 <div id="app-container" ng-controller="GameController">
-  <div id="menu-container">
-    <div id="logo">
+  <!-- <div id="menu-container"> -->
+    <!-- <div id="logo">
       <span id="first-word">Cards</span>
       <span id="second-word"> for</span>
       <span id="third-word">Humanity</span>
@@ -10,10 +53,39 @@
         Abandon Game
     </div>
         <span id="tweet-container">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    </span>
-  </div>
+    </span> -->
+    <!-- nav -->
+    <div class="menu">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Card For Humanity</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#!/dashboard">Dashboard</a></li>
+            <li>
+              <a href="https://twitter.com/share" style="background-color:#1da1f3" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
+                data-related="CFH_App">Tweet</a>
+              <script>
+                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');
+              </script>
+            </li>
+            <li><a id='abandon-game-button' class="red 50" ng-click="abandonGame()">Abandon Game</a></li>
+
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="#!/dashboard">Dashboard</a></li>
+
+          </ul>
+        </div>
+      </nav>
+    </div>
+  <!-- end nav -->
+  <!-- </div> -->
+  
   <div id="gameplay-container">
     <div id="upper-gameplay-container">
       <div id="menu-timeremaining-container">

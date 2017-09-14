@@ -44,6 +44,10 @@ module.exports = function(io) {
       }
     });
 
+    socket.on('czarCardSelected', () => {
+     allGames[socket.gameID].startNext(allGames[socket.gameID]);
+   });
+
     socket.on('joinNewGame', function(data) {
       exitGame(socket);
       joinGame(socket,data);
