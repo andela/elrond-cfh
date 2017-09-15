@@ -57,19 +57,22 @@ angular.module('mean.system')
                         $scope.notificationCount = 1;
                       }
                     }
-                    $scope.scrollChats();
                   });
                 }
             });
 
             $(() => {
+                $("#example1").emojioneArea({
+                    autoHideFilters: true
+                    });
                 $('.chat-header').on('click', () => {
-                  $('.chat-body').slideToggle();
-                  $('span.right').find('i').toggleClass('fa-caret-down fa-caret-up');
+                    $('.chat-body').slideToggle();
+                    $('span.right').find('i').toggleClass('fa-caret-down fa-caret-up');
                 });
             });
 
             $scope.addChat = () => {
+                alert('hello');
                 const timestamp = (new Date()).toLocaleString('en-GB');
                 if (game.gameID !== null) {
                   $scope.gameChats.$add({

@@ -131,13 +131,16 @@
       <div class="input-field chat-input">
         <form ng-submit="addChat()">
           <input type="text"
+          id="example1"
           class="chatInputField"
           placeholder="Write your message here..." 
           ng-model="gameChat"
           name="messageField"
           autocomplete="off"
           />
+          <!-- <button class="btn btn-primary" ng-click="addChat()">Submit</button> -->
         </form> 
+        <br>
         <span class="status"></span>
       </div>
       <div class="clear"></div>
