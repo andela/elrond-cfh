@@ -63,7 +63,15 @@ angular.module('mean.system')
 
             $(() => {
                 $("#example1").emojioneArea({
-                    autoHideFilters: true
+                    autoHideFilters: true,
+                    events: {
+                    keyup: function (editor, event) {
+                        if (event.which == 13) {
+                        angular.element('#app-container').scope().addChat(this.getText());
+                        this.setText('');
+                        }
+                    }
+                    }
                     });
                 $('.chat-header').on('click', () => {
                     $('.chat-body').slideToggle();
@@ -71,14 +79,13 @@ angular.module('mean.system')
                 });
             });
 
-            $scope.addChat = () => {
-                alert('hello');
+            $scope.addChat = (messageContent) => {
                 const timestamp = (new Date()).toLocaleString('en-GB');
                 if (game.gameID !== null) {
                   $scope.gameChats.$add({
                     postedOn: timestamp,
                     avatar: game.players[game.playerIndex].avatar,
-                    message: $scope.gameChat,
+                    message: messageContent,
                     postedBy: game.players[game.playerIndex].username
                   });
                   $scope.gameChat = '';
