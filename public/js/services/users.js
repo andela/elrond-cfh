@@ -1,7 +1,7 @@
 angular.module('mean.system')
   .factory('Users', ['$http', '$window', ($http) => {
-    const invitesSent =[];
-    
+    const usersInvited = [];
+    const friendsAdded = [];
     const signup = (name, email, password) => new Promise((resolve, reject) => {
       const newuser = {
         name,
@@ -50,15 +50,52 @@ angular.module('mean.system')
       $http.post('/api/users/sendInvites', postData,
         { headers: { authorization: window.localStorage.token } })
         .then((response) => {
-          if (invitesSent.indexOf(response.data) <= -1) {
-            invitesSent.push(response.data);
+          if (usersInvited.indexOf(response.data) <= -1) {
+            usersInvited.push(response.data);
           }
+          const message = `${response.data} Invite sent`;
           resolve({
-            message: 'Invite has been sent',
-            invitesSent });
-        })
-        .catch((error) => {
-          reject({ message: 'Oops, Could not send Invite', error });
+            message,
+            usersInvited
+          });
+        }, (error) => {
+          reject('Oops, Could not send Invite', error);
+        });
+    });
+    const addFriend = (email, userId) => new Promise((resolve, reject) => {
+      const postData = {
+        friendsEmail: email,
+        userId,
+      };
+      // console.log(postData);
+      $http.post('/api/users/addFriend', postData, 
+      { headers: { authorization: window.localStorage.token } })
+        .then((response) => {
+          if (friendsAdded.indexOf(response.data) <= -1) {
+            friendsAdded.push(response.data);
+          }
+          const msg = `${response.data} has recently been added to friends list`;
+          const friendName = response.data;
+          resolve({
+            msg,
+            friendName
+          });
+        }, (error) => {
+          reject(error);
+        });
+    });
+
+    const getFriends = userId => new Promise((resolve, reject) => {
+      const postData = {
+        userId,
+      };
+      $http.post('/api/users/getFriends', postData, 
+      { headers: { authorization: window.localStorage.token } })
+        .then((response) => {
+          resolve(response.data);
+          console.log(response.data);
+        }, (error) => {
+          reject(error);
         });
     });
 
@@ -67,6 +104,10 @@ angular.module('mean.system')
       signup,
       searchedUsers,
       sendInvites,
-      invitesSent
+      usersInvited,
+      addFriend,
+      friendsAdded,
+      getFriends
     };
   }]);
+

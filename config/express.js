@@ -2,12 +2,13 @@
  * Module dependencies.
  */
 var express = require('express'),
-    mongoStore = require('connect-mongo')(express),
-    flash = require('connect-flash'),
+    session = require('express-session'),
+    flash = require('express-flash'),
     helpers = require('view-helpers'),
     config = require('./config');
+const MongoStore = require('connect-mongo')(session);
 
-module.exports = function(app, passport, mongoose) {
+  module.exports = function(app, passport, mongoose) {
     app.set('showStackError', true);
 
     //Should be placed before express.static
@@ -51,9 +52,14 @@ module.exports = function(app, passport, mongoose) {
         //         mongoose_connection: mongoose.connection
         //     })
         // }));
-
-        //connect flash for flash messages
-        // app.use(flash());
+        app.use(session({
+          resave: true,
+          saveUninitialized: true,
+          secret: 'MEAN',
+          store: new MongoStore({ url: config.db, autoReconnect: true })
+        }));
+        // connect flash for flash messages
+        app.use(flash());
 
         //dynamic helpers
         app.use(helpers(config.app.name));

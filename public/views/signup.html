@@ -1,19 +1,29 @@
 <div id="main-bod" ng-controller="IndexController" class="signupForm">
 
   <nav class="nav-extended">
-    <div class="nav-wrapper">
-      <span class="heading">Cards for Humanity</span>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/#!/">Home</a></li>
-        <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="/#!/">Home</a></li>
-        <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
-      </ul>
-    </div>
-  </nav>
+      <div class="nav-wrapper">
+        <span class="heading">Cards for Humanity</span>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/#!/">Home</a></li>
+          <li><a href="/#!/#how-to-play">How to play</a></li>
+          <li><a href="/#!/#charity">Charity</a></li>
+          <li><a href="/#!/#team">Team</a></li>
+          <li ng-show="showOptions"><a href="#!/signin" class="secondary-link">Sign In</a></li>
+          <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+          <li ng-hide="showOptions"><a ng-click="logout()" class="secondary-link">Logout</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/#!/">Home</a></li>
+          <li><a href="/#!/#how-to-play">How to play</a></li>
+          <li><a href="/#!/#charity">Charity</a></li>
+          <li><a href="/#!/#team">Team</a></li>
+          <li ng-show="showOptions"><a href="#!/signin" class="secondary-link">Sign In</a></li>
+          <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+          <li ng-hide="showOptions"><a ng-click="logout()" class="secondary-link">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
   
   <div class="row signupOverall" id="homer">
     <div class="col s12 m12 l3"><p></p></div>
