@@ -1,6 +1,6 @@
 angular.module('mean.system')
-    .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
-        function GameController($scope, game, $timeout,
+    .controller('GameController', ['$scope', '$firebaseArray', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
+        function GameController($scope, $firebaseArray, game, $timeout,
             $location, MakeAWishFactsService, $dialog, Users, dashboard) {
             $scope.hasPickedCards = false;
             $scope.winningCardPicked = false;
@@ -8,9 +8,11 @@ angular.module('mean.system')
             $scope.$ = $;
             $scope.showInviteButton = false;
             $scope.game = game;
+            $scope.gameChat = '';
             $scope.usersInvited = Users.usersInvited || [];
             $scope.sendInviteButton = true;
             $scope.pickedCards = [];
+            $scope.notificationCount=1;
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
             if (window.localStorage.email !== undefined) {
@@ -43,6 +45,42 @@ angular.module('mean.system')
                     return {};
                 }
             };
+
+            $scope.$watch('game.gameID', () => {
+                if (game.gameID !== null) {
+                  const chatRef = new Firebase(`https://elrond-cfh.firebaseio.com/messages/${game.gameID}`);
+                  $scope.gameChats = $firebaseArray(chatRef);
+                  $scope.gameChats.$watch((event) => {
+                    const insertedRecord = $scope.gameChats.$getRecord(event.key);
+                    if (insertedRecord !== null) {
+                      if (insertedRecord.postedBy !== game.players[game.playerIndex].username) {
+                        $scope.notificationCount = 1;
+                      }
+                    }
+                    $scope.scrollChats();
+                  });
+                }
+            });
+
+            $(() => {
+                $('.chat-header').on('click', () => {
+                  $('.chat-body').slideToggle();
+                  $('span.right').find('i').toggleClass('fa-caret-down fa-caret-up');
+                });
+            });
+
+            $scope.addChat = () => {
+                const timestamp = (new Date()).toLocaleString('en-GB');
+                if (game.gameID !== null) {
+                  $scope.gameChats.$add({
+                    postedOn: timestamp,
+                    avatar: game.players[game.playerIndex].avatar,
+                    message: $scope.gameChat,
+                    postedBy: game.players[game.playerIndex].username
+                  });
+                  $scope.gameChat = '';
+                }
+              }
 
             $scope.sendPickedCards = function() {
                 game.pickCards($scope.pickedCards);

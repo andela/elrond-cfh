@@ -102,4 +102,46 @@
     </div>
     <answers></answers>
   </div>
+  <div class="chat">
+      <div class="chat-header">
+        
+        <p>
+          Chat with a Player
+          <span class="right">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+        </p>
+        
+      </div>
+    <div class="chat-body" style="display:none">
+      <div class="chat-holder">
+        <div class="" ng-repeat="gameChat in gameChats">
+          <ul class="messages" >
+            <ul class="row self">
+              <li class="col s2"><img ng-src="{{gameChat.avatar}}" width="30px"></li>
+              <li class="col s10">
+                <span><b>{{gameChat.postedBy}}</b>&nbsp;&nbsp;<span style="font-size: 10px">{{gameChat.postedOn}}</span></span>
+                <p>{{gameChat.message}}</p>
+              </li>
+            </ul>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="input-field chat-input">
+        <form ng-submit="addChat()">
+          <input type="text"
+          class="chatInputField"
+          placeholder="Write your message here..." 
+          ng-model="gameChat"
+          name="messageField"
+          autocomplete="off"
+          />
+        </form> 
+        <span class="status"></span>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
 </div>

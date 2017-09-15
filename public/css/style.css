@@ -1014,3 +1014,65 @@ li {
     height: 500px;
   }
 }
+
+.chat {
+  bottom: 20px;
+  height: auto !important;
+  max-width: 300px;
+  width: 300px;
+  position: fixed;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  right: 0px;
+  z-index: 1000;
+  background-color: #fff;
+  border: thin solid #130a33; }
+
+.chat-header {
+  padding: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #130a33;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;}
+
+.right {
+  float: right !important; }
+
+.chat-holder {
+  padding: 10px;
+  height: 30vh;
+  overflow: scroll;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.chat ul > ul.row {
+  padding-top: 0.8em;
+}
+
+.self {
+background-color: rgba(153, 153, 153, 0.1);
+}
+
+.emojionearea-standalone {
+float: right;
+}
+.chat-input {
+margin: 0px 10px;
+}
+.chat-input input {
+width: 100%;
+}
+
+.input-field input, input[type=text] {
+border-bottom: 1px solid #fb8c00 !important;
+}
