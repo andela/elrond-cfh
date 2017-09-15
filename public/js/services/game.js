@@ -163,7 +163,7 @@ angular.module('mean.system')
             click black card to pop a new Question`
           );
         } else {
-          addToNotificationQueue('Waiting dor Czar to pick card');
+          addToNotificationQueue('Waiting for Czar to pick card');
         }
       } else if (data.state === 'waiting for players to pick') {
         game.czar = data.czar;
@@ -206,8 +206,9 @@ angular.module('mean.system')
 
     // Notify backend to save game logs When the game ended
     socket.on('saveGame', (data) => {
-      if (game.state === 'game ended') {
-        $http.post(`/api/games/${game.gameID}/start`, data)
+      if (game.state === 'game ended' && window.localStorage.token) {
+        $http.post(`/api/games/${game.gameID}/start`, data,
+          { headers: { authorization: window.localStorage.token } })
           .success((response) => {
             console.log(response);
           });
@@ -242,7 +243,6 @@ angular.module('mean.system')
     game.startNext = () => {
       socket.emit('czarCardSelected');
     };
-
     decrementTime();
 
     return game;
