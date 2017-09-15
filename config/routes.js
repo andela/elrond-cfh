@@ -102,7 +102,12 @@ module.exports = (app, passport) => {
   // Search Routes
   app.get('/api/users/search', authenticate, users.searchedUsers);
   app.post('/api/users/sendInvites', authenticate, users.sendEmailInvite);
-
+  app.post('/api/users/addFriend', authenticate, users.addAsFriend);
+  app.post('/api/users/getFriends', authenticate, users.getFriends);
+  // Game routes
+  app.post('/api/games/:id/start', authenticate, games.saveGameLog);
+  app.get('/api/games/history', authenticate, games.getUserGameLog);
+  app.get('/api/games/leaderboard', authenticate, games.getAllGameLog);
   // save questions routes
   app.post('/api/question', (req, res) => {
     if (req.body.id && req.body.text && req.body.numAnswers) {
@@ -112,6 +117,7 @@ module.exports = (app, passport) => {
       question.numAnswers = req.body.numAnswers;
       question.official = 'true';
       question.expansion = 'Base';
+      question.region = req.body.region;
       question.save((err) => {
         if (err) return res.status(400).json(err);
         return res.status(201).json(question);

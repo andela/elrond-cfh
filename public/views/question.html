@@ -1,33 +1,32 @@
-<div id="question-container-inner">
+<div id="question-container-inner" class="card-1">
   <div class="card longBlack">
     <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
 
         <div id="startGame" ng-show="game.state === 'awaiting players'">
-            <div id="finding-players">Finding Players</div>
-            <div id="player-count-container">
+            <div class="row">
+            <div id="finding-players" class="col s12 m12 l12">Finding Players</div>
+            <div id="player-count-container" class="col s12 m4 l4">
                 <div id="player-count">{{game.players.length}} / 12 </div>
                 <div id="the-word-players"> Players </div>
             </div>
-            <div id="loading-container">
+            <div id="loading-container" class="s12 m8 l8">
                 <div id="loading-gif"><img ng-src="../img/loader.gif" /></div>
             </div>
-            <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
-                <div id='start-game-button'>
-                    Start Game
+            <div class="start col s12 m12 l12" >
+                <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+                    <div id='start-game-button' class="col s12 m6 l6 card-1">
+                        Start Game
+                    </div>
                 </div>
-            </div>
-            <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">
-                <div id='start-game-button'>
-                    Invite Players
+                <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">
+                    <div id='invite-to-game' class="col s12 m6 l6 card-1">
+                        Invite Players
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
-      <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
-        <div id='start-game-button'>
-          Invite Players
         </div>
       </div>
     </div>
@@ -57,12 +56,16 @@
         <button class="btn btn-danger left modal-action modal-close">Cancel</button>
     </div>
 </div>
+<!--  -->
 <div id="modal-invite" class="modal modal-invite">
     <div class="modal-content">
-        <p>{{message}}</p>
+        <p>{{messages}}</p>
+        <p>{{ inviteMessage }}</p>
         <p>Invite Players</p>
         <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
         <button class="btn btn-primary" ng-click="searchedUsers()">Search</button>
+        <button data-target="invite-friends" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="friendsModal()" ng-show="showInviteButton">Invite Friends</button>&nbsp
+
 
         <div id="foundUsers">
             <table class="highlight">
@@ -75,11 +78,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="user in foundUsers" ng-show="invitesSent.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
+                    <tr ng-repeat="user in foundUsers" ng-show="usersInvited.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
                         <th>{{$index + 1 }}</th>
                         <td>{{user.name}}</td>
-                        <td><button class="btn btn-primary">Add</button></td>
-                        <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+                        <td><button class="btn btn-primary" ng-click="addAsFriends(user.email)">Add</button></td>
+                        <td><button class="btn btn-primary inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -89,6 +92,33 @@
     <div class="modal-footer" style="padding:0px 20px">
         <a class="btn btn-danger left modal-action modal-close">Close</a>
     </div>
+</div>
+<!--Friends Modal  -->
+<div id="invite-friends" class="modal invite-friends">
+    <div class="modal-content">
+        <p>Send Invite to Friends</p>
+        <div id="myFriends">
+            <table class="highlight">
+                <thead class="thead-default">
+                    <tr>
+                        <th>#</th>
+                        <th>Name:</th>
+                        <th>Send Invite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="friend in myFriends" >
+                        <th>{{$index + 1 }}</th>
+                        <td>{{friend}}</td>
+                        <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <div class="modal-footer" style="padding:0px 20px">
+        <button class="btn btn-danger right modal-action modal-close">Cancel</button>
+    </div> -->
 </div>
 <!--Start Game modal -->
 <div class="modal startModal" id="start-modal">

@@ -5,27 +5,22 @@ angular.module('mean.system')
       $scope.playerRegion = 'Africa';
       $scope.gameType = 'guest';
 
-      $scope.setGameType = function (gameType) {
+      $scope.setGameType = (gameType) => {
         $scope.gameType = gameType;
-        console.log('Scope Type: ', $scope.gameType);
       };
 
-      $scope.setPlayerRegion = function () {
+      $scope.setPlayerRegion = () => {
         const region = $scope.playerRegion;
         localStorage.setItem('region', region);
-        console.log('Player region set to ', region);
         if ($scope.gameType === 'guest') {
-          console.log('guest run');
           $location.path('/app');
         }
 
         if ($scope.gameType === 'strangers') {
-          console.log('strangers run');
           location.href = '/play';
         }
 
         if ($scope.gameType === 'friends') {
-          console.log('friends run');
           location.href = '/play?custom';
         }
       };

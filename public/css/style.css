@@ -329,7 +329,7 @@ p a {
 
 /**** About Us ****/
 #main-bod {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0px auto; }
 
 .wpb-about-us {
@@ -359,7 +359,8 @@ p a {
   margin-top: -15px; }
 
 #how-to-play {
-  margin-top: 190px; }
+  margin-top: 250px;
+  }
 
 #how-to-cards {
   text-align: center; }
@@ -1002,30 +1003,14 @@ li {
   .signupIn, .signUp {
     margin-bottom: 0!important;
   }
-  nav {
-    background-color: transparent!important;
-    font-family: 'Oswald', sans-serif;
-    font-size: 25px;
-  }
   [type="radio"]:not(:checked), [type="radio"]:checked {
     position: relative!important;
     opacity: 1 !important;
     pointer-events: auto;
   }
-  .tabs-body {
-    opacity: 0.8;
-    font-size: 20px;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Arial,
-    'Helvetica Neue', Helvetica, sans-serif
-  }
-  .tab-header-text {
-    color: darkorange !important;
-    font-weight: bold;
-  }
 @media (min-width: 450px) {
   .table-div {
+    width: 100%;
     height: 500px;
   }
 }
