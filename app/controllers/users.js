@@ -311,15 +311,14 @@ exports.searchedUsers = (req, res) => {
 exports.sendEmailInvite = (req, res) => {
   if (req.user) {
     const url = decodeURIComponent(req.body.gameUrl);
-    const guestUser = req.body.userEmail;
-
-    if (guestUser !== null && url !== null) {
-      sendEmail(guestUser, url);
+    const friendToInvite = req.body.userEmail;
+    try {
+      sendEmail(friendToInvite, url);
       res.status(200)
-        .json(guestUser);
-    } else {
-      res.status(400)
-        .send('Bad Request !');
+        .json(friendToInvite);
+    } catch (error) {
+      res.status(500)
+        .json(error);
     }
   } else {
     res.status(401)
@@ -334,5 +333,70 @@ exports.allUsers = (req, res) => {
         return res.status(200)
           .json(allUsers);
       });
+  }
+};
+/**
+ * Controller that adds user as friends
+ */
+exports.addAsFriend = (req, res) => {
+  const { friendsEmail, userId } = req.body;
+  User.findOne({
+    email: friendsEmail
+  }, (err, friendObj) => {
+    if (!err) {
+      res.status(200)
+        .json(friendObj.name);
+    } else {
+      res.status(400)
+        .json('There was an error adding friends to friends list');
+    }
+  });
+  User.findOneAndUpdate({
+    _id: userId
+  }, {
+    $push: {
+      friends: friendsEmail
+    }
+  }, {
+    safe: true,
+    upsert: true
+  }, (error) => {
+    if (error) {
+      res.status(500)
+        .json('There was an error adding friends to friends list');
+    }
+  });
+
+  User.findById(userId, (err, user) => {
+    // const user = req.user;
+    if (!req.user) {
+      res.status(404)
+        .json('error finding user');
+    }
+    user.friends = [...new Set(user.friends)];
+    user.save((err) => {
+      if (err) {
+        res.status(500)
+          .json('error saving user');
+      }
+    });
+  });
+};
+/**
+ * Controller That get Friends
+ */
+exports.getFriends = (req, res) => {
+  if (req.user) {
+  const userId = req.body.userId;
+  User.findOne({
+    _id: userId
+  }).select('friends')
+    .then((allFriends) => {
+      console.log(allFriends.friends);
+      res.json(allFriends.friends);
+    }).catch((error) => {
+      res.status(500)
+        .json({ message: 'An error Occured', error });
+    });
   }
 };

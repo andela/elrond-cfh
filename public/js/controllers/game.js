@@ -8,7 +8,8 @@ angular.module('mean.system')
             $scope.$ = $;
             $scope.showInviteButton = false;
             $scope.game = game;
-            $scope.invitesSent = Users.invitesSent || [];
+            $scope.usersInvited = Users.usersInvited || [];
+            $scope.sendInviteButton = true;
             $scope.pickedCards = [];
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
@@ -137,17 +138,18 @@ angular.module('mean.system')
                 }
             };
             $scope.sendInvite = (email) => {
-                Users.sendInvites(email)
-                    .then((response) => {
-                        $scope.messages = response.message;
-                        if ($scope.invitesSent.length >= 11) {
-                            $scope.messages = 'Heyya! Maximum number of players invited';
-                        }
-                    })
-                    .catch((error) => {
-                        $scope.messages = error;
-                    });
+                Users.sendInvites(email).then((response) => {
+                    console.log($scope.usersInvited, 'The response from sendInvites');
+                    if ($scope.usersInvited.length >= 11) {
+                        $scope.inviteMessage = response.message;
+                        $scope.sendInviteButton = false;
+                        $scope.inviteMessage = 'Maximum number (11) of users invited';
+                    }
+                }).catch((error) => {
+                    $scope.inviteMessage = error;
+                });
             };
+
 
             $scope.searchedUsers = () => {
                 const username = $scope.userName;
@@ -160,6 +162,47 @@ angular.module('mean.system')
                         });
                 }
             };
+            $scope.getFriends = () => {
+                const userId = window.localStorage.userId;
+                Users.getFriends(userId).then((friendsArray) => {
+                    $scope.myFriends = friendsArray;
+                    console.log($scope.myFriends);
+                });
+            };
+            $scope.addAsFriends = (email, name) => {
+                const userId = window.localStorage.userId;
+                Users.addFriend(email, userId, name).then((response) => {
+                    const friendName = response.friendName;
+                    $scope.messages = `${friendName}, has been added to your friend's list`;
+                    // $scope.getFriends();
+                })
+                    .catch((error) => {
+                        $scope.messages = error;
+                    });
+            };
+                
+            // $scope.sendFriendInvite = () => {
+            //     const userId = window.localStorage.userId;
+            // }
+
+            // const handleNewRequests = () => {
+                
+            // }
+
+            // game.getRequests(email, handleNewRequests);
+
+            $scope.friendsModal = () => {
+                const userId = window.localStorage.userId;
+                $('.invite-friends').modal();
+                Users.getFriends(userId)
+                    .then((myFriends) => {
+                        $scope.myFriends = myFriends;
+                        console.log($scope.myFriends);
+                    })
+                    .catch((error) => {
+                        console.log(error, "in game file");
+                    });
+            }
             $scope.invitePlayers = () => {
                 $('.modal-invite').modal();
             };

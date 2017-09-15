@@ -41,7 +41,7 @@
   </div>
 </div>
 </div> -->
-</script>
+<!--</script>-->
 <div id="app-container" ng-controller="GameController">
   <!-- <div id="menu-container"> -->
     <!-- <div id="logo">
@@ -63,7 +63,7 @@
           <a href="#!" class="brand-logo">Card For Humanity</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#!/dashboard">Dashboard</a></li>
+            <li ng-show="showOptions"><a href="#!/dashboard">Dashboard</a></li>
             <li>
               <a href="https://twitter.com/share" style="background-color:#1da1f3" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
                 data-related="CFH_App">Tweet</a>
@@ -71,7 +71,7 @@
                 !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');
               </script>
             </li>
-            <li><a id='abandon-game-button' class="red" ng-click="abandonGame()">Abandon Game</a></li>
+            <li><a id='abandon-game-button' class="red 50" ng-click="abandonGame()">Abandon Game</a></li>
 
           </ul>
           <ul class="side-nav" id="mobile-demo">
