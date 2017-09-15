@@ -133,7 +133,6 @@ angular.module('mean.system')
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
                 } else {
-                    // $('.modal').modal('#modal2');
                     game.startGame();
                 }
             };
@@ -199,7 +198,7 @@ angular.module('mean.system')
             });
 
             // In case player doesn't pick a card in time, show the table
-            $scope.$watch('game.state', () => { //game.state
+            $scope.$watch('game.state', () => { // game.state
                 if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
                     $scope.showTable = true;
                 }
