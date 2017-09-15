@@ -12,7 +12,7 @@
                 <div id="the-word-players"> Players </div>
             </div>
             <div id="loading-container" class="s12 m8 l8">
-                <div id="loading-gif"><img ng-src="../img/loader.gif" /></div>
+                <div id="loading-gif"><img ng-src="../img/loaders/spinner.gif" width="50" height="50"/></div>
             </div>
             <div class="start col s12 m12 l12" >
                 <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
@@ -21,31 +21,33 @@
                     </div>
                 </div>
                 <div data-target="modal-invite" class="modal-trigger" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">
-                    <div id='invite-to-game' class="col s12 m6 l6 card-1">
+                    <div id='invite-to-game' class="col s12 m6 l6 card-1 deep-purple lighten-1">
                         Invite Players
                     </div>
                 </div>
             </div>
         </div>
         </div>
+         <!-- Game Over Stuff -->
+        <div id="game-end-info">
+                <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
+                  <div class="game-end-headline">What the!? The game ended because too many people left! </div>
+                  Our sincere apologies.
+                </div>
+                <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
+                  <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde it all for youself.
+                </div>
+                <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
+                  <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
+                  That makes you a loser, unfortunately.
+                </div>
+              </div>
       </div>
     </div>
-    <!-- Game Over Stuff -->
-    <div id="game-end-info">
-      <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
-        <div class="game-end-headline">What the!? The game ended because too many people left! </div>
-        Our sincere apologies.
-      </div>
-      <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
-        <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde it all for youself.
-      </div>
-      <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
-        <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
-        That makes you a loser, unfortunately.
-      </div>
-    </div>
-  </div>
-</div>
+   
+
+  
+
 
 <div id="modal1" class="modal">
     <div class="modal-content">

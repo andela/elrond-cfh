@@ -251,7 +251,59 @@ angular.module('mean.system')
             } else {
                 game.joinGame(null, null, null, localStorage.getItem('region'));
             }
-
+            $scope.gameTour = introJs();
+            
+                 $scope.gameTour.setOptions({
+                    steps: [{
+                      intro: 'Welcome to the game Cards for Humanity, You want to play this game?, then let me take you on a tour.'
+                    },
+                    {
+                      element: '#timer-container',
+                      intro: 'This is the timer for the game. Choose an answer to the current question. After time out, CZAR then select a favorite answer. whoever submits CZAR\'s favorite answer wins the round'
+                    },
+                    {
+                      element: '#question-container-outer',
+                      intro: 'Game needs a minimum of 3 players to start. Wait for the minimum number of players and start the game.',
+                    },
+                    {
+                      element: '#info-container',
+                      intro: 'These are the rules of the game',
+                      position: 'top'
+                    },
+                    {
+                      element: '#player-container',
+                      intro: 'Players in the current game are shown here',
+                    },
+                    {
+                      element: '#abandon-game-button',
+                      intro: 'Played enough? Click this button to quit the game'
+                    },
+                    {
+                        element: '#dashboard',
+                        intro: 'you can view the leader board of the game here'
+                    },
+                    {
+                      element: '#retake-tour',
+                      intro: 'You can always take the tour again'
+                    }
+                    ]
+                  });
+            
+            
+                 $scope.takeTour = () => {
+                    if (!localStorage.takenTour) {
+                      const timeout = setTimeout(() => {
+                        $scope.gameTour.start();
+                        clearTimeout(timeout);
+                      }, 500);
+                      localStorage.setItem('takenTour', true); 
+                    }
+                  };
+            
+                 $scope.retakeTour = () => {
+                    localStorage.removeItem('takenTour');
+                    $scope.takeTour();
+                  };
             // player game-log logic
             $scope.showOptions = !!window.localStorage.token;
             dashboard.getGameLog()
@@ -299,5 +351,6 @@ angular.module('mean.system')
                 $scope.showOptions = true;
                 $location.path('/');
             };
+            
         }
     ]);
