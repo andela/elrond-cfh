@@ -89,7 +89,7 @@ module.exports = function(passport) {
     passport.use(new FacebookStrategy({
             clientID: process.env.FB_CLIENT_ID || config.facebook.clientID,
             clientSecret: process.env.FB_CLIENT_SECRET || config.facebook.clientSecret,
-            callbackURL: 'http://localhost:3000/auth/facebook/callback'
+            callbackURL: process.env.FACEBOOK_CALLBACK_URL
             || config.facebook.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
@@ -125,7 +125,7 @@ module.exports = function(passport) {
     passport.use(new GitHubStrategy({
             clientID: process.env.GITHUB_CLIENT_ID || config.github.clientID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET || config.github.clientSecret,
-            callbackURL: 'http://localhost:3000/auth/github/callback'
+            callbackURL: process.env.GITHUB_CALLBACK_URL
             || config.github.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
@@ -158,7 +158,7 @@ module.exports = function(passport) {
     passport.use(new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_ID || config.google.clientID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || config.google.clientSecret,
-            callbackURL: 'http://localhost:3000/auth/google/callback'
+            callbackURL: process.env.GOOGLE_CALLBACK_URL
             || config.google.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {

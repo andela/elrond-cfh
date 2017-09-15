@@ -1,16 +1,23 @@
 <div id="main-bod" ng-controller="IndexController" class="signupForm">
 
-  <div class="header-top">
-    <span class="heading">Cards for Humanity</span>
-    <span class="header-links">
-      <a href="/">Home</a>
-      <a href="#!/signin" class="secondary-link">Sign In</a>
-    </span>
-  </div>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <span class="heading">Cards for Humanity</span>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/#!/">Home</a></li>
+        <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="/#!/">Home</a></li>
+        <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
   
   <div class="row signupOverall" id="homer">
-    <div class="col s12 m4 l4"><p></p></div>
-    <div class="col s12 m4 l5 signupWrapper">
+    <div class="col s12 m12 l3"><p></p></div>
+    <div class="col s12 m12 l6 signupWrapper">
       <div class="signupHeader">
         Sign up
       </div>
@@ -67,13 +74,13 @@
         <a href="/auth/google" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/google-plus.png" width="50px" height="50px" alt="google">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/twitter" style="text-decoration: none; cursor: pointer;">
+        <!-- <a href="/auth/twitter" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/twitter.png" width="50px" height="50px" alt="facebook">
-        </a>
+        </a> -->
         <br><br>
       </div>
     </div>
-    <div class="col s12 m4 l3"><p></p></div>
+    <div class="col s12 m12 l3"></div>
   </div>
 </div>
 
