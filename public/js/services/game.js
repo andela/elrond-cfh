@@ -163,7 +163,7 @@ angular.module('mean.system')
             click black card to pop a new Question`
           );
         } else {
-          addToNotificationQueue('Waiting dor Czar to pick card');
+          addToNotificationQueue('Waiting for Czar to pick card');
         }
       } else if (data.state === 'waiting for players to pick') {
         game.czar = data.czar;
