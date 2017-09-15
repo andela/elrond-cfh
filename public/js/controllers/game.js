@@ -57,7 +57,6 @@ angular.module('mean.system')
                         $scope.notificationCount = 1;
                       }
                     }
-                    $scope.scrollChats();
                   });
                 }
             });
