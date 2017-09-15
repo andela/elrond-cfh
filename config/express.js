@@ -2,10 +2,11 @@
  * Module dependencies.
  */
 var express = require('express'),
-    mongoStore = require('connect-mongo')(express),
+    session = require('express-session'),
     flash = require('express-flash'),
     helpers = require('view-helpers'),
     config = require('./config');
+var MongoStore = require('connect-mongo')(session);
 // var flash = require('connect-flash');
 
   module.exports = function(app, passport, mongoose) {
@@ -44,14 +45,20 @@ var express = require('express'),
         app.use(express.methodOverride());
 
         // express/mongo session storage
-        app.use(express.session({
-            secret: 'MEAN',
-            store: new mongoStore({
-                url: config.db,
-                collection: 'sessions',
-                mongoose_connection: mongoose.connection
-            })
-        }));
+        // app.use(express.session({
+        //     secret: 'MEAN',
+        //     store: new mongoStore({
+        //         url: config.db,
+        //         collection: 'sessions',
+        //         mongoose_connection: mongoose.connection
+        //     })
+        // }));
+      app.use(session({
+        resave: true,
+        saveUninitialized: true,
+        secret: 'MEAN',
+        store: new MongoStore({ url: config.db, autoReconnect: true })
+      }));
         // connect flash for flash messages
         app.use(flash());
 
