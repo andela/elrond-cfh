@@ -6,8 +6,7 @@ var express = require('express'),
     flash = require('express-flash'),
     helpers = require('view-helpers'),
     config = require('./config');
-var MongoStore = require('connect-mongo')(session);
-// var flash = require('connect-flash');
+const MongoStore = require('connect-mongo')(session);
 
   module.exports = function(app, passport, mongoose) {
     app.set('showStackError', true);
@@ -53,12 +52,12 @@ var MongoStore = require('connect-mongo')(session);
         //         mongoose_connection: mongoose.connection
         //     })
         // }));
-      app.use(session({
-        resave: true,
-        saveUninitialized: true,
-        secret: 'MEAN',
-        store: new MongoStore({ url: config.db, autoReconnect: true })
-      }));
+        app.use(session({
+          resave: true,
+          saveUninitialized: true,
+          secret: 'MEAN',
+          store: new MongoStore({ url: config.db, autoReconnect: true })
+        }));
         // connect flash for flash messages
         app.use(flash());
 
