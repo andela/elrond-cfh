@@ -348,9 +348,9 @@ angular.module('mean.system')
                     $scope.takeTour();
                   };
             // player game-log logic
-            $scope.showOptions = false;
+            $scope.islogin = false;
             if (window.localStorage.token || window.user) {
-              $scope.showOptions = true;
+              $scope.islogin = true;
               dashboard.getGameLog()
                 .then((response) => {
                   const dateOptions = {
@@ -388,8 +388,9 @@ angular.module('mean.system')
                   $scope.userDonations = userDonations.donations;
                 });
             }
-            // logout to be used by the player dashboard if logged in
+          // logout to be used by the player dashboard if logged in
             $scope.logout = () => {
+                window.user = null;
                 window.localStorage.removeItem('token');
                 window.localStorage.removeItem('email');
                 window.localStorage.removeItem('userId');
