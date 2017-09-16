@@ -80,7 +80,7 @@ angular.module('mean.system')
             });
 
             $scope.addChat = (messageContent) => {
-                const timestamp = (new Date()).toLocaleString('en-GB');
+                const timestamp = (new Date()).toLocaleTimeString('en-US');
                 if (game.gameID !== null) {
                   $scope.gameChats.$add({
                     postedOn: timestamp,
