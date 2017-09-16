@@ -5,27 +5,15 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/#!/">Home</a></li>
-            <li ng-hide="showOptions"><a href="/#!/dashboard">Dashboard</a></li>
-            <li><a href="/#!/#how-to-play">How to play</a></li>
-            <li><a href="/#!/#charity">Charity</a></li>
-            <li><a href="/#!/#team">Team</a></li>
-            <li ng-show="showOptions"><a href="#!/signin" class="secondary-link">Sign In</a></li>
-            <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
-            <li ng-hide="showOptions"><a ng-click="logout()" class="secondary-link">Logout</a></li>
+            <li><a href="#!/signup" class="secondary-link">Sign Up</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="/#!/">Home</a></li>
-            <li ng-hide="showOptions"><a href="/#!/dashboard">Dashboard</a></li>
-            <li><a href="/#!/#how-to-play">How to play</a></li>
-            <li><a href="/#!/#charity">Charity</a></li>
-            <li><a href="/#!/#team">Team</a></li>
-            <li ng-show="showOptions"><a href="#!/signin" class="secondary-link">Sign In</a></li>
-            <li ng-show="showOptions"><a href="#!/signup" class="secondary-link">Sign Up</a></li>
-            <li ng-hide="showOptions"><a ng-click="logout()" class="secondary-link">Logout</a></li>
+            <li><a href="#!/signup" class="secondary-link">Sign Up</a></li>
           </ul>
         </div>
       </nav>
-  <div class="row signinOverall" id="homer" style="margin-top:30px">
+  <div class="row signinOverall" id="homer" style="margin-top:60px">
     <div class="col s12 m2 l3"><p></p></div>
     <div class="col s12 m8 l6 signinWrapper">
       <div class="signinHeader">
@@ -80,3 +68,8 @@
     <div class="col s12 m2 l3"><p></p></div>
   </div>
 </div>
+<script>
+  $( document ).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>
