@@ -166,7 +166,7 @@ angular.module('mean.system')
                 const userId = window.localStorage.userId;
                 Users.getFriends(userId).then((friendsArray) => {
                     $scope.myFriends = friendsArray;
-                    console.log($scope.myFriends);
+                    // console.log($scope.myFriends);
                 });
             };
             $scope.addAsFriends = (email, name) => {
@@ -174,7 +174,7 @@ angular.module('mean.system')
                 Users.addFriend(email, userId, name).then((response) => {
                     const friendName = response.friendName;
                     $scope.messages = `${friendName}, has been added to your friend's list`;
-                    // $scope.getFriends();
+                $scope.getFriends();
                 })
                     .catch((error) => {
                         $scope.messages = error;
@@ -208,6 +208,7 @@ angular.module('mean.system')
             }
             $scope.invitePlayers = () => {
                 $('.modal-invite').modal();
+                $scope.getFriends();
             };
             $scope.abandonGame = () => {
                 game.leaveGame();

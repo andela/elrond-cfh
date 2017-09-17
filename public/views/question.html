@@ -49,12 +49,12 @@
   
 
 
-<div id="modal1" class="modal">
+<div id="modal1" class="modal modal-invite">
     <div class="modal-content">
         <p>Sorry! You require a minimum of three(3) players to play this game</p>
     </div>
     <div class="modal-footer" style="padding:0px 20px">
-        <button data-target="modal-invite" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">Invite a Player</button>&nbsp
+        <button data-target="modal-invite" class="btn right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="invitePlayers()" ng-show="showInviteButton">Invite a Player</button>&nbsp
         <button class="btn btn-danger left modal-action modal-close">Cancel</button>
     </div>
 </div>
@@ -63,29 +63,19 @@
     <div class="modal-content">
         <p>{{messages}}</p>
         <p>{{ inviteMessage }}</p>
-        <p>Invite Players</p>
+        <h4>Invite Players</h4>
         <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
-        <button class="btn btn-primary" ng-click="searchedUsers()" id="inviteFriends">Search</button>
-        <button data-target="invite-friends" class="btn waves-effect waves-light right modal-trigger  modal-action modal-close" id="inviteFriends" ng-click="friendsModal()" ng-show="showInviteButton">
-            <i class="material-icons right">Invite Friends</i></button>&nbsp
-
+        <button class="btn" ng-click="searchedUsers()" id="inviteFriends">Search</button>
 
         <div id="foundUsers">
             <table class="highlight">
                 <thead class="thead-default">
-                    <tr>
-                        <th>#</th>
-                        <th>Name:</th>
-                        <th>Add to Friends</th>
-                        <th>Send Invite</th>
-                    </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in foundUsers" ng-show="usersInvited.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
-                        <th>{{$index + 1 }}</th>
                         <td>{{user.name}}</td>
-                        <td><button class="btn btn-primary" ng-click="addAsFriends(user.email)">Add</button></td>
-                        <td><button class="btn btn-primary inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send</button></td>
+                        <td><button class="btn btn-primary" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</button><span ng-show="myFriends.indexOf(user.email) > -1">Is a Friend</span></td>
+                        <td><button class="btn btn-primary inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -93,36 +83,10 @@
 
     </div>
     <div class="modal-footer" style="padding:0px 20px">
-        <a class="btn btn-danger left modal-action modal-close">Close</a>
+        <a class="btn left modal-action modal-close">Close</a>
     </div>
 </div>
-<!--Friends Modal  -->
-<div id="invite-friends" class="modal invite-friends">
-    <div class="modal-content">
-        <p>Send Invite to Friends</p>
-        <div id="myFriends">
-            <table class="highlight">
-                <thead class="thead-default">
-                    <tr>
-                        <th>#</th>
-                        <th>Name:</th>
-                        <th>Send Invite</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="friend in myFriends" >
-                        <th>{{$index + 1 }}</th>
-                        <td>{{friend}}</td>
-                        <td><button class="btn btn-primary inviteButton" ng-click="sendFriendInvite(user.email)">Send</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- <div class="modal-footer" style="padding:0px 20px">
-        <button class="btn btn-danger right modal-action modal-close">Cancel</button>
-    </div> -->
-</div>
+
 <!--Start Game modal -->
 <div class="modal startModal" id="start-modal">
     <div class="modal-content">

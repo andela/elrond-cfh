@@ -384,18 +384,44 @@ nav.default {
     max-width: 1400px;
     margin: auto;
 }
+#modal-invite {
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+}
+#modal-invite h4 {
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    font-size: 1.0em;
+    background: #2ecc71;
+    color: white;
+}
+#modal-invite button {
+    background: #2ecc71;
+}
+#modal-invite table {
+    border-collapse: collapse;
+    width: 100%;
+}
+#modal-invite th, td {
+    text-align: left;
+    padding: 8px;
+}
+#modal-invite tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
 /* Modal CSS   */
 @media (max-width: 520px){
 #modal-invite {
     padding: 4px 1px !important;
-    font-size: 10px !important;
+    font-size: 0.4em !important;
     width: 90% !important;
     height: 70%;
     }
-#inviteFriends {
+#modal-invite button {
     padding: 4px 1px !important;
-    font-size: 0.3em !important;
-    width: 60px !important;
+    font-size: 0.4em !important;
+    width: 68px !important;
     height: 35px;
 }
 }
