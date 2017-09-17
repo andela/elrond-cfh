@@ -73,6 +73,7 @@ angular.module('mean.system')
           });
       };
       $scope.logout = () => {
+        window.user = null;
         window.localStorage.removeItem('token');
         window.localStorage.removeItem('email');
         window.localStorage.removeItem('userId');

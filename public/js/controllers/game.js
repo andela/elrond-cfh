@@ -297,47 +297,103 @@ angular.module('mean.system')
             } else {
                 game.joinGame(null, null, null, localStorage.getItem('region'));
             }
-
+            $scope.gameTour = introJs();
+            
+                 $scope.gameTour.setOptions({
+                    steps: [{
+                      intro: 'Welcome to the game Cards for Humanity, You want to play this game?, then let me take you on a tour.'
+                    },
+                    {
+                      element: '#timer-container',
+                      intro: 'This is the timer for the game. Choose an answer to the current question. After time out, CZAR then select a favorite answer. whoever submits CZAR\'s favorite answer wins the round'
+                    },
+                    {
+                      element: '#question-container-outer',
+                      intro: 'Game needs a minimum of 3 players to start. Wait for the minimum number of players and start the game.',
+                    },
+                    {
+                      element: '#info-container',
+                      intro: 'These are the rules of the game',
+                      position: 'top'
+                    },
+                    {
+                      element: '#player-container',
+                      intro: 'Players in the current game are shown here',
+                    },
+                    {
+                      element: '#abandon-game-button',
+                      intro: 'Played enough? Click this button to quit the game'
+                    },
+                    {
+                        element: '#dashboard',
+                        intro: 'you can view the leader board of the game here'
+                    },
+                    {
+                      element: '#retake-tour',
+                      intro: 'You can always take the tour again'
+                    }
+                    ]
+                  });
+            
+            
+                 $scope.takeTour = () => {
+                    if (!localStorage.takenTour) {
+                      const timeout = setTimeout(() => {
+                        $scope.gameTour.start();
+                        clearTimeout(timeout);
+                      }, 500);
+                      localStorage.setItem('takenTour', true); 
+                    }
+                  };
+            
+                 $scope.retakeTour = () => {
+                    localStorage.removeItem('takenTour');
+                    $scope.takeTour();
+                  };
             // player game-log logic
-            $scope.showOptions = !!window.localStorage.token;
-            dashboard.getGameLog()
+            $scope.islogin = false;
+            if (window.localStorage.token || window.user) {
+              $scope.islogin = true;
+              dashboard.getGameLog()
                 .then((response) => {
-                    const dateOptions = {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                    };
-                    $scope.gameHistories = response.map((res) => {
-                        const date = new Date(res.createdAt).toLocaleString('en-us', dateOptions);
-                        res.createdAt = date;
-                        return res;
-                    });
+                  const dateOptions = {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  };
+                  $scope.gameHistories = response.map((res) => {
+                    const date = new Date(res.createdAt).toLocaleString('en-us', dateOptions);
+                    res.createdAt = date;
+                    return res;
+                  });
                 });
-            // application leaderboard logic
-            dashboard.leaderGameLog()
+              // application leaderboard logic
+              dashboard.leaderGameLog()
                 .then((gameLogs) => {
-                    const leaderboard = [];
-                    const players = {};
-                    gameLogs.forEach((gameLog) => {
-                        const numOfWins = players[gameLog.gameWinner];
-                        if (numOfWins) {
-                            players[gameLog.gameWinner] += 1;
-                        } else {
-                            players[gameLog.gameWinner] = 1;
-                        }
-                    });
-                    Object.keys(players).forEach((key) => {
-                        leaderboard.push({ username: key, numberOfWins: players[key] });
-                    });
-                    $scope.leaderboard = leaderboard;
+                  const leaderboard = [];
+                  const players = {};
+                  gameLogs.forEach((gameLog) => {
+                    const numOfWins = players[gameLog.gameWinner];
+                    if (numOfWins) {
+                      players[gameLog.gameWinner] += 1;
+                    } else {
+                      players[gameLog.gameWinner] = 1;
+                    }
+                  });
+                  Object.keys(players).forEach((key) => {
+                    leaderboard.push({ username: key, numberOfWins: players[key] });
+                  });
+                  $scope.leaderboard = leaderboard;
                 });
-            // user donations
-            dashboard.userDonations()
+              // user donations logic
+              dashboard.userDonations()
                 .then((userDonations) => {
-                    $scope.userDonations = userDonations.donations;
+                  $scope.userDonations = userDonations.donations;
                 });
-            // logout to be used by the player dashboard if logged in
+            }
+          // logout to be used by the player dashboard if logged in
             $scope.logout = () => {
+                window.user = null;
                 window.localStorage.removeItem('token');
                 window.localStorage.removeItem('email');
                 window.localStorage.removeItem('userId');
@@ -345,5 +401,6 @@ angular.module('mean.system')
                 $scope.showOptions = true;
                 $location.path('/');
             };
+            
         }
     ]);

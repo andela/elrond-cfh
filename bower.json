@@ -8,7 +8,8 @@
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
     "sendgrid": "^5.1.1",
-    "emojionearea": "^3.1.7"
+    "emojionearea": "^3.1.7",
+    "intro.js": "^2.7.0"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -17,14 +18,14 @@
       "fonts": "dist/fonts/*"
     },
     "exportsOverride": {
-        "bootstrap": {
-            "css": "dist/css/*",
-            "js": "dist/js/*",
-            "fonts": "dist/fonts/*"
-        },
-        "angular-ui-utils": {
-            "modules": "modules/route/route.js"
-        }
+      "bootstrap": {
+        "css": "dist/css/*",
+        "js": "dist/js/*",
+        "fonts": "dist/fonts/*"
+      },
+      "angular-ui-utils": {
+        "modules": "modules/route/route.js"
+      }
     }
   }
 }
