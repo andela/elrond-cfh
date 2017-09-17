@@ -24,7 +24,8 @@ facebook: {},
 twitter: {},
 github: {},
 google: {},
-friends:[]
+friends:[],
+notifications: []
 });
 
 /**

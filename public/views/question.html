@@ -63,8 +63,9 @@
         <p>{{ inviteMessage }}</p>
         <p>Invite Players</p>
         <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
-        <button class="btn btn-primary" ng-click="searchedUsers()">Search</button>
-        <button data-target="invite-friends" class="btn btn-danger right modal-trigger  modal-action modal-close" id="start-game-container" ng-click="friendsModal()" ng-show="showInviteButton">Invite Friends</button>&nbsp
+        <button class="btn btn-primary" ng-click="searchedUsers()" id="inviteFriends">Search</button>
+        <button data-target="invite-friends" class="btn waves-effect waves-light right modal-trigger  modal-action modal-close" id="inviteFriends" ng-click="friendsModal()" ng-show="showInviteButton">
+            <i class="material-icons right">Invite Friends</i></button>&nbsp
 
 
         <div id="foundUsers">
@@ -110,7 +111,7 @@
                     <tr ng-repeat="friend in myFriends" >
                         <th>{{$index + 1 }}</th>
                         <td>{{friend}}</td>
-                        <td><button class="btn btn-primary inviteButton" ng-click="sendInvite(user.email)">Send</button></td>
+                        <td><button class="btn btn-primary inviteButton" ng-click="sendFriendInvite(user.email)">Send</button></td>
                     </tr>
                 </tbody>
             </table>

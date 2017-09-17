@@ -93,7 +93,7 @@ angular.module('mean.system')
       { headers: { authorization: window.localStorage.token } })
         .then((response) => {
           resolve(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         }, (error) => {
           reject(error);
         });

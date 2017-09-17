@@ -180,10 +180,13 @@ angular.module('mean.system')
                         $scope.messages = error;
                     });
             };
-                
-            // $scope.sendFriendInvite = () => {
-            //     const userId = window.localStorage.userId;
-            // }
+
+           $scope.sendFriendInvite = (email) => {
+                const userId = window.localStorage.userId;
+                const senderName = window.localStorage.name;
+                game.sendFriendInvite(email, userId, senderName);
+            }     
+            
 
             // const handleNewRequests = () => {
                 
@@ -197,7 +200,7 @@ angular.module('mean.system')
                 Users.getFriends(userId)
                     .then((myFriends) => {
                         $scope.myFriends = myFriends;
-                        console.log($scope.myFriends);
+                        // console.log($scope.myFriends);
                     })
                     .catch((error) => {
                         console.log(error, "in game file");

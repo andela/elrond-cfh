@@ -53,6 +53,32 @@ module.exports = function(io) {
       joinGame(socket,data);
     });
 
+    // Listener for Send Friend Invite on Server side
+    socket.on('friendInviteSent', (payload) => {
+      const { friendsEmail, userId, senderName, inviteUrl } = payload;
+      console.log(payload, 'this is a test');
+      User.findOneAndUpdate({
+        email: friendsEmail
+      }, {
+          $push: {
+            notifications: { senderName, inviteUrl }
+          }
+        },
+        {
+          safe: true,
+          upsert: true
+        }, (error) => {
+          if (error) {
+            console.log(error);
+            res.status(500)
+              .json('There was an error adding friends to friends list');
+          }
+        })
+      socket.emit(`newNotification${friendsEmail}`, { senderName, inviteUrl })
+
+    });
+
+
     socket.on('startGame', function() {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];

@@ -71,7 +71,22 @@ angular.module('mean.system')
       }
       $timeout(decrementTime, 950);
     };
-
+    // Friend Invite Notification Event...
+     game.sendFriendInvite = (friendsEmail, userId, senderName) => {
+      const inviteUrl = encodeURIComponent(window.location.href);
+      const payload = {
+        friendsEmail,
+        userId,
+        senderName,
+        inviteUrl
+      };
+        console.log(payload, "this is an emitter")
+      socket.emit('friendInviteSent', payload);
+    }
+    // //Listten for event of notification Sent
+    // socket.on(`newNotification${friendEmail}`, (data) => {
+    //   console.log (data);
+    // });
     socket.on('id', function (data) {
       game.id = data.id;
     });
@@ -82,6 +97,7 @@ angular.module('mean.system')
       game.pointLimit = data.pointLimit;
       game.timeLimits = data.timeLimits;
     });
+
 
     socket.on('gameUpdate', function (data) {
 
