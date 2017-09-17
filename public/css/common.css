@@ -242,6 +242,7 @@ body {
 #social-bar-container{
   overflow: scroll;
 }
+
 @media (max-width: 520px) {
   #main-container #app-container #social-bar-container {
     top: auto;
@@ -270,8 +271,8 @@ body {
     min-height: 0;
     display: inline-block;
     margin: 0px .5%;
-    width: 15.5%;
-    height: 48px;
+    width: 20.5%;
+    height: 39px;
     padding-top: 1%;
     padding-bottom: 0;
   }
@@ -592,9 +593,9 @@ body {
   font-size: 18px;
   padding-left: 20px;
 }
-@media only screem  and  (max-width: 520px) {
-  .menu nav .brand-logo{
-    font-size: 18px;
+@media only screen  and  (max-width: 520px) {
+  .menu .brand-logo{
+    font-size: 15px !important;
   }
 }
 #time{
@@ -688,6 +689,7 @@ body {
 @media (max-width: 520px) {
   #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #loading-gif {
     /* margin-top: 5px; */
+    
   }
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container {
@@ -714,12 +716,19 @@ body {
   font-size: 15px;
   font-weight: 400;
   color: white;
-  background: #D1C4E9;
   padding: 0.65em 20px;
   margin-left: 10px;
   width: 140px;
   height: 40px;
   cursor: pointer;
+}
+@media (max-width: 520px) {
+  #invite-to-game{
+    padding: 4px 1px !important;
+    font-size: 10px !important;
+    width: 60px !important;
+    height: 35px;
+  }
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
@@ -728,11 +737,14 @@ body {
   }
 }
 @media (max-width: 520px) {
-  #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
-    padding: 0.65em 1px;
-    font-size: 1rem;
+  #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button  {
+    padding: 11px 1px !important;
+    font-size: 10px !important;
+    width: 60px !important;
+    height: 35px;
   }
 }
+
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button:hover {
   background: #41C2CA;
 }

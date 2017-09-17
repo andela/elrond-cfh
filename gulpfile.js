@@ -52,6 +52,11 @@ gulp.task('angular-bootstrap', () => {
     .pipe(gulp.dest('public/lib/angular-bootstrap'));
 });
 
+gulp.task('intro.js', () => {
+  gulp.src('bower_components/intro.js/**/*')
+    .pipe(gulp.dest('public/lib/intro.js'));
+});
+
 gulp.task('lint', () => {
   gulp.src(['gulpfile.js',
     'public/js/**/*.js',
@@ -92,5 +97,5 @@ gulp.task('mochaTest', () => {
 
 gulp.task('test', ['mochaTest']);
 gulp.task('install', ['bower']);
-gulp.task('production', ['bower', 'sass', 'angular', 'bootstrap', 'jquery', 'underscore', 'angularUtils', 'angular-bootstrap', 'emojiarea']);
-gulp.task('default', ['nodemon', 'watch', 'sass', 'angular', 'bootstrap', 'jquery', 'underscore', 'angularUtils', 'angular-bootstrap', 'emojiarea']);
+gulp.task('production', ['bower', 'sass', 'angular', 'bootstrap', 'jquery', 'underscore', 'angularUtils', 'angular-bootstrap', 'emojiarea', 'intro.js' ]);
+gulp.task('default', ['nodemon', 'watch', 'sass', 'angular', 'bootstrap', 'jquery', 'underscore', 'angularUtils', 'angular-bootstrap', 'emojiarea', 'intro.js']);
