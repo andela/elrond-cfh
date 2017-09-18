@@ -133,6 +133,7 @@ angular.module('mean.system')
                 const $ = $scope.$;
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
+                    console.log('Here, Hello');
                 } else {
                     game.startGame();
                 }
@@ -172,21 +173,21 @@ angular.module('mean.system')
             $scope.addAsFriends = (email, name) => {
                 const userId = window.localStorage.userId;
                 Users.addFriend(email, userId, name).then((response) => {
-                    const friendName = response.friendName;
-                    $scope.messages = `${friendName}, has been added to your friend's list`;
-                    // $scope.getFriends();
-                })
+                        const friendName = response.friendName;
+                        $scope.messages = `${friendName}, has been added to your friend's list`;
+                        // $scope.getFriends();
+                    })
                     .catch((error) => {
                         $scope.messages = error;
                     });
             };
-                
+
             // $scope.sendFriendInvite = () => {
             //     const userId = window.localStorage.userId;
             // }
 
             // const handleNewRequests = () => {
-                
+
             // }
 
             // game.getRequests(email, handleNewRequests);
@@ -217,6 +218,7 @@ angular.module('mean.system')
                 setTimeout(() => {
                     $scope.startNext();
                     card.removeClass('animated flipOutY');
+                    console.log('Hey!!!, Ar!!!!');
                     $('.startModal').modal('close');
                 }, 750);
             };
@@ -241,12 +243,13 @@ angular.module('mean.system')
             });
 
             // In case player doesn't pick a card in time, show the table
-            $scope.$watch('game.state', () => { //game.state
+            $scope.$watch('game.state', () => { // game.state
                 if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
                     $scope.showTable = true;
                 }
                 if ($scope.isCzar() && game.state === 'czar pick card' && game.table.length === 0) {
                     const myModal = $('.startModal');
+                    console.log('I am the Modal');
                     myModal.modal('open');
                 }
                 if (game.state === 'game dissolved') {
