@@ -937,10 +937,6 @@ li {
     background: linear-gradient(to bottom, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%), url(../img/header-img.jpg) no-repeat center center / cover !important;
   }
   
-  #main-container{
-    height: unset;
-  }
-
   .signinForm{
     width: 100%;
     background: linear-gradient(to bottom, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%), url(../img/header-img.jpg) no-repeat center center / cover !important;
