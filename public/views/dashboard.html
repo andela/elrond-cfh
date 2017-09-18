@@ -9,7 +9,7 @@
 
 <script></script>
 
-<div ng-hide="showOptions" landing ng-controller="GameController">
+<div class="dashboard-wrapper" ng-show="islogin" landing ng-controller="GameController">
     <section class="header-dashboard">
         <img class="dashboard-image" src="img/header-img.jpg"/>
         <div class="overlay dashboard-overlay"></div>
@@ -33,7 +33,7 @@
     </section>
     <section>
         <div class="row header-body tab-wrapper">
-            <div class="col m10 offset-m1 l10 offset-l1 s12">
+            <div class="col m10 offset-m1 l10 offset-l1 s12 tab-wrapper-body">
                 <ul id="tabs-swipe-demo" class="tabs white">
                     <li class="tab col s3"><a class="active tab-header-text" href="#test-swipe-1">Game Log</a></li>
                     <li class="tab col s3"><a class="tab-header-text" href="#test-swipe-2">Leader Board</a></li>
@@ -115,20 +115,20 @@
             </div>
         </div>
     </section>
-<section class="footer">
-    <div class="section">
-        <div class="row" style="padding: 3%">
-            <div class="col l12">
-                This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
-            </div>
-            <div class="col l12 footer-links">
-                <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
-                |
-                <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
+    <section class="footer">
+        <div class="section">
+            <div class="row" style="padding: 3%">
+                <div class="col l12">
+                    This game is based on the <a href="http://cardsagainsthumanity.com/" class="secondary-link">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com/" class="secondary-link">crowdrise</a>.
+                </div>
+                <div class="col l12 footer-links">
+                    <a href="http://cfh.io/#!/privacy" class="secondary-link">Privacy Policy</a>
+                    |
+                    <a href="https://github.com/cardsforhumanity/cardsforhumanity" class="secondary-link">Source Code</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 <script>
   $(document).ready(function(){
