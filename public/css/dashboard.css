@@ -68,7 +68,6 @@
     font-size: 16px;
     background-color: #ffffff;
     color: #000000;
-    margin-top: 50px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 .tab-header-text {
@@ -118,6 +117,9 @@
     cursor: default;
     border-bottom-color: transparent;
     text-decoration: none;
+}
+.user-donation {
+    margin-top: 30px;
 }
 .dashboard-wrapper .z-depth-1, nav, .card-panel,
 .card, .toast, .btn, .btn-large, .btn-floating,
