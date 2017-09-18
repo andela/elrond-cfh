@@ -58,7 +58,7 @@ angular.module('mean.system')
             $scope.signinErrorMsg = err.message;
             $scope.errStatus = true;
           });
-      }
+      };
       $scope.signupErrStatus = false;
       $scope.signup = () => {
         Users.signup($scope.name, $scope.email, $scope.password)
