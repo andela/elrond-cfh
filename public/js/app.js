@@ -1,4 +1,4 @@
-angular.module('mean', ['ngCookies', 'angular-notification-icons', 'firebase', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
+angular.module('mean', ['ngCookies', 'firebase', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
   .config(['$routeProvider',
       function ($routeProvider) {
           $routeProvider
