@@ -170,6 +170,7 @@ angular.module('mean.system')
                 const $ = $scope.$;
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
+                    console.log('Here, Hello');
                 } else {
                     game.startGame();
                 }
@@ -209,21 +210,21 @@ angular.module('mean.system')
             $scope.addAsFriends = (email, name) => {
                 const userId = window.localStorage.userId;
                 Users.addFriend(email, userId, name).then((response) => {
-                    const friendName = response.friendName;
-                    $scope.messages = `${friendName}, has been added to your friend's list`;
-                    // $scope.getFriends();
-                })
+                        const friendName = response.friendName;
+                        $scope.messages = `${friendName}, has been added to your friend's list`;
+                        // $scope.getFriends();
+                    })
                     .catch((error) => {
                         $scope.messages = error;
                     });
             };
-                
+
             // $scope.sendFriendInvite = () => {
             //     const userId = window.localStorage.userId;
             // }
 
             // const handleNewRequests = () => {
-                
+
             // }
 
             // game.getRequests(email, handleNewRequests);
@@ -254,6 +255,7 @@ angular.module('mean.system')
                 setTimeout(() => {
                     $scope.startNext();
                     card.removeClass('animated flipOutY');
+                    console.log('Hey!!!, Ar!!!!');
                     $('.startModal').modal('close');
                 }, 750);
             };
@@ -278,12 +280,13 @@ angular.module('mean.system')
             });
 
             // In case player doesn't pick a card in time, show the table
-            $scope.$watch('game.state', () => { //game.state
+            $scope.$watch('game.state', () => { // game.state
                 if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
                     $scope.showTable = true;
                 }
                 if ($scope.isCzar() && game.state === 'czar pick card' && game.table.length === 0) {
                     const myModal = $('.startModal');
+                    console.log('I am the Modal');
                     myModal.modal('open');
                 }
                 if (game.state === 'game dissolved') {
@@ -331,11 +334,63 @@ angular.module('mean.system')
             } else {
                 game.joinGame(null, null, null, localStorage.getItem('region'));
             }
-
+            $scope.gameTour = introJs();
+            
+                 $scope.gameTour.setOptions({
+                    steps: [{
+                      intro: 'Welcome to the game Cards for Humanity, You want to play this game?, then let me take you on a tour.'
+                    },
+                    {
+                      element: '#timer-container',
+                      intro: 'This is the timer for the game. Choose an answer to the current question. After time out, CZAR then select a favorite answer. whoever submits CZAR\'s favorite answer wins the round'
+                    },
+                    {
+                      element: '#question-container-outer',
+                      intro: 'Game needs a minimum of 3 players to start. Wait for the minimum number of players and start the game.',
+                    },
+                    {
+                      element: '#info-container',
+                      intro: 'These are the rules of the game',
+                      position: 'top'
+                    },
+                    {
+                      element: '#player-container',
+                      intro: 'Players in the current game are shown here',
+                    },
+                    {
+                      element: '#abandon-game-button',
+                      intro: 'Played enough? Click this button to quit the game'
+                    },
+                    {
+                        element: '#dashboard',
+                        intro: 'you can view the leader board of the game here'
+                    },
+                    {
+                      element: '#retake-tour',
+                      intro: 'You can always take the tour again'
+                    }
+                    ]
+                  });
+            
+            
+                 $scope.takeTour = () => {
+                    if (!localStorage.takenTour) {
+                      const timeout = setTimeout(() => {
+                        $scope.gameTour.start();
+                        clearTimeout(timeout);
+                      }, 500);
+                      localStorage.setItem('takenTour', true); 
+                    }
+                  };
+            
+                 $scope.retakeTour = () => {
+                    localStorage.removeItem('takenTour');
+                    $scope.takeTour();
+                  };
             // player game-log logic
-            $scope.showOptions = false;
+            $scope.islogin = false;
             if (window.localStorage.token || window.user) {
-              $scope.showOptions = true;
+              $scope.islogin = true;
               dashboard.getGameLog()
                 .then((response) => {
                   const dateOptions = {
@@ -373,8 +428,9 @@ angular.module('mean.system')
                   $scope.userDonations = userDonations.donations;
                 });
             }
-            // logout to be used by the player dashboard if logged in
+          // logout to be used by the player dashboard if logged in
             $scope.logout = () => {
+                window.user = null;
                 window.localStorage.removeItem('token');
                 window.localStorage.removeItem('email');
                 window.localStorage.removeItem('userId');
@@ -382,5 +438,6 @@ angular.module('mean.system')
                 $scope.showOptions = true;
                 $location.path('/');
             };
+            
         }
     ]);
