@@ -392,8 +392,11 @@ nav.default {
     font-family: 'PT Sans', sans-serif;
     text-align: center;
     font-size: 1.0em;
-    background: #2ecc71;
+    background: #130A33;;
     color: white;
+}
+#close{
+    font-size: 1.4em;
 }
 #modal-invite button {
     background: #2ecc71;
@@ -423,5 +426,8 @@ nav.default {
     font-size: 0.4em !important;
     width: 68px !important;
     height: 35px;
+}
+#close {
+    font-size: 2.5em;
 }
 }
