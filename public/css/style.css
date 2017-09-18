@@ -931,25 +931,35 @@ li {
     margin: 30px auto; }
   .row {
     margin: 0 0 0 4px; } }  
+
   .signupForm {
-    background: url(../img/bg2.jpg) no-repeat center center / cover !important;
-    height: 100%;
     width: 100%;
-    /* position: fixed; */
+    background: linear-gradient(to bottom, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%), url(../img/header-img.jpg) no-repeat center center / cover !important;
+  }
+  
+  #main-container{
+    height: unset;
   }
 
   .signinForm{
-    background: url(../img/bg2.jpg) no-repeat center center / cover !important;
-    height: 100%;
     width: 100%;
-    position: fixed;
+    background: linear-gradient(to bottom, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%, rgba(19, 10, 51, 0.69) 50%), url(../img/header-img.jpg) no-repeat center center / cover !important;
+    /* position: fixed; */
+  
   }
   
   .signinOverall {
     margin-top: 0;
+    margin-bottom: 0px;
+    padding-bottom: 180px;
   }
   .signupOverall {
     margin-top: 0;
+    margin-bottom: 0px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+
   }
   .signinWrapper, .signupWrapper {
     background-color: #ffffff;
@@ -980,7 +990,7 @@ li {
   .signupWrapper h4{
     text-transform: capitalize;
     text-align: center;
-    font-size: 19px;
+    font-size: 15px;
     padding: 0;
     margin: 5px 0 0 0;
   }
@@ -990,7 +1000,6 @@ li {
   }
   .signinSocial, .signupSocial {
     padding: 0px 50px;
-
     text-align: center;
   }
   .signinSocial hr{
