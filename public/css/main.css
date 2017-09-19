@@ -79,7 +79,7 @@ a.secondary-link {
 }
 
 .btn-primary:hover {
-    background-color: #ea8f06;
+    background-color: #cc7c04;
     border-color: #FD9800;
 }
 
@@ -384,3 +384,4 @@ nav.default {
     max-width: 1400px;
     margin: auto;
 }
+

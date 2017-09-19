@@ -109,8 +109,9 @@ a {
   transition: color 0.5s ease; }
   a:hover {
     text-decoration: none;
-    color: #2ecc71;
-    border-radius: 0px !important; }
+    color: #fd9800!important;
+    border-radius: 0px !important;
+    }
 
 p a {
   color: #60B197; }
@@ -1013,4 +1014,9 @@ li {
     width: 100%;
     height: 500px;
   }
+}
+
+.z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
 }
