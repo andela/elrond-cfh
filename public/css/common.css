@@ -110,7 +110,19 @@ body {
   padding-left: 20px;
   margin-left: 0;
 }
+.menu a:hover{
+  text-decoration: none;
+}
 
+.menu .redlink a:hover{
+  background-color: #ef5350 ;
+}
+.menu .bluelink a:hover{
+  background-color: #1da1f3 ;
+}
+.menu .purplelink a:hover{
+  background-color: #9c27b0 ;
+}
 .content {
   margin-top: 50px;
   width: 70%;
@@ -233,11 +245,11 @@ body {
 }
 #main-container #app-container #social-bar-container {
   width: 20%;
-  height: 68.9%;
+  height: 79.9%;
   position: absolute;
   right: 0;
   top: 60px;
-  margin-top: 33px;
+  margin-top: -60px;
 }
 #social-bar-container{
   overflow: scroll;
@@ -256,15 +268,15 @@ body {
 #main-container #app-container #social-bar-container #player-container {
   height: 13.166667%;
   position: relative;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  /* padding-top: 4%; */
+  /* padding-bottom: 4%; */
   min-height: 85px;
   background-color: #fff;
   margin: 0 0 6% 8%;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 3px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 @media (max-width: 520px) {
   #main-container #app-container #social-bar-container #player-container {
@@ -278,8 +290,11 @@ body {
   }
 }
 #main-container #app-container #social-bar-container #player-container #above-czar-container {
-  height: 65%;
+  height: 100%;
   width: 100%;
+}
+#above-czar-container{
+  display: flex;
 }
 @media (max-width: 520px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container {
@@ -345,7 +360,6 @@ body {
   bottom: 8px;
   left: 2px;
   max-width: 62%;
-  overflow: hidden;
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner {
@@ -363,7 +377,7 @@ body {
 #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
   font-family: 'Open Sans', cursive;
   margin-bottom: 0px;
-  font-size: 15px;
+  font-size: 18px;
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
@@ -668,7 +682,7 @@ body {
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #player-count-container,
  #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #loading-container, #main-container #app-container 
 #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container {
-  width: 33.333%;
+  /* width: 33.333%; */
   float: left;
   text-align: center;
 }
@@ -695,6 +709,10 @@ body {
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container {
   color: #333;
 }
+#wrap{
+  width: 100%;
+  height: 100%;
+}
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -704,7 +722,8 @@ body {
   color: white;
   background: #1F959C;
   padding: 0.65em 20px;
-  margin-left: 10px;
+  margin-left: 4px;
+  margin-right: 11px;
   width: 140px;
   height: 40px;
   cursor: pointer;
@@ -717,7 +736,7 @@ body {
   font-weight: 400;
   color: white;
   padding: 0.65em 20px;
-  margin-left: 10px;
+  margin-left: 1px;
   width: 140px;
   height: 40px;
   cursor: pointer;

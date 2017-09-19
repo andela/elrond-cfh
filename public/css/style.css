@@ -98,24 +98,7 @@
   color: white;
   font-family: arial;
   margin-bottom: -13px; }
-
-/**** Links ****/
-a {
-  color: #60B197;
-  -webkit-transition: color 0.5s ease;
-  -moz-transition: color 0.5s ease;
-  -ms-transition: color 0.5s ease;
-  -o-transition: color 0.5s ease;
-  transition: color 0.5s ease; }
-  a:hover {
-    text-decoration: none;
-    color: #2ecc71;
-    border-radius: 0px !important; }
-
-p a {
-  color: #60B197; }
-  p a:hover {
-    color: #2ecc71; }
+  
 
 /**** Top Bar ****/
 #menu-container {
@@ -162,47 +145,6 @@ p a {
   .wpb-logo-container a {
     color: #ffffff !important; }
 
-.wpb-menu-container {
-  float: right; }
-  .wpb-menu-container .wpb-dropdown-menu {
-    display: none;
-    margin-top: 35px;
-    text-align: center;
-    float: right; }
-  .wpb-menu-container .wpb-main-menu {
-    list-style: none;
-    margin: 0;
-    text-align: right;
-    height: 100px;
-    margin-top: -77px;
-    margin-right: 35px; }
-    .wpb-menu-container .wpb-main-menu li {
-      display: inline-block;
-      height: 100%;
-      position: relative;
-      cursor: pointer; }
-      .wpb-menu-container .wpb-main-menu li a {
-        display: block;
-        height: 100%;
-        line-height: 100px;
-        font-weight: bold;
-        color: white;
-        padding: 0px 10px;
-        -webkit-transition: color 0.5s ease;
-        -moz-transition: color 0.5s ease;
-        -ms-transition: color 0.5s ease;
-        -o-transition: color 0.5s ease;
-        transition: color 0.5s ease;
-        text-transform: uppercase;
-        position: relative;
-        z-index: 1000; }
-        .wpb-menu-container .wpb-main-menu li a:hover {
-          color: #2ECC71 !important;
-          -webkit-transition: color 0.5s ease;
-          -moz-transition: color 0.5s ease;
-          -ms-transition: color 0.5s ease;
-          -o-transition: color 0.5s ease;
-          transition: color 0.5s ease; }
 
 /**** LANDING ****/
 #main-text {

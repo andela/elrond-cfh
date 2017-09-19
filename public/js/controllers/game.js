@@ -322,8 +322,8 @@ angular.module('mean.system')
                       intro: 'Played enough? Click this button to quit the game'
                     },
                     {
-                        element: '#dashboard',
-                        intro: 'you can view the leader board of the game here'
+                        element: '#tweet',
+                        intro: 'you can share your game on twitter'
                     },
                     {
                       element: '#retake-tour',

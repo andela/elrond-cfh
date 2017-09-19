@@ -12,7 +12,9 @@
   background-color: #130A33;
   font-size: 60px
 }
-
+.navhover{
+  text-decoration: none;
+}
 .game-html{
   height: 100%;
   width: 100%;
