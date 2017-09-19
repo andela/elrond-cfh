@@ -112,6 +112,7 @@ body {
 }
 .menu a:hover{
   text-decoration: none;
+  color: #fff !important;
 }
 
 .menu .redlink a:hover{
