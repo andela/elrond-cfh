@@ -20,7 +20,8 @@ angular.module('mean.system')
       curQuestion: null,
       notification: null,
       timeLimits: {},
-      joinOverride: false
+      joinOverride: false,
+      handleNotification: null
     };
 
     var notificationQueue = [];
@@ -71,6 +72,30 @@ angular.module('mean.system')
       }
       $timeout(decrementTime, 950);
     };
+    // Friend Invite Notification Event...
+     game.sendFriendInvite = (email, userId, senderName,myEmail) => {
+      const inviteUrl = encodeURIComponent(window.location.href);
+      const payload = {
+        email,
+        userId,
+        senderName,
+        inviteUrl,
+        myEmail
+      };
+        // console.log(payload, "this is an emitter")
+      socket.emit('friendInviteSent', payload);
+    }
+    // Listten for event of notification for you Sent from other users
+    const handleNotification = (myEmail, callback) => {
+        socket.on(`newNotification${myEmail}`, callback);
+    }
+  
+    const myEmail = window.localStorage.email;
+    socket.on(`newNotification${myEmail}`, (data) => {
+            const { senderName, inviteUrl } = data; 
+            handleNotification(myEmail, callback);
+    });
+
 
     socket.on('id', function (data) {
       game.id = data.id;
@@ -82,6 +107,7 @@ angular.module('mean.system')
       game.pointLimit = data.pointLimit;
       game.timeLimits = data.timeLimits;
     });
+
 
     socket.on('gameUpdate', function (data) {
 
