@@ -377,6 +377,10 @@ angular.module('mean.system')
                         intro: 'you can share your game on twitter'
                     },
                     {
+                        element: '#dashboard',
+                        intro: 'click here to see leaders in the game'
+                    },
+                    {
                       element: '#retake-tour',
                       intro: 'You can always take the tour again'
                     }
