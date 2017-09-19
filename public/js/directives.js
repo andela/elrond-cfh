@@ -17,7 +17,7 @@ angular.module('mean.directives', [])
           if (scope.game.state === 'winner has been chosen') {
             var curQ = scope.game.curQuestion;
             var curQuestionArr = curQ.text.split('_');
-            var startStyle = "<br/></br><center><span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>";
+            var startStyle = "<br/></br><center><span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>answer is ";
             var endStyle = "</span></center>";
             var shouldRemoveQuestionPunctuation = false;
             var removePunctuation = function(cardIndex) {
