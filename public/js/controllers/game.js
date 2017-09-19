@@ -140,9 +140,11 @@ angular.module('mean.system')
             };
             $scope.sendInvite = (email) => {
                 Users.sendInvites(email).then((response) => {
-                    console.log(response);
+                    Materialize.toast(`${response.message}`, 2000, 'green');
+                    if($scope.usersInvited >=11){ 
                         $scope.sendInviteButton = false;
-                        // Materialize.toast('Sorry Mate, Maximum number (11) of users invited', 3000, 'blue')
+                        Materialize.toast('Sorry Maximum number of invites sent', 3000, 'blue');
+                    }
                 }).catch((error) => {
                     $scope.inviteMessage = error;
                 });
@@ -394,7 +396,7 @@ angular.module('mean.system')
                   $scope.userDonations = userDonations.donations;
                 });
             $scope.friendInvites = game.friendInvites
-            console.log($scope.friendInvites);
+            // console.log($scope.friendInvites);
             }
           // logout to be used by the player dashboard if logged in
             $scope.logout = () => {

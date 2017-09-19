@@ -83,7 +83,7 @@
                         <td>{{user.name}}</td>
                         <td><a class="inviteButton" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</a> 
                             <span ng-show="myFriends.indexOf(user.email) > -1"><a class="inviteButton" id="inviteButton" ng-click="sendFriendInvite(user.email)">invite</a></span></td>
-                        <td> <a class="inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</a></td>
+                        <td> <a class="inviteButton" id="user.email" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</a></td>
                     </tr>
                 </tbody>
             </table>
