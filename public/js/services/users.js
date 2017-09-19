@@ -53,7 +53,7 @@ angular.module('mean.system')
           if (usersInvited.indexOf(response.data) <= -1) {
             usersInvited.push(response.data);
           }
-          const message = `${response.data} Invite sent`;
+          const message = 'Invite sent';
           resolve({
             message,
             usersInvited
@@ -93,7 +93,7 @@ angular.module('mean.system')
       { headers: { authorization: window.localStorage.token } })
         .then((response) => {
           resolve(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         }, (error) => {
           reject(error);
         });

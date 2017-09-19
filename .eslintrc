@@ -10,7 +10,9 @@
   "globals": {
     "angular": true,
     "swal": true,
-    "$": true
+    "$": true,
+    "Materialize": true,
+    "Firebase": true
   },
   "rules": {
     "one-var": 0,
