@@ -1,6 +1,6 @@
 angular.module('mean.system')
-    .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
-        function GameController($scope, game, $timeout,
+    .controller('GameController', ['$scope', '$firebaseArray', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
+        function GameController($scope, $firebaseArray, game, $timeout,
             $location, MakeAWishFactsService, $dialog, Users, dashboard) {
             $scope.hasPickedCards = false;
             $scope.winningCardPicked = false;
@@ -8,10 +8,12 @@ angular.module('mean.system')
             $scope.$ = $;
             $scope.showInviteButton = false;
             $scope.game = game;
+            $scope.gameChat = '';
             $scope.usersInvited = Users.usersInvited || [];
             $scope.sendInviteButton = true;
             $scope.pickedCards = [];
             $scope.foundUsers =[];
+            $scope.notificationCount=1;
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
             if (window.localStorage.email !== undefined) {
@@ -44,6 +46,52 @@ angular.module('mean.system')
                     return {};
                 }
             };
+
+            $scope.$watch('game.gameID', () => {
+                if (game.gameID !== null) {
+                  const chatRef = new Firebase(`https://elrond-cfh.firebaseio.com/messages/${game.gameID}`);
+                  $scope.gameChats = $firebaseArray(chatRef);
+                  $scope.gameChats.$watch((event) => {
+                    const insertedRecord = $scope.gameChats.$getRecord(event.key);
+                    if (insertedRecord !== null) {
+                      if (insertedRecord.postedBy !== game.players[game.playerIndex].username) {
+                        $scope.notificationCount = 1;
+                      }
+                    }
+                  });
+                }
+            });
+
+            $(() => {
+                $("#example1").emojioneArea({
+                    autoHideFilters: true,
+                    events: {
+                    keyup: function (editor, event) {
+                        if (event.which == 13) {
+                        angular.element('#app-container').scope().addChat(this.getText());
+                        this.setText('');
+                        }
+                    }
+                    }
+                    });
+                $('.chat-header').on('click', () => {
+                    $('.chat-body').slideToggle();
+                    $('span.right').find('i').toggleClass('fa-caret-down fa-caret-up');
+                });
+            });
+
+            $scope.addChat = (messageContent) => {
+                const timestamp = (new Date()).toLocaleTimeString('en-US');
+                if (game.gameID !== null) {
+                  $scope.gameChats.$add({
+                    postedOn: timestamp,
+                    avatar: game.players[game.playerIndex].avatar,
+                    message: messageContent,
+                    postedBy: game.players[game.playerIndex].username
+                  });
+                  $scope.gameChat = '';
+                }
+              }
 
             $scope.sendPickedCards = function() {
                 game.pickCards($scope.pickedCards);
@@ -134,6 +182,7 @@ angular.module('mean.system')
                 const $ = $scope.$;
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
+                    console.log('Here, Hello');
                 } else {
                     game.startGame();
                 }
@@ -193,7 +242,7 @@ angular.module('mean.system')
             
 
             // const handleNewRequests = () => {
-                
+
             // }
 
             // game.getRequests(email, handleNewRequests);
@@ -225,6 +274,7 @@ angular.module('mean.system')
                 setTimeout(() => {
                     $scope.startNext();
                     card.removeClass('animated flipOutY');
+                    console.log('Hey!!!, Ar!!!!');
                     $('.startModal').modal('close');
                 }, 750);
             };
@@ -249,12 +299,13 @@ angular.module('mean.system')
             });
 
             // In case player doesn't pick a card in time, show the table
-            $scope.$watch('game.state', () => { //game.state
+            $scope.$watch('game.state', () => { // game.state
                 if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
                     $scope.showTable = true;
                 }
                 if ($scope.isCzar() && game.state === 'czar pick card' && game.table.length === 0) {
                     const myModal = $('.startModal');
+                    console.log('I am the Modal');
                     myModal.modal('open');
                 }
                 if (game.state === 'game dissolved') {
@@ -330,8 +381,12 @@ angular.module('mean.system')
                       intro: 'Played enough? Click this button to quit the game'
                     },
                     {
+                        element: '#tweet',
+                        intro: 'you can share your game on twitter'
+                    },
+                    {
                         element: '#dashboard',
-                        intro: 'you can view the leader board of the game here'
+                        intro: 'click here to see leaders in the game'
                     },
                     {
                       element: '#retake-tour',
