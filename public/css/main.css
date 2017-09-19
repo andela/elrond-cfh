@@ -441,6 +441,9 @@ nav.default {
     white-space: nowrap;
     position: relative;
 }
+#close {
+    font-size: 2.0em !important;
+}
 .searchBar input#search{
   width: 600px;
   height: 50px;
