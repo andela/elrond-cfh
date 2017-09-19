@@ -15,7 +15,7 @@
                 <div id="loading-gif"><img ng-src="../img/loaders/spinner.gif" width="50" height="50"/></div>
             </div>
             <div class="start col s12 m12 l12" >
-                <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+                <div data-target="modal1" class="modal-trigger" id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0)">
                     <div id='start-game-button' class="col s12 m6 l6 card-1">
                         Start Game
                     </div>
@@ -81,9 +81,9 @@
                 <tbody>
                     <tr ng-repeat="user in foundUsers" ng-show="usersInvited.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
                         <td>{{user.name}}</td>
-                        <td><a class="inviteButton" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</a>
+                        <td><a class="inviteButton" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</a> 
                             <span ng-show="myFriends.indexOf(user.email) > -1"><a class="inviteButton" id="inviteButton" ng-click="sendFriendInvite(user.email)">invite</a></span></td>
-                        <td><a class="inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</a></td>
+                        <td> <a class="inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</a></td>
                     </tr>
                 </tbody>
             </table>

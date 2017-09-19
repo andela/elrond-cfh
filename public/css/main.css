@@ -400,6 +400,7 @@ nav.default {
     color: #65737e;
     border-radius: 3px;
     border: none;
+    font-size: 13px;
 
 }
 #modal-invite a:focus{
@@ -415,7 +416,12 @@ nav.default {
     border-collapse: collapse;
     width: 100%;
 }
-#modal-invite th, td {
+#modal-invite td {
+   text-align: left;
+    padding: 2px;
+    color: #37474F; 
+}
+#modal-invite th {
     text-align: left;
     padding: 8px;
     color: #37474F;
@@ -435,7 +441,7 @@ nav.default {
     position: relative;
 }
 .searchBar input#search{
-  width: 400px;
+  width: 600px;
   height: 50px;
   background: #ececec;
   border: none;
@@ -484,7 +490,7 @@ transition: background .55s ease;
     }
 #modal-invite a {
     padding: 4px 1px !important;
-    font-size: 0.4em !important;
+    font-size: 6px !important;
     width: 68px !important;
     height: 35px;
 }
