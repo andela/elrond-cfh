@@ -55,10 +55,10 @@ module.exports = function(io) {
 
     // Listener for Send Friend Invite on Server side
     socket.on('friendInviteSent', (payload) => {
-      const { friendsEmail, userId, senderName, inviteUrl } = payload;
-      console.log(payload, 'this is a test');
+      const { email, userId, senderName, inviteUrl,myEmail } = payload;
+      // console.log(payload, 'this is a test');
       User.findOneAndUpdate({
-        email: friendsEmail
+        email: email
       }, {
           $push: {
             notifications: { senderName, inviteUrl }
@@ -73,8 +73,9 @@ module.exports = function(io) {
             res.status(500)
               .json('There was an error adding friends to friends list');
           }
+            // console.log(`newNotification`, { senderName, inviteUrl })
         })
-      socket.emit(`newNotification${friendsEmail}`, { senderName, inviteUrl })
+      socket.broadcast.emit(`newNotification${email}`, { senderName, inviteUrl })
 
     });
 

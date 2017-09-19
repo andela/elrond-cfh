@@ -64,11 +64,15 @@
         <a id="close" class=" right modal-action modal-close">&times;</a>
     </div>
     <div class="modal-content">
-        <p>{{messages}}</p>
-        <p>{{ inviteMessage }}</p>
         <h4>Invite Players</h4>
-        <input type="text" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true">
-        <button class="btn" ng-click="searchedUsers()" id="inviteFriends">Search</button>
+        <div class="box">
+  <div class="searchBar">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="text" id="search" ng-keyup="searchedUsers()" ng-model="userName"   placeholder="Search for a user.." aria-required="true" />
+  </div>
+</div>
+        <!-- <input type="text" ng-keyup="searchedUsers()" ng-minlength="0" ng-model="userName" placeholder="Search for a user" class="form-control" id="userName" required="" aria-required="true"> -->
+        <!-- <button class="btn"  id="inviteFriends">Search</button> -->
 
         <div id="foundUsers">
             <table class="highlight">
@@ -77,8 +81,9 @@
                 <tbody>
                     <tr ng-repeat="user in foundUsers" ng-show="usersInvited.indexOf(user.email) <= -1 && user.email !== currentUserEmail">
                         <td>{{user.name}}</td>
-                        <td><button class="btn btn-primary" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</button><span ng-show="myFriends.indexOf(user.email) > -1">Is a Friend</span></td>
-                        <td><button class="btn btn-primary inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</button></td>
+                        <td><a class="inviteButton" ng-click="addAsFriends(user.email)" ng-show="myFriends.indexOf(user.email) <= -1">add as Friend</a>
+                            <span ng-show="myFriends.indexOf(user.email) > -1"><a class="inviteButton" id="inviteButton" ng-click="sendFriendInvite(user.email)">invite</a></span></td>
+                        <td><a class="inviteButton" id="inviteButton" ng-click="sendInvite(user.email)" ng-show="sendInviteButton">Send email</a></td>
                     </tr>
                 </tbody>
             </table>

@@ -11,6 +11,7 @@ angular.module('mean.system')
             $scope.usersInvited = Users.usersInvited || [];
             $scope.sendInviteButton = true;
             $scope.pickedCards = [];
+            $scope.foundUsers =[];
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
             if (window.localStorage.email !== undefined) {
@@ -139,7 +140,7 @@ angular.module('mean.system')
             };
             $scope.sendInvite = (email) => {
                 Users.sendInvites(email).then((response) => {
-                    console.log($scope.usersInvited, 'The response from sendInvites');
+                    // console.log($scope.usersInvited, 'The response from sendInvites');
                     if ($scope.usersInvited.length >= 11) {
                         $scope.inviteMessage = response.message;
                         $scope.sendInviteButton = false;
@@ -173,7 +174,8 @@ angular.module('mean.system')
                 const userId = window.localStorage.userId;
                 Users.addFriend(email, userId, name).then((response) => {
                     const friendName = response.friendName;
-                    $scope.messages = `${friendName}, has been added to your friend's list`;
+                    Materialize.toast(`${friendName}, has been added to your friend's list`, 3000, 'blue')
+                    // $scope.messages = `${friendName}, has been added to your friend's list`;
                 $scope.getFriends();
                 })
                     .catch((error) => {
@@ -184,7 +186,9 @@ angular.module('mean.system')
            $scope.sendFriendInvite = (email) => {
                 const userId = window.localStorage.userId;
                 const senderName = window.localStorage.name;
-                game.sendFriendInvite(email, userId, senderName);
+                const myEmail = window.localStorage.email;
+                console.log(email, userId, senderName,myEmail, 'This is the Controller');
+                game.sendFriendInvite(email, userId, senderName,myEmail);
             }     
             
 
@@ -391,6 +395,8 @@ angular.module('mean.system')
                 .then((userDonations) => {
                   $scope.userDonations = userDonations.donations;
                 });
+            $scope.friendInvites = game.friendInvites
+            console.log($scope.friendInvites);
             }
           // logout to be used by the player dashboard if logged in
             $scope.logout = () => {
