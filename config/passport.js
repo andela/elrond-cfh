@@ -58,7 +58,7 @@ module.exports = function(passport) {
     passport.use(new TwitterStrategy({
             consumerKey: process.env.TWITTER_CONSUMER_KEY || config.twitter.clientID,
             consumerSecret: process.env.TWITTER_CONSUMER_SECRET || config.twitter.clientSecret,
-            callbackURL: config.twitter.callbackURL
+            callbackURL: 'http://localhost:3000/auth/twitter/callback' || config.twitter.callbackURL
         },
         function(token, tokenSecret, profile, done) {
             User.findOne({
@@ -89,7 +89,8 @@ module.exports = function(passport) {
     passport.use(new FacebookStrategy({
             clientID: process.env.FB_CLIENT_ID || config.facebook.clientID,
             clientSecret: process.env.FB_CLIENT_SECRET || config.facebook.clientSecret,
-            callbackURL: config.facebook.callbackURL
+            callbackURL: process.env.FACEBOOK_CALLBACK_URL
+            || config.facebook.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
             User.findOne({
@@ -124,7 +125,8 @@ module.exports = function(passport) {
     passport.use(new GitHubStrategy({
             clientID: process.env.GITHUB_CLIENT_ID || config.github.clientID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET || config.github.clientSecret,
-            callbackURL: config.github.callbackURL
+            callbackURL: process.env.GITHUB_CALLBACK_URL
+            || config.github.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
             User.findOne({
@@ -156,7 +158,8 @@ module.exports = function(passport) {
     passport.use(new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_ID || config.google.clientID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || config.google.clientSecret,
-            callbackURL: config.google.callbackURL
+            callbackURL: process.env.GOOGLE_CALLBACK_URL
+            || config.google.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
             User.findOne({

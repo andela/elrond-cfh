@@ -1,6 +1,6 @@
 angular.module('mean.system')
-    .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
-        function GameController($scope, game, $timeout,
+    .controller('GameController', ['$scope', '$firebaseArray', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'Users', 'dashboard',
+        function GameController($scope, $firebaseArray, game, $timeout,
             $location, MakeAWishFactsService, $dialog, Users, dashboard) {
             $scope.hasPickedCards = false;
             $scope.winningCardPicked = false;
@@ -8,9 +8,11 @@ angular.module('mean.system')
             $scope.$ = $;
             $scope.showInviteButton = false;
             $scope.game = game;
+            $scope.gameChat = '';
             $scope.usersInvited = Users.usersInvited || [];
             $scope.sendInviteButton = true;
             $scope.pickedCards = [];
+            $scope.notificationCount=1;
             var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
             $scope.makeAWishFact = makeAWishFacts.pop();
             if (window.localStorage.email !== undefined) {
@@ -43,6 +45,52 @@ angular.module('mean.system')
                     return {};
                 }
             };
+
+            $scope.$watch('game.gameID', () => {
+                if (game.gameID !== null) {
+                  const chatRef = new Firebase(`https://elrond-cfh.firebaseio.com/messages/${game.gameID}`);
+                  $scope.gameChats = $firebaseArray(chatRef);
+                  $scope.gameChats.$watch((event) => {
+                    const insertedRecord = $scope.gameChats.$getRecord(event.key);
+                    if (insertedRecord !== null) {
+                      if (insertedRecord.postedBy !== game.players[game.playerIndex].username) {
+                        $scope.notificationCount = 1;
+                      }
+                    }
+                  });
+                }
+            });
+
+            $(() => {
+                $("#example1").emojioneArea({
+                    autoHideFilters: true,
+                    events: {
+                    keyup: function (editor, event) {
+                        if (event.which == 13) {
+                        angular.element('#app-container').scope().addChat(this.getText());
+                        this.setText('');
+                        }
+                    }
+                    }
+                    });
+                $('.chat-header').on('click', () => {
+                    $('.chat-body').slideToggle();
+                    $('span.right').find('i').toggleClass('fa-caret-down fa-caret-up');
+                });
+            });
+
+            $scope.addChat = (messageContent) => {
+                const timestamp = (new Date()).toLocaleTimeString('en-US');
+                if (game.gameID !== null) {
+                  $scope.gameChats.$add({
+                    postedOn: timestamp,
+                    avatar: game.players[game.playerIndex].avatar,
+                    message: messageContent,
+                    postedBy: game.players[game.playerIndex].username
+                  });
+                  $scope.gameChat = '';
+                }
+              }
 
             $scope.sendPickedCards = function() {
                 game.pickCards($scope.pickedCards);
@@ -133,6 +181,7 @@ angular.module('mean.system')
                 const $ = $scope.$;
                 if (game.players.length < game.playerMinLimit) {
                     $('.modal').modal();
+                    console.log('Here, Hello');
                 } else {
                     game.startGame();
                 }
@@ -172,21 +221,21 @@ angular.module('mean.system')
             $scope.addAsFriends = (email, name) => {
                 const userId = window.localStorage.userId;
                 Users.addFriend(email, userId, name).then((response) => {
-                    const friendName = response.friendName;
-                    $scope.messages = `${friendName}, has been added to your friend's list`;
-                    // $scope.getFriends();
-                })
+                        const friendName = response.friendName;
+                        $scope.messages = `${friendName}, has been added to your friend's list`;
+                        // $scope.getFriends();
+                    })
                     .catch((error) => {
                         $scope.messages = error;
                     });
             };
-                
+
             // $scope.sendFriendInvite = () => {
             //     const userId = window.localStorage.userId;
             // }
 
             // const handleNewRequests = () => {
-                
+
             // }
 
             // game.getRequests(email, handleNewRequests);
@@ -217,6 +266,7 @@ angular.module('mean.system')
                 setTimeout(() => {
                     $scope.startNext();
                     card.removeClass('animated flipOutY');
+                    console.log('Hey!!!, Ar!!!!');
                     $('.startModal').modal('close');
                 }, 750);
             };
@@ -241,12 +291,13 @@ angular.module('mean.system')
             });
 
             // In case player doesn't pick a card in time, show the table
-            $scope.$watch('game.state', () => { //game.state
+            $scope.$watch('game.state', () => { // game.state
                 if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
                     $scope.showTable = true;
                 }
                 if ($scope.isCzar() && game.state === 'czar pick card' && game.table.length === 0) {
                     const myModal = $('.startModal');
+                    console.log('I am the Modal');
                     myModal.modal('open');
                 }
                 if (game.state === 'game dissolved') {
@@ -348,9 +399,9 @@ angular.module('mean.system')
                     $scope.takeTour();
                   };
             // player game-log logic
-            $scope.showOptions = false;
+            $scope.islogin = false;
             if (window.localStorage.token || window.user) {
-              $scope.showOptions = true;
+              $scope.islogin = true;
               dashboard.getGameLog()
                 .then((response) => {
                   const dateOptions = {
@@ -388,8 +439,9 @@ angular.module('mean.system')
                   $scope.userDonations = userDonations.donations;
                 });
             }
-            // logout to be used by the player dashboard if logged in
+          // logout to be used by the player dashboard if logged in
             $scope.logout = () => {
+                window.user = null;
                 window.localStorage.removeItem('token');
                 window.localStorage.removeItem('email');
                 window.localStorage.removeItem('userId');

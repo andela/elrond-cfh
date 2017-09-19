@@ -7,7 +7,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li class="purplelink"><a id="retake-tour" class="card-1" ng-click="retakeTour()">Take a Tour</a></li>
-          <!-- <li><a id="dashboard" href="#!/dashboard">Dashboard</a></li> -->
+          <li ng-if="islogin"><a id="dashboard" href="#!/dashboard">Dashboard</a></li>
           <li class="bluelink"> 
             <a id="tweet" class="card-1" href="https://twitter.com/share"  data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
               data-related="CFH_App">Tweet</a>
@@ -20,7 +20,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a id="retake-tour" ng-click="retakeTour()">Take a Tour</a></li>
-        <!-- <li><a id="dashboard" href="#!/dashboard">Dashboard</a></li> -->
+          <li ng-if="islogin"><a id="dashboard" href="#!/dashboard">Dashboard</a></li>
           <li>
             <a href="https://twitter.com/share" style="background-color:#1da1f3" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
               data-related="CFH_App">Tweet</a>
@@ -54,10 +54,54 @@
     </div>
     <answers></answers>
   </div>
+  <div class="chat">
+      <div class="chat-header">
+        <p>
+          Chat with a Player
+          <span class="right">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+        </p>
+      </div>
+    <div class="chat-body" style="display:none">
+      <div class="chat-holder">
+        <div class="" ng-repeat="gameChat in gameChats">
+          <ul class="messages" >
+            <ul class="row self">
+              <li class="col s2"><img ng-src="{{gameChat.avatar}}" width="30px"></li>
+              <li class="col s10">
+                <span class="postedBy">{{gameChat.postedBy}}&nbsp;&nbsp;<span style="font-size: 10px; color: #D1D1D4">{{gameChat.postedOn}}</span></span>
+                <p class="chatMessage">{{gameChat.message}}</p>
+              </li>
+            </ul>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="input-field chat-input">
+        <form ng-submit="addChat()">
+          <input type="text"
+          id="example1"
+          class="chatInputField"
+          placeholder="Write your message here..." 
+          ng-model="gameChat"
+          name="messageField"
+          autocomplete="off"
+          />
+          <!-- <button class="btn btn-primary" ng-click="addChat()">Submit</button> -->
+        </form> 
+        <br>
+        <span class="status"></span>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
 </div>
 </div>
 <script>
     $( document ).ready(function(){
       $(".button-collapse").sideNav();
     });
-  </script>
+</script>

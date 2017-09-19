@@ -1,24 +1,32 @@
 <div id="main-bod" ng-controller="IndexController" class="signinForm">
-  <div class="header-top">
-    <span class="heading">Cards for Humanity</span>
-    <span class="header-links">
-      <a href="/">Home</a>
-    </span>
-  </div>
-  <div class="row signinOverall" id="homer">
-    <div class="col s12 m4 l4"><p></p></div>
-    <div class="col s12 m4 l5 signinWrapper">
+    <nav class="nav-extended default">
+        <div class="nav-wrapper">
+          <span class="heading">Cards for Humanity</span>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/#!/">Home</a></li>
+            <li><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="/#!/">Home</a></li>
+            <li><a href="#!/signup" class="secondary-link">Sign Up</a></li>
+          </ul>
+        </div>
+      </nav>
+  <div class="row signinOverall" id="homer" style="margin-top:60px">
+    <div class="col s12 m2 l3"><p></p></div>
+    <div class="col s12 m8 l6 signinWrapper">
       <div class="signinHeader">
         Login
       </div>
-      <br>
-      <h4>Signin to your Account</h4>
+
       <div class="row">
 
         <div class="sign-error" style="margin-top: 10px;" ng-show="errStatus">
           <span style="color: red; font-family:'Delius'">{{signinErrorMsg}}</span>
         </div>
         <form class="col s12">
+          <br>
           <div class="row signupIn">
             <div class="input-field col s12">
               <input id="name" ng-model="email" type="email" class="validate">
@@ -42,21 +50,26 @@
       <div class="signinSocial">
         <hr>
         <p>or sign in with</p>
-        <a href="/auth/facebook">
+        <a href="/auth/facebook" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/facebook.png" width="50px" height="50px" alt="facebook">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/github">
+        <a href="/auth/github" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/github.png" width="50px" height="50px" alt="github">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/google">
+        <a href="/auth/google" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/google-plus.png" width="50px" height="50px" alt="google">&nbsp;&nbsp;&nbsp;
         </a>
-        <a href="/auth/twitter">
+        <!-- <a href="/auth/twitter" style="text-decoration: none; cursor: pointer;">
           <img src="/img/icons/twitter.png" width="50px" height="50px" alt="facebook">
-        </a>
+        </a> -->
         <br><br>
       </div>
     </div>
-    <div class="col s12 m4 l3"><p></p></div>
+    <div class="col s12 m2 l3"><p></p></div>
   </div>
 </div>
+<script>
+  $( document ).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>
